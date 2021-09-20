@@ -1,0 +1,23 @@
+﻿
+@model Lab_Task_2.Models.Student
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create New User</h2>
+
+<!--
+    <h3>Name = @Model.name</h3>
+    <h3>Id = @Model.id</h3>
+    <h3>Date of Birth = @Model.dob</h3>
+-->
+
+
+<form action="/Student/CreateSubmit" method="post">
+    Name : <input type="text" name="name" class="form-control" />
+    Id : <input type="text" name="id" class="form-control" />
+    Dob : <input type="text" name="dob" class="form-control" />
+
+    <input type="submit" name="submit" value="Add" class="btn btn-primary" />
+</form>

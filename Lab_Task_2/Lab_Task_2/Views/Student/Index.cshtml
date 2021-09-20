@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<h3>Name  = @ViewBag.name</h3>
+
+<table class="table-bordered">
+    @foreach(string s in ViewBag.name){
+        <tr>
+            <td>@s</td>
+        </tr>
+    }
+</table>
+

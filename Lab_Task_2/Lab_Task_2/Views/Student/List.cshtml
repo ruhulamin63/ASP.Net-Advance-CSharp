@@ -1,0 +1,28 @@
+﻿
+@model List<Lab_Task_2.Models.Student>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <td>Name</td>
+        <td>Id</td>
+        <td>Dob</td>
+    </tr>
+
+    @foreach(var s in Model) { 
+        <tr>
+            <td>@s.name</td>
+            <td>@s.id</td>
+            <td>@s.dob</td>
+        </tr>
+    }
+</table>
+
+
+
