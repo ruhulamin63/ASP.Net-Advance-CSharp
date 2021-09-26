@@ -1,0 +1,30 @@
+﻿@model List<Lecture_3.Models.Student>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<a class="btn btn-primary" href="/student/create">Add Student</a>
+<hr>
+<h3>All Students</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Dob</th>
+        <th>Cgpa</th>
+    </tr>
+    @foreach (var s in Model)
+    {
+        <tr>
+            <td>@s.Id</td>
+            <td>@s.Name</td>
+            <td>@s.Dob</td>
+            <td>@s.Cgpa</td>
+
+        </tr>
+    }
+</table>
+
+
+

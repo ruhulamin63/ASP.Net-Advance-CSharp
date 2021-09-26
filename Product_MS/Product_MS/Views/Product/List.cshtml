@@ -1,0 +1,33 @@
+﻿@model List<Product_MS.Models.Entities.Product>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<a class="btn btn-primary" href="/product/create">Add Product</a>
+<hr>
+<h3>All Products</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Desc</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var s in Model) {
+    <tr>
+        <td>@s.Id</td>
+        <td>@s.Name</td>
+        <td>@s.Qty</td>
+        <td>@s.Price</td>
+        <td>@s.Desc</td>
+        <td><a href="/product/update/@s.Id" class="btn btn-success">Update</a></td>
+        <td><a class="btn btn-danger">Delete</a></td>
+    </tr>
+    }
+</table>
+
+
+

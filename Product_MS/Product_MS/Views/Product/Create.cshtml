@@ -1,0 +1,28 @@
+﻿@model Product_MS.Models.Entities.Product
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Procuct</h2>
+<form action="/Product/Create" method="post">
+    Id: <input type="text" class="form-control" value="@Model.Id" name="id" />
+
+    @Html.ValidationMessageFor(m => m.Id, "", new { @class = "text-danger" })
+
+    <br>Name: <input type="text" class="form-control" value="@Model.Name" name="name" />
+    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+
+    <br>Qty: <input type="text" class="form-control" value="@Model.Qty" name="qty" />
+    @Html.ValidationMessageFor(m => m.Qty, "", new { @class = "text-danger" })
+
+    <br>Price: <input type="text" class="form-control" value="@Model.Price" name="price" />
+    @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+
+    <br>Descreption: <input type="text" class="form-control" value="@Model.Desc" name="desc" />
+    @Html.ValidationMessageFor(m => m.Desc, "", new { @class = "text-danger" })
+
+    <br />
+
+    <input type="submit" value="Add" class="btn btn-success">
+
+</form>
