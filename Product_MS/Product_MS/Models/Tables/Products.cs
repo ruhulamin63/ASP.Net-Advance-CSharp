@@ -14,15 +14,16 @@ namespace Product_MS.Models.Tables
         {
             this.conn = conn;
         }
-        public void Create(Product s)
-        {
 
+        public void Create(Product p)
+        {
             conn.Open();
-            string query = String.Format("insert into products values ('{0}','{1}','{2}','{3}', '{4}')", s.Id, s.Name, s.Qty, s.Price, s.Desc);
+            string query = String.Format("insert into products values ('{0}','{1}','{2}','{3}', '{4}')", p.Id, p.Name, p.Qty, p.Price, p.Desc);
             SqlCommand cmd = new SqlCommand(query, conn);
             int r = cmd.ExecuteNonQuery();
             conn.Close();
         }
+
         public List<Product> Get()
         {
             conn.Open();
@@ -34,7 +35,7 @@ namespace Product_MS.Models.Tables
 
             while (reader.Read())
             {
-                Product s = new Product()
+                Product p = new Product()
                 {
                     Id = reader.GetInt32(reader.GetOrdinal("Id")),
                     Name = reader.GetString(reader.GetOrdinal("Name")),
@@ -43,22 +44,26 @@ namespace Product_MS.Models.Tables
                     Desc = reader.GetString(reader.GetOrdinal("Desc")),
 
                 };
-                products.Add(s);
+                products.Add(p);
             }
 
             conn.Close();
+
             return products;
         }
+
         public Product Get(int id)
         {
             conn.Open();
             string query = String.Format("Select * from products where Id={0}", id);
             SqlCommand cmd = new SqlCommand(query, conn);
             SqlDataReader reader = cmd.ExecuteReader();
-            Product s = null;
+
+            Product p = null;
+
             while (reader.Read())
             {
-                s = new Product()
+                p = new Product()
                 {
                     Id = reader.GetInt32(reader.GetOrdinal("Id")),
                     Name = reader.GetString(reader.GetOrdinal("Name")),
@@ -68,7 +73,34 @@ namespace Product_MS.Models.Tables
                 };
             }
             conn.Close();
-            return s;
+
+            return p;
+        }
+
+        ///*
+        public void Update(Product p)
+        {
+            conn.Open();
+            string query = String.Format("update products set Name={1}, Qty={2}, Price={3}, Desc={4} where Id={0}", p.Name, p.Qty, p.Price, p.Desc);
+            SqlCommand cmd = new SqlCommand(query, conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            conn.Close();
+        }
+        // */
+
+        public Product Delete(int id)
+        {
+            conn.Open();
+            string query = String.Format("delete from products where Id={0}",id);
+            SqlCommand cmd = new SqlCommand(query, conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            Product p = null;
+          
+            conn.Close();
+
+            return p;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Product_MS.Models
             conn = new SqlConnection(connString);
             Products = new Products(conn);
             //Students = new Students(conn);
-            //Departments = new Departments();
+            //Departments = new Departments(conn);
 
         }
     }

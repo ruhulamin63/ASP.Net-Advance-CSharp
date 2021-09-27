@@ -8,6 +8,7 @@ namespace Product_MS.Models.Entities
 {
     public class Product
     {
+        [Required(ErrorMessage = "Please put your id")]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please put your name")]

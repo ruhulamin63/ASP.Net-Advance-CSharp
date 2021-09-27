@@ -4,7 +4,8 @@
 }
 
 <h2>Create Procuct</h2>
-<form action="/Product/Create" method="post">
+<form action="/product/create" method="post">
+
     Id: <input type="text" class="form-control" value="@Model.Id" name="id" />
 
     @Html.ValidationMessageFor(m => m.Id, "", new { @class = "text-danger" })
@@ -24,5 +25,6 @@
     <br />
 
     <input type="submit" value="Add" class="btn btn-success">
+    <a href="/product/list" class="btn btn-success">Back</a>
 
 </form>

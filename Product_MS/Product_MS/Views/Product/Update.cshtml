@@ -2,6 +2,7 @@
 
 <h2>Update</h2>
 <form action="/Product/Update" method="post">
+
     Name: <input type="text" class="form-control" value="@Model.Name" name="Name" />
 
     @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
@@ -17,6 +18,6 @@
 
     <br />
     <input type="submit" value="Update" class="btn btn-success">
-   <a href="/Product/List"  class="btn btn-success">Back</a>
+    <a href="/product/list"  class="btn btn-success">Back</a>
 
 </form>
