@@ -24,7 +24,7 @@ namespace Product_MS.Models.Entities
         public int Price { get; set; }
         [Required]
 
-        public string Desc { get; set; }
+        public string Descs { get; set; }
         
     }
 }

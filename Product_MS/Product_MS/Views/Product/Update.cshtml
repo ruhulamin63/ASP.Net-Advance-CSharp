@@ -13,8 +13,8 @@
     <br>Price: <input type="text" class="form-control" value="@Model.Price" name="price" />
     @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
 
-    <br>Descreption: <input type="text" class="form-control" value="@Model.Desc" name="desc" />
-    @Html.ValidationMessageFor(m => m.Desc, "", new { @class = "text-danger" })
+    <br>Descreption: <input type="text" class="form-control" value="@Model.Descs" name="descs" />
+    @Html.ValidationMessageFor(m => m.Descs, "", new { @class = "text-danger" })
 
     <br />
     <input type="submit" value="Update" class="btn btn-success">

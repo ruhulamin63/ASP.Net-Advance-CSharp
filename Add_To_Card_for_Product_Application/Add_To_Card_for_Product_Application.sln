@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Add_To_Card_for_Product_Application", "Add_To_Card_for_Product_Application\Add_To_Card_for_Product_Application.csproj", "{74FE5844-754A-4B91-84B3-29488E556DF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74FE5844-754A-4B91-84B3-29488E556DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74FE5844-754A-4B91-84B3-29488E556DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74FE5844-754A-4B91-84B3-29488E556DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74FE5844-754A-4B91-84B3-29488E556DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {80A48952-94E3-433A-ACC3-755E4668A8D4}
+	EndGlobalSection
+EndGlobal

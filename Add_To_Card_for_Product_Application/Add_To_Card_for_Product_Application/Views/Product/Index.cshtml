@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@using Add_To_Card_for_Product_Application.Models
+
+<h2>Product Index</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <h3>Products List</h3>
+    <table class="table table-bordered">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Photo</th>
+            <th>Price</th>
+            <th>Buy Product</th>
+        </tr>
+
+        @foreach (Product product in ViewBag.products)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td><img src="~/Content/Images/@product.Photo" width="60" /> </td>
+                <td>@product.Price</td>
+                <td align="center">
+                    <a href="@Url.Action("Buy", "Cart", new { id = product.Id })" class="btn btn-success">Buy Now</a>
+                </td>
+            </tr>
+        }
+    </table>
+
+</body>
+</html>

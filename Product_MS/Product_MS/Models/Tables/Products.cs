@@ -18,7 +18,7 @@ namespace Product_MS.Models.Tables
         public void Create(Product p)
         {
             conn.Open();
-            string query = String.Format("insert into products values ('{0}','{1}','{2}','{3}', '{4}')", p.Id, p.Name, p.Qty, p.Price, p.Desc);
+            string query = String.Format("insert into products values ('{0}','{1}','{2}','{3}', '{4}')", p.Id, p.Name, p.Qty, p.Price, p.Descs);
             SqlCommand cmd = new SqlCommand(query, conn);
             int r = cmd.ExecuteNonQuery();
             conn.Close();
@@ -41,7 +41,7 @@ namespace Product_MS.Models.Tables
                     Name = reader.GetString(reader.GetOrdinal("Name")),
                     Qty = reader.GetInt32(reader.GetOrdinal("Qty")),
                     Price = reader.GetInt32(reader.GetOrdinal("Price")),
-                    Desc = reader.GetString(reader.GetOrdinal("Desc")),
+                    Descs = reader.GetString(reader.GetOrdinal("Descs")),
 
                 };
                 products.Add(p);
@@ -69,7 +69,7 @@ namespace Product_MS.Models.Tables
                     Name = reader.GetString(reader.GetOrdinal("Name")),
                     Qty = reader.GetInt32(reader.GetOrdinal("Qty")),
                     Price = reader.GetInt32(reader.GetOrdinal("Price")),
-                    Desc = reader.GetString(reader.GetOrdinal("Desc")),
+                    Descs = reader.GetString(reader.GetOrdinal("Descs")),
                 };
             }
             conn.Close();
@@ -81,9 +81,9 @@ namespace Product_MS.Models.Tables
         public void Update(Product p)
         {
             conn.Open();
-            string query = String.Format("update products set Name={1}, Qty={2}, Price={3}, Desc={4} where Id={0}", p.Name, p.Qty, p.Price, p.Desc);
+            string query = String.Format("update products set Name='{0}', Qty={1}, Price={2}, Descs='{3}' where Id={4}", p.Name, p.Qty, p.Price, p.Descs, p.Id);
             SqlCommand cmd = new SqlCommand(query, conn);
-            SqlDataReader reader = cmd.ExecuteReader();
+            int r = cmd.ExecuteNonQuery();
 
             conn.Close();
         }
