@@ -121,12 +121,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Item.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Database.cs" />
+    <Compile Include="Models\Entities\Order.cs" />
     <Compile Include="Models\Entities\Product.cs" />
+    <Compile Include="Models\Tables\Orders.cs" />
     <Compile Include="Models\Tables\Products.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -169,7 +174,10 @@
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\List.cshtml" />
     <Content Include="Views\Product\Update.cshtml" />
-    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\Order.cshtml" />
+    <Content Include="Views\Product\Cart_Index.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Order_Place.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

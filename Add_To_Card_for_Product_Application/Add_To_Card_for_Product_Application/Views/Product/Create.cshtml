@@ -1,0 +1,31 @@
+﻿@model Add_To_Card_for_Product_Application.Models.Product
+@model Add_To_Card_for_Product_Application.Models.Item
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Procuct</h2>
+<form action="/product/create" method="post">
+
+    Id: <input type="text" class="form-control" value="@Model.Id" name="Id" />
+
+    @Html.ValidationMessageFor(m => m.Id, "", new { @class = "text-danger" })
+
+    <br>Name: <input type="text" class="form-control" value="@Model.Name" name="Name" />
+    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+
+    <br>Qty: <input type="text" class="form-control" value="@Model.Qty" name="Qty" />
+    @Html.ValidationMessageFor(m => m.Qty, "", new { @class = "text-danger" })
+
+    <br>Price: <input type="text" class="form-control" value="@Model.Price" name="Price" />
+    @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+
+    <br>Descreption: <input type="text" class="form-control" value="@Model.Description" name="Description" />
+    @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+
+    <br />
+
+    <input type="submit" value="Add" class="btn btn-success">
+    <a href="/product/list" class="btn btn-success">Back</a>
+
+</form>

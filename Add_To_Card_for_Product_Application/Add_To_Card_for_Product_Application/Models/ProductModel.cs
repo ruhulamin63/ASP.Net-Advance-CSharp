@@ -13,20 +13,20 @@ namespace Add_To_Card_for_Product_Application.Models
         {
             this.products = new List<Product>() {
                 new Product {
-                    Id = "p01",
-                    Name = "Name 1",
+                    Id = "01",
+                    Name = "Diamond Cart",
                     Price = 5,
                     Photo = "thumb1.gif"
                 },
                 new Product {
-                    Id = "p02",
-                    Name = "Name 2",
+                    Id = "02",
+                    Name = "Welcome Cart",
                     Price = 2,
                     Photo = "thumb2.gif"
                 },
                 new Product {
-                    Id = "p03",
-                    Name = "Name 3",
+                    Id = "03",
+                    Name = "Bike Cart",
                     Price = 6,
                     Photo = "thumb3.gif"
                 }

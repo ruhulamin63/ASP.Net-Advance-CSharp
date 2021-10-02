@@ -12,7 +12,7 @@ namespace Product_MS.Models.Entities
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please put your name")]
-        [StringLength(10, ErrorMessage = "Name should not exceed 10 charcter")]
+        [StringLength(20, ErrorMessage = "Name should not exceed 20 charcter")]
         [MinLength(5)]
         public string Name { get; set; }
 
