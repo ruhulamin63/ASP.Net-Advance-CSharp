@@ -13,7 +13,7 @@
         <th>Name</th>
         <th>Qty</th>
         <th>Price</th>
-        <th>Desc</th>
+        <th>Descreption</th>
         <th>Action</th>
     </tr>
     @foreach (var s in Model) {
@@ -22,7 +22,7 @@
         <td>@s.Name</td>
         <td>@s.Qty</td>
         <td>@s.Price</td>
-        <td>@s.Descs</td>
+        <td>@s.Description</td>
         <td><a href="/product/update/@s.Id" class="btn btn-success">Update</a></td>
         <td><a href="/product/delete/@s.Id" class="btn btn-danger">Delete</a></td>
     </tr>

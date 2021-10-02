@@ -14,17 +14,16 @@ namespace Product_MS.Models.Entities
         [Required(ErrorMessage = "Please put your name")]
         [StringLength(10, ErrorMessage = "Name should not exceed 10 charcter")]
         [MinLength(5)]
-
         public string Name { get; set; }
-        [Required]
 
+        [Required]
         public int Qty { get; set; }
-        [Required]
 
+        [Required]
         public int Price { get; set; }
-        [Required]
 
-        public string Descs { get; set; }
-        
+        [Required]
+        public string Description { get; set; }
+
     }
 }

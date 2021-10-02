@@ -58,7 +58,7 @@ namespace Product_MS.Controllers
                 db.Products.Update(p);
                 return RedirectToAction("List");
             }
-            return View(p);
+            return View();
         }
 
         

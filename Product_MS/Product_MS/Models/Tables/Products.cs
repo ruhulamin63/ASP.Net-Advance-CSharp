@@ -18,9 +18,9 @@ namespace Product_MS.Models.Tables
         public void Create(Product p)
         {
             conn.Open();
-            string query = String.Format("insert into products values ('{0}','{1}','{2}','{3}', '{4}')", p.Id, p.Name, p.Qty, p.Price, p.Descs);
+            string query = String.Format("insert into products values ({0},'{1}',{2},{3}, '{4}')", p.Id, p.Name, p.Qty, p.Price, p.Description);
             SqlCommand cmd = new SqlCommand(query, conn);
-            int r = cmd.ExecuteNonQuery();
+            cmd.ExecuteNonQuery();
             conn.Close();
         }
 
@@ -41,7 +41,7 @@ namespace Product_MS.Models.Tables
                     Name = reader.GetString(reader.GetOrdinal("Name")),
                     Qty = reader.GetInt32(reader.GetOrdinal("Qty")),
                     Price = reader.GetInt32(reader.GetOrdinal("Price")),
-                    Descs = reader.GetString(reader.GetOrdinal("Descs")),
+                    Description = reader.GetString(reader.GetOrdinal("Description")),
 
                 };
                 products.Add(p);
@@ -69,7 +69,7 @@ namespace Product_MS.Models.Tables
                     Name = reader.GetString(reader.GetOrdinal("Name")),
                     Qty = reader.GetInt32(reader.GetOrdinal("Qty")),
                     Price = reader.GetInt32(reader.GetOrdinal("Price")),
-                    Descs = reader.GetString(reader.GetOrdinal("Descs")),
+                    Description = reader.GetString(reader.GetOrdinal("Description")),
                 };
             }
             conn.Close();
@@ -81,26 +81,22 @@ namespace Product_MS.Models.Tables
         public void Update(Product p)
         {
             conn.Open();
-            string query = String.Format("update products set Name='{0}', Qty={1}, Price={2}, Descs='{3}' where Id={4}", p.Name, p.Qty, p.Price, p.Descs, p.Id);
+            string query = String.Format("update Products set Name='{0}', Qty={1}, Price={2},  Description='{3}' where Id={4}", p.Name, p.Qty, p.Price, p.Description, p.Id);
             SqlCommand cmd = new SqlCommand(query, conn);
-            int r = cmd.ExecuteNonQuery();
+            cmd.ExecuteNonQuery();
 
             conn.Close();
         }
         // */
 
-        public Product Delete(int id)
+        public void Delete(int id)
         {
             conn.Open();
             string query = String.Format("delete from products where Id={0}",id);
             SqlCommand cmd = new SqlCommand(query, conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            Product p = null;
+            cmd.ExecuteNonQuery();
           
             conn.Close();
-
-            return p;
         }
     }
 }

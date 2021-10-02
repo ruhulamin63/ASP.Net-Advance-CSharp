@@ -1,20 +1,19 @@
 ﻿@model Product_MS.Models.Entities.Product
 
 <h2>Update</h2>
-<form action="/Product/Update" method="post">
+<form action="?Product/Update" method="post">
 
     Name: <input type="text" class="form-control" value="@Model.Name" name="Name" />
-
     @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
 
-    <br>Qty: <input type="text" class="form-control" value="@Model.Qty" name="qty" />
+    <br>Qty: <input type="text" class="form-control" value="@Model.Qty" name="Qty" />
     @Html.ValidationMessageFor(m => m.Qty, "", new { @class = "text-danger" })
 
-    <br>Price: <input type="text" class="form-control" value="@Model.Price" name="price" />
+    <br>Price: <input type="text" class="form-control" value="@Model.Price" name="Price" />
     @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
 
-    <br>Descreption: <input type="text" class="form-control" value="@Model.Descs" name="descs" />
-    @Html.ValidationMessageFor(m => m.Descs, "", new { @class = "text-danger" })
+    <br>Descreption: <input type="text" class="form-control" value="@Model.Description" name="Description" />
+    @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
 
     <br />
     <input type="submit" value="Update" class="btn btn-success">

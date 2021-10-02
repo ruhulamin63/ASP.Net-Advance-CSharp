@@ -6,21 +6,21 @@
 <h2>Create Procuct</h2>
 <form action="/product/create" method="post">
 
-    Id: <input type="text" class="form-control" value="@Model.Id" name="id" />
+    Id: <input type="text" class="form-control" value="@Model.Id" name="Id" />
 
     @Html.ValidationMessageFor(m => m.Id, "", new { @class = "text-danger" })
 
-    <br>Name: <input type="text" class="form-control" value="@Model.Name" name="name" />
+    <br>Name: <input type="text" class="form-control" value="@Model.Name" name="Name" />
     @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
 
-    <br>Qty: <input type="text" class="form-control" value="@Model.Qty" name="qty" />
+    <br>Qty: <input type="text" class="form-control" value="@Model.Qty" name="Qty" />
     @Html.ValidationMessageFor(m => m.Qty, "", new { @class = "text-danger" })
 
-    <br>Price: <input type="text" class="form-control" value="@Model.Price" name="price" />
+    <br>Price: <input type="text" class="form-control" value="@Model.Price" name="Price" />
     @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
 
-    <br>Descreption: <input type="text" class="form-control" value="@Model.Descs" name="desc" />
-    @Html.ValidationMessageFor(m => m.Descs, "", new { @class = "text-danger" })
+    <br>Descreption: <input type="text" class="form-control" value="@Model.Description" name="Description" />
+    @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
 
     <br />
 
