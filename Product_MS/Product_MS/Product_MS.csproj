@@ -120,19 +120,21 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Auth\AdminAccess.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Item.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ProductModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Database.cs" />
     <Compile Include="Models\Entities\Order.cs" />
     <Compile Include="Models\Entities\Product.cs" />
+    <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\Tables\Orders.cs" />
     <Compile Include="Models\Tables\Products.cs" />
+    <Compile Include="Models\Tables\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +180,7 @@
     <Content Include="Views\Product\Cart_Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Order_Place.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

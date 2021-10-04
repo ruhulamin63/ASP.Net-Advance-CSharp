@@ -24,7 +24,7 @@ namespace Lecture_3.Controllers
             foreach (var product in products)
             {
                 Database db = new Database();
-                _ = db.Orders.Place(orderId, product.Id, product.Price);
+                /* db.Orders.Place(orderId, product.Id, product.Price);*/
             }
             return RedirectToAction("Index");
         }

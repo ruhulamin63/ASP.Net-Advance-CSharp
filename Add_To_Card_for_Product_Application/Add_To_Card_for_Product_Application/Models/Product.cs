@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Add_To_Card_for_Product_Application.Models
 {
-    public class Product : ProductBase
+    public class Product 
     {
         public int Id
         {
@@ -26,18 +26,6 @@ namespace Add_To_Card_for_Product_Application.Models
         }
 
         public string Photo
-        {
-            get;
-            set;
-        }
-
-        public int Quantity
-        {
-            get;
-            set;
-        }
-
-        public int Total
         {
             get;
             set;

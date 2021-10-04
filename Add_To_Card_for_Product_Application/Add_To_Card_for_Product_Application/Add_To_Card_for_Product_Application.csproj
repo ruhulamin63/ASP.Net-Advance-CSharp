@@ -129,7 +129,6 @@
     <Compile Include="Models\Database.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductBase.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\Products.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

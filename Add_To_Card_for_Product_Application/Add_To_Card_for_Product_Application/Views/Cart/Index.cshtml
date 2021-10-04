@@ -23,8 +23,8 @@
             <th>Name</th>
             <th>Photo</th>
             <th>Price</th>
-            <th>Quantity</th>
-            <th>Total Cost</th>
+            @*<th>Quantity</th>
+            <th>Total Cost</th>*@
             <th>Option</th>
         </tr>
         @foreach (Item item in (List<Item>)Session["cart"])
@@ -34,12 +34,12 @@
             <td>@item.Product.Name</td>
             <td><img src="~/Content/Images/@item.Product.Photo" width="60" /> </td>
             <td>@item.Product.Price</td>
-            <td>@item.Quantity</td>
-            <td>@(item.Product.Price * item.Quantity)</td>
+            @*<td>@item.Quantity</td>
+            <td>@(item.Product.Price * item.Quantity)</td>*@
             <td><a href="@Url.Action("Remove", "Cart", new { id = item.Product.Id })" class="btn btn-success">Remove</a></td>
         </tr>
         }
-        <tr>
+       @* <tr>
             <td align="right" colspan="5">Total Amount = </td>
             <td>
                 @{
@@ -48,7 +48,7 @@
                 }
                 @total
             </td>
-        </tr>
+        </tr>*@
     </table>
     <br>
     <a href="@Url.Action("Index", "Product")" class="btn btn-success">Buy More Products</a>

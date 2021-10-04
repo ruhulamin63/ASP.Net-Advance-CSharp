@@ -16,7 +16,7 @@ namespace Add_To_Card_for_Product_Application.Models
         public void Create(Product p)
         {
             conn.Open();
-            string query = String.Format("insert into orders values ({0},'{1}',{2},'{3}', '{4}', {5}, {6})", p.Id, p.Name, p.Price, p.Photo, p.Product, p.Quantity, p.Total );
+            string query = String.Format("insert into orders values ({0},'{1}',{2},'{3}'", p.Id, p.Name, p.Price, p.Photo);
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -79,7 +79,7 @@ namespace Add_To_Card_for_Product_Application.Models
         public void Update(Product p)
         {
             conn.Open();
-            string query = String.Format("update Products set Name='{0}', Qty={1}, Price={2},  Description='{3}' where Id={4}", p.Name, p.Qty, p.Price, p.Description, p.Id);
+            string query = String.Format("update Products set Name='{0}', Price={2},  Photo='{3}' where Id={4}", p.Name, p.Price, p.Photo, p.Id);
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.ExecuteNonQuery();
 

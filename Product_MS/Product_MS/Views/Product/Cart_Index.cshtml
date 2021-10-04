@@ -16,6 +16,19 @@
         <th>Descreption</th>
         <th colspan="2" align="center">Action</th>
     </tr>
+   @* @foreach (Product item in (List<Product>)Session["cart"])
+    {
+        <tr>
+            <td>@item.Product.Id</td>
+            <td>@item.Product.Name</td>
+            <td><img src="~/Content/Images/@item.Product.Photo" width="60" /> </td>
+            <td>@item.Product.Price</td>
+            <td>@item.Quantity</td>
+            <td>@(item.Product.Price * item.Quantity)</td>
+            <td><a href="@Url.Action("Remove", "Cart", new { id = item.Product.Id })" class="btn btn-success">Remove</a></td>
+        </tr>
+    }*@
+
     @foreach (var p in Model)
     {
         <tr>
@@ -26,8 +39,8 @@
             <td>@p.Description</td>
             <td><a href="/product/remove/@p.Id" class="btn btn-danger">Remove</a></td>
         </tr>
-      }
-</table>
+        }
+    </table>
 
 
 @if (Model.Count() > 0)

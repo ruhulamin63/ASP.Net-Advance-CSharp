@@ -7,12 +7,18 @@ using System.Web.Mvc;
 using System.Data.SqlClient;
 using Product_MS.Models;
 using System.Web.Script.Serialization;
+using Product_MS.Auth;
 
 namespace Product_MS.Controllers
 {
+   /* [Authorize] //all function are authorize*/
+
+    [AdminAccess]
+
     public class ProductController : Controller
     {
         // GET: Product
+       [AllowAnonymous] //not authorize
 
         public ActionResult List()
         {
@@ -84,6 +90,15 @@ namespace Product_MS.Controllers
         {
             Database db = new Database();
             var p = db.Products.Get(id);
+
+
+            /*List<Product> products = new List<Product>();
+            
+
+            string json = new JavaScriptSerializer().Serialize(products);
+            Session["Cart"] = json;
+            return View(p);*/
+
             if (Session["Cart"] == null)
             {
                 List<Product> products = new List<Product>();
@@ -100,13 +115,17 @@ namespace Product_MS.Controllers
                 string json = new JavaScriptSerializer().Serialize(products);
                 Session["Cart"] = json;
             }
-            return RedirectToAction("Cart");
+            /*return RedirectToAction("Cart_Index");*/
+            return View(p);
         }
 
         [HttpGet]
         public ActionResult Cart_Index()
         {
-            List<Product> products = new List<Product>();
+            Database db = new Database();
+            var products = db.Products.Get();
+
+           /* List<Product> products = new List<Product>();*/
             if (Session["Cart"] != null)
             {
                 products = new JavaScriptSerializer().Deserialize<List<Product>>(Session["Cart"].ToString());
@@ -128,5 +147,23 @@ namespace Product_MS.Controllers
             }
             return RedirectToAction("Cart_Index");
         }
+
+        /*public ActionResult Remove(string id)
+        {
+            List<Item> cart = (List<Item>)Session["cart"];
+            int index = isExist(id);
+            cart.RemoveAt(index);
+            Session["cart"] = cart;
+            return RedirectToAction("Index");
+        }
+
+        private int isExist(string id)
+        {
+            List<Item> cart = (List<Item>)Session["cart"];
+            for (int i = 0; i < cart.Count; i++)
+                if (cart[i].Product.Id.Equals(id))
+                    return i;
+            return -1;
+        }*/
     }
 }
