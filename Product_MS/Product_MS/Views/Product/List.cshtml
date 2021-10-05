@@ -16,7 +16,8 @@
         <th>Descreption</th>
         <th colspan="3" align="center">Action</th>
     </tr>
-    @foreach (var s in Model) {
+    @foreach (var s in Model)
+    {
         <tr>
             <td>@s.Id</td>
             <td>@s.Name</td>
@@ -25,9 +26,9 @@
             <td>@s.Description</td>
             <td><a href="/product/update/@s.Id" class="btn btn-success">Update</a></td>
             <td><a href="/product/delete/@s.Id" class="btn btn-danger">Delete</a></td>
-            <td><a href="/product/Cart_Index/@s.Id" class="btn btn-success">Add to Cart</a></td>
+            <td><a href="/product/cart/@s.Id" class="btn btn-success">Add to Cart</a></td>
         </tr>
-     }
+    }
 </table>
 
 

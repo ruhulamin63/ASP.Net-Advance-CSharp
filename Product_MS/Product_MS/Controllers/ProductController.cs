@@ -91,79 +91,58 @@ namespace Product_MS.Controllers
             Database db = new Database();
             var p = db.Products.Get(id);
 
-
-            /*List<Product> products = new List<Product>();
-            
-
-            string json = new JavaScriptSerializer().Serialize(products);
-            Session["Cart"] = json;
-            return View(p);*/
-
-            if (Session["Cart"] == null)
+            if(p != null)
             {
                 List<Product> products = new List<Product>();
-                products.Add(p);
 
-                string json = new JavaScriptSerializer().Serialize(products);
-                Session["Cart"] = json;
-            }
-            else
-            {
-                var products = new JavaScriptSerializer().Deserialize<List<Product>>(Session["Cart"].ToString());
-                products.Add(p);
+                if (Session["cart"] == null)
+                {
+                    products.Add(p);
 
-                string json = new JavaScriptSerializer().Serialize(products);
-                Session["Cart"] = json;
+                    string json = new JavaScriptSerializer().Serialize(products);
+                    Session["cart"] = json;
+
+                    return RedirectToAction("Cart_Index");
+                }
+                else
+                {
+                    string json = Session["cart"].ToString();
+                    var val = new JavaScriptSerializer().Deserialize<List<Product>>(Session["cart"].ToString());
+                    val.Add(p);
+
+                    json = new JavaScriptSerializer().Serialize(val);
+                    Session["cart"] = json;
+
+                    return RedirectToAction("List");
+                }
             }
-            /*return RedirectToAction("Cart_Index");*/
-            return View(p);
+            return RedirectToAction("List");
         }
 
         [HttpGet]
         public ActionResult Cart_Index()
         {
-            Database db = new Database();
-            var products = db.Products.Get();
-
-           /* List<Product> products = new List<Product>();*/
-            if (Session["Cart"] != null)
+            if (Session["cart"] != null)
             {
-                products = new JavaScriptSerializer().Deserialize<List<Product>>(Session["Cart"].ToString());
+                var products = new JavaScriptSerializer().Deserialize<List<Product>>(Session["cart"].ToString());
                 return View(products);
             }
-            return View(products);
+            Session["test"] = "ok";
+            return Redirect("/product/list");
         }
 
         [HttpGet]
         public ActionResult Remove(int id)
         {
-            if (Session["Cart"] != null)
+            if (Session["cart"] != null)
             {
-                var products = new JavaScriptSerializer().Deserialize<List<Product>>(Session["Cart"].ToString());
+                var products = new JavaScriptSerializer().Deserialize<List<Product>>(Session["cart"].ToString());
                 var productToRemove = products.Single(p => p.Id == id);
                 products.Remove(productToRemove);
                 string json = new JavaScriptSerializer().Serialize(products);
-                Session["Cart"] = json;
+                Session["cart"] = json;
             }
             return RedirectToAction("Cart_Index");
         }
-
-        /*public ActionResult Remove(string id)
-        {
-            List<Item> cart = (List<Item>)Session["cart"];
-            int index = isExist(id);
-            cart.RemoveAt(index);
-            Session["cart"] = cart;
-            return RedirectToAction("Index");
-        }
-
-        private int isExist(string id)
-        {
-            List<Item> cart = (List<Item>)Session["cart"];
-            for (int i = 0; i < cart.Count; i++)
-                if (cart[i].Product.Id.Equals(id))
-                    return i;
-            return -1;
-        }*/
     }
 }
