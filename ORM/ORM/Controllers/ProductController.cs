@@ -13,9 +13,9 @@ namespace ORM.Controllers
         public ActionResult Index()
         {
 
-            var db = new ProductEntities1();
+            var db = new ProductEntities();
 
-            var data = db.products.ToList();
+            List<product> data = db.products.ToList();
             return View(data);
         }
 
@@ -27,16 +27,48 @@ namespace ORM.Controllers
         [HttpPost]
         public ActionResult Create(product s)
         {
-            var db = new ProductEntities1();
+            var db = new ProductEntities();
             db.products.Add(s);
             db.SaveChanges();
 
             return RedirectToAction("Index");
         }
 
-        public ActionResult Update()
+        public ActionResult Edit(int id)
         {
-            return View();
+            var db = new ProductEntities();
+            var product = (from p in db.products where p.Id == id
+                           select p).FirstOrDefault();
+            return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(product pro)
+        {
+            var db = new ProductEntities();
+
+           /* product.Name = pro.Name*/
+
+            var product = (from p in db.products
+                           where p.Id == pro.Id
+                           select p).FirstOrDefault();
+            db.Entry(product).CurrentValues.SetValues(pro);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(product pro)
+        {
+            var db = new ProductEntities();
+            var product = (from p in db.products
+                           where p.Id == pro.Id
+                           select p).FirstOrDefault();
+            db.products.Remove(product);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
