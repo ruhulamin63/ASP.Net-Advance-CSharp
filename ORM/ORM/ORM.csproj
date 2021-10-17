@@ -129,30 +129,40 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\customer.cs">
+      <DependentUpon>E_CommerceDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\E_CommerceDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>E_CommerceDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\E_CommerceDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>E_CommerceDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\E_CommerceDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>E_CommerceDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\order.cs">
+      <DependentUpon>E_CommerceDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\order_details.cs">
+      <DependentUpon>E_CommerceDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\product.cs">
-      <DependentUpon>ProductDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProductDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProductDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProductDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProductDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProductDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProductDB.edmx</DependentUpon>
+      <DependentUpon>E_CommerceDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\user.cs">
-      <DependentUpon>ProductDB.tt</DependentUpon>
+      <DependentUpon>E_CommerceDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -165,24 +175,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\ProductDB.Context.tt">
+    <Content Include="Models\E_CommerceDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProductDB.edmx</DependentUpon>
-      <LastGenOutput>ProductDB.Context.cs</LastGenOutput>
+      <DependentUpon>E_CommerceDB.edmx</DependentUpon>
+      <LastGenOutput>E_CommerceDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ProductDB.tt">
+    <Content Include="Models\E_CommerceDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProductDB.edmx</DependentUpon>
-      <LastGenOutput>ProductDB.cs</LastGenOutput>
+      <DependentUpon>E_CommerceDB.edmx</DependentUpon>
+      <LastGenOutput>E_CommerceDB.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\ProductDB.edmx">
+    <EntityDeploy Include="Models\E_CommerceDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ProductDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>E_CommerceDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ProductDB.edmx.diagram">
-      <DependentUpon>ProductDB.edmx</DependentUpon>
+    <Content Include="Models\E_CommerceDB.edmx.diagram">
+      <DependentUpon>E_CommerceDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -215,6 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
