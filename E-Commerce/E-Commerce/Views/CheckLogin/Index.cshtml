@@ -1,0 +1,16 @@
+﻿@model E_Commerce.Models.customer
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Login Page</h2>
+<hr />
+
+<form action="?CheckLogin/Index" method="post">
+    <input type="text" class="form-control" name="Username" placeholder="Username" /><br />
+    <input type="password" class="form-control" name="Password" placeholder="Password" />
+
+    <br />
+    <input type="submit" value="Login" class="btn btn-success">
+</form>

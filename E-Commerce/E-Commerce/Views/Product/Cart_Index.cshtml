@@ -1,0 +1,37 @@
+﻿@model List<E_Commerce.Models.product>
+@{
+    ViewBag.Title = "Cart_Index";
+}
+
+<h2>Cart_Index</h2>
+
+<a class="btn btn-primary" href="/product/index">All Products</a>
+<hr>
+
+<h3>All Products</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Description</th>
+    </tr>
+    @foreach (var products in Model)
+    {
+        <tr>
+            <td>@products.Id</td>
+            <td>@products.Name</td>
+            <td>@products.Qty</td>
+            <td>@products.Price</td>
+            <td>@products.Description</td>
+            <td><a href="/product/remove/@products.Id" class="btn btn-danger">Remove</a></td>
+        </tr>
+    }
+</table>
+
+@if (Model.Count() > 0)
+{
+    <a class="btn btn-primary" href="/order/place/@Model">Place Order</a>
+    <a class="btn btn-primary" href="/product/index">More Order</a>
+}
