@@ -8,7 +8,7 @@ using System.Web.Security;
 
 namespace E_Commerce.Controllers
 {
-    public class CheckLoginController : Controller
+    public class CustomerLoginController : Controller
     {
         // GET: CheckLogin
         public ActionResult Index()
@@ -17,23 +17,23 @@ namespace E_Commerce.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string Username, string Password)
+        public ActionResult Index(string Phone, string Password)
         {
             var db = new ProductEntities();
 
-            var user = (from u in db.users
-                       where u.Username.Equals(Username) && u.Password.Equals(Password)
+            var user = (from u in db.customers
+                       where u.Phone.Equals(Phone) && u.Password.Equals(Password)
                        select u);
 
             if (user != null)
             {
-                FormsAuthentication.SetAuthCookie(user.FirstOrDefault().Username, true);
-                FormsAuthentication.SetAuthCookie(user.FirstOrDefault().Password, true);
+                FormsAuthentication.SetAuthCookie(user.FirstOrDefault().Name, true);
+                //FormsAuthentication.SetAuthCookie(user.FirstOrDefault().Password, true);
                 
-                Session["AccessLevel"] = user.FirstOrDefault().AccessLevel;
-                Session["Id"] = user.FirstOrDefault().Id;
+                Session["phone"] = user.FirstOrDefault();
+                //Session["Id"] = user.FirstOrDefault();
 
-                return RedirectToAction("Index", "Product");
+                return RedirectToAction("Index", "Customer");
             }
             return View();
         }

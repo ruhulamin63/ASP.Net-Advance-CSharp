@@ -130,10 +130,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Auth\VerifyAdmin.cs" />
     <Compile Include="Auth\VerifyCustomer.cs" />
-    <Compile Include="Controllers\CheckLoginController.cs" />
+    <Compile Include="Controllers\AdminLoginController.cs" />
+    <Compile Include="Controllers\CustomerLoginController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Product.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\User.cs" />
     <Compile Include="Global.asax.cs">
@@ -232,8 +232,9 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
-    <Content Include="Views\CheckLogin\Index.cshtml" />
+    <Content Include="Views\CustomerLogin\Index.cshtml" />
     <Content Include="Views\Product\Cart_Index.cshtml" />
+    <Content Include="Views\AdminLogin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

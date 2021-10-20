@@ -23,14 +23,13 @@ namespace E_Commerce.Auth
 
                 var db = new ProductEntities();
 
-                var type = (from u in db.users where u.Username.Equals(user)
+                var type = (from u in db.customers where u.Phone.Equals(user)
                             select u).FirstOrDefault();
 
-                if (type.AccessLevel == "User")
+               /* if (type )
                 {
                     return true;
-                }
-                return false;
+                }*/
             }
             return false;
         }
