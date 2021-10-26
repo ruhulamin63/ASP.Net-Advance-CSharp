@@ -77,3 +77,6 @@ C:\Users\aminr\OneDrive\Desktop\Home_service_asp_net_mvc_project\Home_service_as
 C:\Users\aminr\OneDrive\Desktop\Home_service_asp_net_mvc_project\Home_service_asp_net_mvc_project\obj\Debug\Home_service_asp_net_mvc_project.csproj.CopyComplete
 C:\Users\aminr\OneDrive\Desktop\Home_service_asp_net_mvc_project\Home_service_asp_net_mvc_project\obj\Debug\Home_service_asp_net_mvc_project.dll
 C:\Users\aminr\OneDrive\Desktop\Home_service_asp_net_mvc_project\Home_service_asp_net_mvc_project\obj\Debug\Home_service_asp_net_mvc_project.pdb
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\Home_service_asp_net_mvc_project\Home_service_asp_net_mvc_project\obj\Debug\Home_service_asp_net_mvc_project.csproj.AssemblyReference.cache
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\Home_service_asp_net_mvc_project\Home_service_asp_net_mvc_project\obj\Debug\Home_service_asp_net_mvc_project.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\Home_service_asp_net_mvc_project\Home_service_asp_net_mvc_project\obj\Debug\Home_service_asp_net_mvc_project.pdb
