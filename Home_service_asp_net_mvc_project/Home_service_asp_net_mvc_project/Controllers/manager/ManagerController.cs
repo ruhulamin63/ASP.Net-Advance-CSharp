@@ -13,5 +13,10 @@ namespace Home_service_asp_net_mvc_project.Controllers
         {
             return View();
         }
+        
+        public ActionResult manage_services()
+        {
+            return View();
+        }
     }
 }

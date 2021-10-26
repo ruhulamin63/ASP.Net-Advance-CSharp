@@ -16,7 +16,7 @@ namespace Home_service_asp_net_mvc_project
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Manager", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
