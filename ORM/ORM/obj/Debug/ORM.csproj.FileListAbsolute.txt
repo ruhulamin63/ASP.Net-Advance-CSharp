@@ -76,7 +76,6 @@ D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\ORM\ORM\bin\Antlr3.Runtime.pdb
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\ORM\ORM\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\ORM\ORM\obj\Debug\ORM.csproj.AssemblyReference.cache
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\ORM\ORM\obj\Debug\ORM.csproj.CoreCompileInputs.cache
-D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\ORM\ORM\obj\Debug\ORM.csproj.CopyComplete
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\ORM\ORM\obj\Debug\ORM.dll
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\ORM\ORM\obj\Debug\ORM.pdb
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\ORM\ORM\bin\EntityFramework.SqlServer.dll

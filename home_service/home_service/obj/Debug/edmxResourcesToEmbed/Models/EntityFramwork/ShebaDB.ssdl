@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShebaDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Booking_confirms">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="booking_id" Type="int" Nullable="false" />
+    <Property Name="service_provider" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Booking_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="booking_id" Type="int" Nullable="false" />
+    <Property Name="service_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bookings">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="int" Nullable="false" />
+    <Property Name="cost" Type="int" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="payment_status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Complaints">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="int" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginUsers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="image" Type="image" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="int" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Service_provider_status">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="service_provider_id" Type="int" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="category" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Booking_confirms_Bookings">
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />
+    <End Role="Booking_confirms" Type="Self.Booking_confirms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookings">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Booking_confirms">
+        <PropertyRef Name="booking_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_details_Bookings">
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />
+    <End Role="Booking_details" Type="Self.Booking_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookings">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Booking_details">
+        <PropertyRef Name="booking_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_details_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="Booking_details" Type="Self.Booking_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Booking_details">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bookings_Login_users">
+    <End Role="LoginUsers" Type="Self.LoginUsers" Multiplicity="1" />
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoginUsers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Complaints_Login_users">
+    <End Role="LoginUsers" Type="Self.LoginUsers" Multiplicity="1" />
+    <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoginUsers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Complaints">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_Login_users">
+    <End Role="LoginUsers" Type="Self.LoginUsers" Multiplicity="1" />
+    <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoginUsers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Service_provider_status_Login_users">
+    <End Role="LoginUsers" Type="Self.LoginUsers" Multiplicity="1" />
+    <End Role="Service_provider_status" Type="Self.Service_provider_status" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoginUsers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Service_provider_status">
+        <PropertyRef Name="service_provider_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShebaDbModelStoreContainer">
+    <EntitySet Name="Booking_confirms" EntityType="Self.Booking_confirms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Booking_details" EntityType="Self.Booking_details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Complaints" EntityType="Self.Complaints" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginUsers" EntityType="Self.LoginUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Service_provider_status" EntityType="Self.Service_provider_status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Booking_confirms_Bookings" Association="Self.FK_Booking_confirms_Bookings">
+      <End Role="Bookings" EntitySet="Bookings" />
+      <End Role="Booking_confirms" EntitySet="Booking_confirms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_details_Bookings" Association="Self.FK_Booking_details_Bookings">
+      <End Role="Bookings" EntitySet="Bookings" />
+      <End Role="Booking_details" EntitySet="Booking_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_details_Services" Association="Self.FK_Booking_details_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Booking_details" EntitySet="Booking_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bookings_Login_users" Association="Self.FK_Bookings_Login_users">
+      <End Role="LoginUsers" EntitySet="LoginUsers" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Complaints_Login_users" Association="Self.FK_Complaints_Login_users">
+      <End Role="LoginUsers" EntitySet="LoginUsers" />
+      <End Role="Complaints" EntitySet="Complaints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_Login_users" Association="Self.FK_Reviews_Login_users">
+      <End Role="LoginUsers" EntitySet="LoginUsers" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Service_provider_status_Login_users" Association="Self.FK_Service_provider_status_Login_users">
+      <End Role="LoginUsers" EntitySet="LoginUsers" />
+      <End Role="Service_provider_status" EntitySet="Service_provider_status" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
