@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Ghor_Sheba.Models.ServiceProviderModel>
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/ManagerLayout/_MainLayout.cshtml";
+}
+
+<div class="content-wrapper" style="min-height: 363px;">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Starter Page</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Starter Page</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <h2>Cart</h2>
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.service_provider_id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.status)
+                    </th>
+                    <th>Action</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.service_provider_id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.status)
+                        </td>
+                        <td>
+                            <a href="/Manager/DeleteToCart/@item.id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+            @*<form action="/Manager/Confirm" method="post">
+            <label>Status</label>
+            <input type="text" name="delevery_address" required="required" />
+            <br />
+            <input type="submit" name="submit" value="Confirm" class="btn btn-danger" />
+        </form>*@
+
+            <a href="/Manager/Confirm" class="btn btn-danger">Confirm</a>
+        </div><!-- /.container-fluid -->
+    </div>
+
+    <aside class="control-sidebar control-sidebar-dark" style="display: block;">
+        <!-- Control sidebar content goes here -->
+        <div class="p-3">
+            <h5>Title</h5>
+            <p>Sidebar content</p>
+        </div>
+    </aside>
+    <!-- /.content -->
+</div>
+

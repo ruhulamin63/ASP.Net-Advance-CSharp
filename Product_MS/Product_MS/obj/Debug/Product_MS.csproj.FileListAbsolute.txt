@@ -74,6 +74,5 @@ D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\Product_MS\Product_MS\bin\System
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\Product_MS\Product_MS\bin\Newtonsoft.Json.xml
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\Product_MS\Product_MS\bin\Antlr3.Runtime.pdb
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\Product_MS\Product_MS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\Product_MS\Product_MS\obj\Debug\Product_MS.csproj.CopyComplete
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\Product_MS\Product_MS\obj\Debug\Product_MS.dll
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\Product_MS\Product_MS\obj\Debug\Product_MS.pdb

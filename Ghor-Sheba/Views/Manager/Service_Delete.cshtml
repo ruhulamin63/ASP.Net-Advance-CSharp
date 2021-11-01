@@ -1,0 +1,93 @@
+﻿@model Ghor_Sheba.Models.ManagerViewModel.ServiceModel
+
+@{
+    ViewBag.Title = "Service_Delete";
+    Layout = "~/Views/Shared/ManagerLayout/_MainLayout.cshtml";
+}
+
+<div class="content-wrapper" style="min-height: 363px;">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Starter Page</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Starter Page</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <h2>Service_Delete</h2>
+
+            <div>
+                <h4>ServiceModel</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.category)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.category)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.description)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.cost)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.cost)
+                    </dd>
+
+                </dl>
+            </div>
+
+            <p>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                        <a href="/Manager/Service_List" class="btn btn-success">Back to List</a>
+                    </div>
+                }
+            </p>
+        </div><!-- /.container-fluid -->
+    </div>
+
+    <aside class="control-sidebar control-sidebar-dark" style="display: block;">
+        <!-- Control sidebar content goes here -->
+        <div class="p-3">
+            <h5>Title</h5>
+            <p>Sidebar content</p>
+        </div>
+    </aside>
+    <!-- /.content -->
+</div>
