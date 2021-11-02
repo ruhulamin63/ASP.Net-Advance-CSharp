@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Web.Security;
 
 namespace Ghor_Sheba.Controllers
 {
@@ -18,7 +19,9 @@ namespace Ghor_Sheba.Controllers
         public ActionResult Index()
         {
             var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             return View();
         }
 
@@ -27,6 +30,10 @@ namespace Ghor_Sheba.Controllers
         // GET: Manager
         public ActionResult Service_List()
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var p = ServiceRepository.GetAll();
 
             return View(p);
@@ -37,6 +44,10 @@ namespace Ghor_Sheba.Controllers
         [HttpGet]
         public ActionResult Service_Create()
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             return View();
         }
 
@@ -45,6 +56,10 @@ namespace Ghor_Sheba.Controllers
         [HttpPost]
         public ActionResult Service_Create(Service s)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var db = new ShebaDbEntities();
             db.Services.Add(s);
             db.SaveChanges();
@@ -57,6 +72,10 @@ namespace Ghor_Sheba.Controllers
         [HttpGet]
         public ActionResult Service_Edit(int id)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var db = new ShebaDbEntities();
             var product = (from p in db.Services
                            where p.id == id
@@ -69,6 +88,10 @@ namespace Ghor_Sheba.Controllers
         [HttpPost]
         public ActionResult Service_Edit(Service pro)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var db = new ShebaDbEntities();
 
             /* product.Name = pro.Name*/
@@ -88,6 +111,10 @@ namespace Ghor_Sheba.Controllers
         [HttpGet]
         public ActionResult Service_Delete(int id)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var bcr = ServiceRepository.Get(id);
 
             return View(bcr);
@@ -98,6 +125,10 @@ namespace Ghor_Sheba.Controllers
         [HttpPost]
         public ActionResult Service_Delete(Service user)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var db = new ShebaDbEntities();
 
             var serivie = (from p in db.Services
@@ -117,6 +148,10 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult Booking_List()
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var p = BookingRepository.GetAll();
 
             return View(p);
@@ -127,6 +162,10 @@ namespace Ghor_Sheba.Controllers
         [HttpGet]
         public ActionResult Booking_Create()
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             return View();
         }
 
@@ -135,6 +174,10 @@ namespace Ghor_Sheba.Controllers
         [HttpPost]
         public ActionResult Booking_Create(Booking s)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var db = new ShebaDbEntities();
             db.Bookings.Add(s);
             db.SaveChanges();
@@ -147,6 +190,10 @@ namespace Ghor_Sheba.Controllers
         [HttpGet]
         public ActionResult Booking_Edit(int id)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var db = new ShebaDbEntities();
             var product = (from p in db.Bookings
                            where p.id == id
@@ -159,6 +206,10 @@ namespace Ghor_Sheba.Controllers
         [HttpPost]
         public ActionResult Booking_Edit(Booking pro)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var db = new ShebaDbEntities();
 
             /* product.Name = pro.Name*/
@@ -177,6 +228,10 @@ namespace Ghor_Sheba.Controllers
         [HttpGet]
         public ActionResult Booking_Delete(int id)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var bcr = BookingRepository.Get(id);
 
             return View(bcr);
@@ -187,6 +242,10 @@ namespace Ghor_Sheba.Controllers
         [HttpPost]
         public ActionResult Booking_Delete(LoginUser user)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var db = new ShebaDbEntities();
 
             var booking = (from p in db.Bookings
@@ -205,6 +264,10 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult Complaint_List()
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var p = ComplaintRepository.GetAll();
 
             return View(p);
@@ -213,6 +276,10 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult Complaint_Received(int id)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var db = new ShebaDbEntities();
 
             var b = (from bk in db.Complaints
@@ -234,7 +301,11 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult Service_Provider_List()
         {
-           var p = ServiceProviderRepository.GetAll();
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
+            var p = ServiceProviderRepository.GetAll();
 
            /* var db = new ShebaDbEntities();
             var sp = (from data in db.service_provider_status
@@ -246,6 +317,10 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult Service_Provider_Get_Id_List(int id)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             Session["b_id"] = id;
 
             //var p = ServiceProviderRepository.GetAll();
@@ -292,8 +367,12 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult Confirm(int service_provider_id)
         {
-           /* var json = Session["cart"].ToString();
-            var spm = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(json);*/
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
+            /* var json = Session["cart"].ToString();
+             var spm = new JavaScriptSerializer().Deserialize<List<ServiceProviderModel>>(json);*/
 
             //var bid = 1; //User.Identity.Name => I pencipal class instance from cookei file
 
@@ -324,6 +403,10 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult Service_Provider_Assign(int bId)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             //var bId = 1; //User.Identity.Name
 
             var sps = ServiceAssignRepository.MyServiceProviderAssign(bId);
@@ -356,6 +439,10 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult Booking_Confirm_List()
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var p = BookingConfirmRepository.GetAll();
 
             return View(p);
@@ -365,6 +452,10 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult Booking_Confirm_Details(int id)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var p = ServiceAssignRepository.MyServiceProviderAssign(id);
 
             return View(p);
@@ -375,6 +466,10 @@ namespace Ghor_Sheba.Controllers
         [HttpGet]
         public ActionResult Booking_Confirm_Edit(int id)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var db = new ShebaDbEntities();
             var result = (from p in db.Booking_confirms
                            where p.id == id
@@ -387,6 +482,10 @@ namespace Ghor_Sheba.Controllers
         [HttpPost]
         public ActionResult Booking_Confirm_Edit(LoginUser get)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var db = new ShebaDbEntities();
 
             /* product.Name = pro.Name*/
@@ -406,6 +505,10 @@ namespace Ghor_Sheba.Controllers
         [HttpGet]
         public ActionResult Booking_Confirm_Delete(int id)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var bcr = BookingConfirmRepository.Get(id);
 
             return View(bcr);
@@ -416,6 +519,10 @@ namespace Ghor_Sheba.Controllers
         [HttpPost]
         public ActionResult Booking_Confirm_Delete(LoginUser user)
         {
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             var db = new ShebaDbEntities();
 
             var booking = (from p in db.Booking_confirms
@@ -436,6 +543,10 @@ namespace Ghor_Sheba.Controllers
         {
             /* object u_id = Session["userid"];*/
 
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             int u_id = 2;
             //var id = u_id;
             var user = ManagerProfileRepository.GetProfileInfo(u_id);
@@ -448,6 +559,10 @@ namespace Ghor_Sheba.Controllers
         public ActionResult EditProfile()
         {
             /*object u_id = Session["userid"];*/
+
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
 
             int id = 2;
             var user = ManagerProfileRepository.GetEditInfo(id);
@@ -463,6 +578,10 @@ namespace Ghor_Sheba.Controllers
             //var db = new ShebaDbEntities();
 
             /* product.Name = pro.Name*/
+
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
 
             using (ShebaDbEntities db = new ShebaDbEntities())
             {
@@ -488,7 +607,11 @@ namespace Ghor_Sheba.Controllers
         {
             /*object u_id = Session["userid"];*/
 
-            int id = 5;
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
+            int id = 2;
             var user = ManagerProfileRepository.Get_Password_Info(id);
 
             return View(user);
@@ -503,6 +626,10 @@ namespace Ghor_Sheba.Controllers
 
             /* product.Name = pro.Name*/
 
+            var data = User.Identity.Name;
+            var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            ViewData["username"] = json.username;
+
             using (ShebaDbEntities db = new ShebaDbEntities())
             {
                 var entity = (from u in db.LoginUsers
@@ -515,6 +642,5 @@ namespace Ghor_Sheba.Controllers
                 return RedirectToAction("MyProfile");
             }
         }
-
     }
 }

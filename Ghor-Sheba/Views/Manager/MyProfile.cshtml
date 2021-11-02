@@ -15,8 +15,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Starter Page</li>
+                        <li class="breadcrumb-item"><a href="/Manager/Index">Home</a></li>
+                        <li class="breadcrumb-item active">Profile View Page</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -27,10 +27,8 @@
     <div class="content">
         <div class="container-fluid">
 
-            <h2>MyProfile</h2>
-
             <div>
-                <h4>LoginUser</h4>
+                <h2>Profile Information</h2>
                 <hr />
                 <dl class="dl-horizontal">
                     <dt>
@@ -76,8 +74,9 @@
                 </dl>
             </div>
             <p>
-                @Html.ActionLink("Edit", "EditProfile", new { id = Model.id }) |
-                @Html.ActionLink("Back to List", "MyProfile")
+                <a href="/Manager/EditProfile/@Model.id" class="btn btn-success">Update</a>
+                <a href="/Manager/Change_Password/@Model.id" class="btn btn-success">Change Password</a>
+                <a href="/Manager/Index" class="btn btn-success">Back to List</a>
             </p>
         </div><!-- /.container-fluid -->
     </div>
