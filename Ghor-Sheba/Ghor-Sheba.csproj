@@ -2500,7 +2500,6 @@
     <Content Include="Views\Manager\Booking_Edit.cshtml" />
     <Content Include="Views\Manager\Booking_List.cshtml" />
     <Content Include="Views\Manager\Cart.cshtml" />
-    <Content Include="Views\Manager\Change_Password.cshtml" />
     <Content Include="Views\Manager\Complaint_List.cshtml" />
     <Content Include="Views\Manager\EditProfile.cshtml" />
     <Content Include="Views\Manager\Index.cshtml" />
@@ -2511,6 +2510,7 @@
     <Content Include="Views\Manager\Service_List.cshtml" />
     <Content Include="Views\Manager\Service_Provider_Assign.cshtml" />
     <Content Include="Views\Manager\Service_Provider_List.cshtml" />
+    <Content Include="Views\Manager\Change_Password.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

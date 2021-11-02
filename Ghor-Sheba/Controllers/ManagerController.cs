@@ -603,15 +603,16 @@ namespace Ghor_Sheba.Controllers
 
 
         [HttpGet]
-        public ActionResult Change_Password()
+        public ActionResult Change_Password(int id)
         {
             /*object u_id = Session["userid"];*/
 
             var data = User.Identity.Name;
             var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
             ViewData["username"] = json.username;
+            //ViewData["id"] = json.id;
 
-            int id = 2;
+            //int id = json.id;
             var user = ManagerProfileRepository.Get_Password_Info(id);
 
             return View(user);
@@ -630,7 +631,7 @@ namespace Ghor_Sheba.Controllers
             var json = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
             ViewData["username"] = json.username;
 
-            using (ShebaDbEntities db = new ShebaDbEntities())
+            /*using (ShebaDbEntities db = new ShebaDbEntities())
             {
                 var entity = (from u in db.LoginUsers
                               where u.id == user.id
@@ -640,7 +641,20 @@ namespace Ghor_Sheba.Controllers
 
                 db.SaveChanges();
                 return RedirectToAction("MyProfile");
-            }
+            }*/
+
+            var db = new ShebaDbEntities();
+
+            /* product.Name = pro.Name*/
+
+            var result = (from p in db.LoginUsers
+                          where p.id == user.id
+                          select p).FirstOrDefault();
+
+            db.Entry(result).CurrentValues.SetValues(user);
+            db.SaveChanges();
+
+            return RedirectToAction("MyProfile");
         }
     }
 }
