@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Ghor_Sheba.Models.Contact_Messages>
+
+@{
+    ViewBag.Title = "ViewMessage";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<title>View Message</title>
+<div id="page-wrapper">
+    <h2>View Message</h2>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.message)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.message)
+        </td>
+        <td><a href="/Admin/DeleteMessage/@item.id" class="btn btn-danger">Delete</a></td>
+    </tr>
+        }
+
+    </table>
+</div>

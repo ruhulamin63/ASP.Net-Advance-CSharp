@@ -1,26 +1,30 @@
-﻿@model IEnumerable<Ghor_Sheba.Models.Booking_confirms>
+﻿@model IEnumerable<Ghor_Sheba.Models.LoginUser>
 
 @{
     ViewBag.Title = "ViewRequest";
     Layout = "~/Views/ServiceProvider/IndexLayout.cshtml";
 }
 
+<title>View Request</title>
 <div id="page-wrapper">
-    <h2>ViewRequest</h2>
+    <h2>Requests From</h2>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.booking_id)
+                @Html.DisplayNameFor(model => model.fullname)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.service_provider_id)
+                @Html.DisplayNameFor(model => model.username)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.status)
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
             </th>
             <th></th>
         </tr>
@@ -29,18 +33,19 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.booking_id)
+                    @Html.DisplayFor(modelItem => item.fullname)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.service_provider_id)
+                    @Html.DisplayFor(modelItem => item.username)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.status)
+                    @Html.DisplayFor(modelItem => item.email)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    @Html.DisplayFor(modelItem => item.phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
                 </td>
             </tr>
         }

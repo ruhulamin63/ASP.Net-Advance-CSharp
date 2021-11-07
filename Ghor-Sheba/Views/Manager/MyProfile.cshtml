@@ -2,92 +2,62 @@
 
 @{
     ViewBag.Title = "MyProfile";
-    Layout = "~/Views/Shared/ManagerLayout/_MainLayout.cshtml";
+    Layout = "~/Views/Manager/IndexLayout.cshtml";
 }
 
-<div class="content-wrapper" style="min-height: 363px;">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Starter Page</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/Manager/Index">Home</a></li>
-                        <li class="breadcrumb-item active">Profile View Page</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+
+
+<div id="page-wrapper">
+    <div>
+        <h2>Profile Information</h2>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.username)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.username)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.phone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.phone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.fullname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fullname)
+            </dd>
+
+        </dl>
     </div>
-    <!-- /.content-header -->
-    <!-- Main content -->
-    <div class="content">
-        <div class="container-fluid">
-
-            <div>
-                <h2>Profile Information</h2>
-                <hr />
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.username)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.username)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.email)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.email)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.phone)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.phone)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.address)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.address)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.fullname)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.fullname)
-                    </dd>
-
-                </dl>
-            </div>
-            <p>
-                <a href="/Manager/EditProfile/@Model.id" class="btn btn-success">Update</a>
-                <a href="/Manager/Change_Password/@Model.id" class="btn btn-success">Change Password</a>
-                <a href="/Manager/Index" class="btn btn-success">Back to List</a>
-            </p>
-        </div><!-- /.container-fluid -->
-    </div>
-
-    <aside class="control-sidebar control-sidebar-dark" style="display: block;">
-        <!-- Control sidebar content goes here -->
-        <div class="p-3">
-            <h5>Title</h5>
-            <p>Sidebar content</p>
-        </div>
-    </aside>
-    <!-- /.content -->
+    <p>
+        <a href="/Manager/EditProfile/@Model.id" class="btn btn-success">Update</a>
+        <a href="/Manager/Add" class="btn btn-success">Change Photos</a>
+        <a href="/Manager/Change_Password/@Model.id" class="btn btn-success">Change Password</a>
+        <a href="/Manager/Index" class="btn btn-success">Back to List</a>
+    </p>
 </div>
-

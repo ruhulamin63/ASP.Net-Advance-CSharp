@@ -57,15 +57,20 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href=# class="active"><i class="fa fa-user nav_icon"></i>Booked Services</a>
+                            <a href="/Customer/ViewBooking" class="active"><i class="fa fa-user nav_icon"></i>View Booking</a>
                         </li>
 
                         <li>
-                            <a href="/Customer/MakeComplaint" class="active"><i class="fa fa-warning nav_icon"></i>Make a Complaint</a>
+                            <a href="/Customer/MakeComplaint" class="active"><i class="fa fa-warning nav_icon"></i>Complaint Form</a>
                         </li>
 
                         <li>
                             <a href=# class="active"><i class="fa fa-user nav_icon"></i>Review</a>
+                        </li>
+
+
+                        <li>
+                            <a href=/customer/viewcart class="active"><i class="fa fa-user nav_icon"></i>View Cart</a>
                         </li>
 
                     </ul>
@@ -89,16 +94,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <!--//logo-->
                 <!--search-box-->
-                <div class="search-box">
-                    <form class="input">
-                        <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
-                        <label class="input__label" for="input-31">
-                            <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                                <path d="m0,0l404,0l0,77l-404,0l0,-77z" />
-                            </svg>
-                        </label>
-                    </form>
-                </div><!--//end-search-box-->
                 <div class="clearfix"> </div>
             </div>
             <div class="header-right">
@@ -108,7 +103,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">
-                                    <span class="prfil-img"><img src="~/CustomerTemplate/images/2.png" alt=""> </span>
+                                    <span class="prfil-img"><img src="~/icons/user.png" alt="" width="35px" height="35px"> </span>
                                     <div class="user-name">
                                         @{ var x = ViewData["username"];}
                                         <p>@x</p>
@@ -120,8 +115,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </a>
                             <ul class="dropdown-menu drp-mnu">
-                                <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
-                                <li> <a href="~/Customer/Profile"><i class="fa fa-user"></i> Profile</a> </li>
                                 <li> <a href="/Login/Logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>

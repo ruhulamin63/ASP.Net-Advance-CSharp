@@ -11,7 +11,8 @@ namespace Ghor_Sheba.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class LoginUser
     {
         public LoginUser()
@@ -22,17 +23,25 @@ namespace Ghor_Sheba.Models
             this.Reviews = new HashSet<Review>();
             this.service_provider_status = new HashSet<service_provider_status>();
         }
-    
+
         public int id { get; set; }
+        [Required]
         public string username { get; set; }
+        [Required]
+        [MinLength(6, ErrorMessage = "Password length must be atleast 6")]
         public string password { get; set; }
+        [Required]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
         public string email { get; set; }
+        [Required]
         public string phone { get; set; }
         public string user_type { get; set; }
+        [Required]
         public string address { get; set; }
         public string status { get; set; }
+        [Required]
         public string fullname { get; set; }
-    
+
         public virtual ICollection<Booking_confirms> Booking_confirms { get; set; }
         public virtual ICollection<Booking> Bookings { get; set; }
         public virtual ICollection<Complaint> Complaints { get; set; }

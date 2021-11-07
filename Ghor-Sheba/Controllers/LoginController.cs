@@ -23,22 +23,38 @@ namespace Ghor_Sheba.Controllers
                 return View();
             }
 
+            string em = User.Identity.Name;
+            em = em.Trim();
             var db = new ShebaDbEntities();
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
-            if (user.user_type == "Admin")
+            var u = (from d in db.LoginUsers
+                     where d.email.Trim() == em
+                     select d).FirstOrDefault();
+
+            if(u!=null)
+            {
+                u.username = u.username.Trim();
+                u.fullname = u.fullname.Trim();
+                u.password = u.password.Trim();
+                u.email = u.email.Trim();
+                u.address = u.address.Trim();
+                u.phone = u.phone.Trim();
+                u.user_type = u.user_type.Trim();
+                u.status = u.status.Trim();
+            }
+
+            if (u.user_type == "Admin")
             {
                 return RedirectToAction("Index", "Admin");
             }
-            else if (user.user_type == "ServiceProvider")
+            else if (u.user_type == "ServiceProvider")
             {
-                return RedirectToAction("Index", "ServiceProvider");
+                return RedirectToAction("Profile", "ServiceProvider");
             }
-            else if(user.user_type == "Customer")
+            else if(u.user_type == "Customer")
             {
-                return RedirectToAction("Index", "Customer");
+                return RedirectToAction("Profile", "Customer");
             }
-            else if(user.user_type == "Manager")
+            else if(u.user_type == "Manager")
             {
                 return RedirectToAction("Index", "Manager");
             }
@@ -47,39 +63,59 @@ namespace Ghor_Sheba.Controllers
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
+            if (email != null && email != "")
+                email = email.Trim();
+            if (password != null && password != "")
+                password = password.Trim();
+
             var db = new ShebaDbEntities();
             var user = (from data in db.LoginUsers
-                        where data.email == email && data.password == password
+                        where data.email.Trim() == email && data.password.Trim() == password
                         select data).FirstOrDefault();
-
-
             if(user!=null)
+            {
+                user.username = user.username.Trim();
+                user.fullname = user.fullname.Trim();
+                user.password = user.password.Trim();
+                user.email = user.email.Trim();
+                user.address = user.address.Trim();
+                user.phone = user.phone.Trim();
+                user.user_type = user.user_type.Trim();
+                user.status = user.status.Trim();
+            }
+
+            if(user!=null && user.status=="unblocked")
             {
                 if(user.user_type=="Admin")
                 {
-                    string json = JsonConvert.SerializeObject(user);
-                    FormsAuthentication.SetAuthCookie(json, true);
+                    FormsAuthentication.SetAuthCookie(user.email, true);
                     return RedirectToAction("Index", "Admin");
                 }
                 else if(user.user_type=="ServiceProvider")
                 {
-                    string json = JsonConvert.SerializeObject(user);
-                    FormsAuthentication.SetAuthCookie(json, true);
-                    return RedirectToAction("Index", "ServiceProvider");
+                    FormsAuthentication.SetAuthCookie(user.email, true);
+                    return RedirectToAction("Profile", "ServiceProvider");
                 }
                 else if(user.user_type=="Customer")
                 {
-                    string json = JsonConvert.SerializeObject(user);
-                    FormsAuthentication.SetAuthCookie(json, true);
-                    return RedirectToAction("Index", "Customer");
+                    FormsAuthentication.SetAuthCookie(user.email, true);
+                    return RedirectToAction("Profile", "Customer");
                 }
                 else if (user.user_type == "Manager")
                 {
-                    string json = JsonConvert.SerializeObject(user);
-                    FormsAuthentication.SetAuthCookie(json, true);
+                    FormsAuthentication.SetAuthCookie(user.email, true);
                     return RedirectToAction("Index", "Manager");
                 }
 
+            }
+            else if(user!=null && user.status=="blocked")
+            {
+                ViewData["message"] = "Please send a message through contact form. We will get back to you";
+                
+            }
+            else
+            {
+                ViewData["message"] = "Email or Password is incorrect";
             }
             return View();
         }

@@ -59,5 +59,17 @@ namespace Ghor_Sheba.ManagerRepository
 
             return orders.ToList();
         }
+
+        public static void Unassign_to_assign(int id)
+        {
+            var b = (from bk in db.service_provider_status
+                     where bk.id == id && bk.status == "available"
+                     select bk).FirstOrDefault();
+
+
+
+            db.service_provider_status.Remove(b);
+            db.SaveChanges();
+        }
     }
 }

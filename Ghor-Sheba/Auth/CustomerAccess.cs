@@ -19,11 +19,12 @@ namespace Ghor_Sheba.Auth
             if (flag)
             {
                 var user = httpContext.User.Identity.Name;
-                var u = new JavaScriptSerializer().Deserialize<LoginUser>(user.ToString());
+                //string json = JsonConvert.SerializeObject(user);
+                //var u = new JavaScriptSerializer().Deserialize<LoginUser>(user.ToString());
                 var db = new ShebaDbEntities();
 
                 var d = (from data in db.LoginUsers
-                         where data.id == u.id
+                         where data.email == user
                          select data).FirstOrDefault();
                 if (d.user_type == "Customer")
                 {

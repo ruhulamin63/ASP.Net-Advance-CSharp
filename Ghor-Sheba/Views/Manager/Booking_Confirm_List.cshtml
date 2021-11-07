@@ -2,84 +2,52 @@
 
 @{
     ViewBag.Title = "Booking_Confirm_List";
-    Layout = "~/Views/Shared/ManagerLayout/_MainLayout.cshtml";
+    Layout = "~/Views/Manager/IndexLayout.cshtml";
 }
 
 
-<div class="content-wrapper" style="min-height: 363px;">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Starter Page</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/Manager/Index">Home</a></li>
-                        <li class="breadcrumb-item active">Booking Confirm Page</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-    <!-- Main content -->
-    <div class="content">
-        <div class="container-fluid">
+<div id="page-wrapper">
+    <h2>Booking Confirm List</h2>
 
-            <h2>Booking Confirm List</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.booking_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.service_provider_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th></th>
+        </tr>
 
-            <p>
-                @Html.ActionLink("Create New", "Create")
-            </p>
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.booking_id)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.service_provider_id)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.status)
-                    </th>
-                    <th></th>
-                </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.booking_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.service_provider_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @* @Html.ActionLink("Edit", "Booking_Confirm_Edit", new { id = item.id })*@
+                    @* @Html.ActionLink("Details", "Service_Provider_Assign", new { id = item.booking_id }) |*@
+                    <a href="/Manager/ViewDetails/@item.id" class="btn btn-success">Details</a>
+                    <a href="/Manager/Booking_Confirm_Edit/@item.id" class="btn btn-success">Update</a>
+                    <a href="/Manager/Booking_Confirm_Delete/@item.id" class="btn btn-danger">Delete</a>
+                    @* @Html.ActionLink("Delete", "Booking_Confirm_Delete", new { id = item.id })*@
+                </td>
+            </tr>
+        }
 
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.booking_id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.service_provider_id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.status)
-                        </td>
-                        <td>
-                            @* @Html.ActionLink("Edit", "Booking_Confirm_Edit", new { id = item.id })*@
-                            @* @Html.ActionLink("Details", "Service_Provider_Assign", new { id = item.booking_id }) |*@
-                            <a href="/Manager/Booking_Confirm_Details/@item.id" class="btn btn-success">Details</a>
-                            <a href="/Manager/Booking_Confirm_Edit/@item.id" class="btn btn-success">Update</a>
-                            <a href="/Manager/Booking_Confirm_Delete/@item.id" class="btn btn-danger">Delete</a>
-                            @* @Html.ActionLink("Delete", "Booking_Confirm_Delete", new { id = item.id })*@
-                        </td>
-                    </tr>
-                }
-
-            </table>
-        </div><!-- /.container-fluid -->
-    </div>
-
-    <aside class="control-sidebar control-sidebar-dark" style="display: block;">
-        <!-- Control sidebar content goes here -->
-        <div class="p-3">
-            <h5>Title</h5>
-            <p>Sidebar content</p>
-        </div>
-    </aside>
-    <!-- /.content -->
+    </table>
 </div>

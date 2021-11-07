@@ -57,15 +57,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="/ServiceProvider/ViewRequest" class="active"><i class="fa fa-arrow-circle-down"></i> View Requests</a>
+                            <a href="/ServiceProvider/ViewRequest" class="active"><i class="fa fa-arrow-circle-down nav_icon"></i> View Requests</a>
                         </li>
 
                         <li>
-                            <a href="/ServiceProvider/ManageService" class="active"><i class="fa fa-tasks"></i> Manage Service</a>
+                            <a href="/ServiceProvider/ManageService" class="active"><i class="fa fa-list nav_icon"></i> Manage Service</a>
                         </li>
 
                         <li>
-                            <a href="/ServiceProvider/ManageAvailability" class="active"><i class="fa fa-clock-o"></i> Manage availabilty status</a>
+                            <a href="/ServiceProvider/ManageAvailability" class="active"><i class="fa fa-clock-o nav_icon"></i> Manage availabilty status</a>
+                        </li>
+
+                        <li>
+                            <a href="/ServiceProvider/ViewHistory" class="active"><i class="fa fa-clock-o nav_icon"></i> View Works</a>
                         </li>
                     </ul>
                     <!-- //sidebar-collapse -->
@@ -97,11 +101,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">
-                                    <span class="prfil-img"><img src="~/AdminTemplate/images/a.png" alt=""> </span>
+                                    <span class="prfil-img"><img src="~/icons/user.png" alt="" width="35px" height="35px"> </span>
                                     <div class="user-name">
                                         @{ var x = ViewData["username"];}
                                         <p>@x</p>
-                                        <span>Administrator</span>
+                                        <span>Service Provider</span>
                                     </div>
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>
@@ -109,8 +113,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </a>
                             <ul class="dropdown-menu drp-mnu">
-                                <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
-                                <li> <a href="~/Admin/Profile"><i class="fa fa-user"></i> Profile</a> </li>
                                 <li> <a href="/Login/Logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>
@@ -126,7 +128,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
         <!--footer-->
         <div class="footer">
-            <p>&copy; 2016 Novus Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
+            <p>&copy; Ghor Sheba. All Rights Reserved</a></p>
         </div>
         <!--//footer-->
     </div>

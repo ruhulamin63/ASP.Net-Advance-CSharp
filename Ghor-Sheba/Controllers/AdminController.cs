@@ -18,23 +18,27 @@ namespace Ghor_Sheba.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
             ViewData["username"] = user.username;
 
-            var db = new ShebaDbEntities();
+            
             var m = (from d in db.LoginUsers
-                     where d.user_type == "Manager"
+                     where d.user_type.Trim() == "Manager"
                      select d).ToList();
             ViewData["managers"] = m.Count();
 
             var c = (from d in db.LoginUsers
-                     where d.user_type == "Customer"
+                     where d.user_type.Trim() == "Customer"
                      select d).ToList();
             ViewData["customers"] = c.Count();
 
             var sp = (from d in db.LoginUsers
-                     where d.user_type == "ServiceProvider"
+                     where d.user_type.Trim() == "ServiceProvider"
                      select d).ToList();
             ViewData["sp"] = sp.Count();
 
@@ -47,10 +51,14 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult Profile()
         {
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
-            ViewData["username"] = user.username;
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+
+            var user = (from data in db.LoginUsers
+                        where data.email == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+            
             var res = (from d in db.LoginUsers
                        where d.id == user.id
                        select d).FirstOrDefault();
@@ -59,44 +67,55 @@ namespace Ghor_Sheba.Controllers
         [HttpPost]
         public ActionResult Profile(LoginUser u)
         {
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            if(u.username!="" && u.username!=null)
+                u.username = u.username.Trim();
+            if(u.phone!="" && u.phone != null)
+                u.phone = u.phone.Trim();
+            if(u.address!="" && u.address!=null)
+                u.address = u.address.Trim();
+            if(u.fullname!="" && u.fullname!=null)
+                u.fullname = u.fullname.Trim();
+            if(u.password!="" && u.password!=null)
+                u.password = u.password.Trim();
+
+            if (u.username==null || u.fullname==null || u.password==null || u.phone==null || u.address==null ||  u.username == "" || u.fullname == "" || u.password == "" || u.address == "" || u.phone == "")
+            {
+                return View(u);
+            }
             using (ShebaDbEntities db = new ShebaDbEntities())
             {
                 var entity = (from d in db.LoginUsers
                               where d.id == u.id
                               select d).FirstOrDefault();
 
-
-
                 entity.username = u.username.Trim();
                 entity.phone = u.phone.Trim();
-                //entity.email = user.email.Trim();
                 entity.address = u.address.Trim();
                 entity.fullname = u.fullname.Trim();
-                //entity.user_type = user.user_type.Trim();
                 entity.password = u.password.Trim();
-                entity.address = u.address.Trim();
 
                 db.SaveChanges();
-                return View(u);
+                ViewData["username"] = entity.username;
             }
-            FormsAuthentication.SignOut();
-            string json = JsonConvert.SerializeObject(u);
-            FormsAuthentication.SetAuthCookie(json, true);
-            ViewData["username"] = u.username;
-            return View(user);
+
+
+            
+            return View(u);
         }
         // Manage Part begins
         public ActionResult ManageManager()
         {
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
-            ViewData["username"] = user.username;
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
 
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+            
             var managers = (from d in db.LoginUsers
-                            where d.user_type == "Manager"
+                            where d.user_type.Trim() == "Manager"
                             select d).ToList();
 
             return View(managers);
@@ -104,13 +123,17 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult ManageCustomer()
         {
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
-            ViewData["username"] = user.username;
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
 
             var customers = (from d in db.LoginUsers
-                             where d.user_type == "Customer"
+                             where d.user_type.Trim() == "Customer"
                              select d).ToList();
 
             return View(customers);
@@ -118,13 +141,17 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult ManageServiceProvider()
         {
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
-            ViewData["username"] = user.username;
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
 
             var ServiceProviders = (from d in db.LoginUsers
-                                    where d.user_type == "ServiceProvider"
+                                    where d.user_type.Trim() == "ServiceProvider"
                                     select d).ToList();
 
             return View(ServiceProviders);
@@ -133,6 +160,14 @@ namespace Ghor_Sheba.Controllers
         // Add part begins
         public ActionResult AddManager()
         {
+            var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
             return View();
         }
         [HttpPost]
@@ -140,104 +175,174 @@ namespace Ghor_Sheba.Controllers
         {
             if (ModelState.IsValid)
             {
-                var db = new ShebaDbEntities();
-                user.user_type = "Manager";
-                user.status = "unblocked";
-
-                var temp = (from td in db.LoginUsers
-                            where td.email == user.email
-                            select td).FirstOrDefault();
-
-                if (temp == null)
+                user.status = user.status.Trim();
+                if(user.status== "Select status")
                 {
-                    db.LoginUsers.Add(user);
-                    db.SaveChanges();
-                    return RedirectToAction("ManageManager", "Admin");
+                    return View();
                 }
-                else
+                user.user_type = "Manager";
+                using (ShebaDbEntities db = new ShebaDbEntities())
                 {
-                    ViewData["message"] = "User with this email already exists";
-                    return View(user);
+                    var em = User.Identity.Name;
+                    em = em.Trim();
+
+                    var u = (from data in db.LoginUsers
+                                where data.email.Trim() == em
+                                select data).FirstOrDefault();
+                    ViewData["username"] = u.username;
+                    var entity = (from d in db.LoginUsers
+                                  where d.email.Trim() == user.email.Trim()
+                                  select d).FirstOrDefault();
+
+                    if (entity == null)
+                    {
+                        var newuser = new LoginUser()
+                        {
+                            fullname = user.fullname.Trim(),
+                            username = user.username.Trim(),
+                            password = user.password.Trim(),
+                            email = user.email.Trim(),
+                            address = user.address.Trim(),
+                            phone = user.phone.Trim(),
+                            user_type = user.user_type.Trim(),
+                            status = user.status
+                        };
+                        db.LoginUsers.Add(newuser);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        ViewData["message"] = "User Name already exisits";
+                        return View();
+                    }
+                    return RedirectToAction("ManageManager", "Admin");
                 }
             }
             return View(user);
+
         }
 
         public ActionResult AddCustomer()
         {
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
             ViewData["username"] = user.username;
             return View();
         }
         [HttpPost]
         public ActionResult AddCustomer(LoginUser user)
         {
-                var db = new ShebaDbEntities();
+            if (ModelState.IsValid)
+            {
                 user.user_type = "Customer";
-
-                var temp = (from td in db.LoginUsers
-                            where td.email == user.email
-                            select td).FirstOrDefault();
-
-                if (temp == null)
+                using (ShebaDbEntities db = new ShebaDbEntities())
                 {
-                    db.LoginUsers.Add(user);
-                    db.SaveChanges();
+                    var em = User.Identity.Name;
+                    em = em.Trim();
+
+                    var u = (from data in db.LoginUsers
+                             where data.email.Trim() == em
+                             select data).FirstOrDefault();
+                    ViewData["username"] = u.username;
+                    var entity = (from d in db.LoginUsers
+                                  where d.email.Trim() == user.email.Trim()
+                                  select d).FirstOrDefault();
+
+                    if (entity == null)
+                    {
+                        var newuser = new LoginUser()
+                        {
+                            fullname = user.fullname.Trim(),
+                            username = user.username.Trim(),
+                            password = user.password.Trim(),
+                            email = user.email.Trim(),
+                            address = user.address.Trim(),
+                            phone = user.phone.Trim(),
+                            user_type = user.user_type.Trim(),
+                            status = user.status
+                        };
+                        db.LoginUsers.Add(newuser);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        ViewData["message"] = "User Name already exisits";
+                        return View();
+                    }
                     return RedirectToAction("ManageCustomer", "Admin");
                 }
-                else
-                {
-                    ViewData["message"] = "User with this email already exists";
-                    return View(user);
-                }
+            }
+            return View(user);
 
         }
 
         public ActionResult AddServiceProvider()
         {
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
             ViewData["username"] = user.username;
             return View();
         }
         [HttpPost]
         public ActionResult AddServiceProvider(LoginUser user)
         {
-            user.user_type = "ServiceProvider";
             if (ModelState.IsValid)
             {
-                var db = new ShebaDbEntities();
                 user.user_type = "ServiceProvider";
-                user.status = "unblocked";
-
-                var temp = (from td in db.LoginUsers
-                            where td.email == user.email
-                            select td).FirstOrDefault();
-
-                if (temp == null)
+                using (ShebaDbEntities db = new ShebaDbEntities())
                 {
-                    db.LoginUsers.Add(user);
-                    db.SaveChanges();
+                    var em = User.Identity.Name;
+                    em = em.Trim();
 
-                    var d = (from data in db.LoginUsers
-                             where data.email == user.email
+                    var u = (from data in db.LoginUsers
+                             where data.email.Trim() == em
                              select data).FirstOrDefault();
-                    var a = new service_provider_status()
+                    ViewData["username"] = u.username;
+                    var entity = (from d in db.LoginUsers
+                                  where d.email.Trim() == user.email.Trim()
+                                  select d).FirstOrDefault();
+
+                    if (entity == null)
                     {
-                        service_provider_id = d.id,
-                        status = "available"
-                    };
+                        var newuser = new LoginUser()
+                        {
+                            fullname = user.fullname.Trim(),
+                            username = user.username.Trim(),
+                            password = user.password.Trim(),
+                            email = user.email.Trim(),
+                            address = user.address.Trim(),
+                            phone = user.phone.Trim(),
+                            user_type = user.user_type.Trim(),
+                            status = user.status
+                        };
+                        db.LoginUsers.Add(newuser);
+                        db.SaveChanges();
 
-                    db.service_provider_status.Add(a);
-                    db.SaveChanges();
+                        var newsp = new service_provider_status()
+                        {
+                            service_provider_id = newuser.id,
+                            status = "available"
+                        };
 
+                        db.service_provider_status.Add(newsp);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        ViewData["message"] = "User Name already exisits";
+                        return View();
+                    }
                     return RedirectToAction("ManageServiceProvider", "Admin");
-                }
-                else
-                {
-                    ViewData["message"] = "User with this email already exists";
-                    return View(user);
                 }
             }
             return View(user);
@@ -249,15 +354,19 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult DeleteManager(int id)
         {
-            var d = User.Identity.Name;
-            var u = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = u.username;
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
             var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+            var u = (from data in db.LoginUsers
                         where data.id == id
                         select data).FirstOrDefault();
 
-            return View(user);
+            return View(u);
         }
         [HttpPost]
         public ActionResult DeleteManager(LoginUser user)
@@ -273,16 +382,19 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult DeleteCustomer(int id)
         {
-            var d = User.Identity.Name;
-            var u = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = u.username;
-
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
             var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+            var u = (from data in db.LoginUsers
                         where data.id == id
                         select data).FirstOrDefault();
 
-            return View(user);
+            return View(u);
         }
         [HttpPost]
         public ActionResult DeleteCustomer(LoginUser user)
@@ -306,6 +418,22 @@ namespace Ghor_Sheba.Controllers
                     db.Booking_details.Remove(x);
                     db.SaveChanges();
                 }
+
+                var bc = (from data in db.Booking_confirms
+                          where data.booking_id == bt.id
+                          select data).FirstOrDefault();
+                if (bc != null)
+                {
+                    db.Booking_confirms.Remove(bc);
+                    db.SaveChanges();
+                    var spst = (from data in db.service_provider_status
+                                where bc.service_provider_id == data.id
+                                select data).FirstOrDefault();
+
+                    spst.status = "available";
+                    db.SaveChanges();
+                }
+
             }
 
             foreach(var x in book)
@@ -313,6 +441,16 @@ namespace Ghor_Sheba.Controllers
                 db.Bookings.Remove(x);
                 db.SaveChanges();
             }
+
+            var comp = (from data in db.Complaints
+                        where data.customer_id == user.id
+                        select data).ToList();
+            foreach(var c in comp)
+            {
+                db.Complaints.Remove(c);
+                db.SaveChanges();
+            }
+
             db.LoginUsers.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("ManageCustomer", "Admin");
@@ -320,16 +458,19 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult DeleteServiceProvider(int id)
         {
-            var d = User.Identity.Name;
-            var u = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = u.username;
-
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
             var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+            var u = (from data in db.LoginUsers
                         where data.id == id
                         select data).FirstOrDefault();
 
-            return View(user);
+            return View(u);
         }
         [HttpPost]
         public ActionResult DeleteServiceProvider(LoginUser user)
@@ -370,20 +511,39 @@ namespace Ghor_Sheba.Controllers
         // Edit Part begins
         public ActionResult EditManager(int id)
         {
-            var d = User.Identity.Name;
-            var u = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = u.username;
-
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
             var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+            var u = (from data in db.LoginUsers
                         where data.id == id
                         select data).FirstOrDefault();
 
-            return View(user);
+            return View(u);
         }
         [HttpPost]
         public ActionResult EditManager(LoginUser user)
         {
+            if (user.username != null && user.username!="")
+                user.username = user.username.Trim();
+            if (user.phone != null && user.phone!="")
+                user.phone = user.phone.Trim();
+            if (user.address != null && user.address!="")
+                user.address = user.address.Trim();
+            if (user.fullname != null && user.fullname!="")
+                user.fullname = user.fullname.Trim();
+            if (user.password != null && user.password!="")
+                user.password = user.password.Trim();
+
+
+            if (user.username == null || user.fullname == null || user.password == null || user.phone == null || user.address == null || user.username == "" || user.fullname == "" || user.password == "" || user.address == "" || user.phone == "")
+            {
+                return View(user);
+            }
             using (ShebaDbEntities db = new ShebaDbEntities())
             {
                 var entity = (from u in db.LoginUsers
@@ -394,11 +554,9 @@ namespace Ghor_Sheba.Controllers
 
                 entity.username = user.username.Trim();
                 entity.phone = user.phone.Trim();
-                //entity.email = user.email.Trim();
                 entity.address = user.address.Trim();
                 entity.fullname = user.fullname.Trim();
                 entity.status = user.status.Trim();
-                //entity.user_type = user.user_type.Trim();
                 entity.password = user.password.Trim();
 
                 db.SaveChanges();
@@ -408,21 +566,40 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult EditCustomer(int id)
         {
-            
-            var d = User.Identity.Name;
-            var u = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = u.username;
 
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
             var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+            var u = (from data in db.LoginUsers
                         where data.id == id
                         select data).FirstOrDefault();
 
-            return View(user);
+            return View(u);
         }
         [HttpPost]
         public ActionResult EditCustomer(LoginUser user)
         {
+            if (user.username != null && user.username != "")
+                user.username = user.username.Trim();
+            if (user.phone != null && user.phone != "")
+                user.phone = user.phone.Trim();
+            if (user.address != null && user.address != "")
+                user.address = user.address.Trim();
+            if (user.fullname != null && user.fullname != "")
+                user.fullname = user.fullname.Trim();
+            if (user.password != null && user.password != "")
+                user.password = user.password.Trim();
+
+
+            if (user.username == null || user.fullname == null || user.password == null || user.phone == null || user.address == null || user.username == "" || user.fullname == "" || user.password == "" || user.address == "" || user.phone == "")
+            {
+                return View(user);
+            }
             using (ShebaDbEntities db = new ShebaDbEntities())
             {
                 var entity = (from u in db.LoginUsers
@@ -433,14 +610,20 @@ namespace Ghor_Sheba.Controllers
 
                 entity.username = user.username.Trim();
                 entity.phone = user.phone.Trim();
-                //entity.email = user.email.Trim();
                 entity.address = user.address.Trim();
                 entity.fullname = user.fullname.Trim();
                 entity.status = user.status.Trim();
-                //entity.user_type = user.user_type.Trim();
                 entity.password = user.password.Trim();
 
                 db.SaveChanges();
+
+                var em = User.Identity.Name;
+                em = em.Trim();
+
+                var username = (from data in db.LoginUsers
+                            where data.email.Trim() == em
+                            select data).FirstOrDefault();
+                ViewData["username"] = username.username;
                 return View(user);
             }
 
@@ -448,20 +631,38 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult EditServiceProvider(int id)
         {
-            var d = User.Identity.Name;
-            var u = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = u.username;
-
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
             var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+            var u = (from data in db.LoginUsers
                         where data.id == id
                         select data).FirstOrDefault();
 
-            return View(user);
+            return View(u);
         }
         [HttpPost]
         public ActionResult EditServiceProvider(LoginUser user)
         {
+            if (user.username != null && user.username != "")
+                user.username = user.username.Trim();
+            if (user.phone != null && user.phone != "")
+                user.phone = user.phone.Trim();
+            if (user.address != null && user.address != "")
+                user.address = user.address.Trim();
+            if (user.fullname != null && user.fullname != "")
+                user.fullname = user.fullname.Trim();
+            if (user.password != null && user.password != "")
+                user.password = user.password.Trim();
+
+            if (user.username == null || user.fullname == null || user.password == null || user.phone == null || user.address == null || user.username == "" || user.fullname == "" || user.password == "" || user.address == "" || user.phone == "")
+            {
+                return View(user);
+            }
             using (ShebaDbEntities db = new ShebaDbEntities())
             {
                 var entity = (from u in db.LoginUsers
@@ -472,14 +673,20 @@ namespace Ghor_Sheba.Controllers
 
                 entity.username = user.username.Trim();
                 entity.phone = user.phone.Trim();
-                //entity.email = user.email.Trim();
                 entity.address = user.address.Trim();
                 entity.fullname = user.fullname.Trim();
                 entity.status = user.status.Trim();
-                //entity.user_type = user.user_type.Trim();
                 entity.password = user.password.Trim();
 
                 db.SaveChanges();
+
+                var em = User.Identity.Name;
+                em = em.Trim();
+
+                var username = (from data in db.LoginUsers
+                                where data.email.Trim() == em
+                                select data).FirstOrDefault();
+                ViewData["username"] = username.username;
                 return View(user);
             }
         }
@@ -490,10 +697,14 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult ManageService()
         {
-            var d = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = user.username;
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
             var serv = (from data in db.Services
                         where data.id > 0
                         select data).ToList();
@@ -502,10 +713,15 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult EditService(int id)
         {
-            var d = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = user.username;
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+
             var s = (from data in db.Services
                         where data.id == id
                         select data).FirstOrDefault();
@@ -514,19 +730,40 @@ namespace Ghor_Sheba.Controllers
         [HttpPost]
         public ActionResult EditService(Service s)
         {
-            var db = new ShebaDbEntities();
-            var serv = (from data in db.Services
-                      where data.id == s.id
-                      select data).FirstOrDefault();
-            db.Entry(serv).CurrentValues.SetValues(s);
-            db.SaveChanges();
-            return View();
+            if (ModelState.IsValid)
+            {
+                using (ShebaDbEntities db = new ShebaDbEntities())
+                {
+                    var serv = (from data in db.Services
+                                where data.id == s.id
+                                select data).FirstOrDefault();
+
+                    serv.name = s.name.Trim();
+                    serv.category = s.category.Trim();
+                    serv.description = s.description.Trim();
+                    serv.cost = s.cost;
+                    db.SaveChanges();
+                    var em = User.Identity.Name;
+                    em = em.Trim();
+
+                    var username = (from data in db.LoginUsers
+                                    where data.email.Trim() == em
+                                    select data).FirstOrDefault();
+                    ViewData["username"] = username.username;
+                }
+            }
+            return View(s);
         }
 
         public ActionResult AddService()
         {
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
             ViewData["username"] = user.username;
             return View();
         }
@@ -535,22 +772,29 @@ namespace Ghor_Sheba.Controllers
         {
             if (ModelState.IsValid)
             {
-                var db = new ShebaDbEntities();
-
-                var temp = (from td in db.Services
-                            where td.name == s.name
-                            select td).FirstOrDefault();
-
-                if (temp == null)
+                using (ShebaDbEntities db = new ShebaDbEntities())
                 {
-                    db.Services.Add(s);
-                    db.SaveChanges();
-                    return RedirectToAction("ManageService", "Admin");
-                }
-                else
-                {
-                    ViewData["message"] = "Service already exists";
-                    return View(s);
+                    var entity = (from d in db.Services
+                                  where d.name.Trim() == s.name.Trim()
+                                  select d).FirstOrDefault();
+
+                    if (entity == null)
+                    {
+                        var newserv = new Service()
+                        {
+                            name = s.name.Trim(),
+                            category = s.category.Trim(),
+                            description = s.description.Trim(),
+                            cost = s.cost
+                        };
+                        db.Services.Add(newserv);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        ViewData["message"] = "Service already exisits";
+                        return View();
+                    }
                 }
             }
             return View(s);
@@ -558,11 +802,14 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult DeleteService(int id)
         {
-            var d = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = user.username;
-
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
             var serv = (from data in db.Services
                         where data.id == id
                         select data).FirstOrDefault();
@@ -576,6 +823,15 @@ namespace Ghor_Sheba.Controllers
             var serv = (from data in db.Services
                       where data.id == s.id
                       select data).FirstOrDefault();
+            var bd = (from data in db.Booking_details
+                      where data.service_id == s.id
+                      select data).ToList();
+
+            foreach(var p in bd)
+            {
+                db.Booking_details.Remove(p);
+                db.SaveChanges();
+            }
             db.Services.Remove(serv);
             db.SaveChanges();
             return RedirectToAction("ManageService", "Admin");
@@ -586,24 +842,29 @@ namespace Ghor_Sheba.Controllers
         //......................................................................// Complain Part starts
         public ActionResult ManageComplain()
         {
-            var d = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = user.username;
-
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
             var comp = (from data in db.Complaints
-                        where data.id > 0
+                        where data.status.Trim()=="unread"
                         select data).ToList();
             return View(comp);
         }
 
         public ActionResult EditComplain(int id)
         {
-            var d = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = user.username;
-
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
             var comp = (from data in db.Complaints
                         where data.id == id
                         select data).FirstOrDefault();
@@ -612,6 +873,12 @@ namespace Ghor_Sheba.Controllers
         [HttpPost]
         public ActionResult EditComplain(Complaint c)
         {
+            if (c.description != null)
+                c.description = c.description.Trim();
+            if(c.description==null || c.description=="")
+            {
+                return View();
+            }
             var db = new ShebaDbEntities();
             var comp = (from data in db.Complaints
                         where data.id == c.id
@@ -623,26 +890,31 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult ManageBookedService()
         {
-            var d = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = user.username;
-
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
             var booking = (from data in db.Bookings
-                        where data.status=="pending"
+                        where data.status.Trim()=="pending"
                         select data).ToList();
             return View(booking);
         }
 
         public ActionResult ConfirmBookedService(int id)
         {
-            var d = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = user.username;
-
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
             var sp = (from data in db.service_provider_status
-                           where data.status == "available"
+                           where data.status.Trim() == "available"
                            select data).ToList();
             Session["confirm_booking"] = id;
             return View(sp);
@@ -650,11 +922,14 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult DeleteBookedService(int id)
         {
-            var d = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = user.username;
-
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
             var book = (from data in db.Bookings
                         where data.id == id
                         select data).FirstOrDefault();
@@ -672,7 +947,7 @@ namespace Ghor_Sheba.Controllers
             db.Bookings.Remove(book);
             db.SaveChanges();
 
-            return RedirectToAction("ManageService", "Admin");
+            return RedirectToAction("ManageBookedService", "Admin");
         }
         /*[HttpPost]
         public ActionResult DeleteBookedService(Booking b)
@@ -701,11 +976,14 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult EditBookedService(int id)
         {
-            var d = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = user.username;
-
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
 
             var book = (from data in db.Bookings
                         where data.id == id
@@ -716,11 +994,14 @@ namespace Ghor_Sheba.Controllers
         [HttpPost]
         public ActionResult EditBookedService(Booking b)
         {
-            var d = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = user.username;
-
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
 
             var book = (from data in db.Bookings
                         where data.id == b.id
@@ -733,10 +1014,16 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult AssignServiceProvider(int id)
         {
-            var d = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = user.username;
+
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+
             string id1 = Session["confirm_booking"].ToString();
 
             var cs = new Booking_confirms()
@@ -757,16 +1044,25 @@ namespace Ghor_Sheba.Controllers
             db.Booking_confirms.Add(cs);
             db.SaveChanges();
 
+            var sp = (from data in db.service_provider_status
+                      where data.service_provider_id == id
+                      select data).First();
+            sp.status = "busy";
+            db.SaveChanges();
+
             return RedirectToAction("ManageBookedService", "Admin");
         }
 
         public ActionResult PaymentStatus()
         {
-            var d = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = user.username;
-
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
 
             var payment = (from data in db.Bookings
                            where data.id > 0
@@ -774,13 +1070,17 @@ namespace Ghor_Sheba.Controllers
 
             return View(payment);
         }
-
+        
         public ActionResult PaymentUpdate(int id)
         {
-            var d = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(d.ToString());
-            ViewData["username"] = user.username;
             var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
 
             var payment = (from data in db.Bookings
                            where data.id == id
@@ -797,7 +1097,7 @@ namespace Ghor_Sheba.Controllers
                            where data.id == id
                            select data).FirstOrDefault();
             booking.cost = cost;
-            booking.payment_status = payment_status;
+            booking.payment_status = payment_status.Trim();
 
             db.Entry(booking).CurrentValues.SetValues(booking);
             db.SaveChanges();
@@ -805,5 +1105,69 @@ namespace Ghor_Sheba.Controllers
             return RedirectToAction("PaymentStatus", "Admin");
         }
 
+        public ActionResult ViewMessage()
+        {
+            var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+
+            var message = (from data in db.Contact_Messages
+                           where data.id > 0
+                           select data).ToList();
+            return View(message);
+        }
+
+        public ActionResult DeleteMessage(int id)
+        {
+            var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+
+            var message = (from data in db.Contact_Messages
+                           where data.id == id
+                           select data).FirstOrDefault();
+            db.Contact_Messages.Remove(message);
+            db.SaveChanges();
+            return RedirectToAction("ViewMessage", "Admin");
+        }
+
+        public ActionResult ViewDetails(int id)
+        {
+            var db = new ShebaDbEntities();
+
+            var det = (from data in db.Booking_details
+                       where data.booking_id == id
+                       select data).ToList();
+
+            var slist = new List<Service>();
+
+            foreach(var p in det)
+            {
+                var x = (from data in db.Services
+                         where data.id == p.service_id
+                         select data).FirstOrDefault();
+                slist.Add(x);
+            }
+
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+
+            return View(slist);
+        }
     }
 }

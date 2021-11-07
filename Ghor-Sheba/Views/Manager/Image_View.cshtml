@@ -1,0 +1,37 @@
+﻿@model Ghor_Sheba.Models.Image
+
+@{
+    ViewBag.Title = "Image_View";
+    Layout = "~/Views/Manager/IndexLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <h2>Profile Image View</h2>
+
+    <div>
+        <h4>Image</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.image_path)
+            </dt>
+
+            <dd>
+                <img src="@Url.Content(Model.image_path)" width="250" height="250" multiple />
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Add", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

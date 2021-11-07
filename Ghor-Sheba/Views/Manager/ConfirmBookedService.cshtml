@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Ghor_Sheba.Models.service_provider_status>
+
+@{
+    ViewBag.Title = "ConfirmBookedService";
+    Layout = "~/Views/Manager/IndexLayout.cshtml";
+}
+
+<title>Confirmed Booked Services</title>
+<div id="page-wrapper">
+    <h2>Confirm Booked Service</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.service_provider_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.service_provider_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+
+                <td><a href="/Manager/AssignServiceProvider/@item.service_provider_id" class="btn btn-success">Assign</a></td>
+            </tr>
+        }
+
+    </table>
+</div>

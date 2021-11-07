@@ -4,11 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ea0a24c731a64989b778d8c44c61ee9b" Name="Diagram1">
+      <Diagram DiagramId="3334f428941e46e3a24a678b7ee31c88" Name="Diagram1">
         <EntityTypeShape EntityType="ShebaDbModel.Booking_confirms" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ShebaDbModel.Booking_details" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ShebaDbModel.Booking" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ShebaDbModel.Complaint" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.Contact_Messages" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.Image" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ShebaDbModel.LoginUser" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ShebaDbModel.Review" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ShebaDbModel.service_provider_status" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
@@ -18,7 +20,7 @@
         <AssociationConnector Association="ShebaDbModel.FK_Booking_detail_Booking" ManuallyRouted="false" />
         <AssociationConnector Association="ShebaDbModel.FK_Booking_detail_Service" ManuallyRouted="false" />
         <AssociationConnector Association="ShebaDbModel.FK_Booking_LoginUser" ManuallyRouted="false" />
-        <AssociationConnector Association="ShebaDbModel.FK_Complaint_LoginUser" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_Complaints_LoginUsers" ManuallyRouted="false" />
         <AssociationConnector Association="ShebaDbModel.FK_Review_LoginUser" ManuallyRouted="false" />
         <AssociationConnector Association="ShebaDbModel.FK_service_provider_status_LoginUser" ManuallyRouted="false" />
       </Diagram>

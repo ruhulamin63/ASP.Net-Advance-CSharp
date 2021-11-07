@@ -38,22 +38,40 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="customer_id" Type="int" Nullable="false" />
-          <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="120" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact_Messages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="subject" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="message" Type="varchar" MaxLength="120" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="image_path" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="LoginUsers">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="phone" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="user_type" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="address" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="status" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="fullname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="user_type" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="fullname" Type="varchar" MaxLength="120" Nullable="false" />
         </EntityType>
         <EntityType Name="Reviews">
           <Key>
@@ -141,7 +159,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Complaint_LoginUser">
+        <Association Name="FK_Complaints_LoginUsers">
           <End Role="LoginUsers" Type="Self.LoginUsers" Multiplicity="1" />
           <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
           <ReferentialConstraint>
@@ -182,6 +200,8 @@
           <EntitySet Name="Booking_details" EntityType="Self.Booking_details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Complaints" EntityType="Self.Complaints" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact_Messages" EntityType="Self.Contact_Messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginUsers" EntityType="Self.LoginUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="service_provider_status" EntityType="Self.service_provider_status" Schema="dbo" store:Type="Tables" />
@@ -206,7 +226,7 @@
             <End Role="LoginUsers" EntitySet="LoginUsers" />
             <End Role="Bookings" EntitySet="Bookings" />
           </AssociationSet>
-          <AssociationSet Name="FK_Complaint_LoginUser" Association="Self.FK_Complaint_LoginUser">
+          <AssociationSet Name="FK_Complaints_LoginUsers" Association="Self.FK_Complaints_LoginUsers">
             <End Role="LoginUsers" EntitySet="LoginUsers" />
             <End Role="Complaints" EntitySet="Complaints" />
           </AssociationSet>
@@ -264,26 +284,44 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="customer_id" Type="Int32" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="LoginUser" Relationship="Self.FK_Complaint_LoginUser" FromRole="Complaints" ToRole="LoginUsers" />
+          <Property Name="description" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LoginUser" Relationship="Self.FK_Complaints_LoginUsers" FromRole="Complaints" ToRole="LoginUsers" />
+        </EntityType>
+        <EntityType Name="Contact_Messages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="subject" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="message" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="image_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="LoginUser">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="phone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="user_type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fullname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_type" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fullname" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Booking_confirms" Relationship="Self.FK_Booking_confirms_LoginUsers" FromRole="LoginUsers" ToRole="Booking_confirms" />
           <NavigationProperty Name="Bookings" Relationship="Self.FK_Booking_LoginUser" FromRole="LoginUsers" ToRole="Bookings" />
-          <NavigationProperty Name="Complaints" Relationship="Self.FK_Complaint_LoginUser" FromRole="LoginUsers" ToRole="Complaints" />
+          <NavigationProperty Name="Complaints" Relationship="Self.FK_Complaints_LoginUsers" FromRole="LoginUsers" ToRole="Complaints" />
           <NavigationProperty Name="Reviews" Relationship="Self.FK_Review_LoginUser" FromRole="LoginUsers" ToRole="Reviews" />
           <NavigationProperty Name="service_provider_status" Relationship="Self.FK_service_provider_status_LoginUser" FromRole="LoginUsers" ToRole="service_provider_status" />
         </EntityType>
@@ -376,7 +414,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Complaint_LoginUser">
+        <Association Name="FK_Complaints_LoginUsers">
           <End Role="LoginUsers" Type="Self.LoginUser" Multiplicity="1" />
           <End Role="Complaints" Type="Self.Complaint" Multiplicity="*" />
           <ReferentialConstraint>
@@ -417,6 +455,8 @@
           <EntitySet Name="Booking_details" EntityType="Self.Booking_details" />
           <EntitySet Name="Bookings" EntityType="Self.Booking" />
           <EntitySet Name="Complaints" EntityType="Self.Complaint" />
+          <EntitySet Name="Contact_Messages" EntityType="Self.Contact_Messages" />
+          <EntitySet Name="Images" EntityType="Self.Image" />
           <EntitySet Name="LoginUsers" EntityType="Self.LoginUser" />
           <EntitySet Name="Reviews" EntityType="Self.Review" />
           <EntitySet Name="service_provider_status" EntityType="Self.service_provider_status" />
@@ -441,7 +481,7 @@
             <End Role="LoginUsers" EntitySet="LoginUsers" />
             <End Role="Bookings" EntitySet="Bookings" />
           </AssociationSet>
-          <AssociationSet Name="FK_Complaint_LoginUser" Association="Self.FK_Complaint_LoginUser">
+          <AssociationSet Name="FK_Complaints_LoginUsers" Association="Self.FK_Complaints_LoginUsers">
             <End Role="LoginUsers" EntitySet="LoginUsers" />
             <End Role="Complaints" EntitySet="Complaints" />
           </AssociationSet>
@@ -497,6 +537,26 @@
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact_Messages">
+            <EntityTypeMapping TypeName="ShebaDbModel.Contact_Messages">
+              <MappingFragment StoreEntitySet="Contact_Messages">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="message" ColumnName="message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="ShebaDbModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

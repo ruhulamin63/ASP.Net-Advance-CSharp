@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using Ghor_Sheba.Models;
 
 namespace Ghor_Sheba.Controllers
 {
@@ -28,9 +28,27 @@ namespace Ghor_Sheba.Controllers
             return View();
         }
 
-        public ActionResult Login()
+        [HttpPost]
+        public ActionResult Message(string name, string email, string subject, string message)
         {
-            return View();
+            var db = new ShebaDbEntities();
+
+            name = name.Trim();
+            email = email.Trim();
+            subject = subject.Trim();
+            message = message.Trim();
+
+            var m = new Contact_Messages()
+            {
+                name = name,
+                email = email,
+                subject = subject,
+                message = message
+            };
+            db.Contact_Messages.Add(m);
+            db.SaveChanges();
+
+            return RedirectToAction("Contact", "Home");
         }
  
 

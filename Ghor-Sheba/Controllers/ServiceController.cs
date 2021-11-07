@@ -46,7 +46,7 @@ namespace Ghor_Sheba.Controllers
 
             var db = new ShebaDbEntities();
             var serv = (from data in db.Services
-                        where data.category == catg
+                        where data.category.Trim() == catg
                         select data).ToList();
             return View(serv);
    
@@ -64,17 +64,13 @@ namespace Ghor_Sheba.Controllers
                 List<Service> Services = new List<Service>();
                 Services.Add(serv);
                 string json = JsonConvert.SerializeObject(Services);
-                //string json = new JavaScriptSerializer().Serialize(Services);
-            
                 Session["cart"] = json;
             }
             else
             {
                 var d = JsonConvert.DeserializeObject<List<Service> >(Session["cart"].ToString());
-                //var d = new JavaScriptSerializer().Deserialize<List<Service>>(Session["cart"].ToString());
                 d.Add(serv);
                 string json = JsonConvert.SerializeObject(d);
-                //string json = new JavaScriptSerializer().Serialize(d);
                 Session["cart"] = json;
             }
             return RedirectToAction("Index", "Home");

@@ -1,50 +1,74 @@
-﻿
+﻿@model Ghor_Sheba.Models.LoginUser
+
 @{
     ViewBag.Title = "Profile";
-    Layout = "~/Views/Customer/ProfileLayout.cshtml";
+    Layout = "~/Views/Customer/IndexLayout.cshtml";
 }
 
-<h1>Profile</h1>
-<a href="/Customer/Index"><h2 style="color:white">Go Back to Dashboard</h2></a>
-<div class="containerw3layouts-agileits">
+<title>Profile Page</title>
+<div id="page-wrapper">
+    <h2>Profile</h2>
 
-    <div class="w3imageaits">
-        <img class="user" src="~/CustomerTemplate/Profile/images/user.png" alt="Custom Signup Form">
-        <h2>Let's get you set up</h2>
-        <p>It should only take you a minute to connect</p>
-    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="aitsloginwthree w3layouts agileits">
-        <form action="/Customer/Profile" method="post">
-            <input type="text" Name="username" placeholder="Username" required="" value="@ViewData["username"]">
-            <input type="password" Name="Password" placeholder="Password" required="" value="@ViewData["password"]">
-            <input class="fill tel" name="phone" placeholder="Phone" required="" value="@ViewData["phone"]">
-            <input class="fill tel" name="address" placeholder="Address" required="" value="@ViewData["address"]">
-            <div class="send-button wthree agileits">
-                <input type="submit" value="Save">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </form>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.fullname, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.fullname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.fullname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
     </div>
-
-    <div class="clear"></div>
-
 </div>
-
-<div class="w3lsfooteragileits">
-    <p> &copy; 2017 Custom Signup Form. All Rights Reserved | Design by <a href="http://w3layouts.com" target="=_blank">W3layouts</a></p>
-</div>
-
-
-
-<!-- Necessary-JavaScript-Files-&-Links -->
-<!-- Default-JavaScript -->
-<script src="~/CustomerTemplate/Profile/js/jquery-3.1.1.js"></script>
-
-<!-- Date-Picker-JavaScript -->
-<script src="~/CustomerTemplate/Profile/js/jquery-ui.js"></script>
-<script>
-    $(function () {
-        $("#datepicker1").datepicker();
-    });
-</script>
-

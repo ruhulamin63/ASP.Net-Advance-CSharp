@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Ghor_Sheba.Models.Booking>
+
+@{
+    ViewBag.Title = "ViewBooking";
+    Layout = "~/Views/Customer/IndexLayout.cshtml";
+}
+
+<title>View Booking</title>
+<div id="page-wrapper">
+    <h2>View Booking</h2>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payment_status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.customer_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.payment_status)
+        </td>
+        <td><a href="/Customer/ViewDetails/@item.id" class="btn btn-success">View Details</a></td>
+    </tr>
+        }
+
+    </table>
+</div>

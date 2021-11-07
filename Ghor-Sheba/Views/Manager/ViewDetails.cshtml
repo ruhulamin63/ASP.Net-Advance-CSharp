@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Ghor_Sheba.Models.Service>
+
+@{
+    ViewBag.Title = "ViewDetails";
+    Layout = "~/Views/Manager/IndexLayout.cshtml";
+}
+
+<div id="page-wrapper">
+    <h2>Booked Service List</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cost)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cost)
+                </td>
+                
+            </tr>
+        }
+
+    </table>
+</div>

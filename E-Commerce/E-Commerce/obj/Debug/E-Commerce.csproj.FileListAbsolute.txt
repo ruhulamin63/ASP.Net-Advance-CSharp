@@ -78,6 +78,5 @@ D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\E-Commerce\E-Commerce\bin\Antlr3
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\E-Commerce\E-Commerce\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\E-Commerce\E-Commerce\obj\Debug\E-Commerce.csproj.AssemblyReference.cache
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\E-Commerce\E-Commerce\obj\Debug\E-Commerce.csproj.CoreCompileInputs.cache
-D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\E-Commerce\E-Commerce\obj\Debug\E-Commerce.csproj.CopyComplete
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\E-Commerce\E-Commerce\obj\Debug\E-Commerce.dll
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\E-Commerce\E-Commerce\obj\Debug\E-Commerce.pdb

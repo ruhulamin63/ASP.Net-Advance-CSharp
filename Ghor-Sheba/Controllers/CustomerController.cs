@@ -19,8 +19,13 @@ namespace Ghor_Sheba.Controllers
 
         public ActionResult Index()
         {
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+
+            var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            var user = (from data in db.LoginUsers
+                        where data.email == em
+                        select data).FirstOrDefault();
+
             ViewData["username"] = user.username;
             return View();
         }
@@ -112,8 +117,13 @@ namespace Ghor_Sheba.Controllers
         public ActionResult Checkout()
         {
             var d = JsonConvert.DeserializeObject<List<Service>>(Session["cart"].ToString());
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var db = new ShebaDbEntities();
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
             int c = 0;
             foreach(var p in d)
             {
@@ -129,7 +139,6 @@ namespace Ghor_Sheba.Controllers
                 payment_status = "pending"
             };
 
-            var db = new ShebaDbEntities();
             db.Bookings.Add(b);
             db.SaveChanges();
 
@@ -156,6 +165,14 @@ namespace Ghor_Sheba.Controllers
         public ActionResult Signup(string Fullname, string Email, string Username, string Password, string Confirmpassword,
             string Number, string Address)
         {
+            Fullname = Fullname.Trim();
+            Email = Email.Trim();
+            Username = Username.Trim();
+            Password = Password.Trim();
+            Confirmpassword = Confirmpassword.Trim();
+            Number = Number.Trim();
+            Address = Address.Trim();
+
             if (Password != Confirmpassword)
             {
                 return View();
@@ -182,69 +199,144 @@ namespace Ghor_Sheba.Controllers
             return RedirectToAction("Login", "Login");
         }
 
-
-
         public ActionResult Profile()
         {
+            var em = User.Identity.Name;
+           
             var db = new ShebaDbEntities();
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
-            ViewData["username"] = user.username;
-            ViewData["password"] = user.password;
-            ViewData["phone"] = user.phone;
-            ViewData["address"] = user.address;
-            return View();
-        }
-
-
-        [HttpPost]
-        public ActionResult Profile(string username, string password, string phone, string address)
-        {
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
-            var db = new ShebaDbEntities();
-            var res = (from u in db.LoginUsers
-                       where u.id == user.id
-                       select u).FirstOrDefault();
-
-            res.username = username;
-            res.password = password;
-            res.phone = phone;
-            res.address = address;
-            db.SaveChanges();
-            FormsAuthentication.SignOut();
-            string json = JsonConvert.SerializeObject(res);
-            FormsAuthentication.SetAuthCookie(json, true);
+            var res = (from d in db.LoginUsers
+                       where d.email == em
+                       select d).FirstOrDefault();
             ViewData["username"] = res.username;
-            ViewData["password"] = res.password;
-            ViewData["phone"] = res.phone;
-            ViewData["address"] = res.address;
-            return View();
+            return View(res);
+        }
+        [HttpPost]
+        public ActionResult Profile(LoginUser u)
+        {
+            if (u.username != "" && u.username != null)
+                u.username = u.username.Trim();
+            if (u.phone != "" && u.phone != null)
+                u.phone = u.phone.Trim();
+            if (u.address != "" && u.address != null)
+                u.address = u.address.Trim();
+            if (u.fullname != "" && u.fullname != null)
+                u.fullname = u.fullname.Trim();
+            if (u.password != "" && u.password != null)
+                u.password = u.password.Trim();
+
+            if (u.username == "" || u.fullname == "" || u.password == "" || u.address == "" || u.phone == "")
+            {
+                return View(u);
+            }
+            var data = User.Identity.Name;
+
+            using (ShebaDbEntities db = new ShebaDbEntities())
+            {
+                var entity = (from d in db.LoginUsers
+                              where d.id == u.id
+                              select d).FirstOrDefault();
+
+
+
+                entity.username = u.username.Trim();
+                entity.phone = u.phone.Trim();
+                entity.address = u.address.Trim();
+                entity.fullname = u.fullname.Trim();
+                entity.password = u.password.Trim();
+
+                db.SaveChanges();
+
+            }
+            FormsAuthentication.SignOut();
+            FormsAuthentication.SetAuthCookie(u.email, true);
+            ViewData["username"] = u.username;
+            return View(u);
         }
 
 
         public ActionResult MakeComplaint()
         {
+            var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+            em = em.Trim();
+
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
             return View();
         }
 
         [HttpPost]
         public ActionResult MakeComplaint(string descriptions)
         {
+            if (descriptions != null)
+                descriptions = descriptions.Trim();
+            if(descriptions==null || descriptions=="")
+            {
+                return View();
+            }
             var db = new ShebaDbEntities();
-            var data = User.Identity.Name;
-            var user = JsonConvert.DeserializeObject<LoginUser>(data.ToString());
+            var em = User.Identity.Name;
+            em = em.Trim();
+            
+            var user = (from data in db.LoginUsers
+                        where data.email.Trim() == em
+                        select data).FirstOrDefault();
 
             Complaint comp = new Complaint()
             {
                 customer_id = user.id,
                 description = descriptions,
-                status = "pending"
+                status = "unread"
             };
+            ViewData["username"] = user.username;
             db.Complaints.Add(comp);
             db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Profile", "Customer");
+        }
+
+        public ActionResult ViewBooking()
+        {
+            var db = new ShebaDbEntities();
+            var em = User.Identity.Name;
+
+            var user = (from data in db.LoginUsers
+                        where data.email == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+            var b = (from d in db.Bookings
+                     where d.customer_id == user.id
+                     select d).ToList();
+
+            return View(b);
+        }
+
+        public ActionResult ViewDetails(int id)
+        {
+            var db = new ShebaDbEntities();
+
+            var bd = (from data in db.Booking_details
+                      where data.booking_id == id
+                      select data).ToList();
+            var slist = new List<Service>();
+            
+            foreach(var p in bd)
+            {
+                var x = (from data in db.Services
+                         where data.id == p.service_id
+                         select data).FirstOrDefault();
+                slist.Add(x);
+            }
+
+            var em = User.Identity.Name;
+
+            var user = (from data in db.LoginUsers
+                        where data.email == em
+                        select data).FirstOrDefault();
+            ViewData["username"] = user.username;
+            return View(slist);
         }
     }
 }

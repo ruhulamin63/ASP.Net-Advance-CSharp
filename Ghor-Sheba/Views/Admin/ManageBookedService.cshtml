@@ -28,24 +28,25 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.customer_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cost)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.payment_status)
-                </td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.customer_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.payment_status)
+        </td>
 
-                <td><a href="/Admin/EditBookedService/@item.id" class="btn btn-success">Edit</a></td>
-                <td><a href="/Admin/ConfirmBookedService/@item.id" class="btn btn-success">Confirm</a></td>
-                <td><a href="/Admin/DeleteBookedService/@item.id" class="btn btn-danger">Delete</a></td>
-            </tr>
+        <td><a href="/Admin/EditBookedService/@item.id" class="btn btn-success">Edit</a></td>
+        <td><a href="/Admin/ViewDetails/@item.id" class="btn btn-success">Details</a></td>
+        <td><a href="/Admin/ConfirmBookedService/@item.id" class="btn btn-success">Confirm</a></td>
+        <td><a href="/Admin/DeleteBookedService/@item.id" class="btn btn-danger">Delete</a></td>
+    </tr>
         }
 
     </table>

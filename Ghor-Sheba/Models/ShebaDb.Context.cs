@@ -29,6 +29,8 @@ namespace Ghor_Sheba.Models
         public DbSet<Booking_details> Booking_details { get; set; }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Complaint> Complaints { get; set; }
+        public DbSet<Contact_Messages> Contact_Messages { get; set; }
+        public DbSet<Image> Images { get; set; }
         public DbSet<LoginUser> LoginUsers { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<service_provider_status> service_provider_status { get; set; }

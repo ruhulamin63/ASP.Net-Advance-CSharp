@@ -33,22 +33,40 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="customer_id" Type="int" Nullable="false" />
-    <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="120" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contact_Messages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="subject" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="message" Type="varchar" MaxLength="120" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Images">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="image_path" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="LoginUsers">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="phone" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="user_type" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="address" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="status" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="fullname" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="user_type" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="fullname" Type="varchar" MaxLength="120" Nullable="false" />
   </EntityType>
   <EntityType Name="Reviews">
     <Key>
@@ -136,7 +154,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Complaint_LoginUser">
+  <Association Name="FK_Complaints_LoginUsers">
     <End Role="LoginUsers" Type="Self.LoginUsers" Multiplicity="1" />
     <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
     <ReferentialConstraint>
@@ -177,6 +195,8 @@
     <EntitySet Name="Booking_details" EntityType="Self.Booking_details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Complaints" EntityType="Self.Complaints" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact_Messages" EntityType="Self.Contact_Messages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoginUsers" EntityType="Self.LoginUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="service_provider_status" EntityType="Self.service_provider_status" Schema="dbo" store:Type="Tables" />
@@ -201,7 +221,7 @@
       <End Role="LoginUsers" EntitySet="LoginUsers" />
       <End Role="Bookings" EntitySet="Bookings" />
     </AssociationSet>
-    <AssociationSet Name="FK_Complaint_LoginUser" Association="Self.FK_Complaint_LoginUser">
+    <AssociationSet Name="FK_Complaints_LoginUsers" Association="Self.FK_Complaints_LoginUsers">
       <End Role="LoginUsers" EntitySet="LoginUsers" />
       <End Role="Complaints" EntitySet="Complaints" />
     </AssociationSet>

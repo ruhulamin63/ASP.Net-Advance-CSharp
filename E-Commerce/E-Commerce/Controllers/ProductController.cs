@@ -40,7 +40,7 @@ namespace E_Commerce.Controllers
             return RedirectToAction("Index");
         }
 
-        [VerifyAdmin]
+      /*  [VerifyAdmin]*/
         public ActionResult Edit(int id)
         {
             var db = new ProductEntities();
@@ -50,7 +50,7 @@ namespace E_Commerce.Controllers
             return View(product);
         }
 
-        [VerifyAdmin]
+        /*[VerifyAdmin]*/
         [HttpPost]
         public ActionResult Edit(product pro)
         {
