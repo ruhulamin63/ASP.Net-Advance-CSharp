@@ -12,3 +12,5 @@ D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BLL\obj\Debug\BLL.cspro
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BLL\obj\Debug\BLL.csproj.CopyComplete
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BLL\obj\Debug\BLL.dll
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BLL\obj\Debug\BLL.pdb
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BLL\bin\Debug\BEL.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BLL\bin\Debug\BEL.pdb

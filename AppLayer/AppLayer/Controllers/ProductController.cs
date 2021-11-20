@@ -1,5 +1,5 @@
 ﻿using BLL;
-using BLL.BEntities;
+using BEL;
 using System;
 using System.Collections.Generic;
 using System.Linq;

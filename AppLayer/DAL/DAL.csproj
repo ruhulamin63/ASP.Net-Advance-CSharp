@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerRepository.cs" />
+    <Compile Include="DataAccessFactory.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="customer.cs">
       <DependentUpon>PMS.tt</DependentUpon>

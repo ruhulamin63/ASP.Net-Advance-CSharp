@@ -14,3 +14,6 @@ D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\ConsoleAppLayer\obj\Deb
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\ConsoleAppLayer\obj\Debug\ConsoleAppLayer.csproj.CoreCompileInputs.cache
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\ConsoleAppLayer\obj\Debug\ConsoleAppLayer.exe
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\ConsoleAppLayer\obj\Debug\ConsoleAppLayer.pdb
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\ConsoleAppLayer\bin\Debug\BEL.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\ConsoleAppLayer\bin\Debug\BEL.pdb
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\ConsoleAppLayer\obj\Debug\ConsoleAppLayer.csproj.CopyComplete

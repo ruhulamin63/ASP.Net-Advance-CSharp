@@ -85,3 +85,6 @@ D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\MVCLayer\obj\Debug\MVCL
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\MVCLayer\obj\Debug\MVCLayer.csproj.CoreCompileInputs.cache
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\MVCLayer\obj\Debug\MVCLayer.dll
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\MVCLayer\obj\Debug\MVCLayer.pdb
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\MVCLayer\bin\BEL.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\MVCLayer\bin\BEL.pdb
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\MVCLayer\obj\Debug\MVCLayer.csproj.CopyComplete

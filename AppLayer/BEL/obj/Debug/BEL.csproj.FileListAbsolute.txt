@@ -1,0 +1,6 @@
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BEL\bin\Debug\BEL.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BEL\bin\Debug\BEL.pdb
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BEL\obj\Debug\BEL.csproj.AssemblyReference.cache
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BEL\obj\Debug\BEL.csproj.CoreCompileInputs.cache
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BEL\obj\Debug\BEL.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BEL\obj\Debug\BEL.pdb
