@@ -34,7 +34,5 @@ namespace BLL
 
             return data;
         }
-
-
     }
 }

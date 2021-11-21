@@ -1,0 +1,10 @@
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\bin\Debug\DAL.dll.config
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\bin\Debug\DAL.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\bin\Debug\DAL.pdb
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\bin\Debug\EntityFramework.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\bin\Debug\EntityFramework.xml
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\obj\Debug\DAL.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\obj\Debug\DAL.pdb
