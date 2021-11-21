@@ -12,3 +12,5 @@ D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\BLL\obj\Debug\BL
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\BLL\obj\Debug\BLL.csproj.CopyComplete
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\BLL\obj\Debug\BLL.dll
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\BLL\obj\Debug\BLL.pdb
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\BLL\bin\Debug\AutoMapper.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\BLL\bin\Debug\AutoMapper.xml

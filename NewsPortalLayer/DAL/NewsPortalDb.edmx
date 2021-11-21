@@ -14,7 +14,6 @@
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="account_status" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Backup">
           <Key>
@@ -68,7 +67,6 @@
           <Property Name="date_approved" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="account_status" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -198,7 +196,6 @@
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="account_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="News" Relationship="Self.FK_News_Author" FromRole="Author" ToRole="News" />
         </EntityType>
         <EntityType Name="Backup">
@@ -261,7 +258,6 @@
           <Property Name="date_approved" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="account_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Subscriber" FromRole="Subscriber" ToRole="Comment" />
         </EntityType>
         <EntityType Name="User">
@@ -394,7 +390,6 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="account_status" ColumnName="account_status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -453,7 +448,6 @@
                 <ScalarProperty Name="date_approved" ColumnName="date_approved" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="account_status" ColumnName="account_status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

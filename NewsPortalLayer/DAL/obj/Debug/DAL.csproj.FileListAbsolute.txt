@@ -8,3 +8,5 @@ D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\obj\Debug\DA
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\obj\Debug\DAL.dll
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\obj\Debug\DAL.pdb
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\bin\Debug\BEL.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\DAL\bin\Debug\BEL.pdb

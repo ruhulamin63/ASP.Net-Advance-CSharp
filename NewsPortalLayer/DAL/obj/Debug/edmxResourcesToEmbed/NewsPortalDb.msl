@@ -9,7 +9,6 @@
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="account_status" ColumnName="account_status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -68,7 +67,6 @@
           <ScalarProperty Name="date_approved" ColumnName="date_approved" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="account_status" ColumnName="account_status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BEL
 {
-    class SubscribModel
+    public class SubscriberModel
     {
         public int id { get; set; }
         public string name { get; set; }

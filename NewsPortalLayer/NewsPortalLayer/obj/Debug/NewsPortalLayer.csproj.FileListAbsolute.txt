@@ -69,3 +69,10 @@ D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\NewsPortalLayer\
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\NewsPortalLayer\obj\Debug\NewsPortalLayer.csproj.CopyComplete
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\NewsPortalLayer\obj\Debug\NewsPortalLayer.dll
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\NewsPortalLayer\obj\Debug\NewsPortalLayer.pdb
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\NewsPortalLayer\bin\AutoMapper.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\NewsPortalLayer\bin\DAL.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\NewsPortalLayer\bin\EntityFramework.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\NewsPortalLayer\bin\AutoMapper.xml
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\NewsPortalLayer\bin\DAL.pdb
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\NewsPortalLayer\bin\DAL.dll.config
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\NewsPortalLayer\bin\EntityFramework.xml

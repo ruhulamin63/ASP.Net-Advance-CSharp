@@ -9,7 +9,6 @@
     <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="account_status" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Backup">
     <Key>
@@ -63,7 +62,6 @@
     <Property Name="date_approved" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="account_status" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>

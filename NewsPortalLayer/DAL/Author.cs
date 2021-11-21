@@ -24,7 +24,6 @@ namespace DAL
         public string email { get; set; }
         public string username { get; set; }
         public string password { get; set; }
-        public string account_status { get; set; }
     
         public virtual ICollection<News> News { get; set; }
     }

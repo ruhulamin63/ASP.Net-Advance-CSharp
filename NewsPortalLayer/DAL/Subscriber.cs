@@ -26,7 +26,6 @@ namespace DAL
         public string date_approved { get; set; }
         public string username { get; set; }
         public string password { get; set; }
-        public string account_status { get; set; }
     
         public virtual ICollection<Comment> Comments { get; set; }
     }

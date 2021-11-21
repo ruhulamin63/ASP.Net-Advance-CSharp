@@ -7,31 +7,43 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class NewsRepository : IRepository<NewsModel, int>
+    public class NewsRepository : IRepository<News, int>
     {
-        public void Add(NewsModel e)
+        NewsPortalDbEntities db;
+
+        public NewsRepository(NewsPortalDbEntities db)
         {
-            throw new NotImplementedException();
+            this.db = db;
+        }
+
+        public void Add(News e)
+        {
+            db.News.Add(e);
+            db.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var e = db.News.FirstOrDefault(en => en.id == id);
+            db.News.Remove(e);
+            db.SaveChanges();
         }
 
-        public void Edit(NewsModel e)
+        public void Edit(News e)
         {
-            throw new NotImplementedException();
+            var p = db.News.FirstOrDefault(en => en.id == e.id);
+            db.Entry(p).CurrentValues.SetValues(e);
+            db.SaveChanges();
         }
 
-        public List<NewsModel> Get()
+        public List<News> Get()
         {
-            throw new NotImplementedException();
+            return db.News.ToList();
         }
 
-        public void Get(int id)
+        public News Get(int id)
         {
-            throw new NotImplementedException();
+            return db.News.FirstOrDefault(e => e.id == id);
         }
     }
 }

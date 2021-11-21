@@ -12,7 +12,7 @@ namespace DAL
 
         List<T> Get();
 
-        void Get(ID id);
+        T Get(ID id);
 
         void Edit(T e);
 
