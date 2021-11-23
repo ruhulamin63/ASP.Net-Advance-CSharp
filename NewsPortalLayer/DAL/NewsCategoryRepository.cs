@@ -15,24 +15,24 @@ namespace DAL
             this.db = db;
         }
 
-        public void Add(News_category e)
+        public bool Add(News_category e)
         {
             db.News_category.Add(e);
-            db.SaveChanges();
+            return (db.SaveChanges() > 0);
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var c = db.News_category.FirstOrDefault(e => e.id == id);
             db.News_category.Remove(c);
-            db.SaveChanges();
+            return (db.SaveChanges() > 0);
         }
 
-        public void Edit(News_category e)
+        public bool Edit(News_category e)
         {
             var c = db.News_category.FirstOrDefault(en => en.id == e.id);
             db.Entry(c).CurrentValues.SetValues(e);
-            db.SaveChanges();
+            return (db.SaveChanges() > 0) ;
         }
 
         public List<News_category> Get()

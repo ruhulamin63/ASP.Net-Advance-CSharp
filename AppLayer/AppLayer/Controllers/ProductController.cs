@@ -24,5 +24,7 @@ namespace AppLayer.Controllers
         {
             return ProductService.GetNames();
         }
+
+        
     }
 }
