@@ -31,7 +31,7 @@ namespace BLL
                 c.CreateMap<News, NewsModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<NewsCategoryModel>>(DataAccessFactory.NewsDataAceess().Get());
+            var data = mapper.Map<List<NewsCategoryModel>>(DataAccessFactory.NewsDataAccess().Get());
             return data;
         }
 
@@ -42,7 +42,7 @@ namespace BLL
                 c.CreateMap<News, NewsModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<NewsModel>(DataAccessFactory.NewsDataAceess().Get(id));
+            var data = mapper.Map<NewsModel>(DataAccessFactory.NewsDataAccess().Get(id));
             return data;
         }
 
@@ -54,7 +54,7 @@ namespace BLL
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<News>(n);
-            return DataAccessFactory.NewsDataAceess().Add(data);
+            return DataAccessFactory.NewsDataAccess().Add(data);
         }
 
         public static bool Edit(NewsModel n)
@@ -65,22 +65,48 @@ namespace BLL
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<News>(n);
-            return DataAccessFactory.NewsDataAceess().Edit(data);
+            return DataAccessFactory.NewsDataAccess().Edit(data);
         }
         public static bool Delete(int id)
         {
-            return DataAccessFactory.NewsDataAceess().Delete(id);
+            return DataAccessFactory.NewsDataAccess().Delete(id);
         }
 
-       /* public static List<string> GetNames()
+        public static List<NewsModel> GetByDate(DateTime dateTime)
         {
-            *//*var data = (from e in NewsCategoryRepository.GetAll()
-                        select e.name).ToList();
-            var data = NewsCategoryRepository.GetAll().Select(e => e.name).ToList();*//*
-
-            var data = DataAccessFactory.NewsDataAceess().Get().Select(e => e.name).ToList();
-
+            var config = new MapperConfiguration(c =>
+            {
+                c.CreateMap<News, NewsModel>();
+                c.CreateMap<Comment, CommentModel>();
+                c.CreateMap<Subscriber, Subscriber>();
+            });
+            var mapper = new Mapper(config);
+            var data = mapper.Map<List<NewsModel>>(DataAccessFactory.NewsDataAccess().GetByDate(dateTime));
             return data;
-        }*/
+        }
+        public static List<NewsModel> GetByCategory(string category)
+        {
+            var config = new MapperConfiguration(c =>
+            {
+                c.CreateMap<News, NewsModel>();
+                c.CreateMap<Comment, CommentModel>();
+                c.CreateMap<Subscriber, Subscriber>();
+            });
+            var mapper = new Mapper(config);
+            var data = mapper.Map<List<NewsModel>>(DataAccessFactory.NewsDataAccess().GetByCategory(category));
+            return data;
+        }
+        public static List<NewsModel> GetByDateCategory(DateTime dateTime, string category)
+        {
+            var config = new MapperConfiguration(c =>
+            {
+                c.CreateMap<News, NewsModel>();
+                c.CreateMap<Comment, CommentModel>();
+                c.CreateMap<Subscriber, Subscriber>();
+            });
+            var mapper = new Mapper(config);
+            var data = mapper.Map<List<NewsModel>>(DataAccessFactory.NewsDataAccess().GetByDateCategory(dateTime, category));
+            return data;
+        }
     }
 }

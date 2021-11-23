@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace DAL
             db = new NewsPortalDbEntities();
         }
 
-        public static IRepository<News, int> NewsDataAceess()
+        public static IRepository<News, int> NewsDataAccess()
         {
             return new NewsRepository(db);
         }
@@ -28,6 +29,16 @@ namespace DAL
         public static IRepository<Subscriber, int> SubscriberDataAccess()
         {
             return new SubscriberRepository(db);
+        }
+
+        public static IRepository<User, int> UserDataAccess()
+        {
+            return new UserRepository(db);
+        }
+
+        public static IRepository<Comment, int> CommentDataAccess()
+        {
+            return new CommentRepository(db);
         }
     }
 }

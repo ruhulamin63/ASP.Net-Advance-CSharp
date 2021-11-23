@@ -17,5 +17,9 @@ namespace DAL
         bool Edit(T e);
 
         bool Delete(ID id);
+
+        List<News> GetByDate(DateTime dateTime);
+        List<News> GetByCategory(string category);
+        List<News> GetByDateCategory(DateTime dateTime, string category);
     }
 }

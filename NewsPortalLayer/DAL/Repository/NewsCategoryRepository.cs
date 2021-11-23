@@ -44,5 +44,20 @@ namespace DAL
         {
             return db.News_category.FirstOrDefault(e => e.id == id);
         }
+
+        public List<News> GetByCategory(string category)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<News> GetByDate(DateTime dateTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<News> GetByDateCategory(DateTime dateTime, string category)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

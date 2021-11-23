@@ -45,5 +45,21 @@ namespace DAL
         {
             return db.News.FirstOrDefault(e => e.id == id);
         }
+
+        public List<News> GetByDate(DateTime dateTime)
+        {
+            var e = (from news in db.News where news.date_posted == dateTime select news).ToList();
+            return e;
+        }
+        public List<News> GetByCategory(string category)
+        {
+            var e = (from news in db.News where news.news_title == category select news).ToList();
+            return e;
+        }
+        public List<News> GetByDateCategory(DateTime dateTime, string category)
+        {
+            var e = (from news in db.News where news.date_posted == dateTime && news.news_title == category select news).ToList();
+            return e;
+        }
     }
 }

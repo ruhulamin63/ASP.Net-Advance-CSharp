@@ -4,45 +4,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace DAL.Repository
 {
-    public class SubscriberRepository : IRepository<Subscriber, int>
+    public class UserRepository : IRepository<User, int>
     {
         NewsPortalDbEntities db;
 
-        public SubscriberRepository(NewsPortalDbEntities db)
+        public UserRepository(NewsPortalDbEntities db)
         {
             this.db = db;
         }
 
-        public bool Add(Subscriber e)
+        public bool Add(User e)
         {
-            db.Subscribers.Add(e);
-            return (db.SaveChanges() > 0) ;
+            db.Users.Add(e);
+            return (db.SaveChanges() > 0);
         }
 
         public bool Delete(int id)
         {
-            var e = db.Subscribers.FirstOrDefault(en => en.id == id);
-            db.Subscribers.Remove(e);
-            return (db.SaveChanges() > 0) ;
+            var e = db.Users.FirstOrDefault(en => en.id == id);
+            db.Users.Remove(e);
+            return (db.SaveChanges() > 0);
         }
 
-        public bool Edit(Subscriber e)
+        public bool Edit(User e)
         {
-            var p = db.Subscribers.FirstOrDefault(en => en.id == e.id);
+            var p = db.Users.FirstOrDefault(en => en.id == e.id);
             db.Entry(p).CurrentValues.SetValues(e);
-            return (db.SaveChanges() > 0) ;
+            return (db.SaveChanges() > 0);
         }
 
-        public List<Subscriber> Get()
+        public List<User> Get()
         {
-            return db.Subscribers.ToList();
+            return db.Users.ToList();
         }
 
-        public Subscriber Get(int id)
+        public User Get(int id)
         {
-            return db.Subscribers.FirstOrDefault(e => e.id == id);
+            return db.Users.FirstOrDefault(e => e.id == id);
         }
 
         public List<News> GetByCategory(string category)

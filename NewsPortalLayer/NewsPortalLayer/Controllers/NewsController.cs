@@ -68,5 +68,41 @@ namespace NewsPortalLayer.Controllers
             }
             return BadRequest();
         }
+        
+        [Route("api/get/news/bydate")]
+        [HttpGet]
+        public IHttpActionResult Get([FromUri] DateTime dateTime)
+        {
+            var data = NewsService.GetByDate(dateTime);
+            if (data != null)
+            {
+                return Ok(data);
+            }
+            return BadRequest();
+        }
+
+        [Route("api/get/news/bycategory")]
+        [HttpGet]
+        public IHttpActionResult Get([FromUri] string category)
+        {
+            var data = NewsService.GetByCategory(category);
+            if (data != null)
+            {
+                return Ok(data);
+            }
+            return BadRequest();
+        }
+
+        [Route("api/get/news/bydate/category")]
+        [HttpGet]
+        public IHttpActionResult Get([FromUri] DateTime dateTime, [FromUri] string category)
+        {
+            var data = NewsService.GetByDateCategory(dateTime, category);
+            if (data != null)
+            {
+                return Ok(data);
+            }
+            return BadRequest();
+        }
     }
 }

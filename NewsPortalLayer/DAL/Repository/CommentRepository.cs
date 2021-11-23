@@ -4,45 +4,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace DAL.Repository
 {
-    public class SubscriberRepository : IRepository<Subscriber, int>
+    public class CommentRepository : IRepository<Comment, int>
     {
         NewsPortalDbEntities db;
 
-        public SubscriberRepository(NewsPortalDbEntities db)
+        public CommentRepository(NewsPortalDbEntities db)
         {
             this.db = db;
         }
 
-        public bool Add(Subscriber e)
+        public bool Add(Comment e)
         {
-            db.Subscribers.Add(e);
-            return (db.SaveChanges() > 0) ;
+            db.Comments.Add(e);
+            return (db.SaveChanges() > 0);
         }
 
         public bool Delete(int id)
         {
-            var e = db.Subscribers.FirstOrDefault(en => en.id == id);
-            db.Subscribers.Remove(e);
-            return (db.SaveChanges() > 0) ;
+            var e = db.Comments.FirstOrDefault(en => en.id == id);
+            db.Comments.Remove(e);
+            return (db.SaveChanges() > 0);
         }
 
-        public bool Edit(Subscriber e)
+        public bool Edit(Comment e)
         {
-            var p = db.Subscribers.FirstOrDefault(en => en.id == e.id);
+            var p = db.Comments.FirstOrDefault(en => en.id == e.id);
             db.Entry(p).CurrentValues.SetValues(e);
-            return (db.SaveChanges() > 0) ;
+            return (db.SaveChanges() > 0);
         }
 
-        public List<Subscriber> Get()
+        public List<Comment> Get()
         {
-            return db.Subscribers.ToList();
+            return db.Comments.ToList();
         }
 
-        public Subscriber Get(int id)
+        public Comment Get(int id)
         {
-            return db.Subscribers.FirstOrDefault(e => e.id == id);
+            return db.Comments.FirstOrDefault(e => e.id == id);
         }
 
         public List<News> GetByCategory(string category)
