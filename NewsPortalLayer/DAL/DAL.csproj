@@ -60,6 +60,7 @@
     <Compile Include="News.cs">
       <DependentUpon>NewsPortalDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\CommentRepository.cs" />
     <Compile Include="Repository\NewsCategoryRepository.cs" />
     <Compile Include="NewsPortalDb.Context.cs">
       <AutoGen>True</AutoGen>
@@ -83,6 +84,7 @@
       <DependentUpon>NewsPortalDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Subscriber.cs">
       <DependentUpon>NewsPortalDb.tt</DependentUpon>
     </Compile>
