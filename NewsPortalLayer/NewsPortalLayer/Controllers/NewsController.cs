@@ -11,11 +11,62 @@ namespace NewsPortalLayer.Controllers
 {
     public class NewsController : ApiController
     {
-        [Route("api/News/All")]
+        [Route("api/get/news/all")]
         [HttpGet]
-        public List<NewsModel> GetAll()
+        public IHttpActionResult Get()
         {
-            return NewsService.GetAll();
+            var data = NewsService.GetAll();
+            if (data != null)
+            {
+                return Ok(data);
+            }
+            return BadRequest();
+        }
+
+
+        [Route("api/get/news/{id}")]
+        [HttpGet]
+        public IHttpActionResult Get(int id)
+        {
+            var data = NewsService.Get(id);
+            if (data != null)
+            {
+                return Ok(data);
+            }
+            return BadRequest();
+        }
+
+        [Route("api/add/news")]
+        [HttpPost]
+        public IHttpActionResult Add(NewsModel n)
+        {
+            if (NewsService.Add(n))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [Route("api/edit/category/{id}")]
+        [HttpPost]
+        public IHttpActionResult Edit(NewsModel n)
+        {
+            if (NewsService.Edit(n))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [Route("api/delete/news/{id}")]
+        [HttpGet]
+        public IHttpActionResult Delete(int id)
+        {
+            if (NewsService.Delete(id))
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
     }
 }

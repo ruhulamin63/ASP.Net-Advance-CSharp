@@ -23,7 +23,7 @@ namespace NewsPortalLayer.Controllers
             return BadRequest();
         }
 
-        [Route("api/get/category")]
+        [Route("api/get/category/{id}")]
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
@@ -46,7 +46,7 @@ namespace NewsPortalLayer.Controllers
             return BadRequest();
         }
    
-        [Route("api/edit/category")]
+        [Route("api/edit/category/{id}")]
         [HttpPost]
         public IHttpActionResult Edit(NewsCategoryModel n)
         {
@@ -57,7 +57,7 @@ namespace NewsPortalLayer.Controllers
             return BadRequest();
         }
 
-        [Route("api/delete/category")]
+        [Route("api/delete/category/{id}")]
         [HttpGet]
         public IHttpActionResult Delete(int id)
         {

@@ -15,7 +15,7 @@ namespace DAL
             db = new NewsPortalDbEntities();
         }
 
-        public static IRepository<News, int> ProductDataAccess()
+        public static IRepository<News, int> NewsDataAceess()
         {
             return new NewsRepository(db);
         }

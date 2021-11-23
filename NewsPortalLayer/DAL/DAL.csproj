@@ -60,7 +60,7 @@
     <Compile Include="News.cs">
       <DependentUpon>NewsPortalDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="NewsCategoryRepository.cs" />
+    <Compile Include="Repository\NewsCategoryRepository.cs" />
     <Compile Include="NewsPortalDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -76,7 +76,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NewsPortalDb.edmx</DependentUpon>
     </Compile>
-    <Compile Include="NewsRepository.cs" />
+    <Compile Include="Repository\NewsRepository.cs" />
     <Compile Include="DataAccessFactory.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="News_category.cs">
@@ -86,7 +86,7 @@
     <Compile Include="Subscriber.cs">
       <DependentUpon>NewsPortalDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="SubscriberRepository.cs" />
+    <Compile Include="Repository\SubscriberRepository.cs" />
     <Compile Include="User.cs">
       <DependentUpon>NewsPortalDb.tt</DependentUpon>
     </Compile>
