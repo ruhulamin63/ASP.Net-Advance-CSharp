@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e6f54bfd-6577-4b8a-8b60-19024ce39cf7": {
+      "ProjectGuid": "e6f54bfd-6577-4b8a-8b60-19024ce39cf7",
+      "DisplayName": "DAL",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

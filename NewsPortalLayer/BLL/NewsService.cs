@@ -24,14 +24,14 @@ namespace BLL
             return data;
         }*/
 
-        public static List<NewsCategoryModel> GetAll()
+        public static List<NewsModel> GetAll()
         {
             var config = new MapperConfiguration(c =>
             {
                 c.CreateMap<News, NewsModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<NewsCategoryModel>>(DataAccessFactory.NewsDataAccess().Get());
+            var data = mapper.Map<List<NewsModel>>(DataAccessFactory.NewsDataAccess().Get());
             return data;
         }
 
@@ -78,22 +78,22 @@ namespace BLL
             {
                 c.CreateMap<News, NewsModel>();
                 c.CreateMap<Comment, CommentModel>();
-                c.CreateMap<Subscriber, Subscriber>();
+                c.CreateMap<React, ReactModel>();
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<List<NewsModel>>(DataAccessFactory.NewsDataAccess().GetByDate(dateTime));
             return data;
         }
-        public static List<NewsModel> GetByCategory(string category)
+        public static List<NewsModel> GetByCategory(int id)
         {
             var config = new MapperConfiguration(c =>
             {
                 c.CreateMap<News, NewsModel>();
                 c.CreateMap<Comment, CommentModel>();
-                c.CreateMap<Subscriber, Subscriber>();
+                c.CreateMap<React, ReactModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<NewsModel>>(DataAccessFactory.NewsDataAccess().GetByCategory(category));
+            var data = mapper.Map<List<NewsModel>>(DataAccessFactory.NewsDataAccess().GetByCategory(id));
             return data;
         }
         public static List<NewsModel> GetByDateCategory(DateTime dateTime, string category)
@@ -102,7 +102,7 @@ namespace BLL
             {
                 c.CreateMap<News, NewsModel>();
                 c.CreateMap<Comment, CommentModel>();
-                c.CreateMap<Subscriber, Subscriber>();
+                c.CreateMap<React, ReactModel>();
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<List<NewsModel>>(DataAccessFactory.NewsDataAccess().GetByDateCategory(dateTime, category));

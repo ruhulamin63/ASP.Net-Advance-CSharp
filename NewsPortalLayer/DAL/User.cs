@@ -16,16 +16,19 @@ namespace DAL
     {
         public User()
         {
-            this.Backups = new HashSet<Backup>();
+            this.News = new HashSet<News>();
+            this.Reacts = new HashSet<React>();
             this.Comments = new HashSet<Comment>();
         }
     
         public int id { get; set; }
-        public string username { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
         public string password { get; set; }
-        public string type { get; set; }
+        public string user_type { get; set; }
     
-        public virtual ICollection<Backup> Backups { get; set; }
+        public virtual ICollection<News> News { get; set; }
+        public virtual ICollection<React> Reacts { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
     }
 }

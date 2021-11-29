@@ -68,11 +68,11 @@ namespace NewsPortalLayer.Controllers
             return BadRequest();
         }
 
-        [Route("api/category/names")]
+        /*[Route("api/category/names")]
         [HttpGet]
         public List<string> Nemes()
         {
             return NewsCategoryService.GetNames();
-        }
+        }*/
     }
 }

@@ -17,19 +17,18 @@ namespace DAL
         public News()
         {
             this.Comments = new HashSet<Comment>();
+            this.Reacts = new HashSet<React>();
         }
     
         public int id { get; set; }
+        public string title { get; set; }
+        public System.DateTime post_date { get; set; }
         public int category_id { get; set; }
-        public string news_title { get; set; }
-        public string date_posted { get; set; }
-        public string date_updated { get; set; }
-        public string comment_status { get; set; }
         public int author_id { get; set; }
-        public string status { get; set; }
     
-        public virtual Author Author { get; set; }
+        public virtual Category Category { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
-        public virtual News_category News_category { get; set; }
+        public virtual User User { get; set; }
+        public virtual ICollection<React> Reacts { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace NewsPortalLayer.Controllers
     {
         [Route("api/get/news/all")]
         [HttpGet]
-        public IHttpActionResult Get()
+        public IHttpActionResult GetAll()
         {
             var data = NewsService.GetAll();
             if (data != null)
@@ -22,7 +22,6 @@ namespace NewsPortalLayer.Controllers
             }
             return BadRequest();
         }
-
 
         [Route("api/get/news/{id}")]
         [HttpGet]
@@ -83,9 +82,9 @@ namespace NewsPortalLayer.Controllers
 
         [Route("api/get/news/bycategory")]
         [HttpGet]
-        public IHttpActionResult Get([FromUri] string category)
+        public IHttpActionResult GetCategory([FromUri] int id)
         {
-            var data = NewsService.GetByCategory(category);
+            var data = NewsService.GetByCategory(id);
             if (data != null)
             {
                 return Ok(data);
@@ -95,7 +94,7 @@ namespace NewsPortalLayer.Controllers
 
         [Route("api/get/news/bydate/category")]
         [HttpGet]
-        public IHttpActionResult Get([FromUri] DateTime dateTime, [FromUri] string category)
+        public IHttpActionResult GetDateCategory([FromUri] DateTime dateTime, [FromUri] string category)
         {
             var data = NewsService.GetByDateCategory(dateTime, category);
             if (data != null)

@@ -12,17 +12,14 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class News_category
+    public partial class React
     {
-        public News_category()
-        {
-            this.News = new HashSet<News>();
-        }
-    
         public int id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
+        public int news_id { get; set; }
+        public string reacts { get; set; }
+        public int user_id { get; set; }
     
-        public virtual ICollection<News> News { get; set; }
+        public virtual News News { get; set; }
+        public virtual User User { get; set; }
     }
 }

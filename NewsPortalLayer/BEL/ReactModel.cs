@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BEL
 {
-    public class CommentModel
+    public class ReactModel
     {
         public int id { get; set; }
         public int news_id { get; set; }
-        public string comment1 { get; set; }
+        public string reacts { get; set; }
         public int user_id { get; set; }
     }
 }

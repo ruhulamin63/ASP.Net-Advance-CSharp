@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "a9e9e624-8e95-4819-8438-f2f96d793704": {
+      "ProjectGuid": "a9e9e624-8e95-4819-8438-f2f96d793704",
+      "DisplayName": "DAL",
+      "ColorIndex": 0
+    },
+    "49715124-2871-4d5a-8bad-5f3f8a3fa876": {
+      "ProjectGuid": "49715124-2871-4d5a-8bad-5f3f8a3fa876",
+      "DisplayName": "NewsPortalLayer",
+      "ColorIndex": 1
+    },
+    "f9da71a5-c0c8-4540-b6af-1bf4bec372a3": {
+      "ProjectGuid": "f9da71a5-c0c8-4540-b6af-1bf4bec372a3",
+      "DisplayName": "BEL",
+      "ColorIndex": 2
+    },
+    "2498ce40-b584-4a7b-8ff6-10056482e1d6": {
+      "ProjectGuid": "2498ce40-b584-4a7b-8ff6-10056482e1d6",
+      "DisplayName": "BLL",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

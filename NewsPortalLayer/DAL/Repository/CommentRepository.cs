@@ -8,9 +8,9 @@ namespace DAL.Repository
 {
     public class CommentRepository : IRepository<Comment, int>
     {
-        NewsPortalDbEntities db;
+        NewsPortalEntities db;
 
-        public CommentRepository(NewsPortalDbEntities db)
+        public CommentRepository(NewsPortalEntities db)
         {
             this.db = db;
         }
@@ -45,7 +45,7 @@ namespace DAL.Repository
             return db.Comments.FirstOrDefault(e => e.id == id);
         }
 
-        public List<News> GetByCategory(string category)
+        public List<News> GetByCategory(int id)
         {
             throw new NotImplementedException();
         }

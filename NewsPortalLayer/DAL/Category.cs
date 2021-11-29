@@ -12,13 +12,16 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Backup
+    public partial class Category
     {
-        public int id { get; set; }
-        public int user_id { get; set; }
-        public string date { get; set; }
-        public string backup_file { get; set; }
+        public Category()
+        {
+            this.News = new HashSet<News>();
+        }
     
-        public virtual User User { get; set; }
+        public int id { get; set; }
+        public string category_name { get; set; }
+    
+        public virtual ICollection<News> News { get; set; }
     }
 }

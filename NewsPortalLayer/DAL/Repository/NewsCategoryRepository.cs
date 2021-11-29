@@ -6,46 +6,46 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class NewsCategoryRepository : IRepository<News_category, int>
+    public class NewsCategoryRepository : IRepository<Category, int>
     {
-        NewsPortalDbEntities db;
+        NewsPortalEntities db;
 
-        public NewsCategoryRepository(NewsPortalDbEntities db)
+        public NewsCategoryRepository(NewsPortalEntities db)
         {
             this.db = db;
         }
 
-        public bool Add(News_category e)
+        public bool Add(Category e)
         {
-            db.News_category.Add(e);
+            db.Categories.Add(e);
             return (db.SaveChanges() > 0);
         }
 
         public bool Delete(int id)
         {
-            var c = db.News_category.FirstOrDefault(e => e.id == id);
-            db.News_category.Remove(c);
+            var c = db.Categories.FirstOrDefault(e => e.id == id);
+            db.Categories.Remove(c);
             return (db.SaveChanges() > 0);
         }
 
-        public bool Edit(News_category e)
+        public bool Edit(Category e)
         {
-            var c = db.News_category.FirstOrDefault(en => en.id == e.id);
+            var c = db.Categories.FirstOrDefault(en => en.id == e.id);
             db.Entry(c).CurrentValues.SetValues(e);
             return (db.SaveChanges() > 0) ;
         }
 
-        public List<News_category> Get()
+        public List<Category> Get()
         {
-            return db.News_category.ToList();
+            return db.Categories.ToList();
         }
 
-        public News_category Get(int id)
+        public Category Get(int id)
         {
-            return db.News_category.FirstOrDefault(e => e.id == id);
+            return db.Categories.FirstOrDefault(e => e.id == id);
         }
 
-        public List<News> GetByCategory(string category)
+        public List<News> GetByCategory(int id)
         {
             throw new NotImplementedException();
         }

@@ -4,20 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d910e07da1c54097991e93ee06bbd93c" Name="Diagram1">
-        <EntityTypeShape EntityType="NewsPortalDbModel.Author" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsPortalDbModel.Backup" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsPortalDbModel.Comment" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsPortalDbModel.News" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsPortalDbModel.News_category" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsPortalDbModel.Subscriber" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsPortalDbModel.User" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
-        <AssociationConnector Association="NewsPortalDbModel.FK_News_Author" ManuallyRouted="false" />
-        <AssociationConnector Association="NewsPortalDbModel.FK_Backup_User" ManuallyRouted="false" />
-        <AssociationConnector Association="NewsPortalDbModel.FK_Comment_News" ManuallyRouted="false" />
-        <AssociationConnector Association="NewsPortalDbModel.FK_Comment_Subscriber" ManuallyRouted="false" />
-        <AssociationConnector Association="NewsPortalDbModel.FK_Comment_User" ManuallyRouted="false" />
-        <AssociationConnector Association="NewsPortalDbModel.FK_News_News_category" ManuallyRouted="false" />
+      <Diagram DiagramId="24b1e4250df4449cb9ec1d1474baf5e9" Name="Diagram1">
+        <EntityTypeShape EntityType="NewsPortalModel.Category" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsPortalModel.News" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsPortalModel.React" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsPortalModel.User" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsPortalModel.Comment" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="NewsPortalModel.FK_News_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsPortalModel.FK_Comments_News" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsPortalModel.FK_News_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsPortalModel.FK_Reacts_News" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsPortalModel.FK_Reacts_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsPortalModel.FK_Comments_Users" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

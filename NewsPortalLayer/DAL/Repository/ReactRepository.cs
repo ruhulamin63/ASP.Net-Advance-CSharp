@@ -6,46 +6,46 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class SubscriberRepository : IRepository<Subscriber, int>
+    public class ReactRepository : IRepository<React, int>
     {
-        NewsPortalDbEntities db;
+        NewsPortalEntities db;
 
-        public SubscriberRepository(NewsPortalDbEntities db)
+        public ReactRepository(NewsPortalEntities db)
         {
             this.db = db;
         }
 
-        public bool Add(Subscriber e)
+        public bool Add(React e)
         {
-            db.Subscribers.Add(e);
+            db.Reacts.Add(e);
             return (db.SaveChanges() > 0) ;
         }
 
         public bool Delete(int id)
         {
-            var e = db.Subscribers.FirstOrDefault(en => en.id == id);
-            db.Subscribers.Remove(e);
+            var e = db.Reacts.FirstOrDefault(en => en.id == id);
+            db.Reacts.Remove(e);
             return (db.SaveChanges() > 0) ;
         }
 
-        public bool Edit(Subscriber e)
+        public bool Edit(React e)
         {
-            var p = db.Subscribers.FirstOrDefault(en => en.id == e.id);
+            var p = db.Reacts.FirstOrDefault(en => en.id == e.id);
             db.Entry(p).CurrentValues.SetValues(e);
             return (db.SaveChanges() > 0) ;
         }
 
-        public List<Subscriber> Get()
+        public List<React> Get()
         {
-            return db.Subscribers.ToList();
+            return db.Reacts.ToList();
         }
 
-        public Subscriber Get(int id)
+        public React Get(int id)
         {
-            return db.Subscribers.FirstOrDefault(e => e.id == id);
+            return db.Reacts.FirstOrDefault(e => e.id == id);
         }
 
-        public List<News> GetByCategory(string category)
+        public List<News> GetByCategory(int id)
         {
             throw new NotImplementedException();
         }

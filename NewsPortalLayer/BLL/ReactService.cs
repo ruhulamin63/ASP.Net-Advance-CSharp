@@ -9,14 +9,14 @@ using DAL;
 
 namespace BLL
 {
-    public class SubscribeService
+    public class ReactService
     {
-        public static List<SubscriberModel> GetAll()
+        public static List<ReactModel> GetAll()
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Subscriber, SubscriberModel>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<React, ReactModel>());
             var mapper = new Mapper(config);
             /*var data = mapper.Map<List<CustomerModel>>(CustomerRepository.GetAll());*/
-            var data = mapper.Map<List<SubscriberModel>>(DataAccessFactory.SubscriberDataAccess().Get());
+            var data = mapper.Map<List<ReactModel>>(DataAccessFactory.ReactDataAccess().Get());
 
             return data;
         }
