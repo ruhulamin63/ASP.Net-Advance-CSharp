@@ -5,7 +5,17 @@
       "ProjectGuid": "e6f54bfd-6577-4b8a-8b60-19024ce39cf7",
       "DisplayName": "DAL",
       "ColorIndex": 0
+    },
+    "acd51a60-b35b-4d01-8991-4b4cbabee038": {
+      "ProjectGuid": "acd51a60-b35b-4d01-8991-4b4cbabee038",
+      "DisplayName": "ConsoleAppLayer",
+      "ColorIndex": 1
+    },
+    "6e061c25-8b2c-4eeb-8f0c-5b043f187bb6": {
+      "ProjectGuid": "6e061c25-8b2c-4eeb-8f0c-5b043f187bb6",
+      "DisplayName": "AppLayer",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 3
 }

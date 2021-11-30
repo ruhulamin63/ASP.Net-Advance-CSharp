@@ -17,3 +17,23 @@ D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\ConsoleAppLayer\obj\Deb
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\ConsoleAppLayer\bin\Debug\BEL.dll
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\ConsoleAppLayer\bin\Debug\BEL.pdb
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\ConsoleAppLayer\obj\Debug\ConsoleAppLayer.csproj.CopyComplete
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\bin\Debug\ConsoleAppLayer.exe.config
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\bin\Debug\ConsoleAppLayer.exe
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\bin\Debug\ConsoleAppLayer.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\bin\Debug\BLL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\bin\Debug\BEL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\bin\Debug\AutoMapper.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\bin\Debug\DAL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\bin\Debug\EntityFramework.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\bin\Debug\BLL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\bin\Debug\BEL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\bin\Debug\AutoMapper.xml
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\bin\Debug\DAL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\bin\Debug\DAL.dll.config
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\bin\Debug\EntityFramework.xml
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\obj\Debug\ConsoleAppLayer.csproj.AssemblyReference.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\obj\Debug\ConsoleAppLayer.csproj.SuggestedBindingRedirects.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\obj\Debug\ConsoleAppLayer.csproj.CoreCompileInputs.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\obj\Debug\ConsoleAppLayer.csproj.CopyComplete
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\obj\Debug\ConsoleAppLayer.exe
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\ConsoleAppLayer\obj\Debug\ConsoleAppLayer.pdb

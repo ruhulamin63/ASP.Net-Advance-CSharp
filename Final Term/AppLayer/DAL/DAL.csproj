@@ -48,13 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomerRepository.cs" />
-    <Compile Include="DataAccessFactory.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="ProductRepository.cs" />
     <Compile Include="customer.cs">
       <DependentUpon>PMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="CustomerRepository.cs" />
+    <Compile Include="DataAccessFactory.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="order.cs">
       <DependentUpon>PMS.tt</DependentUpon>
     </Compile>
@@ -79,38 +78,37 @@
     <Compile Include="product.cs">
       <DependentUpon>PMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="user.cs">
       <DependentUpon>PMS.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
     <EntityDeploy Include="PMS.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PMS.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
     <None Include="PMS.edmx.diagram">
       <DependentUpon>PMS.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="PMS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PMS.Context.cs</LastGenOutput>
       <DependentUpon>PMS.edmx</DependentUpon>
+      <LastGenOutput>PMS.Context.cs</LastGenOutput>
     </Content>
     <Content Include="PMS.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PMS.edmx</DependentUpon>
       <LastGenOutput>PMS.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

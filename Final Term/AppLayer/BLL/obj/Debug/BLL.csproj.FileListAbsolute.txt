@@ -14,3 +14,19 @@ D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BLL\obj\Debug\BLL.dll
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BLL\obj\Debug\BLL.pdb
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BLL\bin\Debug\BEL.dll
 D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\BLL\bin\Debug\BEL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\bin\Debug\BLL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\bin\Debug\BLL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\bin\Debug\AutoMapper.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\bin\Debug\BEL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\bin\Debug\DAL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\bin\Debug\EntityFramework.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\bin\Debug\BEL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\bin\Debug\DAL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\bin\Debug\DAL.dll.config
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\bin\Debug\AutoMapper.xml
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\bin\Debug\EntityFramework.xml
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\obj\Debug\BLL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\BLL\obj\Debug\BLL.pdb
