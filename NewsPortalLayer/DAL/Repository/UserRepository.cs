@@ -8,9 +8,9 @@ namespace DAL.Repository
 {
     public class UserRepository : IRepository<User, int>
     {
-        NewsPortalDbEntities db;
+        NewsPortalEntities db;
 
-        public UserRepository(NewsPortalDbEntities db)
+        public UserRepository(NewsPortalEntities db)
         {
             this.db = db;
         }
@@ -45,7 +45,7 @@ namespace DAL.Repository
             return db.Users.FirstOrDefault(e => e.id == id);
         }
 
-        public List<News> GetByCategory(string category)
+        public List<News> GetByCategory(int id)
         {
             throw new NotImplementedException();
         }

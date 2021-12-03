@@ -1,33 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="NewsPortalDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Author">
+<Schema Namespace="NewsPortalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categories">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="category_name" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="Backup">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'NewsPortal.dbo.Comments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Comments">
     <Key>
       <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="user_id" Type="int" Nullable="false" />
-    <Property Name="date" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="backup_file" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Comment">
-    <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="news_id" />
+      <PropertyRef Name="comment" />
+      <PropertyRef Name="user_id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="news_id" Type="int" Nullable="false" />
-    <Property Name="subscriber_id" Type="int" Nullable="false" />
-    <Property Name="date" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="comment" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="user_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="News">
@@ -35,108 +26,59 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="post_date" Type="datetime" Nullable="false" />
     <Property Name="category_id" Type="int" Nullable="false" />
-    <Property Name="news_title" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="date_posted" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="date_updated" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="comment_status" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="author_id" Type="int" Nullable="false" />
-    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="News_category">
+  <EntityType Name="Reacts">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="news_id" Type="int" Nullable="false" />
+    <Property Name="reacts" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Subscriber">
+  <EntityType Name="Users">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="date_joined" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="date_approved" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_type" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_Backup_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Backup" Type="Self.Backup" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Backup">
-        <PropertyRef Name="user_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Comment_News">
+  <Association Name="FK_Comments_News">
     <End Role="News" Type="Self.News" Multiplicity="1" />
-    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="News">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Comment">
+      <Dependent Role="Comments">
         <PropertyRef Name="news_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Comment_Subscriber">
-    <End Role="Subscriber" Type="Self.Subscriber" Multiplicity="1" />
-    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+  <Association Name="FK_Comments_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Subscriber">
+      <Principal Role="Users">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Comment">
-        <PropertyRef Name="subscriber_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Comment_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Comment">
+      <Dependent Role="Comments">
         <PropertyRef Name="user_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_News_Author">
-    <End Role="Author" Type="Self.Author" Multiplicity="1" />
+  <Association Name="FK_News_Categories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
     <End Role="News" Type="Self.News" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Author">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="News">
-        <PropertyRef Name="author_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_News_News_category">
-    <End Role="News_category" Type="Self.News_category" Multiplicity="1" />
-    <End Role="News" Type="Self.News" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="News_category">
+      <Principal Role="Categories">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="News">
@@ -144,37 +86,78 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="NewsPortalDbModelStoreContainer">
-    <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Backup" EntityType="Self.Backup" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+  <Association Name="FK_News_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="author_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reacts_News">
+    <End Role="News" Type="Self.News" Multiplicity="1" />
+    <End Role="Reacts" Type="Self.Reacts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="News">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reacts">
+        <PropertyRef Name="news_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reacts_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Reacts" Type="Self.Reacts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reacts">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NewsPortalModelStoreContainer">
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="News_category" EntityType="Self.News_category" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Subscriber" EntityType="Self.Subscriber" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Backup_User" Association="Self.FK_Backup_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="Backup" EntitySet="Backup" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Comment_News" Association="Self.FK_Comment_News">
+    <EntitySet Name="Reacts" EntityType="Self.Reacts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comments" EntityType="Self.Comments" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[Comments].[id] AS [id], 
+[Comments].[news_id] AS [news_id], 
+[Comments].[comment] AS [comment], 
+[Comments].[user_id] AS [user_id]
+FROM [dbo].[Comments] AS [Comments]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Comments_News" Association="Self.FK_Comments_News">
       <End Role="News" EntitySet="News" />
-      <End Role="Comment" EntitySet="Comment" />
+      <End Role="Comments" EntitySet="Comments" />
     </AssociationSet>
-    <AssociationSet Name="FK_Comment_Subscriber" Association="Self.FK_Comment_Subscriber">
-      <End Role="Subscriber" EntitySet="Subscriber" />
-      <End Role="Comment" EntitySet="Comment" />
+    <AssociationSet Name="FK_Comments_Users" Association="Self.FK_Comments_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Comments" EntitySet="Comments" />
     </AssociationSet>
-    <AssociationSet Name="FK_Comment_User" Association="Self.FK_Comment_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="Comment" EntitySet="Comment" />
-    </AssociationSet>
-    <AssociationSet Name="FK_News_Author" Association="Self.FK_News_Author">
-      <End Role="Author" EntitySet="Author" />
+    <AssociationSet Name="FK_News_Categories" Association="Self.FK_News_Categories">
+      <End Role="Categories" EntitySet="Categories" />
       <End Role="News" EntitySet="News" />
     </AssociationSet>
-    <AssociationSet Name="FK_News_News_category" Association="Self.FK_News_News_category">
-      <End Role="News_category" EntitySet="News_category" />
+    <AssociationSet Name="FK_News_Users" Association="Self.FK_News_Users">
+      <End Role="Users" EntitySet="Users" />
       <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reacts_News" Association="Self.FK_Reacts_News">
+      <End Role="News" EntitySet="News" />
+      <End Role="Reacts" EntitySet="Reacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reacts_Users" Association="Self.FK_Reacts_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Reacts" EntitySet="Reacts" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

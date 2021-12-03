@@ -9,11 +9,11 @@ namespace DAL
 {
     public class DataAccessFactory
     {
-        static NewsPortalDbEntities db;
+        static NewsPortalEntities db;
 
         static DataAccessFactory()
         {
-            db = new NewsPortalDbEntities();
+            db = new NewsPortalEntities();
         }
 
         public static IRepository<News, int> NewsDataAccess()
@@ -21,14 +21,14 @@ namespace DAL
             return new NewsRepository(db);
         }
 
-        public static IRepository<News_category, int> NewsCategoryDataAccess()
+        public static IRepository<Category, int> NewsCategoryDataAccess()
         {
             return new NewsCategoryRepository(db);
         }
 
-        public static IRepository<Subscriber, int> SubscriberDataAccess()
+        public static IRepository<React, int> ReactDataAccess()
         {
-            return new SubscriberRepository(db);
+            return new ReactRepository(db);
         }
 
         public static IRepository<User, int> UserDataAccess()

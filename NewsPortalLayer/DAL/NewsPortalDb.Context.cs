@@ -13,10 +13,10 @@ namespace DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class NewsPortalDbEntities : DbContext
+    public partial class NewsPortalEntities : DbContext
     {
-        public NewsPortalDbEntities()
-            : base("name=NewsPortalDbEntities")
+        public NewsPortalEntities()
+            : base("name=NewsPortalEntities")
         {
         }
     
@@ -25,12 +25,10 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Author> Authors { get; set; }
-        public DbSet<Backup> Backups { get; set; }
-        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<News> News { get; set; }
-        public DbSet<News_category> News_category { get; set; }
-        public DbSet<Subscriber> Subscribers { get; set; }
+        public DbSet<React> Reacts { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }

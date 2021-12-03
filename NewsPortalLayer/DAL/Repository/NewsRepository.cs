@@ -9,9 +9,9 @@ namespace DAL
 {
     public class NewsRepository : IRepository<News, int>
     {
-        NewsPortalDbEntities db;
+        NewsPortalEntities db;
 
-        public NewsRepository(NewsPortalDbEntities db)
+        public NewsRepository(NewsPortalEntities db)
         {
             this.db = db;
         }
@@ -48,17 +48,17 @@ namespace DAL
 
         public List<News> GetByDate(DateTime dateTime)
         {
-            var e = (from news in db.News where news.date_posted == dateTime select news).ToList();
+            var e = (from news in db.News where news.post_date == dateTime select news).ToList();
             return e;
         }
-        public List<News> GetByCategory(string category)
+        public List<News> GetByCategory(int id)
         {
-            var e = (from news in db.News where news.news_title == category select news).ToList();
+            var e = (from news in db.News where news.category_id == id select news).ToList();
             return e;
         }
         public List<News> GetByDateCategory(DateTime dateTime, string category)
         {
-            var e = (from news in db.News where news.date_posted == dateTime && news.news_title == category select news).ToList();
+            var e = (from news in db.News where news.post_date == dateTime && news.title == category select news).ToList();
             return e;
         }
     }

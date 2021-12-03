@@ -10,9 +10,7 @@ namespace BEL
     {
         public int id { get; set; }
         public int news_id { get; set; }
-        public int subscriber_id { get; set; }
-        public string date { get; set; }
-        public string status { get; set; }
+        public string comment1 { get; set; }
         public int user_id { get; set; }
     }
 }

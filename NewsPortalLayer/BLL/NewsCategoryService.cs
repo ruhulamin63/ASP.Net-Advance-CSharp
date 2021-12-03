@@ -25,7 +25,7 @@ namespace BLL
         {
             var config = new MapperConfiguration(c =>
             {
-                c.CreateMap<News_category, NewsCategoryModel>();
+                c.CreateMap<Category, NewsCategoryModel>();
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<List<NewsCategoryModel>>(DataAccessFactory.NewsCategoryDataAccess().Get());
@@ -36,7 +36,7 @@ namespace BLL
         {
             var config = new MapperConfiguration(c =>
             {
-                c.CreateMap<News_category, NewsCategoryModel>();
+                c.CreateMap<Category, NewsCategoryModel>();
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<NewsCategoryModel>(DataAccessFactory.NewsCategoryDataAccess().Get(id));
@@ -47,10 +47,10 @@ namespace BLL
         {
             var config = new MapperConfiguration(c =>
             {
-                c.CreateMap<NewsCategoryModel, News_category>();
+                c.CreateMap<NewsCategoryModel, Category>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<News_category>(n);
+            var data = mapper.Map<Category>(n);
             return DataAccessFactory.NewsCategoryDataAccess().Add(data);
         }
 
@@ -58,10 +58,10 @@ namespace BLL
         {
             var config = new MapperConfiguration(c =>
             {
-                c.CreateMap<NewsCategoryModel, News_category>();
+                c.CreateMap<NewsCategoryModel, Category>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<News_category>(n);
+            var data = mapper.Map<Category>(n);
             return DataAccessFactory.NewsCategoryDataAccess().Edit(data);
         }
         public static bool Delete(int id)
@@ -69,15 +69,15 @@ namespace BLL
             return DataAccessFactory.NewsCategoryDataAccess().Delete(id);
         }
 
-        public static List<string> GetNames()
+       /* public static List<string> GetNames()
         {
-            /*var data = (from e in NewsCategoryRepository.GetAll()
+            *//*var data = (from e in NewsCategoryRepository.GetAll()
                         select e.name).ToList();
-            var data = NewsCategoryRepository.GetAll().Select(e => e.name).ToList();*/
+            var data = NewsCategoryRepository.GetAll().Select(e => e.name).ToList();*//*
 
             var data = DataAccessFactory.NewsCategoryDataAccess().Get().Select(e => e.name).ToList();
 
             return data;
-        }
+        }*/
     }
 }

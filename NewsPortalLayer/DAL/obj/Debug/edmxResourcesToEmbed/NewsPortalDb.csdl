@@ -1,154 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="NewsPortalDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Author">
+<Schema Namespace="NewsPortalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="News" Relationship="Self.FK_News_Author" FromRole="Author" ToRole="News" />
-  </EntityType>
-  <EntityType Name="Backup">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="user_id" Type="Int32" Nullable="false" />
-    <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="backup_file" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="User" Relationship="Self.FK_Backup_User" FromRole="Backup" ToRole="User" />
-  </EntityType>
-  <EntityType Name="Comment">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="news_id" Type="Int32" Nullable="false" />
-    <Property Name="subscriber_id" Type="Int32" Nullable="false" />
-    <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="user_id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="News" Relationship="Self.FK_Comment_News" FromRole="Comment" ToRole="News" />
-    <NavigationProperty Name="Subscriber" Relationship="Self.FK_Comment_Subscriber" FromRole="Comment" ToRole="Subscriber" />
-    <NavigationProperty Name="User" Relationship="Self.FK_Comment_User" FromRole="Comment" ToRole="User" />
+    <Property Name="category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="News" Relationship="Self.FK_News_Categories" FromRole="Categories" ToRole="News" />
   </EntityType>
   <EntityType Name="News">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="post_date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="category_id" Type="Int32" Nullable="false" />
-    <Property Name="news_title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="date_posted" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="date_updated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="comment_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="author_id" Type="Int32" Nullable="false" />
-    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Author" Relationship="Self.FK_News_Author" FromRole="News" ToRole="Author" />
-    <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_News" FromRole="News" ToRole="Comment" />
-    <NavigationProperty Name="News_category" Relationship="Self.FK_News_News_category" FromRole="News" ToRole="News_category" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_News_Categories" FromRole="News" ToRole="Categories" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_News" FromRole="News" ToRole="Comments" />
+    <NavigationProperty Name="User" Relationship="Self.FK_News_Users" FromRole="News" ToRole="Users" />
+    <NavigationProperty Name="Reacts" Relationship="Self.FK_Reacts_News" FromRole="News" ToRole="Reacts" />
   </EntityType>
-  <EntityType Name="News_category">
+  <EntityType Name="React">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="News" Relationship="Self.FK_News_News_category" FromRole="News_category" ToRole="News" />
-  </EntityType>
-  <EntityType Name="Subscriber">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="date_joined" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="date_approved" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Subscriber" FromRole="Subscriber" ToRole="Comment" />
+    <Property Name="news_id" Type="Int32" Nullable="false" />
+    <Property Name="reacts" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="News" Relationship="Self.FK_Reacts_News" FromRole="Reacts" ToRole="News" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Reacts_Users" FromRole="Reacts" ToRole="Users" />
   </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Backups" Relationship="Self.FK_Backup_User" FromRole="User" ToRole="Backup" />
-    <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_User" FromRole="User" ToRole="Comment" />
+    <Property Name="user_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="News" Relationship="Self.FK_News_Users" FromRole="Users" ToRole="News" />
+    <NavigationProperty Name="Reacts" Relationship="Self.FK_Reacts_Users" FromRole="Users" ToRole="Reacts" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
   </EntityType>
-  <Association Name="FK_News_Author">
-    <End Role="Author" Type="Self.Author" Multiplicity="1" />
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="news_id" />
+      <PropertyRef Name="comment1" />
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="news_id" Type="Int32" Nullable="false" />
+    <Property Name="comment1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="News" Relationship="Self.FK_Comments_News" FromRole="Comments" ToRole="News" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Comments_Users" FromRole="Comments" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK_News_Categories">
+    <End Role="Categories" Type="Self.Category" Multiplicity="1" />
     <End Role="News" Type="Self.News" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Author">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="News">
-        <PropertyRef Name="author_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Backup_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Backup" Type="Self.Backup" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Backup">
-        <PropertyRef Name="user_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Comment_News">
-    <End Role="News" Type="Self.News" Multiplicity="1" />
-    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="News">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Comment">
-        <PropertyRef Name="news_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Comment_Subscriber">
-    <End Role="Subscriber" Type="Self.Subscriber" Multiplicity="1" />
-    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Subscriber">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Comment">
-        <PropertyRef Name="subscriber_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Comment_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Comment">
-        <PropertyRef Name="user_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_News_News_category">
-    <End Role="News_category" Type="Self.News_category" Multiplicity="1" />
-    <End Role="News" Type="Self.News" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="News_category">
+      <Principal Role="Categories">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="News">
@@ -156,37 +72,95 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="NewsPortalDbEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Authors" EntityType="Self.Author" />
-    <EntitySet Name="Backups" EntityType="Self.Backup" />
-    <EntitySet Name="Comments" EntityType="Self.Comment" />
+  <Association Name="FK_Comments_News">
+    <End Role="News" Type="Self.News" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="News">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="news_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_News_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="author_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reacts_News">
+    <End Role="News" Type="Self.News" Multiplicity="1" />
+    <End Role="Reacts" Type="Self.React" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="News">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reacts">
+        <PropertyRef Name="news_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reacts_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Reacts" Type="Self.React" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reacts">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NewsPortalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
     <EntitySet Name="News" EntityType="Self.News" />
-    <EntitySet Name="News_category" EntityType="Self.News_category" />
-    <EntitySet Name="Subscribers" EntityType="Self.Subscriber" />
+    <EntitySet Name="Reacts" EntityType="Self.React" />
     <EntitySet Name="Users" EntityType="Self.User" />
-    <AssociationSet Name="FK_News_Author" Association="Self.FK_News_Author">
-      <End Role="Author" EntitySet="Authors" />
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <AssociationSet Name="FK_News_Categories" Association="Self.FK_News_Categories">
+      <End Role="Categories" EntitySet="Categories" />
       <End Role="News" EntitySet="News" />
     </AssociationSet>
-    <AssociationSet Name="FK_Backup_User" Association="Self.FK_Backup_User">
-      <End Role="User" EntitySet="Users" />
-      <End Role="Backup" EntitySet="Backups" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Comment_News" Association="Self.FK_Comment_News">
+    <AssociationSet Name="FK_Comments_News" Association="Self.FK_Comments_News">
       <End Role="News" EntitySet="News" />
-      <End Role="Comment" EntitySet="Comments" />
+      <End Role="Comments" EntitySet="Comments" />
     </AssociationSet>
-    <AssociationSet Name="FK_Comment_Subscriber" Association="Self.FK_Comment_Subscriber">
-      <End Role="Subscriber" EntitySet="Subscribers" />
-      <End Role="Comment" EntitySet="Comments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Comment_User" Association="Self.FK_Comment_User">
-      <End Role="User" EntitySet="Users" />
-      <End Role="Comment" EntitySet="Comments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_News_News_category" Association="Self.FK_News_News_category">
-      <End Role="News_category" EntitySet="News_category" />
+    <AssociationSet Name="FK_News_Users" Association="Self.FK_News_Users">
+      <End Role="Users" EntitySet="Users" />
       <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reacts_News" Association="Self.FK_Reacts_News">
+      <End Role="News" EntitySet="News" />
+      <End Role="Reacts" EntitySet="Reacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reacts_Users" Association="Self.FK_Reacts_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Reacts" EntitySet="Reacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_Users" Association="Self.FK_Comments_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Comments" EntitySet="Comments" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

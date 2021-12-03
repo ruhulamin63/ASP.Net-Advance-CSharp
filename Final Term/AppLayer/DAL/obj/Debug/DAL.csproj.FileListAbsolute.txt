@@ -1,0 +1,20 @@
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\DAL\bin\Debug\DAL.dll.config
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\DAL\bin\Debug\DAL.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\DAL\bin\Debug\DAL.pdb
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\DAL\bin\Debug\EntityFramework.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\DAL\bin\Debug\EntityFramework.xml
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\DAL\obj\Debug\DAL.dll
+D:\Fall Semester\ASP.Net\ASP.Net-Advance-CSharp\AppLayer\DAL\obj\Debug\DAL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\DAL\bin\Debug\DAL.dll.config
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\DAL\bin\Debug\DAL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\DAL\bin\Debug\DAL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\DAL\bin\Debug\EntityFramework.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\DAL\bin\Debug\EntityFramework.xml
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\DAL\obj\Debug\DAL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\AppLayer\DAL\obj\Debug\DAL.pdb

@@ -16,13 +16,10 @@ namespace DAL
     {
         public int id { get; set; }
         public int news_id { get; set; }
-        public int subscriber_id { get; set; }
-        public string date { get; set; }
-        public string status { get; set; }
+        public string comment1 { get; set; }
         public int user_id { get; set; }
     
         public virtual News News { get; set; }
-        public virtual Subscriber Subscriber { get; set; }
         public virtual User User { get; set; }
     }
 }
