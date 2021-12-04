@@ -12,23 +12,23 @@ namespace DAL
         public UserRepo(BlogsEntities db) {
             this.db = db;
         }
-        public void Add(User e)
+        public bool Add(User e)
         {
             db.Users.Add(e);
-            db.SaveChanges();
+            return (db.SaveChanges() > 0);
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             db.Users.Remove(db.Users.FirstOrDefault(e => e.Id == id));
-            db.SaveChanges();
+            return (db.SaveChanges() > 0);
         }
 
-        public void Edit(User e)
+        public bool Edit(User e)
         {
             var u = db.Users.FirstOrDefault(en => en.Id == e.Id);
             db.Entry(u).CurrentValues.SetValues(e);
-            db.SaveChanges();
+            return (db.SaveChanges() > 0);
         }
 
         public List<User> Get()

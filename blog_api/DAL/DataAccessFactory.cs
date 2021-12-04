@@ -24,5 +24,9 @@ namespace DAL
         {
             return new TokenRepo(db);
         }
+        public static IAuth AuthDataAccess()
+        {
+            return new AuthRepo(db);
+        }
     }
 }
