@@ -1,0 +1,12 @@
+F:\Teaching\fall\DemoApp\BEL\bin\Debug\BEL.dll
+F:\Teaching\fall\DemoApp\BEL\bin\Debug\BEL.pdb
+F:\Teaching\fall\DemoApp\BEL\obj\Debug\BEL.csprojAssemblyReference.cache
+F:\Teaching\fall\DemoApp\BEL\obj\Debug\BEL.csproj.CoreCompileInputs.cache
+F:\Teaching\fall\DemoApp\BEL\obj\Debug\BEL.dll
+F:\Teaching\fall\DemoApp\BEL\obj\Debug\BEL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\blog_api\BEL\bin\Debug\BEL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\blog_api\BEL\bin\Debug\BEL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\blog_api\BEL\obj\Debug\BEL.csproj.AssemblyReference.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\blog_api\BEL\obj\Debug\BEL.csproj.CoreCompileInputs.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\blog_api\BEL\obj\Debug\BEL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\blog_api\BEL\obj\Debug\BEL.pdb
