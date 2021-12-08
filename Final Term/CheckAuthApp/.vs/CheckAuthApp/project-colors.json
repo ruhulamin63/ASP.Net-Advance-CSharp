@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "5cd1eb8c-3830-4f32-9ac2-ffe7539ad081": {
+      "ProjectGuid": "5cd1eb8c-3830-4f32-9ac2-ffe7539ad081",
+      "DisplayName": "CheckAuthApp",
+      "ColorIndex": 0
+    },
+    "0b50bcea-8981-43fc-8cd8-7266a09d1bd4": {
+      "ProjectGuid": "0b50bcea-8981-43fc-8cd8-7266a09d1bd4",
+      "DisplayName": "BLL",
+      "ColorIndex": 1
+    },
+    "155886d8-9be6-454d-959d-535c20232a7d": {
+      "ProjectGuid": "155886d8-9be6-454d-959d-535c20232a7d",
+      "DisplayName": "DAL",
+      "ColorIndex": 2
+    },
+    "fbc50b59-6b07-4048-bea5-382accba3044": {
+      "ProjectGuid": "fbc50b59-6b07-4048-bea5-382accba3044",
+      "DisplayName": "BEL",
+      "ColorIndex": 3
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 4
+}

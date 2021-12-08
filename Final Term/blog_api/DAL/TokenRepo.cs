@@ -12,23 +12,23 @@ namespace DAL
         public TokenRepo(BlogsEntities db) {
             this.db = db;
         }
-        public void Add(Token e)
+        public bool Add(Token e)
         {
             db.Tokens.Add(e);
-            db.SaveChanges();
+            return (db.SaveChanges() > 0);
         }
 
-        public void Delete(string token)
+        public bool Delete(string token)
         {
             db.Tokens.Remove(db.Tokens.FirstOrDefault(e => e.AccessToken.Equals(token)));
-            db.SaveChanges();
+            return (db.SaveChanges() > 0);
         }
 
-        public void Edit(Token e)
+        public bool Edit(Token e)
         {
             var token = db.Tokens.FirstOrDefault(en => en.AccessToken.Equals(e.AccessToken));
             db.Entry(token).CurrentValues.SetValues(e);
-            db.SaveChanges();
+            return (db.SaveChanges() > 0);
         }
 
         public List<Token> Get()
