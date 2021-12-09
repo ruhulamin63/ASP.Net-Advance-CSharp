@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "9826e7e6-41a4-489d-b38b-a8cd5598776a": {
+      "ProjectGuid": "9826e7e6-41a4-489d-b38b-a8cd5598776a",
+      "DisplayName": "ShebaApp",
+      "ColorIndex": 0
+    },
+    "8264d467-4b25-4b25-affa-f446ce618d85": {
+      "ProjectGuid": "8264d467-4b25-4b25-affa-f446ce618d85",
+      "DisplayName": "BEL",
+      "ColorIndex": 1
+    },
+    "0b115b13-02c9-450f-b4e3-bac48a74f847": {
+      "ProjectGuid": "0b115b13-02c9-450f-b4e3-bac48a74f847",
+      "DisplayName": "DAL",
+      "ColorIndex": 2
+    },
+    "1ecbde17-d8be-4a31-bc2c-f86f205d6fef": {
+      "ProjectGuid": "1ecbde17-d8be-4a31-bc2c-f86f205d6fef",
+      "DisplayName": "BLL",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

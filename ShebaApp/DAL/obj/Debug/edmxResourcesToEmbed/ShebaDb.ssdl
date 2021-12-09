@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShebaDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bonus">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="min_service_done" Type="int" Nullable="false" />
+    <Property Name="bonus_amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Booking_Details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="booking_id" Type="int" Nullable="false" />
+    <Property Name="service_id" Type="int" Nullable="false" />
+    <Property Name="unit_price" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="discount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Booking_Service">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="booking_id" Type="int" Nullable="false" />
+    <Property Name="serviceprovider_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bookings">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="int" Nullable="false" />
+    <Property Name="total_cost" Type="int" />
+    <Property Name="order_date" Type="datetime" />
+    <Property Name="status" Type="varchar" MaxLength="120" />
+  </EntityType>
+  <EntityType Name="Coupons">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="120" />
+    <Property Name="amount" Type="int" />
+    <Property Name="min_order_amount" Type="int" />
+    <Property Name="max_use_number" Type="int" />
+  </EntityType>
+  <EntityType Name="Customer_Coupon">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="int" Nullable="false" />
+    <Property Name="coupon_id" Type="int" Nullable="false" />
+    <Property Name="used_count" Type="int" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="120" />
+    <Property Name="phone" Type="varchar" MaxLength="120" />
+  </EntityType>
+  <EntityType Name="Discounts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="service_id" Type="int" Nullable="false" />
+    <Property Name="discount_percent" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Login_Time">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="login_time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProfilePictures">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="image" Type="varchar" MaxLength="120" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="int" Nullable="false" />
+    <Property Name="serviceprovider_id" Type="int" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="120" />
+    <Property Name="rating" Type="varchar" MaxLength="120" />
+  </EntityType>
+  <EntityType Name="Salaries">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="salary_amount" Type="int" Nullable="false" />
+    <Property Name="message" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceProvider_Bonus">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="service_provider_id" Type="int" Nullable="false" />
+    <Property Name="bonus_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceProviders">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="120" />
+    <Property Name="work_status" Type="varchar" MaxLength="120" />
+    <Property Name="rating" Type="varchar" MaxLength="120" />
+    <Property Name="services_done" Type="varchar" MaxLength="120" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="120" />
+    <Property Name="category" Type="varchar" MaxLength="120" />
+    <Property Name="description" Type="varchar" MaxLength="120" />
+  </EntityType>
+  <EntityType Name="Tokens">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="access_token" Type="varchar" MaxLength="120" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="ExpiredAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fullname" Type="varchar" MaxLength="120" />
+    <Property Name="email" Type="varchar" MaxLength="120" />
+    <Property Name="password" Type="varchar" MaxLength="120" />
+    <Property Name="usertype" Type="varchar" MaxLength="120" />
+    <Property Name="verification_status" Type="varchar" MaxLength="120" />
+    <Property Name="id_status" Type="varchar" MaxLength="120" />
+  </EntityType>
+  <Association Name="FK_Booking_Detail_Bookings">
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />
+    <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookings">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Booking_Details">
+        <PropertyRef Name="booking_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Detail_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Booking_Details">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Service_Bookings">
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />
+    <End Role="Booking_Service" Type="Self.Booking_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookings">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Booking_Service">
+        <PropertyRef Name="booking_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Service_ServiceProviders">
+    <End Role="ServiceProviders" Type="Self.ServiceProviders" Multiplicity="1" />
+    <End Role="Booking_Service" Type="Self.Booking_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProviders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Booking_Service">
+        <PropertyRef Name="serviceprovider_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bookings_Users">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_Coupon_Coupons">
+    <End Role="Coupons" Type="Self.Coupons" Multiplicity="1" />
+    <End Role="Customer_Coupon" Type="Self.Customer_Coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupons">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Customer_Coupon">
+        <PropertyRef Name="coupon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_Coupon_Users">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+    <End Role="Customer_Coupon" Type="Self.Customer_Coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Customer_Coupon">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUstomers_Reviews">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+    <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customers_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Discounts_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="Discounts" Type="Self.Discounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Discounts">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Login_Time_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Login_Time" Type="Self.Login_Time" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Login_Time">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilePictures_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="ProfilePictures" Type="Self.ProfilePictures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProfilePictures">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_ServiceProviders">
+    <End Role="ServiceProviders" Type="Self.ServiceProviders" Multiplicity="1" />
+    <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProviders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="serviceprovider_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Salaries_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Salaries" Type="Self.Salaries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Salaries">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProvider_Bonus_Bonus">
+    <End Role="Bonus" Type="Self.Bonus" Multiplicity="1" />
+    <End Role="ServiceProvider_Bonus" Type="Self.ServiceProvider_Bonus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bonus">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ServiceProvider_Bonus">
+        <PropertyRef Name="bonus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProvider_Bonus_ServiceProviders">
+    <End Role="ServiceProviders" Type="Self.ServiceProviders" Multiplicity="1" />
+    <End Role="ServiceProvider_Bonus" Type="Self.ServiceProvider_Bonus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProviders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ServiceProvider_Bonus">
+        <PropertyRef Name="service_provider_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProviders_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="ServiceProviders" Type="Self.ServiceProviders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ServiceProviders">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Tokens">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Tokens" Type="Self.Tokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Tokens">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShebaDbModelStoreContainer">
+    <EntitySet Name="Bonus" EntityType="Self.Bonus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Booking_Details" EntityType="Self.Booking_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Booking_Service" EntityType="Self.Booking_Service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Coupons" EntityType="Self.Coupons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer_Coupon" EntityType="Self.Customer_Coupon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Discounts" EntityType="Self.Discounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login_Time" EntityType="Self.Login_Time" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProfilePictures" EntityType="Self.ProfilePictures" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Salaries" EntityType="Self.Salaries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceProvider_Bonus" EntityType="Self.ServiceProvider_Bonus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceProviders" EntityType="Self.ServiceProviders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tokens" EntityType="Self.Tokens" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Booking_Detail_Bookings" Association="Self.FK_Booking_Detail_Bookings">
+      <End Role="Bookings" EntitySet="Bookings" />
+      <End Role="Booking_Details" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Detail_Services" Association="Self.FK_Booking_Detail_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Booking_Details" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Service_Bookings" Association="Self.FK_Booking_Service_Bookings">
+      <End Role="Bookings" EntitySet="Bookings" />
+      <End Role="Booking_Service" EntitySet="Booking_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Service_ServiceProviders" Association="Self.FK_Booking_Service_ServiceProviders">
+      <End Role="ServiceProviders" EntitySet="ServiceProviders" />
+      <End Role="Booking_Service" EntitySet="Booking_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bookings_Users" Association="Self.FK_Bookings_Users">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_Coupon_Coupons" Association="Self.FK_Customer_Coupon_Coupons">
+      <End Role="Coupons" EntitySet="Coupons" />
+      <End Role="Customer_Coupon" EntitySet="Customer_Coupon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_Coupon_Users" Association="Self.FK_Customer_Coupon_Users">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Customer_Coupon" EntitySet="Customer_Coupon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUstomers_Reviews" Association="Self.FK_CUstomers_Reviews">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customers_Users" Association="Self.FK_Customers_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Discounts_Services" Association="Self.FK_Discounts_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Discounts" EntitySet="Discounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Login_Time_Users" Association="Self.FK_Login_Time_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Login_Time" EntitySet="Login_Time" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilePictures_Users" Association="Self.FK_ProfilePictures_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ProfilePictures" EntitySet="ProfilePictures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_ServiceProviders" Association="Self.FK_Reviews_ServiceProviders">
+      <End Role="ServiceProviders" EntitySet="ServiceProviders" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Salaries_Users" Association="Self.FK_Salaries_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Salaries" EntitySet="Salaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProvider_Bonus_Bonus" Association="Self.FK_ServiceProvider_Bonus_Bonus">
+      <End Role="Bonus" EntitySet="Bonus" />
+      <End Role="ServiceProvider_Bonus" EntitySet="ServiceProvider_Bonus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProvider_Bonus_ServiceProviders" Association="Self.FK_ServiceProvider_Bonus_ServiceProviders">
+      <End Role="ServiceProviders" EntitySet="ServiceProviders" />
+      <End Role="ServiceProvider_Bonus" EntitySet="ServiceProvider_Bonus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProviders_Users" Association="Self.FK_ServiceProviders_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ServiceProviders" EntitySet="ServiceProviders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Tokens" Association="Self.FK_Users_Tokens">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Tokens" EntitySet="Tokens" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
