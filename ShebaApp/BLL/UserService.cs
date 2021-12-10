@@ -15,7 +15,7 @@ namespace BLL
         {
             var config = new MapperConfiguration(c =>
             {
-                c.CreateMap<User, UserModel>();
+                c.CreateMap<User, UserModel>().ReverseMap();
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<List<UserModel>>(DataAccessFactory.UserDataAccess().Get());

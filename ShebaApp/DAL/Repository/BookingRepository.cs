@@ -44,5 +44,23 @@ namespace DAL.Repository
         {
             return db.Bookings.FirstOrDefault(e => e.id == id);
         }
+
+        public List<Booking> GetByCustomerId(int id)
+        {
+            var e = (from books in db.Bookings where books.customer_id == id select books).ToList();
+            return e;
+        }
+
+        public List<Booking> GetByOrderDate(DateTime order_date)
+        {
+            var e = (from books in db.Bookings where books.order_date == order_date select books).ToList();
+            return e;
+        }
+
+        public List<Booking> GetByOrderDateCustomerId(DateTime order_date, int c_id)
+        {
+            var e = (from books in db.Bookings where books.order_date == order_date && books.customer_id == c_id select books).ToList();
+            return e;
+        }
     }
 }

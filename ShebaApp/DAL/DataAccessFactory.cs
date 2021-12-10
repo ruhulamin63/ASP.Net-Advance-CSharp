@@ -24,5 +24,9 @@ namespace DAL
         {
             return new BookingRepository(db);
         }
+        public static IRepository<Booking_Service, int> BookingServiceDataAccess()
+        {
+            return new BookingServiceRepository(db);
+        }
     }
 }

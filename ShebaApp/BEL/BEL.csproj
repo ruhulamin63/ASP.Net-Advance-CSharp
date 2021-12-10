@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookingModel.cs" />
+    <Compile Include="BookingServiceModel.cs" />
     <Compile Include="CustomerModel.cs" />
     <Compile Include="UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,3 +10,9 @@ D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\BEL\obj\Debug\BE
 D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\BEL\obj\Debug\BEL.csproj.CoreCompileInputs.cache
 D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\BEL\obj\Debug\BEL.dll
 D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\NewsPortalLayer\BEL\obj\Debug\BEL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\NewsPortalLayer\BEL\bin\Debug\BEL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\NewsPortalLayer\BEL\bin\Debug\BEL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\NewsPortalLayer\BEL\obj\Debug\BEL.csproj.AssemblyReference.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\NewsPortalLayer\BEL\obj\Debug\BEL.csproj.CoreCompileInputs.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\NewsPortalLayer\BEL\obj\Debug\BEL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\NewsPortalLayer\BEL\obj\Debug\BEL.pdb

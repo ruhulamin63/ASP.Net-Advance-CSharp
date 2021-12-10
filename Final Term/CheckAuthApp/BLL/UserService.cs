@@ -32,7 +32,7 @@ namespace BLL
 
             var config = new MapperConfiguration(c =>
             {
-                c.CreateMap<User, UserModel>();
+                c.CreateMap<User, UserModel>().ReverseMap();
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<List<UserModel>>(DataAccessFactory.UserDataAccess().Get());
@@ -50,7 +50,7 @@ namespace BLL
                 c.CreateMap<User, UserModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<UserModel>(DataAccessFactory.BlogsDataAccess().Get(id));
+            var data = mapper.Map<UserModel>(DataAccessFactory.UserDataAccess().Get(id));
 
             return data;
         }

@@ -18,8 +18,8 @@ namespace DAL
 
         bool Delete(ID id);
 
-       /* List<News> GetByDate(DateTime dateTime);
-        List<News> GetByCategory(int id);
-        List<News> GetByDateCategory(DateTime dateTime, string category);*/
+        List<Booking> GetByOrderDate(DateTime order_date);
+        List<Booking> GetByCustomerId(int id);
+        List<Booking> GetByOrderDateCustomerId(DateTime order_date, int id);
     }
 }

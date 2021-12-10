@@ -43,5 +43,41 @@ namespace ShebaApp.Controllers
             BookingService.Delete(id);
             return Request.CreateResponse(HttpStatusCode.OK, "Delete Succesfully");
         }
+
+        [Route("api/get/odate/{date}")]
+        [HttpGet]
+        public HttpResponseMessage GetByOrderDate([FromUri] DateTime order_date)
+        {
+            var data = BookingService.GetByOrderDate(order_date);
+            if (data != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            return Request.CreateResponse(HttpStatusCode.BadRequest, "Not found");
+        }
+
+        [Route("api/get/cid/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetByCustomerId(int id)
+        {
+            var data = BookingService.GetByCustomerId(id);
+            if (data != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            return Request.CreateResponse(HttpStatusCode.BadRequest, "Not found");
+        }
+
+        [Route("api/get/odate/cid/{date}")]
+        [HttpGet]
+        public HttpResponseMessage GetByOrderDateCustomerId([FromUri] DateTime order_date, [FromUri] int c_id)
+        {
+            var data = BookingService.GetByOrderDateCustomerId(order_date, c_id);
+            if (data != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            return Request.CreateResponse(HttpStatusCode.BadRequest, "Not found");
+        }
     }
 }

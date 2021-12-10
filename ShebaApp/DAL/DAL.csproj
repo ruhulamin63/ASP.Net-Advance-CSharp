@@ -62,6 +62,7 @@
     </Compile>
     <Compile Include="DataAccessFactory.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Repository\BookingServiceRepository.cs" />
     <Compile Include="Repository\BookingRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="UserRepo.cs" />

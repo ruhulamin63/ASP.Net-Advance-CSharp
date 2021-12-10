@@ -13,14 +13,17 @@ namespace NewsPortalLayer.Controllers
     {
         [Route("api/get/news/all")]
         [HttpGet]
-        public IHttpActionResult GetAll()
+        public HttpResponseMessage GetAll()
         {
             var data = NewsService.GetAll();
             if (data != null)
             {
-                return Ok(data);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
             }
-            return BadRequest();
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "News not found");
+            }
         }
 
         [Route("api/get/news/{id}")]
@@ -68,7 +71,7 @@ namespace NewsPortalLayer.Controllers
             return BadRequest();
         }
         
-        [Route("api/get/news/bydate")]
+        [Route("api/get/news/bydate/{datetime}")]
         [HttpGet]
         public IHttpActionResult Get([FromUri] DateTime dateTime)
         {
@@ -80,9 +83,9 @@ namespace NewsPortalLayer.Controllers
             return BadRequest();
         }
 
-        [Route("api/get/news/bycategory")]
+        [Route("api/get/news/bycategory/{id}")]
         [HttpGet]
-        public IHttpActionResult GetCategory([FromUri] int id)
+        public IHttpActionResult GetCategory(int id)
         {
             var data = NewsService.GetByCategory(id);
             if (data != null)
@@ -92,7 +95,7 @@ namespace NewsPortalLayer.Controllers
             return BadRequest();
         }
 
-        [Route("api/get/news/bydate/category")]
+        [Route("api/get/news/bydate/category/{category}")]
         [HttpGet]
         public IHttpActionResult GetDateCategory([FromUri] DateTime dateTime, [FromUri] string category)
         {

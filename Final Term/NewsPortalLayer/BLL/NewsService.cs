@@ -88,7 +88,7 @@ namespace BLL
         {
             var config = new MapperConfiguration(c =>
             {
-                c.CreateMap<News, NewsModel>();
+                c.CreateMap<News, NewsModel>().ReverseMap();
                 c.CreateMap<Comment, CommentModel>();
                 c.CreateMap<React, ReactModel>();
             });

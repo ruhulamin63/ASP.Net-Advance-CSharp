@@ -6,43 +6,43 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    public class UserRepository : IRepository<User, int>
+    public class BookingServiceRepository : IRepository<Booking_Service, int>
     {
         ShebaDbEntities db;
 
-        public UserRepository(ShebaDbEntities db)
+        public BookingServiceRepository(ShebaDbEntities db)
         {
             this.db = db;
         }
 
-        public bool Add(User e)
+        public bool Add(Booking_Service e)
         {
-            db.Users.Add(e);
+            db.Booking_Service.Add(e);
             return (db.SaveChanges() > 0);
         }
 
         public bool Delete(int id)
         {
-            var e = db.Users.FirstOrDefault(en => en.id == id);
-            db.Users.Remove(e);
+            var e = db.Booking_Service.FirstOrDefault(en => en.id == id);
+            db.Booking_Service.Remove(e);
             return (db.SaveChanges() > 0);
         }
 
-        public bool Edit(User e)
+        public bool Edit(Booking_Service e)
         {
-            var p = db.Users.FirstOrDefault(en => en.id == e.id);
+            var p = db.Booking_Service.FirstOrDefault(en => en.id == e.id);
             db.Entry(p).CurrentValues.SetValues(e);
             return (db.SaveChanges() > 0);
         }
 
-        public List<User> Get()
+        public List<Booking_Service> Get()
         {
-            return db.Users.ToList();
+            return db.Booking_Service.ToList();
         }
 
-        public User Get(int id)
+        public Booking_Service Get(int id)
         {
-            return db.Users.FirstOrDefault(e => e.id == id);
+            return db.Booking_Service.FirstOrDefault(e => e.id == id);
         }
 
         public List<Booking> GetByCustomerId(int id)
