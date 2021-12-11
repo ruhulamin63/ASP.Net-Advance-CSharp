@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "fe9f0076-ca4c-4fad-90bb-7b052f35ea41": {
+      "ProjectGuid": "fe9f0076-ca4c-4fad-90bb-7b052f35ea41",
+      "DisplayName": "E-Commerce",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

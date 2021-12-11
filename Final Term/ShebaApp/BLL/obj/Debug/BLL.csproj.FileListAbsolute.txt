@@ -1,0 +1,32 @@
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\bin\Debug\BLL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\bin\Debug\BLL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\bin\Debug\AutoMapper.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\bin\Debug\BEL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\bin\Debug\DAL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\bin\Debug\EntityFramework.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\bin\Debug\BEL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\bin\Debug\DAL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\bin\Debug\DAL.dll.config
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\bin\Debug\AutoMapper.xml
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\bin\Debug\EntityFramework.xml
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\obj\Debug\BLL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\ShebaApp\BLL\obj\Debug\BLL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\obj\Debug\BLL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\obj\Debug\BLL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\bin\Debug\BLL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\bin\Debug\BLL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\bin\Debug\AutoMapper.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\bin\Debug\BEL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\bin\Debug\DAL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\bin\Debug\EntityFramework.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\bin\Debug\BEL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\bin\Debug\DAL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\bin\Debug\DAL.dll.config
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\bin\Debug\AutoMapper.xml
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\bin\Debug\EntityFramework.xml
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BLL\obj\Debug\BLL.csproj.CopyComplete
