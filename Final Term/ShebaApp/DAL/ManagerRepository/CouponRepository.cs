@@ -1,5 +1,4 @@
-﻿using DAL.Interface_Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.ManagerRepository
 {
-    public class CouponRepository : CouponInterface<Coupon, int>
+    public class CouponRepository : ManagerRepository<Coupon, int>
     {
         ShebaDbEntities db;
 
@@ -16,24 +15,24 @@ namespace DAL.ManagerRepository
             this.db = db;
         }
 
-        public bool Add(Coupon e)
+        public void Add(Coupon e)
         {
             db.Coupons.Add(e);
-            return (db.SaveChanges() > 0);
+            db.SaveChanges();
         }
 
-        public bool Delete(int id)
+        public void Delete(int id)
         {
             var e = db.Coupons.FirstOrDefault(en => en.id == id);
             db.Coupons.Remove(e);
-            return (db.SaveChanges() > 0);
+            db.SaveChanges();
         }
 
-        public bool Edit(Coupon e)
+        public void Edit(Coupon e)
         {
             var p = db.Coupons.FirstOrDefault(en => en.id == e.id);
             db.Entry(p).CurrentValues.SetValues(e);
-            return (db.SaveChanges() > 0);
+            db.SaveChanges();
         }
 
         public List<Coupon> Get()
@@ -44,6 +43,21 @@ namespace DAL.ManagerRepository
         public Coupon Get(int id)
         {
             return db.Coupons.FirstOrDefault(e => e.id == id);
+        }
+
+        public List<Booking> GetByCustomerId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Booking> GetByOrderDate(DateTime order_date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Booking> GetByOrderDateCustomerId(DateTime order_date, int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

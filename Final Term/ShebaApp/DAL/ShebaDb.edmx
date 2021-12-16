@@ -12,6 +12,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="min_service_done" Type="int" Nullable="false" />
           <Property Name="bonus_amount" Type="int" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
         </EntityType>
         <EntityType Name="Booking_Details">
           <Key>
@@ -23,6 +25,8 @@
           <Property Name="unit_price" Type="int" Nullable="false" />
           <Property Name="quantity" Type="int" Nullable="false" />
           <Property Name="discount" Type="int" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
         </EntityType>
         <EntityType Name="Booking_Service">
           <Key>
@@ -41,6 +45,9 @@
           <Property Name="total_cost" Type="int" />
           <Property Name="order_date" Type="datetime" />
           <Property Name="status" Type="varchar" MaxLength="120" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="payment_status" Type="varchar" MaxLength="120" />
         </EntityType>
         <EntityType Name="Coupons">
           <Key>
@@ -51,6 +58,8 @@
           <Property Name="amount" Type="int" />
           <Property Name="min_order_amount" Type="int" />
           <Property Name="max_use_number" Type="int" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
         </EntityType>
         <EntityType Name="Customer_Coupon">
           <Key>
@@ -60,6 +69,8 @@
           <Property Name="customer_id" Type="int" Nullable="false" />
           <Property Name="coupon_id" Type="int" Nullable="false" />
           <Property Name="used_count" Type="int" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
@@ -69,6 +80,8 @@
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="address" Type="varchar" MaxLength="120" />
           <Property Name="phone" Type="varchar" MaxLength="120" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
         </EntityType>
         <EntityType Name="Discounts">
           <Key>
@@ -77,6 +90,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="service_id" Type="int" Nullable="false" />
           <Property Name="discount_percent" Type="int" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
         </EntityType>
         <EntityType Name="Login_Time">
           <Key>
@@ -93,6 +108,8 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="image" Type="varchar" MaxLength="120" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
         </EntityType>
         <EntityType Name="Reviews">
           <Key>
@@ -102,7 +119,9 @@
           <Property Name="customer_id" Type="int" Nullable="false" />
           <Property Name="serviceprovider_id" Type="int" Nullable="false" />
           <Property Name="description" Type="varchar" MaxLength="120" />
-          <Property Name="rating" Type="varchar" MaxLength="120" />
+          <Property Name="rating" Type="int" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
         </EntityType>
         <EntityType Name="Salaries">
           <Key>
@@ -112,6 +131,8 @@
           <Property Name="salary_amount" Type="int" Nullable="false" />
           <Property Name="message" Type="varchar" MaxLength="120" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
         </EntityType>
         <EntityType Name="ServiceProvider_Bonus">
           <Key>
@@ -129,8 +150,11 @@
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="phone" Type="varchar" MaxLength="120" />
           <Property Name="work_status" Type="varchar" MaxLength="120" />
-          <Property Name="rating" Type="varchar" MaxLength="120" />
-          <Property Name="services_done" Type="varchar" MaxLength="120" />
+          <Property Name="rating" Type="int" />
+          <Property Name="rating_count" Type="int" />
+          <Property Name="services_done" Type="int" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -139,7 +163,10 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="120" />
           <Property Name="category" Type="varchar" MaxLength="120" />
+          <Property Name="unit_price" Type="int" />
           <Property Name="description" Type="varchar" MaxLength="120" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
         </EntityType>
         <EntityType Name="Tokens">
           <Key>
@@ -162,6 +189,8 @@
           <Property Name="usertype" Type="varchar" MaxLength="120" />
           <Property Name="verification_status" Type="varchar" MaxLength="120" />
           <Property Name="id_status" Type="varchar" MaxLength="120" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
         </EntityType>
         <Association Name="FK_Booking_Detail_Bookings">
           <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />
@@ -482,6 +511,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="min_service_done" Type="Int32" Nullable="false" />
           <Property Name="bonus_amount" Type="Int32" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ServiceProvider_Bonus" Relationship="Self.FK_ServiceProvider_Bonus_Bonus" FromRole="Bonus" ToRole="ServiceProvider_Bonus" />
         </EntityType>
         <EntityType Name="Booking_Details">
@@ -494,6 +525,8 @@
           <Property Name="unit_price" Type="Int32" Nullable="false" />
           <Property Name="quantity" Type="Int32" Nullable="false" />
           <Property Name="discount" Type="Int32" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Booking" Relationship="Self.FK_Booking_Detail_Bookings" FromRole="Booking_Details" ToRole="Bookings" />
           <NavigationProperty Name="Service" Relationship="Self.FK_Booking_Detail_Services" FromRole="Booking_Details" ToRole="Services" />
         </EntityType>
@@ -516,6 +549,9 @@
           <Property Name="total_cost" Type="Int32" />
           <Property Name="order_date" Type="DateTime" Precision="3" />
           <Property Name="status" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="payment_status" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Booking_Details" Relationship="Self.FK_Booking_Detail_Bookings" FromRole="Bookings" ToRole="Booking_Details" />
           <NavigationProperty Name="Booking_Service" Relationship="Self.FK_Booking_Service_Bookings" FromRole="Bookings" ToRole="Booking_Service" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Bookings_Users" FromRole="Bookings" ToRole="Customers" />
@@ -529,6 +565,8 @@
           <Property Name="amount" Type="Int32" />
           <Property Name="min_order_amount" Type="Int32" />
           <Property Name="max_use_number" Type="Int32" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Customer_Coupon" Relationship="Self.FK_Customer_Coupon_Coupons" FromRole="Coupons" ToRole="Customer_Coupon" />
         </EntityType>
         <EntityType Name="Customer_Coupon">
@@ -539,6 +577,8 @@
           <Property Name="customer_id" Type="Int32" Nullable="false" />
           <Property Name="coupon_id" Type="Int32" Nullable="false" />
           <Property Name="used_count" Type="Int32" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Coupon" Relationship="Self.FK_Customer_Coupon_Coupons" FromRole="Customer_Coupon" ToRole="Coupons" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_Coupon_Users" FromRole="Customer_Coupon" ToRole="Customers" />
         </EntityType>
@@ -550,6 +590,8 @@
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="address" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
           <Property Name="phone" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Bookings" Relationship="Self.FK_Bookings_Users" FromRole="Customers" ToRole="Bookings" />
           <NavigationProperty Name="Customer_Coupon" Relationship="Self.FK_Customer_Coupon_Users" FromRole="Customers" ToRole="Customer_Coupon" />
           <NavigationProperty Name="Reviews" Relationship="Self.FK_CUstomers_Reviews" FromRole="Customers" ToRole="Reviews" />
@@ -562,6 +604,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="service_id" Type="Int32" Nullable="false" />
           <Property Name="discount_percent" Type="Int32" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Service" Relationship="Self.FK_Discounts_Services" FromRole="Discounts" ToRole="Services" />
         </EntityType>
         <EntityType Name="Login_Time">
@@ -580,6 +624,8 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="image" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="User" Relationship="Self.FK_ProfilePictures_Users" FromRole="ProfilePictures" ToRole="Users" />
         </EntityType>
         <EntityType Name="Review">
@@ -590,7 +636,9 @@
           <Property Name="customer_id" Type="Int32" Nullable="false" />
           <Property Name="serviceprovider_id" Type="Int32" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
-          <Property Name="rating" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="Int32" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_CUstomers_Reviews" FromRole="Reviews" ToRole="Customers" />
           <NavigationProperty Name="ServiceProvider" Relationship="Self.FK_Reviews_ServiceProviders" FromRole="Reviews" ToRole="ServiceProviders" />
         </EntityType>
@@ -602,6 +650,8 @@
           <Property Name="salary_amount" Type="Int32" Nullable="false" />
           <Property Name="message" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="User" Relationship="Self.FK_Salaries_Users" FromRole="Salaries" ToRole="Users" />
         </EntityType>
         <EntityType Name="ServiceProvider_Bonus">
@@ -622,8 +672,11 @@
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="phone" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
           <Property Name="work_status" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
-          <Property Name="rating" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
-          <Property Name="services_done" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="Int32" />
+          <Property Name="rating_count" Type="Int32" />
+          <Property Name="services_done" Type="Int32" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Booking_Service" Relationship="Self.FK_Booking_Service_ServiceProviders" FromRole="ServiceProviders" ToRole="Booking_Service" />
           <NavigationProperty Name="Reviews" Relationship="Self.FK_Reviews_ServiceProviders" FromRole="ServiceProviders" ToRole="Reviews" />
           <NavigationProperty Name="ServiceProvider_Bonus" Relationship="Self.FK_ServiceProvider_Bonus_ServiceProviders" FromRole="ServiceProviders" ToRole="ServiceProvider_Bonus" />
@@ -636,7 +689,10 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
           <Property Name="category" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="unit_price" Type="Int32" />
           <Property Name="description" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Booking_Details" Relationship="Self.FK_Booking_Detail_Services" FromRole="Services" ToRole="Booking_Details" />
           <NavigationProperty Name="Discounts" Relationship="Self.FK_Discounts_Services" FromRole="Services" ToRole="Discounts" />
         </EntityType>
@@ -662,6 +718,8 @@
           <Property Name="usertype" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
           <Property Name="verification_status" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
           <Property Name="id_status" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_Users" FromRole="Users" ToRole="Customers" />
           <NavigationProperty Name="Login_Time" Relationship="Self.FK_Login_Time_Users" FromRole="Users" ToRole="Login_Time" />
           <NavigationProperty Name="ProfilePictures" Relationship="Self.FK_ProfilePictures_Users" FromRole="Users" ToRole="ProfilePictures" />
@@ -988,6 +1046,8 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="min_service_done" ColumnName="min_service_done" />
                 <ScalarProperty Name="bonus_amount" ColumnName="bonus_amount" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1000,6 +1060,8 @@
                 <ScalarProperty Name="unit_price" ColumnName="unit_price" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1020,6 +1082,9 @@
                 <ScalarProperty Name="total_cost" ColumnName="total_cost" />
                 <ScalarProperty Name="order_date" ColumnName="order_date" />
                 <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="payment_status" ColumnName="payment_status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1031,6 +1096,8 @@
                 <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="min_order_amount" ColumnName="min_order_amount" />
                 <ScalarProperty Name="max_use_number" ColumnName="max_use_number" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1041,6 +1108,8 @@
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
                 <ScalarProperty Name="coupon_id" ColumnName="coupon_id" />
                 <ScalarProperty Name="used_count" ColumnName="used_count" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1051,6 +1120,8 @@
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1060,6 +1131,8 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="service_id" ColumnName="service_id" />
                 <ScalarProperty Name="discount_percent" ColumnName="discount_percent" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1078,6 +1151,8 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1089,6 +1164,8 @@
                 <ScalarProperty Name="serviceprovider_id" ColumnName="serviceprovider_id" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1099,6 +1176,8 @@
                 <ScalarProperty Name="salary_amount" ColumnName="salary_amount" />
                 <ScalarProperty Name="message" ColumnName="message" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1119,7 +1198,10 @@
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="work_status" ColumnName="work_status" />
                 <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="rating_count" ColumnName="rating_count" />
                 <ScalarProperty Name="services_done" ColumnName="services_done" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1129,7 +1211,10 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
                 <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1154,6 +1239,8 @@
                 <ScalarProperty Name="usertype" ColumnName="usertype" />
                 <ScalarProperty Name="verification_status" ColumnName="verification_status" />
                 <ScalarProperty Name="id_status" ColumnName="id_status" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

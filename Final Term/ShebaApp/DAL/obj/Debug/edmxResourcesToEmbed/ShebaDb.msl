@@ -7,6 +7,8 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="min_service_done" ColumnName="min_service_done" />
           <ScalarProperty Name="bonus_amount" ColumnName="bonus_amount" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -19,6 +21,8 @@
           <ScalarProperty Name="unit_price" ColumnName="unit_price" />
           <ScalarProperty Name="quantity" ColumnName="quantity" />
           <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -39,6 +43,9 @@
           <ScalarProperty Name="total_cost" ColumnName="total_cost" />
           <ScalarProperty Name="order_date" ColumnName="order_date" />
           <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="payment_status" ColumnName="payment_status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -50,6 +57,8 @@
           <ScalarProperty Name="amount" ColumnName="amount" />
           <ScalarProperty Name="min_order_amount" ColumnName="min_order_amount" />
           <ScalarProperty Name="max_use_number" ColumnName="max_use_number" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -60,6 +69,8 @@
           <ScalarProperty Name="customer_id" ColumnName="customer_id" />
           <ScalarProperty Name="coupon_id" ColumnName="coupon_id" />
           <ScalarProperty Name="used_count" ColumnName="used_count" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -70,6 +81,8 @@
           <ScalarProperty Name="user_id" ColumnName="user_id" />
           <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -79,6 +92,8 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="service_id" ColumnName="service_id" />
           <ScalarProperty Name="discount_percent" ColumnName="discount_percent" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -97,6 +112,8 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="user_id" ColumnName="user_id" />
           <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -108,6 +125,8 @@
           <ScalarProperty Name="serviceprovider_id" ColumnName="serviceprovider_id" />
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -118,6 +137,8 @@
           <ScalarProperty Name="salary_amount" ColumnName="salary_amount" />
           <ScalarProperty Name="message" ColumnName="message" />
           <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -138,7 +159,10 @@
           <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="work_status" ColumnName="work_status" />
           <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="rating_count" ColumnName="rating_count" />
           <ScalarProperty Name="services_done" ColumnName="services_done" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -148,7 +172,10 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
           <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -173,6 +200,8 @@
           <ScalarProperty Name="usertype" ColumnName="usertype" />
           <ScalarProperty Name="verification_status" ColumnName="verification_status" />
           <ScalarProperty Name="id_status" ColumnName="id_status" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -31,6 +31,8 @@ namespace DAL
         public string usertype { get; set; }
         public string verification_status { get; set; }
         public string id_status { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
+        public Nullable<System.DateTime> updated_at { get; set; }
     
         public virtual ICollection<Customer> Customers { get; set; }
         public virtual ICollection<Login_Time> Login_Time { get; set; }

@@ -18,7 +18,7 @@ namespace BLL.ManagerServices
                 c.CreateMap<ServiceProvider, ServiceProviderModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<ServiceProviderModel>>(DataAccessFactory.SrviceProviderServiceDataAccess().Get());
+            var data = mapper.Map<List<ServiceProviderModel>>(ManagerDataAccessFactory.SrviceProviderServiceDataAccess().Get());
             return data;
         }
 
@@ -29,11 +29,11 @@ namespace BLL.ManagerServices
                 c.CreateMap<ServiceProvider, ServiceProviderModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<ServiceProviderModel>(DataAccessFactory.SrviceProviderServiceDataAccess().Get(id));
+            var data = mapper.Map<ServiceProviderModel>(ManagerDataAccessFactory.SrviceProviderServiceDataAccess().Get(id));
             return data;
         }
 
-        public static bool Add(ServiceProviderModel n)
+        public static void Add(ServiceProviderModel n)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -41,10 +41,10 @@ namespace BLL.ManagerServices
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<ServiceProvider>(n);
-            return DataAccessFactory.SrviceProviderServiceDataAccess().Add(data);
+            ManagerDataAccessFactory.SrviceProviderServiceDataAccess().Add(data);
         }
 
-        public static bool Edit(ServiceProviderModel n)
+        public static void Edit(ServiceProviderModel n)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -52,11 +52,11 @@ namespace BLL.ManagerServices
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<ServiceProvider>(n);
-            return DataAccessFactory.SrviceProviderServiceDataAccess().Edit(data);
+            ManagerDataAccessFactory.SrviceProviderServiceDataAccess().Edit(data);
         }
-        public static bool Delete(int id)
+        public static void Delete(int id)
         {
-            return DataAccessFactory.SrviceProviderServiceDataAccess().Delete(id);
+            ManagerDataAccessFactory.SrviceProviderServiceDataAccess().Delete(id);
         }
     }
 }

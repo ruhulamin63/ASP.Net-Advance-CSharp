@@ -7,6 +7,8 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="min_service_done" Type="Int32" Nullable="false" />
     <Property Name="bonus_amount" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
     <NavigationProperty Name="ServiceProvider_Bonus" Relationship="Self.FK_ServiceProvider_Bonus_Bonus" FromRole="Bonus" ToRole="ServiceProvider_Bonus" />
   </EntityType>
   <EntityType Name="Booking_Details">
@@ -19,6 +21,8 @@
     <Property Name="unit_price" Type="Int32" Nullable="false" />
     <Property Name="quantity" Type="Int32" Nullable="false" />
     <Property Name="discount" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Booking" Relationship="Self.FK_Booking_Detail_Bookings" FromRole="Booking_Details" ToRole="Bookings" />
     <NavigationProperty Name="Service" Relationship="Self.FK_Booking_Detail_Services" FromRole="Booking_Details" ToRole="Services" />
   </EntityType>
@@ -41,6 +45,9 @@
     <Property Name="total_cost" Type="Int32" />
     <Property Name="order_date" Type="DateTime" Precision="3" />
     <Property Name="status" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <Property Name="payment_status" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Booking_Details" Relationship="Self.FK_Booking_Detail_Bookings" FromRole="Bookings" ToRole="Booking_Details" />
     <NavigationProperty Name="Booking_Service" Relationship="Self.FK_Booking_Service_Bookings" FromRole="Bookings" ToRole="Booking_Service" />
     <NavigationProperty Name="Customer" Relationship="Self.FK_Bookings_Users" FromRole="Bookings" ToRole="Customers" />
@@ -54,6 +61,8 @@
     <Property Name="amount" Type="Int32" />
     <Property Name="min_order_amount" Type="Int32" />
     <Property Name="max_use_number" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Customer_Coupon" Relationship="Self.FK_Customer_Coupon_Coupons" FromRole="Coupons" ToRole="Customer_Coupon" />
   </EntityType>
   <EntityType Name="Customer_Coupon">
@@ -64,6 +73,8 @@
     <Property Name="customer_id" Type="Int32" Nullable="false" />
     <Property Name="coupon_id" Type="Int32" Nullable="false" />
     <Property Name="used_count" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Coupon" Relationship="Self.FK_Customer_Coupon_Coupons" FromRole="Customer_Coupon" ToRole="Coupons" />
     <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_Coupon_Users" FromRole="Customer_Coupon" ToRole="Customers" />
   </EntityType>
@@ -75,6 +86,8 @@
     <Property Name="user_id" Type="Int32" Nullable="false" />
     <Property Name="address" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
     <Property Name="phone" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Bookings" Relationship="Self.FK_Bookings_Users" FromRole="Customers" ToRole="Bookings" />
     <NavigationProperty Name="Customer_Coupon" Relationship="Self.FK_Customer_Coupon_Users" FromRole="Customers" ToRole="Customer_Coupon" />
     <NavigationProperty Name="Reviews" Relationship="Self.FK_CUstomers_Reviews" FromRole="Customers" ToRole="Reviews" />
@@ -87,6 +100,8 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="service_id" Type="Int32" Nullable="false" />
     <Property Name="discount_percent" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Service" Relationship="Self.FK_Discounts_Services" FromRole="Discounts" ToRole="Services" />
   </EntityType>
   <EntityType Name="Login_Time">
@@ -105,6 +120,8 @@
     <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="user_id" Type="Int32" Nullable="false" />
     <Property Name="image" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
     <NavigationProperty Name="User" Relationship="Self.FK_ProfilePictures_Users" FromRole="ProfilePictures" ToRole="Users" />
   </EntityType>
   <EntityType Name="Review">
@@ -115,7 +132,9 @@
     <Property Name="customer_id" Type="Int32" Nullable="false" />
     <Property Name="serviceprovider_id" Type="Int32" Nullable="false" />
     <Property Name="description" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
-    <Property Name="rating" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="rating" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Customer" Relationship="Self.FK_CUstomers_Reviews" FromRole="Reviews" ToRole="Customers" />
     <NavigationProperty Name="ServiceProvider" Relationship="Self.FK_Reviews_ServiceProviders" FromRole="Reviews" ToRole="ServiceProviders" />
   </EntityType>
@@ -127,6 +146,8 @@
     <Property Name="salary_amount" Type="Int32" Nullable="false" />
     <Property Name="message" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
     <NavigationProperty Name="User" Relationship="Self.FK_Salaries_Users" FromRole="Salaries" ToRole="Users" />
   </EntityType>
   <EntityType Name="ServiceProvider_Bonus">
@@ -147,8 +168,11 @@
     <Property Name="user_id" Type="Int32" Nullable="false" />
     <Property Name="phone" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
     <Property Name="work_status" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
-    <Property Name="rating" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
-    <Property Name="services_done" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="rating" Type="Int32" />
+    <Property Name="rating_count" Type="Int32" />
+    <Property Name="services_done" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Booking_Service" Relationship="Self.FK_Booking_Service_ServiceProviders" FromRole="ServiceProviders" ToRole="Booking_Service" />
     <NavigationProperty Name="Reviews" Relationship="Self.FK_Reviews_ServiceProviders" FromRole="ServiceProviders" ToRole="Reviews" />
     <NavigationProperty Name="ServiceProvider_Bonus" Relationship="Self.FK_ServiceProvider_Bonus_ServiceProviders" FromRole="ServiceProviders" ToRole="ServiceProvider_Bonus" />
@@ -161,7 +185,10 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
     <Property Name="category" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="unit_price" Type="Int32" />
     <Property Name="description" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Booking_Details" Relationship="Self.FK_Booking_Detail_Services" FromRole="Services" ToRole="Booking_Details" />
     <NavigationProperty Name="Discounts" Relationship="Self.FK_Discounts_Services" FromRole="Services" ToRole="Discounts" />
   </EntityType>
@@ -187,6 +214,8 @@
     <Property Name="usertype" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
     <Property Name="verification_status" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
     <Property Name="id_status" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_Users" FromRole="Users" ToRole="Customers" />
     <NavigationProperty Name="Login_Time" Relationship="Self.FK_Login_Time_Users" FromRole="Users" ToRole="Login_Time" />
     <NavigationProperty Name="ProfilePictures" Relationship="Self.FK_ProfilePictures_Users" FromRole="Users" ToRole="ProfilePictures" />

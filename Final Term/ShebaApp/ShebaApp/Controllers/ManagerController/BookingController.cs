@@ -37,7 +37,7 @@ namespace ShebaApp.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, "Updated Succesfully");
         }
         [Route("api/booking/delete/{id}")]
-        [HttpGet]
+        [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
             BookingService.Delete(id);

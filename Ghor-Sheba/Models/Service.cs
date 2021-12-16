@@ -11,25 +11,20 @@ namespace Ghor_Sheba.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Service
     {
         public Service()
         {
             this.Booking_details = new HashSet<Booking_details>();
         }
-
+    
         public int id { get; set; }
-        [Required]
         public string name { get; set; }
-        [Required]
         public string category { get; set; }
-        [Required]
         public string description { get; set; }
-        [Required]
         public int cost { get; set; }
-
+    
         public virtual ICollection<Booking_details> Booking_details { get; set; }
     }
 }

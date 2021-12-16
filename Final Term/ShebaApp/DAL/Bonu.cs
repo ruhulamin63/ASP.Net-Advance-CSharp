@@ -22,6 +22,8 @@ namespace DAL
         public int id { get; set; }
         public int min_service_done { get; set; }
         public int bonus_amount { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
+        public Nullable<System.DateTime> updated_at { get; set; }
     
         public virtual ICollection<ServiceProvider_Bonus> ServiceProvider_Bonus { get; set; }
     }

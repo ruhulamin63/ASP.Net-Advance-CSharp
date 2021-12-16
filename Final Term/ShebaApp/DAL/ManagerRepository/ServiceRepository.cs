@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    public class ServiceRepository : IRepository<Service, int>
+    public class ServiceRepository : ManagerRepository<Service, int>
     {
         ShebaDbEntities db;
 
@@ -15,24 +15,24 @@ namespace DAL.Repository
             this.db = db;
         }
 
-        public bool Add(Service e)
+        public void Add(Service e)
         {
             db.Services.Add(e);
-            return (db.SaveChanges() > 0);
+            db.SaveChanges();
         }
 
-        public bool Edit(Service e)
+        public void Edit(Service e)
         {
             var p = db.Services.FirstOrDefault(en => en.id == e.id);
             db.Entry(p).CurrentValues.SetValues(e);
-            return (db.SaveChanges() > 0);
+            db.SaveChanges();
         }
 
-        public bool Delete(int id)
+        public void Delete(int id)
         {
             var e = db.Services.FirstOrDefault(en => en.id == id);
             db.Services.Remove(e);
-            return (db.SaveChanges() > 0);
+            db.SaveChanges();
         }
 
         public List<Service> Get()

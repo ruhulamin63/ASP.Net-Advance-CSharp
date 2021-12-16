@@ -18,7 +18,7 @@ namespace BLL
                 c.CreateMap<Service, ServiceModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<ServiceModel>>(DataAccessFactory.ServicerToServiceDataAccess().Get());
+            var data = mapper.Map<List<ServiceModel>>(ManagerDataAccessFactory.ServicerToServiceDataAccess().Get());
             return data;
         }
 
@@ -29,11 +29,11 @@ namespace BLL
                 c.CreateMap<Service, ServiceModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<ServiceModel>(DataAccessFactory.ServicerToServiceDataAccess().Get(id));
+            var data = mapper.Map<ServiceModel>(ManagerDataAccessFactory.ServicerToServiceDataAccess().Get(id));
             return data;
         }
 
-        public static bool Add(ServiceModel n)
+        public static void Add(ServiceModel n)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -41,10 +41,10 @@ namespace BLL
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<Service>(n);
-            return DataAccessFactory.ServicerToServiceDataAccess().Add(data);
+            ManagerDataAccessFactory.ServicerToServiceDataAccess().Add(data);
         }
 
-        public static bool Edit(ServiceModel n)
+        public static void Edit(ServiceModel n)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -52,11 +52,11 @@ namespace BLL
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<Service>(n);
-            return DataAccessFactory.ServicerToServiceDataAccess().Edit(data);
+            ManagerDataAccessFactory.ServicerToServiceDataAccess().Edit(data);
         }
-        public static bool Delete(int id)
+        public static void Delete(int id)
         {
-            return DataAccessFactory.ServicerToServiceDataAccess().Delete(id);
+            ManagerDataAccessFactory.ServicerToServiceDataAccess().Delete(id);
         }
     }
 }

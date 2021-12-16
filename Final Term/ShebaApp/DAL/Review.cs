@@ -18,7 +18,9 @@ namespace DAL
         public int customer_id { get; set; }
         public int serviceprovider_id { get; set; }
         public string description { get; set; }
-        public string rating { get; set; }
+        public Nullable<int> rating { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
+        public Nullable<System.DateTime> updated_at { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual ServiceProvider ServiceProvider { get; set; }

@@ -18,7 +18,7 @@ namespace BLL
                 c.CreateMap<Booking_Details, BookingDetailsModel>().ReverseMap();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<BookingDetailsModel>>(DataAccessFactory.BookingDetailsServiceDataAccess().Get());
+            var data = mapper.Map<List<BookingDetailsModel>>(ManagerDataAccessFactory.BookingDetailsServiceDataAccess().Get());
             return data;
         }
 
@@ -29,11 +29,11 @@ namespace BLL
                 c.CreateMap<Booking_Details, BookingDetailsModel>().ReverseMap();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<BookingDetailsModel>(DataAccessFactory.BookingDetailsServiceDataAccess().Get(id));
+            var data = mapper.Map<BookingDetailsModel>(ManagerDataAccessFactory.BookingDetailsServiceDataAccess().Get(id));
             return data;
         }
 
-        public static bool Add(BookingDetailsModel n)
+        public static void Add(BookingDetailsModel n)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -41,10 +41,10 @@ namespace BLL
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<Booking_Details>(n);
-            return DataAccessFactory.BookingDetailsServiceDataAccess().Add(data);
+            ManagerDataAccessFactory.BookingDetailsServiceDataAccess().Add(data);
         }
 
-        public static bool Edit(BookingDetailsModel n)
+        public static void Edit(BookingDetailsModel n)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -52,11 +52,11 @@ namespace BLL
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<Booking_Details>(n);
-            return DataAccessFactory.BookingDetailsServiceDataAccess().Edit(data);
+            ManagerDataAccessFactory.BookingDetailsServiceDataAccess().Edit(data);
         }
-        public static bool Delete(int id)
+        public static void Delete(int id)
         {
-            return DataAccessFactory.BookingDetailsServiceDataAccess().Delete(id);
+            ManagerDataAccessFactory.BookingDetailsServiceDataAccess().Delete(id);
         }
 
         //======================================================================================================================
@@ -68,7 +68,7 @@ namespace BLL
                 c.CreateMap<Booking, BookingModel>().ReverseMap();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<BookingModel>>(DataAccessFactory.BookingDataAccess().GetByOrderDate(order_date));
+            var data = mapper.Map<List<BookingModel>>(ManagerDataAccessFactory.BookingDataAccess().GetByOrderDate(order_date));
             return data;
         }
         public static List<BookingModel> GetByCustomerId(int c_id)
@@ -78,7 +78,7 @@ namespace BLL
                 c.CreateMap<Booking, BookingModel>().ReverseMap();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<BookingModel>>(DataAccessFactory.BookingDataAccess().GetByCustomerId(c_id));
+            var data = mapper.Map<List<BookingModel>>(ManagerDataAccessFactory.BookingDataAccess().GetByCustomerId(c_id));
             return data;
         }
         public static List<BookingModel> GetByOrderDateCustomerId(DateTime order_date, int c_id)
@@ -88,7 +88,7 @@ namespace BLL
                 c.CreateMap<Booking, BookingModel>().ReverseMap();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<BookingModel>>(DataAccessFactory.BookingDataAccess().GetByOrderDateCustomerId(order_date, c_id));
+            var data = mapper.Map<List<BookingModel>>(ManagerDataAccessFactory.BookingDataAccess().GetByOrderDateCustomerId(order_date, c_id));
             return data;
         }
     }

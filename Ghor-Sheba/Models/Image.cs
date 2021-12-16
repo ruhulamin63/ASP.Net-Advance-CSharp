@@ -11,16 +11,11 @@ namespace Ghor_Sheba.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Web;
-
+    
     public partial class Image
     {
         public int id { get; set; }
         public string title { get; set; }
-        [DisplayName("Upload File")]
         public string image_path { get; set; }
-
-        public HttpPostedFileBase ImageFile { get; set; }
     }
 }

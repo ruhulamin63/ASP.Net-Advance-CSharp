@@ -20,6 +20,8 @@ namespace DAL
         public int unit_price { get; set; }
         public int quantity { get; set; }
         public int discount { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
+        public Nullable<System.DateTime> updated_at { get; set; }
     
         public virtual Booking Booking { get; set; }
         public virtual Service Service { get; set; }

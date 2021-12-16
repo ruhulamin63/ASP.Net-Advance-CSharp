@@ -7,6 +7,8 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="min_service_done" Type="int" Nullable="false" />
     <Property Name="bonus_amount" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
   </EntityType>
   <EntityType Name="Booking_Details">
     <Key>
@@ -18,6 +20,8 @@
     <Property Name="unit_price" Type="int" Nullable="false" />
     <Property Name="quantity" Type="int" Nullable="false" />
     <Property Name="discount" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
   </EntityType>
   <EntityType Name="Booking_Service">
     <Key>
@@ -36,6 +40,9 @@
     <Property Name="total_cost" Type="int" />
     <Property Name="order_date" Type="datetime" />
     <Property Name="status" Type="varchar" MaxLength="120" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="payment_status" Type="varchar" MaxLength="120" />
   </EntityType>
   <EntityType Name="Coupons">
     <Key>
@@ -46,6 +53,8 @@
     <Property Name="amount" Type="int" />
     <Property Name="min_order_amount" Type="int" />
     <Property Name="max_use_number" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
   </EntityType>
   <EntityType Name="Customer_Coupon">
     <Key>
@@ -55,6 +64,8 @@
     <Property Name="customer_id" Type="int" Nullable="false" />
     <Property Name="coupon_id" Type="int" Nullable="false" />
     <Property Name="used_count" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
   </EntityType>
   <EntityType Name="Customers">
     <Key>
@@ -64,6 +75,8 @@
     <Property Name="user_id" Type="int" Nullable="false" />
     <Property Name="address" Type="varchar" MaxLength="120" />
     <Property Name="phone" Type="varchar" MaxLength="120" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
   </EntityType>
   <EntityType Name="Discounts">
     <Key>
@@ -72,6 +85,8 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="service_id" Type="int" Nullable="false" />
     <Property Name="discount_percent" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
   </EntityType>
   <EntityType Name="Login_Time">
     <Key>
@@ -88,6 +103,8 @@
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="user_id" Type="int" Nullable="false" />
     <Property Name="image" Type="varchar" MaxLength="120" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
   </EntityType>
   <EntityType Name="Reviews">
     <Key>
@@ -97,7 +114,9 @@
     <Property Name="customer_id" Type="int" Nullable="false" />
     <Property Name="serviceprovider_id" Type="int" Nullable="false" />
     <Property Name="description" Type="varchar" MaxLength="120" />
-    <Property Name="rating" Type="varchar" MaxLength="120" />
+    <Property Name="rating" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
   </EntityType>
   <EntityType Name="Salaries">
     <Key>
@@ -107,6 +126,8 @@
     <Property Name="salary_amount" Type="int" Nullable="false" />
     <Property Name="message" Type="varchar" MaxLength="120" Nullable="false" />
     <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
   </EntityType>
   <EntityType Name="ServiceProvider_Bonus">
     <Key>
@@ -124,8 +145,11 @@
     <Property Name="user_id" Type="int" Nullable="false" />
     <Property Name="phone" Type="varchar" MaxLength="120" />
     <Property Name="work_status" Type="varchar" MaxLength="120" />
-    <Property Name="rating" Type="varchar" MaxLength="120" />
-    <Property Name="services_done" Type="varchar" MaxLength="120" />
+    <Property Name="rating" Type="int" />
+    <Property Name="rating_count" Type="int" />
+    <Property Name="services_done" Type="int" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
   </EntityType>
   <EntityType Name="Services">
     <Key>
@@ -134,7 +158,10 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="120" />
     <Property Name="category" Type="varchar" MaxLength="120" />
+    <Property Name="unit_price" Type="int" />
     <Property Name="description" Type="varchar" MaxLength="120" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
   </EntityType>
   <EntityType Name="Tokens">
     <Key>
@@ -157,6 +184,8 @@
     <Property Name="usertype" Type="varchar" MaxLength="120" />
     <Property Name="verification_status" Type="varchar" MaxLength="120" />
     <Property Name="id_status" Type="varchar" MaxLength="120" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
   </EntityType>
   <Association Name="FK_Booking_Detail_Bookings">
     <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />

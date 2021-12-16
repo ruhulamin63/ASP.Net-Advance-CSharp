@@ -12,7 +12,7 @@ namespace CheckAuthApp.Controllers
 {
     public class UserController : ApiController
     {
-        [CustomAuth]
+        //[CustomAuth]
         [Route("api/users")]
         [HttpGet]
         public HttpResponseMessage Get()

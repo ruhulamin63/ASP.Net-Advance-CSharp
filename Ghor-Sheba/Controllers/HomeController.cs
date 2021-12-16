@@ -28,7 +28,7 @@ namespace Ghor_Sheba.Controllers
             return View();
         }
 
-        [HttpPost]
+       /* [HttpPost]
         public ActionResult Message(string name, string email, string subject, string message)
         {
             var db = new ShebaDbEntities();
@@ -49,7 +49,7 @@ namespace Ghor_Sheba.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Contact", "Home");
-        }
+        }*/
  
 
     }

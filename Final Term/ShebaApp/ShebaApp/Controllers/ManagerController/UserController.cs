@@ -16,6 +16,7 @@ namespace ShebaApp.Controllers
         [HttpGet]
         public HttpResponseMessage Get()
         {
+           // return Request.CreateResponse(HttpStatusCode.OK, UserService.GetAll("manager"));
             return Request.CreateResponse(HttpStatusCode.OK, UserService.GetAll());
         }
         [Route("api/users/{id}")]
@@ -39,7 +40,7 @@ namespace ShebaApp.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, "Updated Succesfully");
         }
         [Route("api/users/delete/{id}")]
-        [HttpGet]
+        [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
             UserService.Delete(id);

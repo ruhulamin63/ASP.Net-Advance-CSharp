@@ -18,6 +18,8 @@ namespace DAL
         public int customer_id { get; set; }
         public int coupon_id { get; set; }
         public Nullable<int> used_count { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
+        public Nullable<System.DateTime> updated_at { get; set; }
     
         public virtual Coupon Coupon { get; set; }
         public virtual Customer Customer { get; set; }

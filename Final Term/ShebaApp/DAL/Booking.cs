@@ -25,6 +25,9 @@ namespace DAL
         public Nullable<int> total_cost { get; set; }
         public Nullable<System.DateTime> order_date { get; set; }
         public string status { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
+        public Nullable<System.DateTime> updated_at { get; set; }
+        public string payment_status { get; set; }
     
         public virtual ICollection<Booking_Details> Booking_Details { get; set; }
         public virtual ICollection<Booking_Service> Booking_Service { get; set; }

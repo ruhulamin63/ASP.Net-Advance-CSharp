@@ -25,6 +25,8 @@ namespace DAL
         public int user_id { get; set; }
         public string address { get; set; }
         public string phone { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
+        public Nullable<System.DateTime> updated_at { get; set; }
     
         public virtual ICollection<Booking> Bookings { get; set; }
         public virtual ICollection<Customer_Coupon> Customer_Coupon { get; set; }

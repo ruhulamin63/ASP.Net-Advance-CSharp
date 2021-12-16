@@ -18,7 +18,7 @@ namespace BLL.ManagerServices
                 c.CreateMap<Coupon, CouponModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<CouponModel>>(DataAccessFactory.CouponServiceDataAccess().Get());
+            var data = mapper.Map<List<CouponModel>>(ManagerDataAccessFactory.CouponServiceDataAccess().Get());
             return data;
         }
 
@@ -29,11 +29,11 @@ namespace BLL.ManagerServices
                 c.CreateMap<Coupon, CouponModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<CouponModel>(DataAccessFactory.CouponServiceDataAccess().Get(id));
+            var data = mapper.Map<CouponModel>(ManagerDataAccessFactory.CouponServiceDataAccess().Get(id));
             return data;
         }
 
-        public static bool Add(CouponModel n)
+        public static void Add(CouponModel n)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -41,10 +41,10 @@ namespace BLL.ManagerServices
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<Coupon>(n);
-            return DataAccessFactory.CouponServiceDataAccess().Add(data);
+            ManagerDataAccessFactory.CouponServiceDataAccess().Add(data);
         }
 
-        public static bool Edit(CouponModel n)
+        public static void Edit(CouponModel n)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -52,11 +52,11 @@ namespace BLL.ManagerServices
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<Coupon>(n);
-            return DataAccessFactory.CouponServiceDataAccess().Edit(data);
+            ManagerDataAccessFactory.CouponServiceDataAccess().Edit(data);
         }
-        public static bool Delete(int id)
+        public static void Delete(int id)
         {
-            return DataAccessFactory.CouponServiceDataAccess().Delete(id);
+            ManagerDataAccessFactory.CouponServiceDataAccess().Delete(id);
         }
     }
 }

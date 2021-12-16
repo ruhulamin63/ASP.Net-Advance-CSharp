@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ShebaDbModelStoreContainer" CdmEntityContainer="ShebaDbEntities">
+  <EntityContainerMapping StorageEntityContainer="ShebaDbMidTermModelStoreContainer" CdmEntityContainer="ShebaDbEntities">
     <EntitySetMapping Name="Booking_confirms">
-      <EntityTypeMapping TypeName="ShebaDbModel.Booking_confirms">
+      <EntityTypeMapping TypeName="ShebaDbMidTermModel.Booking_confirms">
         <MappingFragment StoreEntitySet="Booking_confirms">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="booking_id" ColumnName="booking_id" />
@@ -12,7 +12,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Booking_details">
-      <EntityTypeMapping TypeName="ShebaDbModel.Booking_details">
+      <EntityTypeMapping TypeName="ShebaDbMidTermModel.Booking_details">
         <MappingFragment StoreEntitySet="Booking_details">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="booking_id" ColumnName="booking_id" />
@@ -21,7 +21,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Bookings">
-      <EntityTypeMapping TypeName="ShebaDbModel.Booking">
+      <EntityTypeMapping TypeName="ShebaDbMidTermModel.Booking">
         <MappingFragment StoreEntitySet="Bookings">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="customer_id" ColumnName="customer_id" />
@@ -32,7 +32,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Complaints">
-      <EntityTypeMapping TypeName="ShebaDbModel.Complaint">
+      <EntityTypeMapping TypeName="ShebaDbMidTermModel.Complaint">
         <MappingFragment StoreEntitySet="Complaints">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="customer_id" ColumnName="customer_id" />
@@ -42,7 +42,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Contact_Messages">
-      <EntityTypeMapping TypeName="ShebaDbModel.Contact_Messages">
+      <EntityTypeMapping TypeName="ShebaDbMidTermModel.Contact_Messages">
         <MappingFragment StoreEntitySet="Contact_Messages">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -53,7 +53,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Images">
-      <EntityTypeMapping TypeName="ShebaDbModel.Image">
+      <EntityTypeMapping TypeName="ShebaDbMidTermModel.Image">
         <MappingFragment StoreEntitySet="Images">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="title" ColumnName="title" />
@@ -62,7 +62,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="LoginUsers">
-      <EntityTypeMapping TypeName="ShebaDbModel.LoginUser">
+      <EntityTypeMapping TypeName="ShebaDbMidTermModel.LoginUser">
         <MappingFragment StoreEntitySet="LoginUsers">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="username" ColumnName="username" />
@@ -77,7 +77,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Reviews">
-      <EntityTypeMapping TypeName="ShebaDbModel.Review">
+      <EntityTypeMapping TypeName="ShebaDbMidTermModel.Review">
         <MappingFragment StoreEntitySet="Reviews">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="customer_id" ColumnName="customer_id" />
@@ -86,7 +86,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="service_provider_status">
-      <EntityTypeMapping TypeName="ShebaDbModel.service_provider_status">
+      <EntityTypeMapping TypeName="ShebaDbMidTermModel.service_provider_status">
         <MappingFragment StoreEntitySet="service_provider_status">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="service_provider_id" ColumnName="service_provider_id" />
@@ -95,7 +95,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Services">
-      <EntityTypeMapping TypeName="ShebaDbModel.Service">
+      <EntityTypeMapping TypeName="ShebaDbMidTermModel.Service">
         <MappingFragment StoreEntitySet="Services">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />

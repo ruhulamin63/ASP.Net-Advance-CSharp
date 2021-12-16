@@ -25,8 +25,11 @@ namespace DAL
         public int user_id { get; set; }
         public string phone { get; set; }
         public string work_status { get; set; }
-        public string rating { get; set; }
-        public string services_done { get; set; }
+        public Nullable<int> rating { get; set; }
+        public Nullable<int> rating_count { get; set; }
+        public Nullable<int> services_done { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
+        public Nullable<System.DateTime> updated_at { get; set; }
     
         public virtual ICollection<Booking_Service> Booking_Service { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }

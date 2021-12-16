@@ -15,7 +15,7 @@ namespace DemoApp.Controllers
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, UserService.Get());
+            return Request.CreateResponse(HttpStatusCode.OK, UserService.GetAll());
         }
         [Route("api/users/{id}")]
         [HttpGet]

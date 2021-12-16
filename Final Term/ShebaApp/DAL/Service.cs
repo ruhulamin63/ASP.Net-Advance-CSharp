@@ -23,7 +23,10 @@ namespace DAL
         public int id { get; set; }
         public string name { get; set; }
         public string category { get; set; }
+        public Nullable<int> unit_price { get; set; }
         public string description { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
+        public Nullable<System.DateTime> updated_at { get; set; }
     
         public virtual ICollection<Booking_Details> Booking_Details { get; set; }
         public virtual ICollection<Discount> Discounts { get; set; }

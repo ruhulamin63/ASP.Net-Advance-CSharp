@@ -54,25 +54,12 @@
     <Compile Include="Booking.cs">
       <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interface_Repository\BookingDetailsInterface.cs" />
-    <Compile Include="Interface_Repository\BookingInterface.cs" />
-    <Compile Include="Interface_Repository\CouponInterface.cs" />
-    <Compile Include="Interface_Repository\UserInterface.cs" />
-    <Compile Include="ManagerRepository\BookingDetailsRepository.cs" />
     <Compile Include="Booking_Details.cs">
       <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Booking_Service.cs">
       <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccessFactory.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="ManagerRepository\BookingServiceRepository.cs" />
-    <Compile Include="ManagerRepository\BookingRepository.cs" />
-    <Compile Include="ManagerRepository\CouponRepository.cs" />
-    <Compile Include="ManagerRepository\ServiceProviderRepository.cs" />
-    <Compile Include="ManagerRepository\ServiceRepository.cs" />
-    <Compile Include="ManagerRepository\UserRepository.cs" />
     <Compile Include="Coupon.cs">
       <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
@@ -88,6 +75,18 @@
     <Compile Include="Login_Time.cs">
       <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="ManagerRepository\BookingDetailsRepository.cs" />
+    <Compile Include="ManagerDataAccessFactory.cs" />
+    <Compile Include="ManagerRepository.cs" />
+    <Compile Include="ManagerRepository\BookingServiceRepository.cs" />
+    <Compile Include="ManagerRepository\BookingRepository.cs" />
+    <Compile Include="ManagerRepository\CouponRepository.cs" />
+    <Compile Include="ManagerRepository\DiscountRepository.cs" />
+    <Compile Include="ManagerRepository\ReviewRepository.cs" />
+    <Compile Include="ManagerRepository\SalaryRepository.cs" />
+    <Compile Include="ManagerRepository\ServiceProviderRepository.cs" />
+    <Compile Include="ManagerRepository\ServiceRepository.cs" />
+    <Compile Include="ManagerRepository\UserRepository.cs" />
     <Compile Include="ProfilePicture.cs">
       <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
@@ -98,6 +97,7 @@
     <Compile Include="Salary.cs">
       <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Salary_Interface.cs" />
     <Compile Include="Service.cs">
       <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
@@ -136,32 +136,33 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
     <EntityDeploy Include="ShebaDb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ShebaDb.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
     <None Include="ShebaDb.edmx.diagram">
       <DependentUpon>ShebaDb.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ShebaDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ShebaDb.Context.cs</LastGenOutput>
       <DependentUpon>ShebaDb.edmx</DependentUpon>
+      <LastGenOutput>ShebaDb.Context.cs</LastGenOutput>
     </Content>
     <Content Include="ShebaDb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ShebaDb.edmx</DependentUpon>
       <LastGenOutput>ShebaDb.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

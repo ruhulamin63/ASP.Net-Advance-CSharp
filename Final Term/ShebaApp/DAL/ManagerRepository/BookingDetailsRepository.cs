@@ -1,5 +1,4 @@
 ﻿using BEL;
-using DAL.Interface_Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class BookingDetailsRepository : BookingDetailsInterface<Booking_Details, int>
+    public class BookingDetailsRepository : ManagerRepository<Booking_Details, int>
     {
 
         ShebaDbEntities db;
@@ -18,24 +17,24 @@ namespace DAL
             this.db = db;
         }
 
-        public bool Add(Booking_Details e)
+        public void Add(Booking_Details e)
         {
             db.Booking_Details.Add(e);
-            return (db.SaveChanges() > 0);
+            db.SaveChanges();
         }
 
-        public bool Delete(int id)
+        public void Delete(int id)
         {
             var e = db.Booking_Details.FirstOrDefault(en => en.id == id);
             db.Booking_Details.Remove(e);
-            return (db.SaveChanges() > 0);
+            db.SaveChanges();
         }
 
-        public bool Edit(Booking_Details e)
+        public void Edit(Booking_Details e)
         {
             var p = db.Booking_Details.FirstOrDefault(en => en.id == e.id);
             db.Entry(p).CurrentValues.SetValues(e);
-            return (db.SaveChanges() > 0);
+            db.SaveChanges();
         }
 
         public List<Booking_Details> Get()
@@ -46,6 +45,21 @@ namespace DAL
         public Booking_Details Get(int id)
         {
             return db.Booking_Details.FirstOrDefault(e => e.id == id);
+        }
+
+        public List<Booking> GetByCustomerId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Booking> GetByOrderDate(DateTime order_date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Booking> GetByOrderDateCustomerId(DateTime order_date, int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

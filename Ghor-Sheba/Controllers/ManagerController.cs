@@ -973,7 +973,7 @@ namespace Ghor_Sheba.Controllers
             return View();
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public ActionResult Add(Image imageModel)
         {
             string fileName = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
@@ -1012,7 +1012,7 @@ namespace Ghor_Sheba.Controllers
             ViewData["username"] = user.username;
 
             return View(imageModel);
-        }
+        }*/
 
     }
 }

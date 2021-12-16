@@ -1,5 +1,4 @@
-﻿using DAL.Interface_Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    public class BookingRepository : BookingInterface<Booking, int>
+    public class BookingRepository : ManagerRepository<Booking, int>
     {
         ShebaDbEntities db;
 
@@ -16,24 +15,24 @@ namespace DAL.Repository
             this.db = db;
         }
 
-        public bool Add(Booking e)
+        public void Add(Booking e)
         {
             db.Bookings.Add(e);
-            return (db.SaveChanges() > 0);
+            db.SaveChanges();
         }
 
-        public bool Delete(int id)
+        public void Delete(int id)
         {
             var e = db.Bookings.FirstOrDefault(en => en.id == id);
             db.Bookings.Remove(e);
-            return (db.SaveChanges() > 0);
+            db.SaveChanges();
         }
 
-        public bool Edit(Booking e)
+        public void Edit(Booking e)
         {
             var p = db.Bookings.FirstOrDefault(en => en.id == e.id);
             db.Entry(p).CurrentValues.SetValues(e);
-            return (db.SaveChanges() > 0);
+            db.SaveChanges();
         }
 
         public List<Booking> Get()

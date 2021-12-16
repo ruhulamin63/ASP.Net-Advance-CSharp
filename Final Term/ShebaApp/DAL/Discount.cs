@@ -17,6 +17,8 @@ namespace DAL
         public int id { get; set; }
         public int service_id { get; set; }
         public int discount_percent { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
+        public Nullable<System.DateTime> updated_at { get; set; }
     
         public virtual Service Service { get; set; }
     }

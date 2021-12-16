@@ -6,19 +6,32 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using DAL;
+using BEL.ManagerModel;
 
 namespace BLL
 {
     public class UserService
     {
-        public static List<UserModel> GetAll()
+        public static List<UserModel> GetAll() //GetAll(string uty
         {
             var config = new MapperConfiguration(c =>
             {
                 c.CreateMap<User, UserModel>().ReverseMap();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<UserModel>>(DataAccessFactory.UserDataAccess().Get());
+            var data = mapper.Map<List<UserModel>>(ManagerDataAccessFactory.UserDataAccess().Get());
+
+            /* var manager = new List<UserModel>();
+
+           foreach (var a in data)
+           {
+               if (a.usertype == utype)
+               {
+                   manager.Add(a);
+               }
+           }
+           return manager; */
+
             return data;
         }
 
@@ -29,11 +42,11 @@ namespace BLL
                 c.CreateMap<User, UserModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<UserModel>(DataAccessFactory.UserDataAccess().Get(id));
+            var data = mapper.Map<UserModel>(ManagerDataAccessFactory.UserDataAccess().Get(id));
             return data;
         }
 
-        public static bool Add(UserModel n)
+        public static void Add(UserModel n)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -41,10 +54,10 @@ namespace BLL
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<User>(n);
-            return DataAccessFactory.UserDataAccess().Add(data);
+            ManagerDataAccessFactory.UserDataAccess().Add(data);
         }
 
-        public static bool Edit(UserModel n)
+        public static void Edit(UserModel n)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -52,11 +65,11 @@ namespace BLL
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<User>(n);
-            return DataAccessFactory.UserDataAccess().Edit(data);
+            ManagerDataAccessFactory.UserDataAccess().Edit(data);
         }
-        public static bool Delete(int id)
+        public static void Delete(int id)
         {
-            return DataAccessFactory.UserDataAccess().Delete(id);
+            ManagerDataAccessFactory.UserDataAccess().Delete(id);
         }
     }
 }

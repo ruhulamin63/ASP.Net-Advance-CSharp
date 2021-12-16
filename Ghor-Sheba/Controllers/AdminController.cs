@@ -1105,7 +1105,7 @@ namespace Ghor_Sheba.Controllers
             return RedirectToAction("PaymentStatus", "Admin");
         }
 
-        public ActionResult ViewMessage()
+       /* public ActionResult ViewMessage()
         {
             var db = new ShebaDbEntities();
             var em = User.Identity.Name;
@@ -1120,9 +1120,9 @@ namespace Ghor_Sheba.Controllers
                            where data.id > 0
                            select data).ToList();
             return View(message);
-        }
+        }*/
 
-        public ActionResult DeleteMessage(int id)
+       /* public ActionResult DeleteMessage(int id)
         {
             var db = new ShebaDbEntities();
             var em = User.Identity.Name;
@@ -1139,7 +1139,7 @@ namespace Ghor_Sheba.Controllers
             db.Contact_Messages.Remove(message);
             db.SaveChanges();
             return RedirectToAction("ViewMessage", "Admin");
-        }
+        }*/
 
         public ActionResult ViewDetails(int id)
         {

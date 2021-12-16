@@ -46,9 +46,13 @@
     <Compile Include="ManagerModel\BookingServiceModel.cs" />
     <Compile Include="ManagerModel\CouponModel.cs" />
     <Compile Include="ManagerModel\CustomerModel.cs" />
+    <Compile Include="ManagerModel\DiscountModel.cs" />
+    <Compile Include="ManagerModel\ReviewModel.cs" />
+    <Compile Include="ManagerModel\SalaryModel.cs" />
     <Compile Include="ManagerModel\ServiceModel.cs" />
     <Compile Include="ManagerModel\ServiceProviderModel.cs" />
     <Compile Include="ManagerModel\UserModel.cs" />
+    <Compile Include="ManagerModel\UserSalayModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

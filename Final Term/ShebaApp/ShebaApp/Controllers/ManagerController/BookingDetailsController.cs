@@ -11,33 +11,33 @@ namespace ShebaApp.Controllers
 {
     public class BookingDetailsController : ApiController
     {
-        [Route("api/booking/details/all")]
+        [Route("api/booking/confirm/all")]
         [HttpGet]
         public HttpResponseMessage Get()
         {
             return Request.CreateResponse(HttpStatusCode.OK, BookingDetailsService.GetAll());
         }
-        [Route("api/booking/details/{id}")]
+        [Route("api/booking/confirm/{id}")]
         [HttpGet]
         public HttpResponseMessage Get(int id)
         {
             return Request.CreateResponse(HttpStatusCode.OK, BookingDetailsService.Get(id));
         }
-        [Route("api/booking/details/create")]
+        [Route("api/booking/confirm/create")]
         [HttpPost]
         public HttpResponseMessage Add(BookingDetailsModel user)
         {
             BookingDetailsService.Add(user);
             return Request.CreateResponse(HttpStatusCode.OK, "Succesfully Created");
         }
-        [Route("api/booking/details/edit")]
+        [Route("api/booking/confirm/edit")]
         [HttpPost]
         public HttpResponseMessage Edit(BookingDetailsModel user)
         {
             BookingDetailsService.Edit(user);
             return Request.CreateResponse(HttpStatusCode.OK, "Updated Succesfully");
         }
-        [Route("api/booking/details/delete/{id}")]
+        [Route("api/booking/confirm/delete/{id}")]
         [HttpGet]
         public HttpResponseMessage Delete(int id)
         {

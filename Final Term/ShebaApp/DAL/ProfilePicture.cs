@@ -17,6 +17,8 @@ namespace DAL
         public int id { get; set; }
         public int user_id { get; set; }
         public string image { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
+        public Nullable<System.DateTime> updated_at { get; set; }
     
         public virtual User User { get; set; }
     }

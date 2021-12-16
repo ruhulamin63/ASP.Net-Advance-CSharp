@@ -18,7 +18,7 @@ namespace BLL
                 c.CreateMap<Booking_Service, BookingServiceModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<BookingServiceModel>>(DataAccessFactory.BookingServiceDataAccess().Get());
+            var data = mapper.Map<List<BookingServiceModel>>(ManagerDataAccessFactory.BookingServiceDataAccess().Get());
             return data;
         }
 
@@ -29,11 +29,11 @@ namespace BLL
                 c.CreateMap<Booking_Service, BookingServiceModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<BookingServiceModel>(DataAccessFactory.BookingServiceDataAccess().Get(id));
+            var data = mapper.Map<BookingServiceModel>(ManagerDataAccessFactory.BookingServiceDataAccess().Get(id));
             return data;
         }
 
-        public static bool Add(BookingServiceModel n)
+        public static void Add(BookingServiceModel n)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -41,10 +41,10 @@ namespace BLL
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<Booking_Service>(n);
-            return DataAccessFactory.BookingServiceDataAccess().Add(data);
+            ManagerDataAccessFactory.BookingServiceDataAccess().Add(data);
         }
 
-        public static bool Edit(BookingServiceModel n)
+        public static void Edit(BookingServiceModel n)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -52,11 +52,11 @@ namespace BLL
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<Booking_Service>(n);
-            return DataAccessFactory.BookingServiceDataAccess().Edit(data);
+            ManagerDataAccessFactory.BookingServiceDataAccess().Edit(data);
         }
-        public static bool Delete(int id)
+        public static void Delete(int id)
         {
-            return DataAccessFactory.BookingServiceDataAccess().Delete(id);
+            ManagerDataAccessFactory.BookingServiceDataAccess().Delete(id);
         }
     }
 }

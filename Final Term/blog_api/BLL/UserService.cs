@@ -23,7 +23,7 @@ namespace BLL
                 cfg.CreateMap<UserModel, User>();
             });
         }
-        public static List<UserModel> Get()
+        public static List<UserModel> GetAll()
         {
             //AutoMapper.Mapper
             /*var data = AutoMapper.Mapper.Map<List<UserModel>>(DataAccessFactory.UserDataAccess().Get()); // for automapper 6.1.1

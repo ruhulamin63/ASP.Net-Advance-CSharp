@@ -3,7 +3,7 @@
   "ProjectMap": {
     "9826e7e6-41a4-489d-b38b-a8cd5598776a": {
       "ProjectGuid": "9826e7e6-41a4-489d-b38b-a8cd5598776a",
-      "DisplayName": "ShebaApp",
+      "DisplayName": "WebApi",
       "ColorIndex": 0
     },
     "8264d467-4b25-4b25-affa-f446ce618d85": {
@@ -20,7 +20,17 @@
       "ProjectGuid": "1ecbde17-d8be-4a31-bc2c-f86f205d6fef",
       "DisplayName": "BLL",
       "ColorIndex": 3
+    },
+    "75932e1d-48ec-4e0f-999e-e13a9a1416d6": {
+      "ProjectGuid": "75932e1d-48ec-4e0f-999e-e13a9a1416d6",
+      "DisplayName": "FrontEnd",
+      "ColorIndex": 4
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }

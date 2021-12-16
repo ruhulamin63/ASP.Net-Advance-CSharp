@@ -24,6 +24,8 @@ namespace DAL
         public Nullable<int> amount { get; set; }
         public Nullable<int> min_order_amount { get; set; }
         public Nullable<int> max_use_number { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
+        public Nullable<System.DateTime> updated_at { get; set; }
     
         public virtual ICollection<Customer_Coupon> Customer_Coupon { get; set; }
     }

@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShebaApp", "ShebaApp\ShebaApp.csproj", "{9826E7E6-41A4-489D-B38B-A8CD5598776A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "ShebaApp\WebApi.csproj", "{9826E7E6-41A4-489D-B38B-A8CD5598776A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BEL", "BEL\BEL.csproj", "{8264D467-4B25-4B25-AFFA-F446CE618D85}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{0B115B13-02C9-450F-B4E3-BAC48A74F847}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{1ECBDE17-D8BE-4A31-BC2C-F86F205D6FEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd", "FrontEnd\FrontEnd.csproj", "{75932E1D-48EC-4E0F-999E-E13A9A1416D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{1ECBDE17-D8BE-4A31-BC2C-F86F205D6FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1ECBDE17-D8BE-4A31-BC2C-F86F205D6FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1ECBDE17-D8BE-4A31-BC2C-F86F205D6FEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75932E1D-48EC-4E0F-999E-E13A9A1416D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75932E1D-48EC-4E0F-999E-E13A9A1416D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75932E1D-48EC-4E0F-999E-E13A9A1416D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75932E1D-48EC-4E0F-999E-E13A9A1416D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

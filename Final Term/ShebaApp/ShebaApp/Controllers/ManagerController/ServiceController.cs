@@ -44,7 +44,5 @@ namespace ShebaApp.Controllers
             ServiceToService.Delete(id);
             return Request.CreateResponse(HttpStatusCode.OK, "Delete Succesfully");
         }
-
-        //==================================================================================================
     }
 }
