@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    public class BookingRepository : ManagerRepository<Booking, int>
+    public class BookingRepository : ManagerInterface<Booking, int>
     {
         ShebaDbEntities db;
 
@@ -17,7 +17,17 @@ namespace DAL.Repository
 
         public void Add(Booking e)
         {
-            db.Bookings.Add(e);
+            
+            Booking user = new Booking()
+            {
+                customer_id = e.customer_id,
+                total_cost = e.total_cost,
+                order_date = DateTime.Now,
+                status = e.status,
+                payment_status = e.payment_status,
+                created_at = DateTime.Now,
+            };
+            db.Bookings.Add(user);
             db.SaveChanges();
         }
 
@@ -31,7 +41,16 @@ namespace DAL.Repository
         public void Edit(Booking e)
         {
             var p = db.Bookings.FirstOrDefault(en => en.id == e.id);
-            db.Entry(p).CurrentValues.SetValues(e);
+            Booking user = new Booking()
+            {
+                customer_id = e.customer_id,
+                total_cost = e.total_cost,
+                order_date = DateTime.Now,
+                status = e.status,
+                payment_status = e.payment_status,
+                updated_at = DateTime.Now,
+            };
+            db.Entry(user).CurrentValues.SetValues(p);
             db.SaveChanges();
         }
 
@@ -61,6 +80,11 @@ namespace DAL.Repository
         {
             var e = (from books in db.Bookings where books.order_date == order_date && books.customer_id == c_id select books).ToList();
             return e;
+        }
+
+        public Booking AssignServices(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

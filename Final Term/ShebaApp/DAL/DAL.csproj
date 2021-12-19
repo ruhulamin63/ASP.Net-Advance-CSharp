@@ -40,6 +40,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,24 +70,22 @@
     <Compile Include="Customer_Coupon.cs">
       <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Discount.cs">
-      <DependentUpon>ShebaDb.tt</DependentUpon>
-    </Compile>
     <Compile Include="Login_Time.cs">
       <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
     <Compile Include="ManagerRepository\BookingDetailsRepository.cs" />
     <Compile Include="ManagerDataAccessFactory.cs" />
-    <Compile Include="ManagerRepository.cs" />
+    <Compile Include="ManagerInterface.cs" />
     <Compile Include="ManagerRepository\BookingServiceRepository.cs" />
     <Compile Include="ManagerRepository\BookingRepository.cs" />
     <Compile Include="ManagerRepository\CouponRepository.cs" />
-    <Compile Include="ManagerRepository\DiscountRepository.cs" />
+    <Compile Include="ManagerRepository\CustomerRepository.cs" />
     <Compile Include="ManagerRepository\ReviewRepository.cs" />
     <Compile Include="ManagerRepository\SalaryRepository.cs" />
     <Compile Include="ManagerRepository\ServiceProviderRepository.cs" />
     <Compile Include="ManagerRepository\ServiceRepository.cs" />
     <Compile Include="ManagerRepository\UserRepository.cs" />
+    <Compile Include="ManagerServiceProviderInterface.cs" />
     <Compile Include="ProfilePicture.cs">
       <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>

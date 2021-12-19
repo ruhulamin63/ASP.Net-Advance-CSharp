@@ -93,17 +93,6 @@
     <NavigationProperty Name="Reviews" Relationship="Self.FK_CUstomers_Reviews" FromRole="Customers" ToRole="Reviews" />
     <NavigationProperty Name="User" Relationship="Self.FK_Customers_Users" FromRole="Customers" ToRole="Users" />
   </EntityType>
-  <EntityType Name="Discount">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="service_id" Type="Int32" Nullable="false" />
-    <Property Name="discount_percent" Type="Int32" Nullable="false" />
-    <Property Name="created_at" Type="DateTime" Precision="3" />
-    <Property Name="updated_at" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Service" Relationship="Self.FK_Discounts_Services" FromRole="Discounts" ToRole="Services" />
-  </EntityType>
   <EntityType Name="Login_Time">
     <Key>
       <PropertyRef Name="id" />
@@ -186,11 +175,11 @@
     <Property Name="name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
     <Property Name="category" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
     <Property Name="unit_price" Type="Int32" />
+    <Property Name="discount_amount" Type="Int32" />
     <Property Name="description" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
     <Property Name="created_at" Type="DateTime" Precision="3" />
     <Property Name="updated_at" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Booking_Details" Relationship="Self.FK_Booking_Detail_Services" FromRole="Services" ToRole="Booking_Details" />
-    <NavigationProperty Name="Discounts" Relationship="Self.FK_Discounts_Services" FromRole="Services" ToRole="Discounts" />
   </EntityType>
   <EntityType Name="Token">
     <Key>
@@ -343,18 +332,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Discounts_Services">
-    <End Role="Services" Type="Self.Service" Multiplicity="1" />
-    <End Role="Discounts" Type="Self.Discount" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Services">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Discounts">
-        <PropertyRef Name="service_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Login_Time_Users">
     <End Role="Users" Type="Self.User" Multiplicity="1" />
     <End Role="Login_Time" Type="Self.Login_Time" Multiplicity="*" />
@@ -447,7 +424,6 @@
     <EntitySet Name="Coupons" EntityType="Self.Coupon" />
     <EntitySet Name="Customer_Coupon" EntityType="Self.Customer_Coupon" />
     <EntitySet Name="Customers" EntityType="Self.Customer" />
-    <EntitySet Name="Discounts" EntityType="Self.Discount" />
     <EntitySet Name="Login_Time" EntityType="Self.Login_Time" />
     <EntitySet Name="ProfilePictures" EntityType="Self.ProfilePicture" />
     <EntitySet Name="Reviews" EntityType="Self.Review" />
@@ -496,10 +472,6 @@
     <AssociationSet Name="FK_Customers_Users" Association="Self.FK_Customers_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="Customers" EntitySet="Customers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Discounts_Services" Association="Self.FK_Discounts_Services">
-      <End Role="Services" EntitySet="Services" />
-      <End Role="Discounts" EntitySet="Discounts" />
     </AssociationSet>
     <AssociationSet Name="FK_Login_Time_Users" Association="Self.FK_Login_Time_Users">
       <End Role="Users" EntitySet="Users" />

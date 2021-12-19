@@ -32,7 +32,6 @@ namespace DAL
         public DbSet<Coupon> Coupons { get; set; }
         public DbSet<Customer_Coupon> Customer_Coupon { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Discount> Discounts { get; set; }
         public DbSet<Login_Time> Login_Time { get; set; }
         public DbSet<ProfilePicture> ProfilePictures { get; set; }
         public DbSet<Review> Reviews { get; set; }

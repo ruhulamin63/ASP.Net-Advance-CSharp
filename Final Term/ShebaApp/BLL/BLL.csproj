@@ -48,7 +48,7 @@
     <Compile Include="ManagerServices\BookingService.cs" />
     <Compile Include="ManagerServices\BookingServiceToService.cs" />
     <Compile Include="ManagerServices\CouponService.cs" />
-    <Compile Include="ManagerServices\DiscountService.cs" />
+    <Compile Include="ManagerServices\CustomerService.cs" />
     <Compile Include="ManagerServices\ReviewService.cs" />
     <Compile Include="ManagerServices\SalaryService.cs" />
     <Compile Include="ManagerServices\ServiceProviderServices.cs" />

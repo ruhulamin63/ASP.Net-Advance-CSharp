@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    public class ServiceProviderRepository : ManagerRepository<ServiceProvider, int>
+    public class ServiceProviderRepository : ManagerServiceProviderInterface<ServiceProvider, int>
     {
         ShebaDbEntities db;
 
@@ -47,19 +47,36 @@ namespace DAL.Repository
 
         //=================================================================
 
-        public List<Booking> GetByCustomerId(int id)
+        public List<ServiceProvider> ConfirmBookedService(int id)
         {
-            throw new NotImplementedException();
+       
+
+            var sp = (from data in db.ServiceProviders
+                      where data.work_status == "available"
+                      select data).ToList();
+            
+            if(sp.Count > 0)
+            {
+                return sp;
+            }
+            else 
+            { 
+                return null;
+            }
         }
 
-        public List<Booking> GetByOrderDate(DateTime order_date)
+      /*  public ServiceProvider AssignServices(int id)
         {
-            throw new NotImplementedException();
-        }
+            //return db.ServiceProviders.FirstOrDefault(e => e.id == id);
 
-        public List<Booking> GetByOrderDateCustomerId(DateTime order_date, int id)
-        {
-            throw new NotImplementedException();
-        }
+            var cs = new ServiceProvider()
+            {
+                booking_id = bId,
+                service = sp_id
+            };
+            db.ServiceProviders.Add(cs);
+            db.SaveChanges();
+        }*/
+
     }
 }

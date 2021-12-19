@@ -32,7 +32,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,7 +48,7 @@
     <Compile Include="ManagerModel\BookingServiceModel.cs" />
     <Compile Include="ManagerModel\CouponModel.cs" />
     <Compile Include="ManagerModel\CustomerModel.cs" />
-    <Compile Include="ManagerModel\DiscountModel.cs" />
+    <Compile Include="ManagerModel\ProfileModel.cs" />
     <Compile Include="ManagerModel\ReviewModel.cs" />
     <Compile Include="ManagerModel\SalaryModel.cs" />
     <Compile Include="ManagerModel\ServiceModel.cs" />

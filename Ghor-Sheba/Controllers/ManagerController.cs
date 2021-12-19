@@ -914,6 +914,7 @@ namespace Ghor_Sheba.Controllers
             temp.status = "confirm";
             db.Entry(book).CurrentValues.SetValues(temp);
             db.SaveChanges();
+            
             db.Booking_confirms.Add(cs);
             db.SaveChanges();
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    public class BookingServiceRepository : ManagerRepository<Booking_Service, int>
+    public class BookingServiceRepository : ManagerInterface<Booking_Service, int>
     {
         ShebaDbEntities db;
 
@@ -41,6 +41,11 @@ namespace DAL.Repository
         }
 
         public Booking_Service Get(int id)
+        {
+            return db.Booking_Service.FirstOrDefault(e => e.id == id);
+        }
+
+        public Booking_Service AssignServices(int id)
         {
             return db.Booking_Service.FirstOrDefault(e => e.id == id);
         }

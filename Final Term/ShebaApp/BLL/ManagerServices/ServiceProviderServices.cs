@@ -18,7 +18,7 @@ namespace BLL.ManagerServices
                 c.CreateMap<ServiceProvider, ServiceProviderModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<ServiceProviderModel>>(ManagerDataAccessFactory.SrviceProviderServiceDataAccess().Get());
+            var data = mapper.Map<List<ServiceProviderModel>>(ManagerDataAccessFactory.ServiceProviderDataAccess().Get());
             return data;
         }
 
@@ -29,7 +29,7 @@ namespace BLL.ManagerServices
                 c.CreateMap<ServiceProvider, ServiceProviderModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<ServiceProviderModel>(ManagerDataAccessFactory.SrviceProviderServiceDataAccess().Get(id));
+            var data = mapper.Map<ServiceProviderModel>(ManagerDataAccessFactory.ServiceProviderDataAccess().Get(id));
             return data;
         }
 
@@ -41,7 +41,7 @@ namespace BLL.ManagerServices
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<ServiceProvider>(n);
-            ManagerDataAccessFactory.SrviceProviderServiceDataAccess().Add(data);
+            ManagerDataAccessFactory.ServiceProviderDataAccess().Add(data);
         }
 
         public static void Edit(ServiceProviderModel n)
@@ -52,11 +52,32 @@ namespace BLL.ManagerServices
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<ServiceProvider>(n);
-            ManagerDataAccessFactory.SrviceProviderServiceDataAccess().Edit(data);
+            ManagerDataAccessFactory.ServiceProviderDataAccess().Edit(data);
         }
         public static void Delete(int id)
         {
-            ManagerDataAccessFactory.SrviceProviderServiceDataAccess().Delete(id);
+            ManagerDataAccessFactory.ServiceProviderDataAccess().Delete(id);
+        }
+        public static List<ServiceProviderModel> ConfirmBookedService(int id)
+        {
+            var config = new MapperConfiguration(c =>
+            {
+                c.CreateMap<ServiceProvider, ServiceProviderModel>().ReverseMap();
+            });
+            var mapper = new Mapper(config);
+            var data = mapper.Map<List<ServiceProviderModel>>(ManagerDataAccessFactory.ServiceProviderDataAccess().ConfirmBookedService(id));
+            return data;
+        } 
+        
+        public static List<BookingServiceModel> AssignServices(int id)
+        {
+            var config = new MapperConfiguration(c =>
+            {
+                c.CreateMap<BookingService, BookingServiceModel>().ReverseMap();
+            });
+            var mapper = new Mapper(config);
+            var data = mapper.Map<List<BookingServiceModel>>(ManagerDataAccessFactory.BookingServiceDataAccess().AssignServices(id));
+            return data;
         }
     }
 }

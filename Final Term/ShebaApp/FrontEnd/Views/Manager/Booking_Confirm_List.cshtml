@@ -33,57 +33,94 @@
     <!--begin::Container-->
     <div id="kt_content_container" class="container">
 
-        <p>
-            <a href="@Url.Action("Booking_Confirm_Create", "Manager")" class="btn btn-bg-primary"><i class="fa fa-plus"></i>Create New</a>
-        </p>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.booking_id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.service_id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.unit_price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.quantity)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.discount)
-                </th>
-                <th>Action</th>
-            </tr>
+        <!--begin::Row-->
+        <div class="row gy-5 gx-xl-8">
+            <!--begin::Col-->
+            <div class="col-xl-12">
+                <!--begin::Tables Widget 9-->
+                <div class="card card-xxl-stretch mb-5 mb-xl-8">
+                    <!--begin::Header-->
+                    <div class="card-header border-0 pt-5">
+                        <h3 class="card-title align-items-start flex-column">
+                            <span class="card-label fw-bolder fs-3 mb-1">Booked Confirm Information</span>
+                            <span class="text-muted mt-1 fw-bold fs-7">All customer comfirmation list</span>
+                        </h3>
+                        <!--<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a user">
+                        <a href="#" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">-->
+                        <!--begin::Svg Icon | path: icons/stockholm/Communication/Add-user.svg-->
+                        <!--<span class="svg-icon svg-icon-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <path d="M18,8 L16,8 C15.4477153,8 15,7.55228475 15,7 C15,6.44771525 15.4477153,6 16,6 L18,6 L18,4 C18,3.44771525 18.4477153,3 19,3 C19.5522847,3 20,3.44771525 20,4 L20,6 L22,6 C22.5522847,6 23,6.44771525 23,7 C23,7.55228475 22.5522847,8 22,8 L20,8 L20,10 C20,10.5522847 19.5522847,11 19,11 C18.4477153,11 18,10.5522847 18,10 L18,8 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                            <path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                        </svg>
+                    </span>-->
+                        <!--end::Svg Icon-->
+                        <!--Services
+                        </a>
+                    </div>-->
+                    </div>
+                    <!--end::Header-->
+                    <hr />
+                    <!--begin::Body-->
+                    <div class="card-body py-3">
+                        <!--begin::Table container-->
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <!--begin::Table head-->
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.booking_id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.service_id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.unit_price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.quantity)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.discount)
-                    </td>
-                    <td>
-                        <a href="@Url.Action("Booking_Confirm_Edit", "Manager", new {id = item.id})" class="btn btn-bg-primary"><i class="fa fa-pencil-alt"></i> Update</a>
-                        <a onclick="Delete(@item.id)" class="btn btn-bg-primary"><i class="fa fa-trash"></i> Delete</a>
-                    </td>
-                </tr>
-            }
+                               @* <p>
+                                    <a href="@Url.Action("Booking_Confirm_Create", "Manager")" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>Create New</a>
+                                </p>*@
+                                <hr />
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr style="background-color: #E74C3C; color:white !important">
+                                            <th style="text-align: center; width:8%;">Booking Id</th>
+                                            <th style="text-align: center;" class="min-w-100px">Service Id</th>
+                                            <th style="text-align: center;" class="min-w-100px">Unit Price</th>
+                                            <th style="text-align: center;" class="min-w-100px">Quantity</th>
+                                            <th style="text-align: center;" class="min-w-100px">Discount</th>
+                                            <th style="text-align: center;" class="min-w-100px">Action</th>
+                                        </tr>
+                                    </thead>
 
-        </table>
+                                    <tbody>
 
-        <script>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.booking_id)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.service_id)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.unit_price)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.quantity)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.discount) %
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    <a href="@Url.Action("Booking_Confirm_Edit", "Manager", new {id = item.id})"><i class="fa fa-edit btn btn-info btn-sm">Update</i></a>
+                                                    <a onclick="Delete(@item.id)"> <i class="btn btn-danger btn-sm">Delete</i></a>
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                                <a href="@Url.Action("Booking_Confirm_List", "Manager")" class="btn btn-success btn-sm">Back to list</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    @section scripts {
+
+                        <script>
                 $(function () {
                     var successMessage = '@TempData["SuccessMessage"]'
 
@@ -96,9 +133,13 @@
                         window.location.href = "https://localhost:44326/Manager/Booking_Confirm_Delete/" + id;
                     }, null);
                 }
-        </script>
+                        </script>
+                    }
 
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Post-->
+        </div>
     </div>
-    <!--end::Container-->
 </div>
-<!--end::Post-->

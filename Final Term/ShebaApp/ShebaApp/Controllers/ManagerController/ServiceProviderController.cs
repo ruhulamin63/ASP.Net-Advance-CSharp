@@ -45,5 +45,20 @@ namespace ShebaApp.Controllers.ManagerController
             return Request.CreateResponse(HttpStatusCode.OK, "Delete Succesfully");
         }
 
+
+        [Route("api/service/cbs/{id}")]
+        [HttpGet]
+        public HttpResponseMessage ConfirmBookedService(int id)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, ServiceProviderServices.ConfirmBookedService(id));
+        } 
+        
+        [Route("api/assign/service/{id}")]
+        [HttpGet]
+        public HttpResponseMessage AssignServices(int id)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, ServiceProviderServices.AssignServices(id));
+        }
+
     }
 }

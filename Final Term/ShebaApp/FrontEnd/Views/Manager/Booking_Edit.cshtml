@@ -33,58 +33,83 @@
     <!--begin::Container-->
     <div id="kt_content_container" class="container">
 
-
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="form-horizontal">
-                <h4>BookingModel</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.id)
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.customer_id, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.customer_id, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.customer_id, "", new { @class = "text-danger" })
+        <!--begin::Row-->
+        <div class="row gy-5 gx-xl-8">
+            <!--begin::Col-->
+            <div class="col-xl-12">
+                <!--begin::Tables Widget 9-->
+                <div class="card card-xxl-stretch mb-5 mb-xl-8">
+                    <!--begin::Header-->
+                    <div class="card-header border-0 pt-5">
+                        <h3 class="card-title align-items-start flex-column">
+                            <span class="card-label fw-bolder fs-3 mb-1">Booking List Information</span>
+                            <span class="text-muted mt-1 fw-bold fs-7">All customer Booking list</span>
+                        </h3>
                     </div>
-                </div>
+                    <!--end::Header-->
+                    <hr />
+                    <!--begin::Body-->
+                    <div class="card-body py-3">
+                        <!--begin::Table container-->
+                        <div class="card-body">
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.total_cost, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.total_cost, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.total_cost, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.order_date, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.order_date, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.order_date, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                                <div class="form-horizontal">
+                                    <h4>BookingModel</h4>
+                                    <hr />
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.id)
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.customer_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.customer_id, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.customer_id, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Update" class="btn btn-bg-primary" />
-                        <a href="@Url.Action("Booking_List", "Manager")" class="btn btn-bg-primary">Back to list</a>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.total_cost, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.total_cost, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.total_cost, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.order_date, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.order_date, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.order_date, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Update" class="btn btn-success btn-sm" />
+                                            <a href="@Url.Action("Booking_List", "Manager")" class="btn btn-success btn-sm">Back to list</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        
+                        </div>
+                        <!--end::Container-->
                     </div>
+                    <!--end::Post-->
                 </div>
             </div>
-        }
+        </div>
     </div>
-    <!--end::Container-->
 </div>
-<!--end::Post-->

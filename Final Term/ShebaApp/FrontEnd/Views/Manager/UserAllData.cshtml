@@ -18,7 +18,7 @@
                 <span class="h-20px border-gray-200 border-start ms-3 mx-2"></span>
                 <!--end::Separator-->
                 <!--begin::Description-->
-                <small class="text-muted fs-7 fw-bold my-1 ms-1">List View</small>
+                <small class="text-muted fs-7 fw-bold my-1 ms-1"># List View</small>
                 <!--end::Description-->
             </h1>
             <!--end::Title-->
@@ -33,84 +33,106 @@
     <!--begin::Container-->
     <div id="kt_content_container" class="container">
 
-        <p>
-            <a href="@Url.Action("UserAdd", "Manager")" class="btn btn-bg-primary"><i class="fa fa-plus"></i>Create New</a>
-        </p>
-        <table class="table table-striped">
-            <thead class="table-primary">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.fullname)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.email)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.password)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.usertype)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.verification_status)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.id_status)
-                    </th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+        <!--begin::Row-->
+        <div class="row gy-5 gx-xl-8">
+            <!--begin::Col-->
+            <div class="col-xl-12">
+                <!--begin::Tables Widget 9-->
+                <div class="card card-xxl-stretch mb-5 mb-xl-8">
+                    <!--begin::Header-->
+                    <div class="card-header border-0 pt-5">
+                        <h3 class="card-title align-items-start flex-column">
+                            <span class="card-label fw-bolder fs-3 mb-1">User List Information</span>
+                            <span class="text-muted mt-1 fw-bold fs-7">All customer list</span>
+                        </h3>
+                    </div>
+                    <!--end::Header-->
+                    <hr />
+                    <!--begin::Body-->
+                    <div class="card-body py-3">
+                        <!--begin::Table container-->
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <!--begin::Table head-->
+                                <p>
+                                    <a href="@Url.Action("UserAdd", "Manager")" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>Create New</a>
+                                </p>
+                                <hr />
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr style="background-color: #E74C3C; color:white !important">
+                                            <th style="text-align: center; width:8%;">Customer Id</th>
+                                            <th style="text-align: center; width:8%;">Name</th>
+                                            <th style="text-align: center;" class="min-w-100px">E-mail</th>
+                                            <th style="text-align: center;" class="min-w-100px">User Type</th>
+                                            <th style="text-align: center;" class="min-w-100px">Verification Status</th>
+                                            <th style="text-align: center;" class="min-w-100px">Id Status</th>
+                                            <th style="text-align: center;" class="min-w-100px">Action</th>
+                                        </tr>
+                                    </thead>
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.fullname)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.password)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.usertype)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.verification_status)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.id_status)
-                    </td>
-                    <td>
-                        <a href="@Url.Action("UserEdit", "Manager", new {id = item.id})" class="btn btn-bg-primary"><i class="fa fa-pencil-alt"></i> Update</a>
-                        <a onclick="Delete(@item.id)" class="btn btn-bg-primary"><i class="fa fa-trash"></i> Delete</a>
-                    </td>
-                </tr>
-            }
+                                    <tbody>
 
-        </table>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.id)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.fullname)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.email)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.usertype)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.verification_status)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.id_status)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    <a href="@Url.Action("UserEdit", "Manager", new {id = item.id})"><i class="fa fa-edit btn btn-info btn-sm">Update</i></a>
+                                                    <a onclick="Delete(@item.id)"><i class="btn btn-danger btn-sm">Delete</i></a>
+                                                </td>
+                                            </tr>
+                                        }
 
-       @* @section scripts{*@
-            
-            <script>
-                $(function () {
-                    var successMessage = '@TempData["SuccessMessage"]'
+                                    </tbody>
+                                </table>
+                                <a href="@Url.Action("UserAllData", "Manager")" class="btn btn-success btn-sm">Back to list</a>
+                            </div>
+                        </div>
+                    </div>
 
-                    if (successMessage != '')
-                        alertify.success(successMessage);
-                });
 
-                function Delete(id) {
-                    alertify.confirm('User Data List', 'Are you sure to delete this record ?', function () {
-                        //window.location.href = '@Url.Action("UserDelete", "api/users/delete")/' + id;
-                        window.location.href = "https://localhost:44326/Manager/UserDelete/" + id;
-                    }, null);
-                }
-            </script>
-       @* }*@
+                    @section scripts {
 
+                        <script>
+                    $(function () {
+                        var successMessage = '@TempData["SuccessMessage"]'
+
+                        if (successMessage != '')
+                            alertify.success(successMessage);
+                    });
+
+                    function Delete(id) {
+                        alertify.confirm('User Data List', 'Are you sure to delete this record ?', function () {
+                            //window.location.href = '@Url.Action("UserDelete", "api/users/delete")/' + id;
+                            window.location.href = "https://localhost:44326/Manager/UserDelete/" + id;
+                        }, null);
+                    }
+                        </script>
+                    }
+
+                </div>
+                <!--end::Row-->
+            </div>
+            <!--end::Post-->
+        </div>
+        <!--end::Container-->
     </div>
-    <!--end::Container-->
 </div>
-<!--end::Post-->

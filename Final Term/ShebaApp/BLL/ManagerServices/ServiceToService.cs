@@ -18,7 +18,7 @@ namespace BLL
                 c.CreateMap<Service, ServiceModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<ServiceModel>>(ManagerDataAccessFactory.ServicerToServiceDataAccess().Get());
+            var data = mapper.Map<List<ServiceModel>>(ManagerDataAccessFactory.ServiceDataAccess().Get());
             return data;
         }
 
@@ -29,7 +29,7 @@ namespace BLL
                 c.CreateMap<Service, ServiceModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<ServiceModel>(ManagerDataAccessFactory.ServicerToServiceDataAccess().Get(id));
+            var data = mapper.Map<ServiceModel>(ManagerDataAccessFactory.ServiceDataAccess().Get(id));
             return data;
         }
 
@@ -41,7 +41,7 @@ namespace BLL
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<Service>(n);
-            ManagerDataAccessFactory.ServicerToServiceDataAccess().Add(data);
+            ManagerDataAccessFactory.ServiceDataAccess().Add(data);
         }
 
         public static void Edit(ServiceModel n)
@@ -52,11 +52,11 @@ namespace BLL
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<Service>(n);
-            ManagerDataAccessFactory.ServicerToServiceDataAccess().Edit(data);
+            ManagerDataAccessFactory.ServiceDataAccess().Edit(data);
         }
         public static void Delete(int id)
         {
-            ManagerDataAccessFactory.ServicerToServiceDataAccess().Delete(id);
+            ManagerDataAccessFactory.ServiceDataAccess().Delete(id);
         }
     }
 }

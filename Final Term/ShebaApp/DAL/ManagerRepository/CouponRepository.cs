@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.ManagerRepository
 {
-    public class CouponRepository : ManagerRepository<Coupon, int>
+    public class CouponRepository : ManagerInterface<Coupon, int>
     {
         ShebaDbEntities db;
 
@@ -56,6 +56,10 @@ namespace DAL.ManagerRepository
         }
 
         public List<Booking> GetByOrderDateCustomerId(DateTime order_date, int id)
+        {
+            throw new NotImplementedException();
+        }
+        public Coupon AssignServices(int id)
         {
             throw new NotImplementedException();
         }

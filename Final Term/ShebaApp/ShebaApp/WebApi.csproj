@@ -90,7 +90,7 @@
     <Compile Include="Controllers\ManagerController\BookingDetailsController.cs" />
     <Compile Include="Controllers\ManagerController\BookingServiceController.cs" />
     <Compile Include="Controllers\ManagerController\CouponController.cs" />
-    <Compile Include="Controllers\ManagerController\DiscountController.cs" />
+    <Compile Include="Controllers\ManagerController\CustomerController.cs" />
     <Compile Include="Controllers\ManagerController\ReviewController.cs" />
     <Compile Include="Controllers\ManagerController\SalariesController.cs" />
     <Compile Include="Controllers\ManagerController\ServiceController.cs" />

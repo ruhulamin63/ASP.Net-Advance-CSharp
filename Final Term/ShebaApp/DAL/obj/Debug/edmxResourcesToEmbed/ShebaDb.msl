@@ -86,17 +86,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Discounts">
-      <EntityTypeMapping TypeName="ShebaDbModel.Discount">
-        <MappingFragment StoreEntitySet="Discounts">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="service_id" ColumnName="service_id" />
-          <ScalarProperty Name="discount_percent" ColumnName="discount_percent" />
-          <ScalarProperty Name="created_at" ColumnName="created_at" />
-          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Login_Time">
       <EntityTypeMapping TypeName="ShebaDbModel.Login_Time">
         <MappingFragment StoreEntitySet="Login_Time">
@@ -173,6 +162,7 @@
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="category" ColumnName="category" />
           <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="created_at" ColumnName="created_at" />
           <ScalarProperty Name="updated_at" ColumnName="updated_at" />

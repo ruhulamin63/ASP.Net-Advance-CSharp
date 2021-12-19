@@ -33,60 +33,98 @@
     <!--begin::Container-->
     <div id="kt_content_container" class="container">
 
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.customer_id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.serviceprovider_id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.rating)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.created_at)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.updated_at)
-                </th>
-                <th>Action</th>
-            </tr>
+        <!--begin::Row-->
+        <div class="row gy-5 gx-xl-8">
+            <!--begin::Col-->
+            <div class="col-xl-12">
+                <!--begin::Tables Widget 9-->
+                <div class="card card-xxl-stretch mb-5 mb-xl-8">
+                    <!--begin::Header-->
+                    <div class="card-header border-0 pt-5">
+                        <h3 class="card-title align-items-start flex-column">
+                            <span class="card-label fw-bolder fs-3 mb-1">Review Data Information</span>
+                            <span class="text-muted mt-1 fw-bold fs-7">All Update Review Data</span>
+                        </h3>
+                    </div>
+                    <!--end::Header-->
+                    <hr />
+                    <!--begin::Body-->
+                    <div class="card-body py-3">
+                        <!--begin::Table container-->
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <!--begin::Table head-->
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr style="background-color: #E74C3C; color:white !important">
+                                            <th style="text-align: center; width:8%;">Customer Id</th>
+                                            <th style="text-align: center;" class="min-w-100px">Service Provider Id</th>
+                                            <th style="text-align: center;" class="min-w-100px">Description</th>
+                                            <th style="text-align: center;" class="min-w-100px">Rating</th>
+                                            <th style="text-align: center;" class="min-w-100px">Create Date</th>
+                                            <th style="text-align: center;" class="min-w-100px">Action</th>
+                                        </tr>
+                                    </thead>
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.customer_id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.serviceprovider_id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.rating)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.created_at)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.updated_at)
-                    </td>
-                    <td>
-                        <a href="@Url.Action("#", "Manager", new {id = item.id})" class="btn btn-bg-primary"><i class="fa fa-pencil-alt"></i> Update</a>
-                        <a href="@Url.Action("UserAllData", "Manager")" class="btn btn-bg-primary">Back to list</a>
-                    </td>
-                </tr>
-            }
+                                    <tbody>
 
-        </table>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.customer_id)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.serviceprovider_id)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.description)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.rating)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.created_at)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    <a href="@Url.Action("#", "Manager", new {id = item.id})">
+                                                        <i class="fa fa-edit btn btn-info btn-sm">Update</i>
+                                                    </a>
+                                                    <a href="@Url.Action("Delete", "Manager", new { id = item.id })">
+                                                        <i class="btn btn-danger btn-sm">Delete</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
 
-    </div>
-    <!--end::Container-->
+                                    </tbody>
+                                </table>
+                                <a href="@Url.Action("UserAllData", "Manager")" class="btn btn-success btn-sm">Back to list</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    @section scripts {
+                        <script>
+                            $(function () {
+                                var successMessage = '@TempData["SuccessMessage"]'
+
+                                if (successMessage != '')
+                                    alertify.success(successMessage);
+                            });
+
+                            function Delete(id) {
+                                alertify.confirm('Booking Data Information', 'Are you sure to delete this record ?', function () {
+                                    window.location.href = "https://localhost:44326/Manager/Booking_Delete/" + id;
+                                }, null);
+                            }
+                        </script>
+                    }
+
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Post-->
+        </div>
+     </div>
 </div>
-<!--end::Post-->

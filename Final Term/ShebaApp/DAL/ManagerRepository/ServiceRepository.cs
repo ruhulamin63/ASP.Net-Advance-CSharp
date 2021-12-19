@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    public class ServiceRepository : ManagerRepository<Service, int>
+    public class ServiceRepository : ManagerInterface<Service, int>
     {
         ShebaDbEntities db;
 
@@ -58,6 +58,10 @@ namespace DAL.Repository
         }
 
         public List<Booking> GetByOrderDateCustomerId(DateTime order_date, int id)
+        {
+            throw new NotImplementedException();
+        }
+        public Service AssignServices(int id)
         {
             throw new NotImplementedException();
         }
