@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BEL.CartModel>
+
+@{
+    ViewBag.Title = "ViewCart";
+    Layout = "~/Views/Shared/HomePageLayout.cshtml";
+}
+
+<div class="container">
+    <h2>ViewCart</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.unit_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.total_cost)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.unit_price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.total_cost)
+                </td>
+                <td>
+                    <a href="/Home/DeleteFromCart/@item.id" class="btn btn-success">Remove</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+    @{
+        if (Model.Count() > 0)
+        {
+            <a href="/Customer/Checkout" class="btn btn-primary">Checkout</a>
+        }
+    }
+    <a href="/Customer/Profile" class="btn btn-primary">Back to Profile</a>
+</div>

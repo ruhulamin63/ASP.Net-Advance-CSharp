@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Home/SignupLayout.cshtml";
+}
+
+<!-- main -->
+<div class="main main-agileits">
+    <a href="/Home/Index"><h1>Back To Home</h1></a>
+    <div class="main-agilerow">
+        <div class="signup-wthreetop">
+            <h2>Please Register</h2>
+        </div>
+        <div class="contact-wthree">
+            <form action="/Home/Signup" method="post">
+                <h3>Step 1 :</h3>
+                <div class="form-w3step1">
+                    <input type="text" name="fullname" placeholder="Your Name" required="">
+                    <input type="email" class="email agileits-btm" name="Email" placeholder="Email" required="">
+                </div>
+                <h3>Step 2 :</h3>
+                <div class="form-w3step1">
+                    <input type="password" name="password" placeholder="Password" required="">
+                    <input type="password" class="agileits-btm" name="Confirmpassword" placeholder="Confirm Password" required="">
+                </div>
+                <h3>Step 3 :</h3>
+                <div class="form-w3step1 w3ls-formrow">
+                    <input type="text" name="phone" placeholder="Mobile number" required="">
+                    <input type="text" class="agileits-btm" name="address" placeholder="Your Address" required="">
+                </div>
+                <input type="submit" value="SUBMIT">
+            </form>
+            <br />
+            Already have an account?<a href="/Login/Login">Login</a>
+        </div>
+    </div>
+</div>
+<!-- //main -->
+<!-- copyright -->
+<div class="w3copyright-agile">
+    <p>© Ghor Sheba. All rights reserved</p>
+</div>
+<!-- //copyright -->

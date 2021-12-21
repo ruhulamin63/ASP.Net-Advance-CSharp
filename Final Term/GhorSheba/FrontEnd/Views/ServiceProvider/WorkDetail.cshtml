@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BEL.AdminBookingDetailModel>
+
+@{
+    ViewBag.Title = "WorkDetail";
+    Layout = "~/Views/Shared/HomePageLayout.cshtml";
+}
+
+<div class="container">
+<h2>Work Detail</h2>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category)
+        </td>
+
+    </tr>
+}
+
+</table>
+</div>

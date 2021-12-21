@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BEL.ServiceDetailModel>
+
+@{
+    ViewBag.Title = "ShowDetail";
+    Layout = "~/Views/Shared/HomePageLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Show Detail</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fullname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phone)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fullname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phone)
+                </td>
+                <td>
+                    <a href="/ServiceProvider/WorkDetail/@item.id" class="btn btn-primary">Work Detail</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

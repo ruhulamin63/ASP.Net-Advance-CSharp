@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BEL.UserModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Print Customer Details</title>
+</head>
+<body>
+    <h3>Customer Details</h3>
+    <hr />
+    <div class="container">
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.fullname)
+                </th>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.password)
+                </th>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.usertype)
+                </th>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.id_status)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fullname)
+            </td>
+            <td></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usertype)
+            </td>
+            <td></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_status)
+            </td>
+        </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

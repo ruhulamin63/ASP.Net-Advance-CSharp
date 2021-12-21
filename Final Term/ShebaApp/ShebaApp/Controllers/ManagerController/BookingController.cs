@@ -44,7 +44,7 @@ namespace ShebaApp.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, "Delete Succesfully");
         }
 
-        [Route("api/get/odate/date")]
+       /* [Route("api/get/odate/date")]
         [HttpGet]
         public HttpResponseMessage GetByOrderDate([FromUri] DateTime order_date)
         {
@@ -78,6 +78,6 @@ namespace ShebaApp.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             return Request.CreateResponse(HttpStatusCode.BadRequest, "Not found");
-        }
+        }*/
     }
 }

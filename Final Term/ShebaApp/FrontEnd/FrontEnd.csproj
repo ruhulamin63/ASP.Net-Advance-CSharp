@@ -133,7 +133,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="GlobalVariable.cs" />
+    <Compile Include="GlobalVariables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4165,15 +4165,10 @@
     <Content Include="Views\Manager\UserAllData.cshtml" />
     <Content Include="Views\Manager\UserAdd.cshtml" />
     <Content Include="Views\Manager\UserEdit.cshtml" />
-    <Content Include="Views\Manager\Booking_List.cshtml" />
-    <Content Include="Views\Manager\Booking_Create.cshtml" />
     <Content Include="Views\Manager\Booking_Confirm_List.cshtml" />
-    <Content Include="Views\Manager\Booking_Confirm_Create.cshtml" />
     <Content Include="Views\Manager\Service_List.cshtml" />
     <Content Include="Views\Manager\Service_Create.cshtml" />
     <Content Include="Views\Manager\Review_List.cshtml" />
-    <Content Include="Views\Manager\Booking_Edit.cshtml" />
-    <Content Include="Views\Manager\Booking_Confirm_Edit.cshtml" />
     <Content Include="Views\Manager\Service_Edit.cshtml" />
     <Content Include="Views\Manager\Service_Provider_List.cshtml" />
     <Content Include="Views\Manager\Manage_Booked_Services.cshtml" />
@@ -4355,6 +4350,8 @@
     <Content Include="Views\Manager\Setting_Overview.cshtml" />
     <Content Include="Views\Manager\Setting_Update.cshtml" />
     <Content Include="Views\Manager\Customer_List.cshtml" />
+    <Content Include="Views\Manager\Salary_List.cshtml" />
+    <Content Include="Views\Manager\Salary_Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

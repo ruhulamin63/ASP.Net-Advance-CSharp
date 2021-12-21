@@ -76,8 +76,8 @@
     <Compile Include="ManagerRepository\BookingDetailsRepository.cs" />
     <Compile Include="ManagerDataAccessFactory.cs" />
     <Compile Include="ManagerInterface.cs" />
-    <Compile Include="ManagerRepository\BookingServiceRepository.cs" />
     <Compile Include="ManagerRepository\BookingRepository.cs" />
+    <Compile Include="ManagerRepository\BookingServiceRepository.cs" />
     <Compile Include="ManagerRepository\CouponRepository.cs" />
     <Compile Include="ManagerRepository\CustomerRepository.cs" />
     <Compile Include="ManagerRepository\ReviewRepository.cs" />

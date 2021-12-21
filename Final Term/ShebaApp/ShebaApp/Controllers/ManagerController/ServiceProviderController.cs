@@ -51,8 +51,15 @@ namespace ShebaApp.Controllers.ManagerController
         public HttpResponseMessage ConfirmBookedService(int id)
         {
             return Request.CreateResponse(HttpStatusCode.OK, ServiceProviderServices.ConfirmBookedService(id));
-        } 
-        
+        }
+
+        /* [Route("api/service/cbs")]
+         [HttpGet]
+         public void ConfirmBooking(BookingServiceModel s)
+         {
+             ServiceProviderServices.ConfirmBooking(s);
+         }*/
+
         [Route("api/assign/service/{id}")]
         [HttpGet]
         public HttpResponseMessage AssignServices(int id)

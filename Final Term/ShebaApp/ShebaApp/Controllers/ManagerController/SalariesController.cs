@@ -25,9 +25,9 @@ namespace ShebaApp.Controllers.ManagerController
         }
         [Route("api/salary/create/{id}")]
         [HttpPost]
-        public HttpResponseMessage Add(SalaryModel user, int id)
+        public HttpResponseMessage Add(int id, SalaryModel user)
         {
-            SalaryService.Add(user,id);
+            SalaryService.Add(id,user);
             return Request.CreateResponse(HttpStatusCode.OK, "Succesfully Created");
         }
         [Route("api/salary/edit")]

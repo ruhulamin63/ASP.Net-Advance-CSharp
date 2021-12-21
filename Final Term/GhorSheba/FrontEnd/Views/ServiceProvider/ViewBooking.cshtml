@@ -1,0 +1,56 @@
+﻿@model IEnumerable<BEL.BookingModel>
+
+@{
+    ViewBag.Title = "ViewBooking";
+    Layout = "~/Views/Shared/HomePageLayout.cshtml";
+}
+
+<div class="container">
+    <h2>View Booking</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.total_cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.order_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.payment_status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.total_cost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.order_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.payment_status)
+                </td>
+                <td>
+                    <a href="/ServiceProvider/EditBooking/@item.id" class="btn btn-success">Update status</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

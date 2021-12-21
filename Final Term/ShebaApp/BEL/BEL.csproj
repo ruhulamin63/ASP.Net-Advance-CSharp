@@ -43,19 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ManagerModel\BookingDetailsModel.cs" />
-    <Compile Include="ManagerModel\BookingModel.cs" />
-    <Compile Include="ManagerModel\BookingServiceModel.cs" />
-    <Compile Include="ManagerModel\CouponModel.cs" />
-    <Compile Include="ManagerModel\CustomerModel.cs" />
-    <Compile Include="ManagerModel\ProfileModel.cs" />
-    <Compile Include="ManagerModel\ReviewModel.cs" />
-    <Compile Include="ManagerModel\SalaryModel.cs" />
-    <Compile Include="ManagerModel\ServiceModel.cs" />
-    <Compile Include="ManagerModel\ServiceProviderModel.cs" />
-    <Compile Include="ManagerModel\UserModel.cs" />
-    <Compile Include="ManagerModel\UserSalayModel.cs" />
+    <Compile Include="BookingDetailModel.cs" />
+    <Compile Include="BookingModel.cs" />
+    <Compile Include="BookingServiceModel.cs" />
+    <Compile Include="CouponModel.cs" />
+    <Compile Include="CustomerModel.cs" />
+    <Compile Include="ProfileModel.cs" />
+    <Compile Include="ReviewModel.cs" />
+    <Compile Include="SalaryModel.cs" />
+    <Compile Include="ServiceModel.cs" />
+    <Compile Include="ServiceProviderModel.cs" />
+    <Compile Include="UserModel.cs" />
+    <Compile Include="UserSalayModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ManagerModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

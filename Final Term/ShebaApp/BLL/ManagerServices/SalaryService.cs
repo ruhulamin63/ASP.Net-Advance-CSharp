@@ -33,7 +33,7 @@ namespace BLL.ManagerServices
             return data;
         }
 
-        public static void Add(SalaryModel n, int id)
+        public static void Add(int id, SalaryModel n)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -41,7 +41,7 @@ namespace BLL.ManagerServices
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<Salary>(n);
-            ManagerDataAccessFactory.SalaryDataAccess().Add(data,id);
+            ManagerDataAccessFactory.SalaryDataAccess().Add(id,data);
         }
 
         public static void Edit(SalaryModel n)

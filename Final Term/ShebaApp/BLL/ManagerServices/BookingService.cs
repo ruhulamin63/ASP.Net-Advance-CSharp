@@ -36,7 +36,7 @@ namespace BLL
         {
             var config = new MapperConfiguration(c =>
             {
-                c.CreateMap<BookingModel, Booking>();
+                c.CreateMap<BookingModel, Booking>().ReverseMap();
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<Booking>(n);
@@ -58,7 +58,7 @@ namespace BLL
             ManagerDataAccessFactory.BookingDataAccess().Delete(id);
         }
 
-        public static List<BookingModel> GetByOrderDate(DateTime order_date)
+       /* public static List<BookingModel> GetByOrderDate(DateTime order_date)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -87,6 +87,6 @@ namespace BLL
             var mapper = new Mapper(config);
             var data = mapper.Map<List<BookingModel>>(ManagerDataAccessFactory.BookingDataAccess().GetByOrderDateCustomerId(order_date, c_id));
             return data;
-        }
+        }*/
     }
 }

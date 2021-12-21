@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D4267279-B6C9-4842-8BE1-F1B5F59EF91A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthDataAccessFactory.cs" />
+    <Compile Include="AuthRepo.cs" />
+    <Compile Include="Bonu.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Booking.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookingDetailRepo.cs" />
+    <Compile Include="BookingRepo.cs" />
+    <Compile Include="BookingServiceRepo.cs" />
+    <Compile Include="Booking_Details.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Booking_Service.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Coupon.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CouponRepo.cs" />
+    <Compile Include="Customer.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerCouponRepo.cs" />
+    <Compile Include="Customer_Coupon.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAuth.cs" />
+    <Compile Include="LoginTimeRepo.cs" />
+    <Compile Include="Login_Time.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerDataAccessFactory.cs" />
+    <Compile Include="ManagerInterface.cs" />
+    <Compile Include="ManagerRepository\BookingDetailsRepository.cs" />
+    <Compile Include="ManagerRepository\BookingRepository.cs" />
+    <Compile Include="ManagerRepository\BookingServiceRepository.cs" />
+    <Compile Include="ManagerRepository\CouponRepository.cs" />
+    <Compile Include="ManagerRepository\CustomerRepository.cs" />
+    <Compile Include="ManagerRepository\ReviewRepository.cs" />
+    <Compile Include="ManagerRepository\SalaryRepository.cs" />
+    <Compile Include="ManagerRepository\ServiceProviderRepository.cs" />
+    <Compile Include="ManagerRepository\ServiceRepository.cs" />
+    <Compile Include="ManagerRepository\UserRepository.cs" />
+    <Compile Include="ManagerServiceProviderInterface.cs" />
+    <Compile Include="ProfilePicture.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Review.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReviewRepo.cs" />
+    <Compile Include="SalariesRepo.cs" />
+    <Compile Include="Salary.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Salary_Interface.cs" />
+    <Compile Include="SerBonusRepo.cs" />
+    <Compile Include="SerBookingRepo.cs" />
+    <Compile Include="SerBooking_ServiceRepo.cs" />
+    <Compile Include="SerReviewRepo.cs" />
+    <Compile Include="ServCrudRepo.cs" />
+    <Compile Include="Service.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceDetailRepo.cs" />
+    <Compile Include="ServiceProvider.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProviderBonus.cs" />
+    <Compile Include="ServiceProviderDataAccessFactory.cs" />
+    <Compile Include="ServiceProviderIRepository.cs" />
+    <Compile Include="ServiceProviderRepo.cs" />
+    <Compile Include="ServiceProviderRepo1.cs" />
+    <Compile Include="ServiceProvider_Bonus.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProvider_BonusRepo.cs" />
+    <Compile Include="ServiceRepo.cs" />
+    <Compile Include="ShebaDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShebaDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShebaDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShebaDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShebaDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Token.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TokenRepo.cs" />
+    <Compile Include="TokenRepo1.cs" />
+    <Compile Include="User.cs">
+      <DependentUpon>ShebaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserProRepo.cs" />
+    <Compile Include="UserRepo.cs" />
+    <Compile Include="CustomerCrudRepo.cs" />
+    <Compile Include="DataAccessFactory.cs" />
+    <Compile Include="AdminIRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="ShebaDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ShebaDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ShebaDb.edmx.diagram">
+      <DependentUpon>ShebaDb.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ShebaDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShebaDb.edmx</DependentUpon>
+      <LastGenOutput>ShebaDb.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ShebaDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShebaDb.edmx</DependentUpon>
+      <LastGenOutput>ShebaDb.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BEL\BEL.csproj">
+      <Project>{78b05472-61b9-42d3-a418-fc2f09eee3f1}</Project>
+      <Name>BEL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

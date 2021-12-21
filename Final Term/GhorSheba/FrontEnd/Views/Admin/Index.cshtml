@@ -1,0 +1,207 @@
+﻿@model IEnumerable<BEL.TopProductModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h4 class="font-weight-bold mb-0">Admin Dashboard</h4>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary btn-icon-text btn-rounded">
+                            <i class="ti-clipboard btn-icon-prepend"></i>Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title text-md-center text-xl-left">Bookings</p>
+                        <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">@TempData["total_bookings"]</h3>
+                            <i class="ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                        </div>
+                        <p class="mb-0 mt-2 text-danger">@TempData["bookings_monthly"]%<span class="text-black ms-1"><small>(30 days)</small></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title text-md-center text-xl-left">Revenue</p>
+                        <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">@TempData["revenue_total"]</h3>
+                            <i class="ti-agenda icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                        </div>
+                        <p class="mb-0 mt-2 text-danger">@TempData["revenue_percent"]% <span class="text-black ms-1"><small>(30 days)</small></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title text-md-center text-xl-left">Customers</p>
+                        <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">@TempData["customers"]</h3>
+                            <i class="ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                        </div>
+                        <p class="mb-0 mt-2 text-success">@TempData["cs_percentage"]%<span class="text-black ms-1"><small>(30 days)</small></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title text-md-center text-xl-left">Orders Cancelled</p>
+                        <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">@TempData["bookings"]</h3>
+                            <i class="ti-layers-alt icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                        </div>
+                        <p class="mb-0 mt-2 text-success">@TempData["order_percentage"]%<span class="text-black ms-1"><small>(30 days)</small></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title mb-0">Top Products</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.name)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.category)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.cnt)
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.category)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.cnt)
+                                            </td>
+
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">To Do Lists</h4>
+                        <div class="list-wrapper pt-2">
+                            <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+                                <li>
+                                    <div class="form-check form-check-flat">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox">
+                                            Become A Travel Pro In One Easy Lesson
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-trash"></i>
+                                </li>
+                                <li class="completed">
+                                    <div class="form-check form-check-flat">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox" checked>
+                                            See The Unmatched Beauty Of The Great Lakes
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-trash"></i>
+                                </li>
+                                <li>
+                                    <div class="form-check form-check-flat">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox">
+                                            Copper Canyon
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-trash"></i>
+                                </li>
+                                <li class="completed">
+                                    <div class="form-check form-check-flat">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox" checked>
+                                            Top Things To See During A Holiday In Hong Kong
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-trash"></i>
+                                </li>
+                                <li>
+                                    <div class="form-check form-check-flat">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox">
+                                            Travelagent India
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-trash"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="add-items d-flex mb-0 mt-4">
+                            <input type="text" class="form-control todo-list-input me-2" placeholder="Add new task">
+                            <button class="add btn btn-icon text-primary todo-list-add-btn bg-transparent"><i class="ti-location-arrow"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:partials/_footer.html -->
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <a href="/Home/Index" target="_blank">Ghor Sheba</a>2021</span>
+
+        </div>
+    </footer>
+    <!-- partial -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+
+<script src="~/AdminTemplate/vendors/base/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- Plugin js for this page-->
+
+<script src="~/AdminTemplate/vendors/chart.js/Chart.min.js"></script>
+<script src="~/AdminTemplate/js/jquery.cookie.js" type="text/javascript"></script>
+<!-- End plugin js for this page-->
+<!-- inject:js -->
+<script src="~/AdminTemplate/js/off-canvas.js"></script>
+<script src="~/AdminTemplate/js/hoverable-collapse.js"></script>
+<script src="~/AdminTemplate/js/template.js"></script>
+<script src="~/AdminTemplate/js/todolist.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="~/AdminTemplate/js/dashboard.js"></script>
+<!-- End custom js for this page-->

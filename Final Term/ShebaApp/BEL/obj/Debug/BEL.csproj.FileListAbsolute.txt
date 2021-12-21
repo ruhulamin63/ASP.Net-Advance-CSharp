@@ -9,3 +9,4 @@ D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BEL\bin\Debu
 D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BEL\obj\Debug\BEL.csproj.CoreCompileInputs.cache
 D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BEL\obj\Debug\BEL.dll
 D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BEL\obj\Debug\BEL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\ShebaApp\BEL\obj\Debug\BEL.csproj.AssemblyReference.cache

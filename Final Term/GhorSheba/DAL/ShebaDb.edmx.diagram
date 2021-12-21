@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b6bfd05148254bd7948b4e44a10dd9a1" Name="Diagram1">
+        <EntityTypeShape EntityType="ShebaDbModel.Bonu" Width="1.5" PointX="3" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.Booking_Details" Width="1.5" PointX="7.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.Booking_Service" Width="1.5" PointX="7.5" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.Booking" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.Coupon" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.Customer_Coupon" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.Customer" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.Login_Time" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.ProfilePicture" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.Review" Width="1.5" PointX="5.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.Salary" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.ServiceProvider_Bonus" Width="1.5" PointX="5.25" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.ServiceProvider" Width="1.5" PointX="3" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.Service" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.Token" Width="1.5" PointX="3" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShebaDbModel.User" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+        <AssociationConnector Association="ShebaDbModel.FK_ServiceProvider_Bonus_Bonus" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_Booking_Detail_Bookings" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_Booking_Detail_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_Booking_Service_Bookings" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_Booking_Service_ServiceProviders" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_Bookings_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_Customer_Coupon_Coupons" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_Customer_Coupon_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_CUstomers_Reviews" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_Customers_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_Login_Time_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_ProfilePictures_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_Reviews_ServiceProviders" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_Salaries_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_ServiceProvider_Bonus_ServiceProviders" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_ServiceProviders_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShebaDbModel.FK_Users_Tokens" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

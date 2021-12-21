@@ -2,7 +2,6 @@
 using BEL.ManagerModel;
 using BLL;
 using DAL;
-using FrontEnd.GlobalVariables;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -26,7 +25,7 @@ namespace FrontEnd.Controllers
         {
             var users = new List<UserModel>();
 
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("api/users/all").Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/users/all").Result;
             if (response.IsSuccessStatusCode)
             {
                 var usersData = response.Content.ReadAsStringAsync().Result;
@@ -47,7 +46,7 @@ namespace FrontEnd.Controllers
             //u.verification_status = "0";
             if (ModelState.IsValid)
             {
-                HttpResponseMessage response = GlobalVariable.WebApiClient.PostAsJsonAsync("api/users/create", user).Result;
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/users/create", user).Result;
                 //return View(user);
             }
 
@@ -60,7 +59,7 @@ namespace FrontEnd.Controllers
         {
             var user = new UserModel();
             string path = "api/users/" + id;
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync(path).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync(path).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -75,7 +74,7 @@ namespace FrontEnd.Controllers
         {
             if(ModelState.IsValid)
 {
-                HttpResponseMessage response = GlobalVariable.WebApiClient.PostAsJsonAsync("api/users/edit", user).Result;
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/users/edit", user).Result;
             }
             TempData["SuccessMessage"] = "Update Successfully";
 
@@ -84,7 +83,7 @@ namespace FrontEnd.Controllers
 
         public ActionResult UserDelete(int id)
         {
-            HttpResponseMessage response = GlobalVariable.WebApiClient.DeleteAsync("api/users/delete/" + id.ToString()).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("api/users/delete/" + id.ToString()).Result;
             TempData["SuccessMessage"] = "Delete Successfully";
 
             return RedirectToAction("UserAllData", "Manager");
@@ -96,7 +95,7 @@ namespace FrontEnd.Controllers
         {
             var users = new List<CustomerModel>();
 
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("api/customer/all").Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/customer/all").Result;
             if (response.IsSuccessStatusCode)
             {
                 var usersData = response.Content.ReadAsStringAsync().Result;
@@ -105,84 +104,17 @@ namespace FrontEnd.Controllers
             return View(users);
         }
 
-        //===========================Booking Function================================
-
-        public ActionResult Booking_List()
-        {
-            var users = new List<BookingModel>();
-
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("api/booking/all").Result;
-            if (response.IsSuccessStatusCode)
-            {
-                var usersData = response.Content.ReadAsStringAsync().Result;
-                users = JsonConvert.DeserializeObject<List<BookingModel>>(usersData);
-            }
-            return View(users);
-        }
-
-        public ActionResult Booking_Create()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Booking_Create(BookingModel booked)
-        {
-            if (ModelState.IsValid)
-            {
-                HttpResponseMessage response = GlobalVariable.WebApiClient.PostAsJsonAsync("api/booking/create", booked).Result;
-            }
-
-            TempData["SuccessMessage"] = "Create Successfully";
-
-            return RedirectToAction("Booking_List", "Manager");
-        }
-
-        public ActionResult Booking_Edit(int id)
-        {
-            var user = new BookingModel();
-            string path = "api/booking/" + id;
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync(path).Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                var Response = response.Content.ReadAsStringAsync().Result;
-                user = JsonConvert.DeserializeObject<BookingModel>(Response);
-            }
-            return View(user);
-        }
-
-        [HttpPost]
-        public ActionResult Booking_Edit(BookingModel user)
-        {
-            if (ModelState.IsValid)
-            {
-                HttpResponseMessage response = GlobalVariable.WebApiClient.PostAsJsonAsync("api/booking/edit", user).Result;
-            }
-            TempData["SuccessMessage"] = "Update Successfully";
-
-            return RedirectToAction("Booking_List", "Manager");
-        }
-
-        public ActionResult Booking_Delete(int id)
-        {
-            HttpResponseMessage response = GlobalVariable.WebApiClient.DeleteAsync("api/booking/delete/" + id.ToString()).Result;
-            TempData["SuccessMessage"] = "Delete Successfully";
-
-            return RedirectToAction("Booking_List", "Manager");
-        }
-
-
         //==========================Booking Confirm Function=========================================
 
         public ActionResult Booking_Confirm_List()
         {
-            var booked = new List<BookingDetailsModel>();
+            var booked = new List<BookingDetailModel>();
 
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("api/booking/confirm/all").Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/booking/confirm/all").Result;
             if (response.IsSuccessStatusCode)
             {
                 var bookingData = response.Content.ReadAsStringAsync().Result;
-                booked = JsonConvert.DeserializeObject<List<BookingDetailsModel>>(bookingData);
+                booked = JsonConvert.DeserializeObject<List<BookingDetailModel>>(bookingData);
             }
             return View(booked);
         }
@@ -192,11 +124,11 @@ namespace FrontEnd.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Booking_Confirm_Create(BookingDetailsModel booked)
+        public ActionResult Booking_Confirm_Create(BookingDetailModel booked)
         {
             if (ModelState.IsValid)
             {
-                HttpResponseMessage response = GlobalVariable.WebApiClient.PostAsJsonAsync("api/booking/confirm/create", booked).Result;
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/booking/confirm/create", booked).Result;
             }
 
             TempData["SuccessMessage"] = "Create Successfully";
@@ -206,24 +138,24 @@ namespace FrontEnd.Controllers
 
         public ActionResult Booking_Confirm_Edit(int id)
         {
-            var user = new BookingDetailsModel();
+            var user = new BookingDetailModel();
             string path = "api/booking/confirm/" + id;
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync(path).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync(path).Result;
 
             if (response.IsSuccessStatusCode)
             {
                 var Response = response.Content.ReadAsStringAsync().Result;
-                user = JsonConvert.DeserializeObject<BookingDetailsModel>(Response);
+                user = JsonConvert.DeserializeObject<BookingDetailModel>(Response);
             }
             return View(user);
         }
 
         [HttpPost]
-        public ActionResult Booking_Confirm_Edit(BookingDetailsModel user)
+        public ActionResult Booking_Confirm_Edit(BookingDetailModel user)
         {
             if (ModelState.IsValid)
             {
-                HttpResponseMessage response = GlobalVariable.WebApiClient.PostAsJsonAsync("api/booking/confirm/edit", user).Result;
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/booking/confirm/edit", user).Result;
             }
             TempData["SuccessMessage"] = "Update Successfully";
 
@@ -232,7 +164,7 @@ namespace FrontEnd.Controllers
 
         public ActionResult Booking_Confirm_Delete(int id)
         {
-            HttpResponseMessage response = GlobalVariable.WebApiClient.DeleteAsync("api/booking/confirm/delete/" + id.ToString()).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("api/booking/confirm/delete/" + id.ToString()).Result;
             TempData["SuccessMessage"] = "Delete Successfully";
 
             return RedirectToAction("Booking_Confirm_List", "Manager");
@@ -245,7 +177,7 @@ namespace FrontEnd.Controllers
         {
             var booked = new List<BookingModel>();
 
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("api/booking/all").Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/booking/all").Result;
             if (response.IsSuccessStatusCode)
             {
                 var bookingData = response.Content.ReadAsStringAsync().Result;
@@ -261,7 +193,7 @@ namespace FrontEnd.Controllers
 
             var sp = new List<ServiceProviderModel>();
 
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("api/service/cbs/" + id.ToString()).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/service/cbs/" + id.ToString()).Result;
             if (response.IsSuccessStatusCode)
             {
                 var spData = response.Content.ReadAsStringAsync().Result;
@@ -271,11 +203,11 @@ namespace FrontEnd.Controllers
         }
         public ActionResult AssignServices(int id)
         {
-           var db = new ShebaDbEntities();
+            var db = new ShebaDbEntities();
 
            /* var user = new Booking_Service();
             //string path = "api/users/" + id;
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("api/assign/service/" + id.ToString()).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/assign/service/" + id.ToString()).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -310,8 +242,6 @@ namespace FrontEnd.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Manage_Booked_Services", "Manager");
-
-
         }
 
         //==========================Services Function=========================================
@@ -320,7 +250,7 @@ namespace FrontEnd.Controllers
         {
             var service = new List<ServiceModel>();
 
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("api/service/all").Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/service/all").Result;
             if (response.IsSuccessStatusCode)
             {
                 var serviceData = response.Content.ReadAsStringAsync().Result;
@@ -339,7 +269,7 @@ namespace FrontEnd.Controllers
         {
             if (ModelState.IsValid)
             {
-                HttpResponseMessage response = GlobalVariable.WebApiClient.PostAsJsonAsync("api/service/create", service).Result;
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/service/create", service).Result;
             }
 
             TempData["SuccessMessage"] = "Create Successfully";
@@ -351,7 +281,7 @@ namespace FrontEnd.Controllers
         {
             var user = new ServiceModel();
             string path = "api/service/" + id;
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync(path).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync(path).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -366,7 +296,7 @@ namespace FrontEnd.Controllers
         {
             if (ModelState.IsValid)
             {
-                HttpResponseMessage response = GlobalVariable.WebApiClient.PostAsJsonAsync("api/service/edit", user).Result;
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/service/edit", user).Result;
             }
             TempData["SuccessMessage"] = "Update Successfully";
 
@@ -375,7 +305,7 @@ namespace FrontEnd.Controllers
 
         public ActionResult Service_Delete(int id)
         {
-            HttpResponseMessage response = GlobalVariable.WebApiClient.DeleteAsync("api/service/delete/" + id.ToString()).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("api/service/delete/" + id.ToString()).Result;
             TempData["SuccessMessage"] = "Delete Successfully";
 
             return RedirectToAction("Service_List", "Manager");
@@ -388,7 +318,7 @@ namespace FrontEnd.Controllers
         {
             var review = new List<ReviewModel>();
 
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("api/review/all").Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/review/all").Result;
             if (response.IsSuccessStatusCode)
             {
                 var reviewData = response.Content.ReadAsStringAsync().Result;
@@ -404,7 +334,7 @@ namespace FrontEnd.Controllers
         {
             var service = new List<ServiceProviderModel>();
 
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("api/service/provider/all").Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/service/provider/all").Result;
             if (response.IsSuccessStatusCode)
             {
                 var serviceData = response.Content.ReadAsStringAsync().Result;
@@ -417,7 +347,7 @@ namespace FrontEnd.Controllers
         {
             var user = new ServiceProviderModel();
             //string path = "api/service/provider/" + id;
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("api/service/provider/" + id.ToString()).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/service/provider/" + id.ToString()).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -434,7 +364,7 @@ namespace FrontEnd.Controllers
 
             var copon = new List<CouponModel>();
 
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("api/coupon/all").Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/coupon/all").Result;
             if (response.IsSuccessStatusCode)
             {
                 var coponData = response.Content.ReadAsStringAsync().Result;
@@ -446,6 +376,37 @@ namespace FrontEnd.Controllers
 
         //===================================================================================
 
+        public ActionResult Salary_List()
+        {
+            var copon = new List<SalaryModel>();
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/salary/all").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var coponData = response.Content.ReadAsStringAsync().Result;
+                copon = JsonConvert.DeserializeObject<List<SalaryModel>>(coponData);
+            }
+            return View(copon);
+        }
+
+        public ActionResult Salary_Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Salary_Create(int id, SalaryModel salaries)
+        {
+            if (ModelState.IsValid)
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/salary/create/" + id.ToString(), salaries).Result;
+            }
+
+            TempData["SuccessMessage"] = "Create Successfully";
+
+            return RedirectToAction("Salary_List", "Manager");
+        }
+
+        //===================================================================================
        
         public ActionResult Setting_Overview()
         {
@@ -453,7 +414,7 @@ namespace FrontEnd.Controllers
 
             var user = new UserModel();
 
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("api/users/" + 12).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/users/" + 12).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -467,7 +428,7 @@ namespace FrontEnd.Controllers
         {
             var user = new UserModel();
             //string path = "api/service/" + id;
-            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("api/users/" + 12).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/users/" + 12).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -482,7 +443,7 @@ namespace FrontEnd.Controllers
         {
             if (ModelState.IsValid)
             {
-                HttpResponseMessage response = GlobalVariable.WebApiClient.PostAsJsonAsync("api/users/edit", user).Result;
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/users/edit", user).Result;
             }
             TempData["SuccessMessage"] = "Update Successfully";
 
@@ -496,31 +457,34 @@ namespace FrontEnd.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create_Image(ProfilePicture imageModel)
+        public ActionResult Create_Image(ProfileModel imageModel)
         {
-           /* string fileName = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
+            string fileName = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
             string extension = Path.GetExtension(imageModel.ImageFile.FileName);
             fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
             imageModel.image = "~/Image/" + fileName;
             fileName = Path.Combine(Server.MapPath("~/Views/Manager/Image/"), fileName);
             imageModel.ImageFile.SaveAs(fileName);
+           // var path = imageModel.ToString();
 
             using (ShebaDbEntities db = new ShebaDbEntities())
             {
-                *//*var image = new ProfilePicture()
+                var image = new ProfilePicture()
                 {
-                    user_id = 12,
+                    user_id = 14,
+                    image = imageModel,
                     created_at = DateTime.Now,
-   
-                };*//*
+                    updated_at = DateTime.Now
 
-                db.ProfilePictures.Add(imageModel);
-               // db.ProfilePictures.Add(image);
+                };
+
+                db.ProfilePictures.Add(image);
+                // db.ProfilePictures.Add(image);
                 db.SaveChanges();
             }
             ModelState.Clear();
-*/
-            return RedirectToAction("Profile");
+
+            return RedirectToAction("Setting_Overview");
         }
     }
 }

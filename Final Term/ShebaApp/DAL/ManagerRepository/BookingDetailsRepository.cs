@@ -47,7 +47,7 @@ namespace DAL
             return db.Booking_Details.FirstOrDefault(e => e.id == id);
         }
 
-        public List<Booking> GetByCustomerId(int id)
+      /*  public List<Booking> GetByCustomerId(int id)
         {
             throw new NotImplementedException();
         }
@@ -60,7 +60,7 @@ namespace DAL
         public List<Booking> GetByOrderDateCustomerId(DateTime order_date, int id)
         {
             throw new NotImplementedException();
-        }  
+        }  */
         public Booking_Details AssignServices(int id)
         {
             throw new NotImplementedException();

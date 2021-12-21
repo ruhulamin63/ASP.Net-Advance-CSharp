@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BEL.SerReviewModel>
+
+@{
+    ViewBag.Title = "CheckReview";
+    Layout = "~/Views/Shared/HomePageLayout.cshtml";
+}
+
+<h2>CheckReview</h2>
+
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.customer_id)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.rating)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.customer_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

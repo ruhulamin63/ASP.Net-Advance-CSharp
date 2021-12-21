@@ -25,14 +25,14 @@ namespace ShebaApp.Controllers
         }
         [Route("api/booking/confirm/create")]
         [HttpPost]
-        public HttpResponseMessage Add(BookingDetailsModel user)
+        public HttpResponseMessage Add(BookingDetailModel user)
         {
             BookingDetailsService.Add(user);
             return Request.CreateResponse(HttpStatusCode.OK, "Succesfully Created");
         }
         [Route("api/booking/confirm/edit")]
         [HttpPost]
-        public HttpResponseMessage Edit(BookingDetailsModel user)
+        public HttpResponseMessage Edit(BookingDetailModel user)
         {
             BookingDetailsService.Edit(user);
             return Request.CreateResponse(HttpStatusCode.OK, "Updated Succesfully");

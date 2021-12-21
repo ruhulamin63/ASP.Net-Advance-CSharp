@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BEL.ServiceProviderModel>
+
+@{
+    ViewBag.Title = "ViewAvailableSP";
+    Layout = "~/Views/Admin/DataLayout.cshtml";
+}
+
+<div class="container">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.user_id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.phone)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.user_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phone)
+                    </td>
+                    <td>
+                        <a href="/Admin/ConfirmBooking/@item.id" class="btn btn-success">Assign</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+    });
+</script>

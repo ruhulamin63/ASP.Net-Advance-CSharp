@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BEL.CusBookingDetailModel>
+
+@{
+    ViewBag.Title = "BookingDetail";
+    Layout = "~/Views/Shared/HomePageLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Booking Details</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.unit_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.unit_price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.discount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category)
+                </td>
+            </tr>
+        }
+
+    </table>
+    <a href="/Customer/Profile" class="btn btn-primary">Back to Profile</a>
+</div>

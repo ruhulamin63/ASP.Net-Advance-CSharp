@@ -1,0 +1,58 @@
+﻿@model IEnumerable<BEL.UserModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Print Manager Details</title>
+</head>
+<body>
+    <h3>Manager Details</h3>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fullname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.usertype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_status)
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usertype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_status)
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
