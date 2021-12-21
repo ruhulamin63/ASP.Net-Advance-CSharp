@@ -81,6 +81,7 @@
     <Compile Include="Login_Time.cs">
       <DependentUpon>ShebaDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="ManagerCustomerServiceInterface.cs" />
     <Compile Include="ManagerDataAccessFactory.cs" />
     <Compile Include="ManagerInterface.cs" />
     <Compile Include="ManagerRepository\BookingDetailsRepository.cs" />
@@ -173,6 +174,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BEL\BEL.csproj">
+      <Project>{78b05472-61b9-42d3-a418-fc2f09eee3f1}</Project>
+      <Name>BEL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ShebaDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ShebaDb.edmx</DependentUpon>
@@ -183,12 +190,6 @@
       <DependentUpon>ShebaDb.edmx</DependentUpon>
       <LastGenOutput>ShebaDb.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BEL\BEL.csproj">
-      <Project>{78b05472-61b9-42d3-a418-fc2f09eee3f1}</Project>
-      <Name>BEL</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,6 +18,7 @@ namespace DAL
         {
             this.Booking_Details = new HashSet<Booking_Details>();
             this.Booking_Service = new HashSet<Booking_Service>();
+            this.Customer_Coupon = new HashSet<Customer_Coupon>();
         }
     
         public int id { get; set; }
@@ -32,5 +33,6 @@ namespace DAL
         public virtual ICollection<Booking_Details> Booking_Details { get; set; }
         public virtual ICollection<Booking_Service> Booking_Service { get; set; }
         public virtual Customer Customer { get; set; }
+        public virtual ICollection<Customer_Coupon> Customer_Coupon { get; set; }
     }
 }

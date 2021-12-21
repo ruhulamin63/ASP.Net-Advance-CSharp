@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.ManagerRepository
 {
-    public class CustomerRepository : ManagerInterface<Customer, int>
+    public class CustomerRepository : ManagerCustomerServiceInterface<Customer, int>
     {
         ShebaDbEntities db;
 
@@ -15,47 +15,29 @@ namespace DAL.ManagerRepository
             this.db = db;
         }
 
-        public void Add(Customer e)
+        public void AddC(Customer e)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(int id)
+        public void DeleteC(int id)
+        {
+            var e = db.Customers.FirstOrDefault(en => en.id == id);
+            db.Customers.Remove(e);
+            db.SaveChanges();
+        }
+
+        public void EditC(Customer e)
         {
             throw new NotImplementedException();
         }
 
-        public void Edit(Customer e)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Customer> Get()
+        public List<Customer> GetC()
         {
             return db.Customers.ToList();
         }
 
-        public Customer Get(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-       /* public List<Booking> GetByCustomerId(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Booking> GetByOrderDate(DateTime order_date)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Booking> GetByOrderDateCustomerId(DateTime order_date, int id)
-        {
-            throw new NotImplementedException();
-        }*/
-
-        public Customer AssignServices(int id)
+        public Customer GetC(int id)
         {
             throw new NotImplementedException();
         }

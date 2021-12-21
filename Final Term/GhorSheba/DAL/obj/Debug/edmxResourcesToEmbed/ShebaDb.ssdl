@@ -61,6 +61,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="booking_id" Type="int" Nullable="false" />
     <Property Name="customer_id" Type="int" Nullable="false" />
     <Property Name="coupon_id" Type="int" Nullable="false" />
     <Property Name="used_count" Type="int" />
@@ -90,9 +91,9 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="image" Type="varchar(max)" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="image" Type="varchar" MaxLength="120" />
     <Property Name="created_at" Type="datetime" />
     <Property Name="updated_at" Type="datetime" />
   </EntityType>
@@ -238,7 +239,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Customer_Coupon_Coupons">
+  <Association Name="FK_Customer_Coupon_Booking">
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />
+    <End Role="Customer_Coupon" Type="Self.Customer_Coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookings">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Customer_Coupon">
+        <PropertyRef Name="booking_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_Coupon_Customer_Coupon">
     <End Role="Coupons" Type="Self.Coupons" Multiplicity="1" />
     <End Role="Customer_Coupon" Type="Self.Customer_Coupon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -419,7 +432,11 @@
       <End Role="Customers" EntitySet="Customers" />
       <End Role="Bookings" EntitySet="Bookings" />
     </AssociationSet>
-    <AssociationSet Name="FK_Customer_Coupon_Coupons" Association="Self.FK_Customer_Coupon_Coupons">
+    <AssociationSet Name="FK_Customer_Coupon_Booking" Association="Self.FK_Customer_Coupon_Booking">
+      <End Role="Bookings" EntitySet="Bookings" />
+      <End Role="Customer_Coupon" EntitySet="Customer_Coupon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_Coupon_Customer_Coupon" Association="Self.FK_Customer_Coupon_Customer_Coupon">
       <End Role="Coupons" EntitySet="Coupons" />
       <End Role="Customer_Coupon" EntitySet="Customer_Coupon" />
     </AssociationSet>

@@ -66,6 +66,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="booking_id" Type="int" Nullable="false" />
           <Property Name="customer_id" Type="int" Nullable="false" />
           <Property Name="coupon_id" Type="int" Nullable="false" />
           <Property Name="used_count" Type="int" />
@@ -95,9 +96,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="image" Type="varchar(max)" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="120" />
           <Property Name="created_at" Type="datetime" />
           <Property Name="updated_at" Type="datetime" />
         </EntityType>
@@ -243,7 +244,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Customer_Coupon_Coupons">
+        <Association Name="FK_Customer_Coupon_Booking">
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="1" />
+          <End Role="Customer_Coupon" Type="Self.Customer_Coupon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bookings">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Customer_Coupon">
+              <PropertyRef Name="booking_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Coupon_Customer_Coupon">
           <End Role="Coupons" Type="Self.Coupons" Multiplicity="1" />
           <End Role="Customer_Coupon" Type="Self.Customer_Coupon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -424,7 +437,11 @@
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Bookings" EntitySet="Bookings" />
           </AssociationSet>
-          <AssociationSet Name="FK_Customer_Coupon_Coupons" Association="Self.FK_Customer_Coupon_Coupons">
+          <AssociationSet Name="FK_Customer_Coupon_Booking" Association="Self.FK_Customer_Coupon_Booking">
+            <End Role="Bookings" EntitySet="Bookings" />
+            <End Role="Customer_Coupon" EntitySet="Customer_Coupon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Coupon_Customer_Coupon" Association="Self.FK_Customer_Coupon_Customer_Coupon">
             <End Role="Coupons" EntitySet="Coupons" />
             <End Role="Customer_Coupon" EntitySet="Customer_Coupon" />
           </AssociationSet>
@@ -529,6 +546,7 @@
           <NavigationProperty Name="Booking_Details" Relationship="Self.FK_Booking_Detail_Bookings" FromRole="Bookings" ToRole="Booking_Details" />
           <NavigationProperty Name="Booking_Service" Relationship="Self.FK_Booking_Service_Bookings" FromRole="Bookings" ToRole="Booking_Service" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Bookings_Users" FromRole="Bookings" ToRole="Customers" />
+          <NavigationProperty Name="Customer_Coupon" Relationship="Self.FK_Customer_Coupon_Booking" FromRole="Bookings" ToRole="Customer_Coupon" />
         </EntityType>
         <EntityType Name="Coupon">
           <Key>
@@ -541,19 +559,21 @@
           <Property Name="max_use_number" Type="Int32" />
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Customer_Coupon" Relationship="Self.FK_Customer_Coupon_Coupons" FromRole="Coupons" ToRole="Customer_Coupon" />
+          <NavigationProperty Name="Customer_Coupon" Relationship="Self.FK_Customer_Coupon_Customer_Coupon" FromRole="Coupons" ToRole="Customer_Coupon" />
         </EntityType>
         <EntityType Name="Customer_Coupon">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="booking_id" Type="Int32" Nullable="false" />
           <Property Name="customer_id" Type="Int32" Nullable="false" />
           <Property Name="coupon_id" Type="Int32" Nullable="false" />
           <Property Name="used_count" Type="Int32" />
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Coupon" Relationship="Self.FK_Customer_Coupon_Coupons" FromRole="Customer_Coupon" ToRole="Coupons" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK_Customer_Coupon_Booking" FromRole="Customer_Coupon" ToRole="Bookings" />
+          <NavigationProperty Name="Coupon" Relationship="Self.FK_Customer_Coupon_Customer_Coupon" FromRole="Customer_Coupon" ToRole="Coupons" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_Coupon_Users" FromRole="Customer_Coupon" ToRole="Customers" />
         </EntityType>
         <EntityType Name="Customer">
@@ -584,9 +604,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="User" Relationship="Self.FK_ProfilePictures_Users" FromRole="ProfilePictures" ToRole="Users" />
@@ -762,7 +782,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Customer_Coupon_Coupons">
+        <Association Name="FK_Customer_Coupon_Booking">
+          <End Role="Bookings" Type="Self.Booking" Multiplicity="1" />
+          <End Role="Customer_Coupon" Type="Self.Customer_Coupon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bookings">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Customer_Coupon">
+              <PropertyRef Name="booking_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Coupon_Customer_Coupon">
           <End Role="Coupons" Type="Self.Coupon" Multiplicity="1" />
           <End Role="Customer_Coupon" Type="Self.Customer_Coupon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -935,7 +967,11 @@
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Bookings" EntitySet="Bookings" />
           </AssociationSet>
-          <AssociationSet Name="FK_Customer_Coupon_Coupons" Association="Self.FK_Customer_Coupon_Coupons">
+          <AssociationSet Name="FK_Customer_Coupon_Booking" Association="Self.FK_Customer_Coupon_Booking">
+            <End Role="Bookings" EntitySet="Bookings" />
+            <End Role="Customer_Coupon" EntitySet="Customer_Coupon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Coupon_Customer_Coupon" Association="Self.FK_Customer_Coupon_Customer_Coupon">
             <End Role="Coupons" EntitySet="Coupons" />
             <End Role="Customer_Coupon" EntitySet="Customer_Coupon" />
           </AssociationSet>
@@ -1051,6 +1087,7 @@
             <EntityTypeMapping TypeName="ShebaDbModel.Customer_Coupon">
               <MappingFragment StoreEntitySet="Customer_Coupon">
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="booking_id" ColumnName="booking_id" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
                 <ScalarProperty Name="coupon_id" ColumnName="coupon_id" />
                 <ScalarProperty Name="used_count" ColumnName="used_count" />

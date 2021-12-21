@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\aminr\OneDrive\Desktop\zip\GhorSheba\DAL\ShebaDb.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\AIUB\9th semester\.NET\FINAL\Merged Project\GhorSheba\GhorSheba\DAL\ShebaDb.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

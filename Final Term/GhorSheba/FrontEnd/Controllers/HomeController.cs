@@ -52,12 +52,12 @@ namespace FrontEnd.Controllers
                 var Response = response.Content.ReadAsStringAsync().Result;
                 var s = JsonConvert.DeserializeObject<ServiceModel>(Response);
 
-                if (Session["cart"]==null)
+                if (Session["cart"] == null)
                 {
                     var x = new CartModel()
                     {
-                        id=s.id,
-                        s_id=id,
+                        id = s.id,
+                        s_id = id,
                         name = s.name,
                         category = s.category,
                         unit_price = s.unit_price,
@@ -73,9 +73,9 @@ namespace FrontEnd.Controllers
                 {
                     var x = new CartModel()
                     {
-                        id=s.id,
+                        id = s.id,
                         name = s.name,
-                        s_id=id,
+                        s_id = id,
                         category = s.category,
                         unit_price = s.unit_price,
                         quantity = 1,
@@ -86,18 +86,18 @@ namespace FrontEnd.Controllers
 
                     int f = 0;
 
-                    foreach(var y in l)
+                    foreach (var y in l)
                     {
                         if (y.id == s.id)
                         {
                             y.quantity++;
-                            y.total_cost += (s.unit_price -  s.discount_amount);
+                            y.total_cost += (s.unit_price - s.discount_amount);
                             f = 1;
                         }
                         temp.Add(y);
                     }
 
-                    if(f==0)
+                    if (f == 0)
                     {
                         temp.Add(x);
                     }
@@ -106,7 +106,7 @@ namespace FrontEnd.Controllers
                     Session["cart"] = json;
                 }
 
-                if(s.category=="HomeCleaning")
+                if (s.category == "HomeCleaning")
                 {
                     return RedirectToAction("ViewServices/1", "Home");
                 }
@@ -145,11 +145,11 @@ namespace FrontEnd.Controllers
         {
             var d = JsonConvert.DeserializeObject<List<CartModel>>(Session["cart"].ToString());
             var temp = new List<CartModel>();
-            foreach(var x in d)
+            foreach (var x in d)
             {
-                if(x.id==id)
+                if (x.id == id)
                 {
-                    if(x.quantity>1)
+                    if (x.quantity > 1)
                     {
                         string path = "api/Home/GetService/" + id.ToString();
                         HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync(path).Result;
@@ -158,7 +158,7 @@ namespace FrontEnd.Controllers
                             var Response = response.Content.ReadAsStringAsync().Result;
                             var s = JsonConvert.DeserializeObject<ServiceModel>(Response);
                             x.quantity--;
-                            x.total_cost -= (s.unit_price * s.discount_amount);
+                            x.total_cost -= (s.unit_price - s.discount_amount);
                             temp.Add(x);
                         }
                     }

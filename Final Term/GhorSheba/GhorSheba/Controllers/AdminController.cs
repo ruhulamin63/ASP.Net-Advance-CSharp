@@ -21,6 +21,22 @@ namespace GhorSheba.Controllers
             return UserService.GetAll("Admin");
         }
 
+        [Route("api/Admin/Profile/{id:int}")]
+        [HttpGet]
+
+        public UserModel Profile(int id)
+        {
+            return UserService.Profile(id);
+        }
+
+        [Route("api/Admin/Profile")]
+        [HttpPost]
+
+        public void Profile(UserModel u)
+        {
+            UserService.Profile(u);
+        }
+
         [Route("api/Admin/AllManager")]
         [HttpGet]
 
@@ -74,7 +90,7 @@ namespace GhorSheba.Controllers
         }
 
         //******************************************** Customer CRUD ends **************************************//
-        
+
         //******************************************** Service Provider CRUD starts ****************************//
 
         [Route("api/Admin/AddServiceProvider")]

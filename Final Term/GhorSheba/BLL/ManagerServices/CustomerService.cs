@@ -11,16 +11,21 @@ namespace BLL.ManagerServices
 {
     public class CustomerService
     {
-        public static List<CustomerModel> GetAll() //GetAll(string uty
+        public static List<CustomerModel> CustomerGetAll() //GetAll(string uty
         {
             var config = new MapperConfiguration(c =>
             {
                 c.CreateMap<Customer, CustomerModel>().ReverseMap();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<CustomerModel>>(ManagerDataAccessFactory.CustomerDataAccess().Get());
+            var data = mapper.Map<List<CustomerModel>>(ManagerDataAccessFactory.CustomerDataAccess().GetC());
 
             return data;
+        }
+
+        public static void DeleteC(int id)
+        {
+            ManagerDataAccessFactory.CustomerDataAccess().DeleteC(id);
         }
     }
 }

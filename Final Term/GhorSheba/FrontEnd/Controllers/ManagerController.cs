@@ -20,7 +20,18 @@ namespace FrontEnd.Controllers
         // GET: Manager
         public ActionResult Index()
         {
-            return View();
+            string token = Session["token"].ToString();
+            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+
+            var users = new List<UserModel>();
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/users/all").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var usersData = response.Content.ReadAsStringAsync().Result;
+                users = JsonConvert.DeserializeObject<List<UserModel>>(usersData);
+            }
+            return View(users);
         }
 
         public ActionResult UserAllData()
@@ -88,7 +99,7 @@ namespace FrontEnd.Controllers
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
 
             if (ModelState.IsValid)
-{
+            {
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/users/edit", user).Result;
             }
             TempData["SuccessMessage"] = "Update Successfully";
@@ -125,9 +136,20 @@ namespace FrontEnd.Controllers
             return View(users);
         }
 
+        public ActionResult CustomerDelete(int id)
+        {
+            string token = Session["token"].ToString();
+            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("api/customer/delete/" + id.ToString()).Result;
+            TempData["SuccessMessage"] = "Delete Successfully";
+
+            return RedirectToAction("Customer_List", "Manager");
+        }
+
         //==========================Booking Confirm Function=========================================
 
-        public ActionResult Booking_Confirm_List()
+            public ActionResult Booking_Confirm_List()
         {
             string token = Session["token"].ToString();
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
@@ -245,46 +267,20 @@ namespace FrontEnd.Controllers
         }
         public ActionResult AssignServices(int id)
         {
+            var bs = new BookingServiceModel();
+            bs.booking_id = Int32.Parse(Session["confirm_booked"].ToString());
+            bs.serviceprovider_id = id;
+
             string token = Session["token"].ToString();
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
 
-            var db = new ShebaDbEntities();
-
-           /* var user = new Booking_Service();
-            //string path = "api/users/" + id;
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/assign/service/" + id.ToString()).Result;
-
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/assign/service", bs).Result;
             if (response.IsSuccessStatusCode)
             {
-                var Response = response.Content.ReadAsStringAsync().Result;
-                user = JsonConvert.DeserializeObject<Booking_Service>(Response);
-            }*/
-
-            string id1 = Session["confirm_booked"].ToString();
-
-            var cs = new Booking_Service()
-            {
-                booking_id = Int32.Parse(id1),
-                serviceprovider_id = id
-            };
-
-            var book = (from data in db.Bookings
-                        where data.id == cs.booking_id
-                        select data).FirstOrDefault();
-
-            var temp = book;
-            temp.status = "confirm";
-            db.Entry(book).CurrentValues.SetValues(temp);
-            db.SaveChanges();
-
-            db.Booking_Service.Add(cs);
-            db.SaveChanges();
-
-            var sp = (from data in db.ServiceProviders
-                      where data.id == id
-                      select data).First();
-            sp.work_status = "busy";
-            db.SaveChanges();
+                TempData["SuccessMessage"] = "Booking Confirmed Successfully";
+                return RedirectToAction("Manage_Booked_Services", "Manager");
+            }
+            TempData["SuccessMessage"] = "Operation Failed";
 
             return RedirectToAction("Manage_Booked_Services", "Manager");
         }
@@ -488,17 +484,17 @@ namespace FrontEnd.Controllers
         }
 
         //===================================================================================
-       
+
         public ActionResult Setting_Overview()
         {
             string token = Session["token"].ToString();
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
 
-            //string id = Session["id"].ToString();
+            int id = Int32.Parse(Session["u_id"].ToString());
 
             var user = new UserModel();
 
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/users/" + 12).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/users/" + id.ToString()).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -508,14 +504,16 @@ namespace FrontEnd.Controllers
             return View(user);
         }
 
-        public ActionResult Setting_Update(int id)
+        public ActionResult Setting_Update()
         {
+            int id = Int32.Parse(Session["u_id"].ToString());
+
             string token = Session["token"].ToString();
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
 
             var user = new UserModel();
             //string path = "api/service/" + id;
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/users/" + 12).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/users/" + id.ToString()).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -558,14 +556,14 @@ namespace FrontEnd.Controllers
             imageModel.image = "~/Image/" + fileName;
             fileName = Path.Combine(Server.MapPath("~/Views/Manager/Image/"), fileName);
             imageModel.ImageFile.SaveAs(fileName);
-           // var path = imageModel.ToString();
+            // var path = imageModel.ToString();
 
             using (ShebaDbEntities db = new ShebaDbEntities())
             {
                 var image = new ProfilePicture()
                 {
                     user_id = 14,
-                   // image = imageModel,
+                    // image = imageModel,
                     created_at = DateTime.Now,
                     updated_at = DateTime.Now
 

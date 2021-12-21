@@ -42,7 +42,7 @@ namespace FrontEnd.Controllers
         {
             string token = Session["token"].ToString();
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
-        
+
 
             HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/Customer/EditProfile", u).Result;
 
@@ -94,7 +94,7 @@ namespace FrontEnd.Controllers
         {
             string token = Session["token"].ToString();
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/Customer/CancelBooking/"+id).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/Customer/CancelBooking/" + id).Result;
 
             return RedirectToAction("ViewBooking", "Customer");
         }
@@ -119,18 +119,18 @@ namespace FrontEnd.Controllers
 
             var c = new List<CusBookingModel>();
 
-            foreach(var x in d)
+            foreach (var x in d)
             {
                 var temp = new CusBookingModel()
                 {
-                    id=cus.id,
-                    s_id=x.s_id,
-                    user_id=cus.user_id,
-                    name=x.name,
-                    category=x.category,
-                    quantity=x.quantity,
-                    unit_price=x.unit_price,
-                    total_cost=x.total_cost
+                    id = cus.id,
+                    s_id = x.s_id,
+                    user_id = cus.user_id,
+                    name = x.name,
+                    category = x.category,
+                    quantity = x.quantity,
+                    unit_price = x.unit_price,
+                    total_cost = x.total_cost
                 };
                 c.Add(temp);
             }
@@ -139,6 +139,7 @@ namespace FrontEnd.Controllers
             response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/Customer/Checkout", c).Result;
             if (response.IsSuccessStatusCode)
             {
+                Session.Remove("cart");
                 return RedirectToAction("ViewBooking", "Customer");
             }
 
@@ -158,24 +159,24 @@ namespace FrontEnd.Controllers
             {
                 var Response = response.Content.ReadAsStringAsync().Result;
                 var cus = JsonConvert.DeserializeObject<CusProfileModel>(Response);
-               
+
                 GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
                 var response1 = GlobalVariables.WebApiClient.GetAsync("api/Customer/AvailableCoupon/" + cus.id.ToString()).Result;
-                if(response1.IsSuccessStatusCode)
+                if (response1.IsSuccessStatusCode)
                 {
                     var Response1 = response1.Content.ReadAsStringAsync().Result;
                     var temp = JsonConvert.DeserializeObject<List<CouponModel>>(Response1);
 
                     GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
                     HttpResponseMessage response2 = GlobalVariables.WebApiClient.GetAsync("api/Customer/GetBookingById/" + id.ToString()).Result;
-                    if(response2.IsSuccessStatusCode)
+                    if (response2.IsSuccessStatusCode)
                     {
                         var Response2 = response2.Content.ReadAsStringAsync().Result;
                         var b = JsonConvert.DeserializeObject<BookingModel>(Response2);
 
-                        foreach(var x in temp)
+                        foreach (var x in temp)
                         {
-                            if(b.total_cost>=x.min_order_amount)
+                            if (b.total_cost >= x.min_order_amount)
                             {
                                 cou.Add(x);
                             }

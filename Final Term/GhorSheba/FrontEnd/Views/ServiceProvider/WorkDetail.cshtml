@@ -6,30 +6,32 @@
 }
 
 <div class="container">
-<h2>Work Detail</h2>
+    <h2>Work Detail</h2>
 
-<table class="table">
-    <tr>
+    <table class="table">
+        <tr>
 
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.category)
-        </th>
-    </tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category)
+            </th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.category)
-        </td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category)
+                </td>
 
-    </tr>
-}
+            </tr>
+        }
 
-</table>
+    </table>
+    <a href="/ServiceProvider/EditServiceProvider" class="btn btn-primary">Back to Profile</a>
 </div>

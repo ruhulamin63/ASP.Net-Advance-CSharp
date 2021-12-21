@@ -28,6 +28,23 @@ namespace BLL
             return admins;
         }
 
+        public static UserModel Profile(int id)
+        {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<User, UserModel>());
+            var mapper = new Mapper(config);
+            var data = mapper.Map<UserModel>(DataAccessFactory.UserDataAccess().Get(id));
+            return data;
+        }
+
+        public static void Profile(UserModel u)
+        {
+            var us = DataAccessFactory.UserDataAccess().Get(u.id);
+            us.fullname = u.fullname;
+            us.password = u.password;
+
+            DataAccessFactory.UserDataAccess().Edit(us);
+        }
+
         //*********************************************** Customer CRUD Starts **************************************//
 
         public static EditCustomerModel GetCusUser(int id)
@@ -102,7 +119,6 @@ namespace BLL
                 cus.created_at = u.created_at;
                 cus.updated_at = u.updated_at;
 
-                us.id = u.id;
                 us.email = u.email;
                 us.fullname = u.fullname;
                 us.password = u.password;
@@ -272,7 +288,6 @@ namespace BLL
                 sp.created_at = u.created_at;
                 sp.updated_at = u.updated_at;
 
-                us.id = u.id;
                 us.email = u.email;
                 us.fullname = u.fullname;
                 us.password = u.password;
@@ -713,28 +728,28 @@ namespace BLL
             var data = mapper.Map<List<ServiceProviderModel>>(DataAccessFactory.ServUserDataAccess().Get());
             var SP = new List<ServiceProviderModel>();
 
-            foreach(var s in data)
+            foreach (var s in data)
             {
-                if(s.work_status== "Available")
+                if (s.work_status == "Available")
                 {
                     SP.Add(s);
                 }
             }
             return SP;
         }
-        
+
         public static void ConfirmBooking(BookingServiceModel s)
         {
 
             var booking = DataAccessFactory.BookingDataAccess().Get(s.booking_id);
 
-            booking.status = "confirmed";
-            booking.payment_status = "pending";
+            booking.status = "Confirmed";
+            booking.payment_status = "Unpaid";
             booking.updated_at = DateTime.Now;
             DataAccessFactory.BookingDataAccess().Edit(booking);
 
             var sp = DataAccessFactory.ServiceProviderDataAccess().Get(s.serviceprovider_id);
-            sp.work_status = "busy";
+            sp.work_status = "Busy";
             DataAccessFactory.ServiceProviderDataAccess().Edit(sp);
 
             var bs = new Booking_Service();
@@ -757,7 +772,7 @@ namespace BLL
                         var temp = new SalariesModel()
                         {
                             salary_amount = 40000,
-                            message = "paid",
+                            message = "Paid",
                             user_id = x.id,
                             created_at = DateTime.Now,
                             updated_at = DateTime.Now
@@ -778,7 +793,7 @@ namespace BLL
                         var temp = new SalariesModel()
                         {
                             salary_amount = 8000,
-                            message = "paid",
+                            message = "Paid",
                             user_id = x.id,
                             created_at = DateTime.Now,
                             updated_at = DateTime.Now
@@ -813,7 +828,7 @@ namespace BLL
                     message = x.message,
                     user_id = u.id,
                     last_paid = x.updated_at,
-                    Due = (int)(dt-DateTime.Now.Date).TotalDays
+                    Due = (int)(dt - DateTime.Now.Date).TotalDays
                 };
                 r.Add(temp);
             }

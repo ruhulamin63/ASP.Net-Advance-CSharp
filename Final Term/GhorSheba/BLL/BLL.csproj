@@ -53,7 +53,7 @@
     <Compile Include="ManagerServices\CustomerService.cs" />
     <Compile Include="ManagerServices\ReviewService.cs" />
     <Compile Include="ManagerServices\SalaryService.cs" />
-    <Compile Include="ManagerServices\ServiceProviderServices.cs" />
+    <Compile Include="ManagerServices\ServiceProviderServicesManager.cs" />
     <Compile Include="ManagerServices\ServiceToService.cs" />
     <Compile Include="ManagerServices\ManagerUserService.cs" />
     <Compile Include="ServiceProviderService.cs" />

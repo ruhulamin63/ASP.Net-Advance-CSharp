@@ -11,39 +11,39 @@ using System.Web.Http;
 namespace ShebaApp.Controllers.ManagerController
 {
     [AuthManager]
-    public class ServiceProviderController : ApiController
+    public class ServiceProviderManagerController : ApiController
     {
         [Route("api/service/provider/all")]
         [HttpGet]
-        public HttpResponseMessage Get()
+        public HttpResponseMessage GetSP()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, ServiceProviderServices.GetAll());
+            return Request.CreateResponse(HttpStatusCode.OK, ServiceProviderServicesManager.GetAll());
         }
         [Route("api/service/provider/{id}")]
         [HttpGet]
-        public HttpResponseMessage Get(int id)
+        public HttpResponseMessage GetSP(int id)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, ServiceProviderServices.Get(id));
+            return Request.CreateResponse(HttpStatusCode.OK, ServiceProviderServicesManager.Get(id));
         }
         [Route("api/service/provider/create")]
         [HttpPost]
-        public HttpResponseMessage Add(ServiceProviderModel user)
+        public HttpResponseMessage AddSP(ServiceProviderModel user)
         {
-            ServiceProviderServices.Add(user);
+            ServiceProviderServicesManager.Add(user);
             return Request.CreateResponse(HttpStatusCode.OK, "Succesfully Created");
         }
         [Route("api/service/provider/edit")]
         [HttpPost]
-        public HttpResponseMessage Edit(ServiceProviderModel user)
+        public HttpResponseMessage EditSP(ServiceProviderModel user)
         {
-            ServiceProviderServices.Edit(user);
+            ServiceProviderServicesManager.Edit(user);
             return Request.CreateResponse(HttpStatusCode.OK, "Updated Succesfully");
         }
         [Route("api/service/provider/delete/{id}")]
         [HttpGet]
-        public HttpResponseMessage Delete(int id)
+        public HttpResponseMessage DeleteSP(int id)
         {
-            ServiceProviderServices.Delete(id);
+            ServiceProviderServicesManager.Delete(id);
             return Request.CreateResponse(HttpStatusCode.OK, "Delete Succesfully");
         }
 
@@ -52,7 +52,7 @@ namespace ShebaApp.Controllers.ManagerController
         [HttpGet]
         public HttpResponseMessage ConfirmBookedService(int id)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, ServiceProviderServices.ConfirmBookedService(id));
+            return Request.CreateResponse(HttpStatusCode.OK, ServiceProviderServicesManager.ConfirmBookedService(id));
         }
 
         /* [Route("api/service/cbs")]
@@ -62,11 +62,13 @@ namespace ShebaApp.Controllers.ManagerController
              ServiceProviderServices.ConfirmBooking(s);
          }*/
 
-        [Route("api/assign/service/{id}")]
-        [HttpGet]
-        public HttpResponseMessage AssignServices(int id)
+        [Route("api/assign/service")]
+        [HttpPost]
+        public void AssignServices(BookingServiceModel s)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, ServiceProviderServices.AssignServices(id));
+            //return Request.CreateResponse(HttpStatusCode.OK, ServiceProviderServicesManager.AssignServices(id));
+
+            ServiceProviderServicesManager.AssignServices(s);
         }
 
     }

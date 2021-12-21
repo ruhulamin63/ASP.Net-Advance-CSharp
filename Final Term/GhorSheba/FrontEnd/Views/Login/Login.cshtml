@@ -1,8 +1,6 @@
 ﻿
-@{
-    ViewBag.Title = "Login";
-    Layout = "~/Views/Login/LoginLayout.cshtml";
-}
+@{ ViewBag.Title = "Login";
+                Layout = "~/Views/Login/LoginLayout.cshtml"; }
 
 <!-- form section start -->
 <section class="w3l-workinghny-form">
@@ -11,6 +9,7 @@
         <div class="wrapper">
             <div class="logo">
                 <h1><a class="brand-logo" href="/Home/Index"><span></span> Ghor Sheba</a></h1>
+                <h4>@TempData["Error"]</h4>
                 <!-- if logo is image enable this
                     <a class="brand-logo" href="#index.html">
                         <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
@@ -36,11 +35,11 @@
                                 <input type="password" name="password" placeholder="" required="">
                             </div>
                             @*<label class="check-remaind">
-            <input type="checkbox">
-            <span class="checkmark"></span>
-            <p class="remember">Remember Me</p>
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <p class="remember">Remember Me</p>
 
-        </label>*@
+                                </label>*@
                             <button class="btn btn-style mt-3">Sign In </button>
                             <p class="already">Don't have an account? <a href="/Home/Signup">Sign Up</a></p>
                         </form>

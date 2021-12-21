@@ -49,6 +49,7 @@
     <Compile Include="BookingServiceModel.cs" />
     <Compile Include="Book_Bookingser.cs" />
     <Compile Include="CartModel.cs" />
+    <Compile Include="ImageModel.cs" />
     <Compile Include="CustomerCouponModel.cs" />
     <Compile Include="EditServiceModel.cs" />
     <Compile Include="CouponModel.cs" />

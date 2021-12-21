@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Setting_Overview";
     Layout = "~/Views/Manager/IndexLayout.cshtml";
+
+    int id = Int32.Parse(Session["u_id"].ToString());
 }
 
 
@@ -126,12 +128,12 @@
                             <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder flex-nowrap">
                                 <!--begin::Nav item-->
                                 <li class="nav-item">
-                                    <a class="nav-link text-active-primary me-6 active" href="@Url.Action("Setting_Overview", "Manager")">Overview</a>
+                                    <a class="nav-link text-active-primary me-6 active" href="@Url.Action("Setting_Overview", "Manager", new { id = id})">Overview</a>
                                 </li>
                                 <!--end::Nav item-->
                                 <!--begin::Nav item-->
                                 <li class="nav-item">
-                                    <a class="nav-link text-active-primary me-6" href="@Url.Action("Setting_Update", "Manager", new {id = 12})">Settings</a>
+                                    <a class="nav-link text-active-primary me-6" href="@Url.Action("Setting_Update", "Manager", new {id = id})">Settings</a>
                                 </li>
                                 <!--end::Nav item-->
                             </ul>
@@ -151,7 +153,7 @@
                         <!--end::Card title-->
                         <!--begin::Action-->
 
-                        <a href="@Url.Action("Setting_Update", "Manager", new {id = 12})" class="btn btn-primary align-self-center">Edit Profile</a>
+                        <a href="@Url.Action("Setting_Update", "Manager", new {id = id})" class="btn btn-primary align-self-center">Edit Profile</a>
 
                         <!--end::Action-->
                     </div>
@@ -238,7 +240,7 @@
                                 <div id="kt_signin_email_edit" class="flex-row-fluid d-none">
                                     <!--begin::Form-->
                                     <form>
-                                      
+
                                         <div class="row mb-6">
                                             <div class="col-lg-6 mb-4 mb-lg-0">
                                                 <div class="fv-row mb-0">

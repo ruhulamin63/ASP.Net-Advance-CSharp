@@ -62,20 +62,6 @@
                 <nav class="sidebar sidebar-offcanvas" id="sidebar">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                                <i class="ti-user menu-icon"></i>
-                                <span class="menu-title">Users</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="auth">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="/Admin/ViewCustomers"> View Customers </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="/Admin/ViewServiceProviders"> View Service Providers</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="/Admin/ViewManagers"> View Managers </a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="/Admin/Index">
                                 <i class="ti-write menu-icon"></i>
                                 <span class="menu-title">Dashboard</span>
@@ -139,7 +125,7 @@
                                                                 <a href="/Admin/ViewBookingDetails/@item.id" class="btn btn-success">Details</a>
                                                                 <a href="/Admin/PrintBDetail/@item.id" class="btn btn-primary">Print</a>
                                                                 @{
-                                                                    if (item.status == "Pending" && item.payment_status == "Unpaid")
+                                                                    if ( (item.status == "Pending" || item.status== "Confirmed") && item.payment_status == "Unpaid")
                                                                     {
                                                                         <a href="/Admin/EditBookings/@item.id" class="btn btn-success">Edit</a>
                                                                     }
@@ -188,9 +174,12 @@
     <script>
         $(function () {
             var successMessage = '@TempData["SuccessMessage"]'
-
+            var failedMessage = '@TempData["FailedMessage"]'
             if (successMessage != '')
                 alertify.success(successMessage);
+            else if (failedMessage != '')
+                alertify.error(failedMessage);
+
         });
 
     function Delete(id) {

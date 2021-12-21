@@ -66,6 +66,7 @@
       <EntityTypeMapping TypeName="ShebaDbModel.Customer_Coupon">
         <MappingFragment StoreEntitySet="Customer_Coupon">
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="booking_id" ColumnName="booking_id" />
           <ScalarProperty Name="customer_id" ColumnName="customer_id" />
           <ScalarProperty Name="coupon_id" ColumnName="coupon_id" />
           <ScalarProperty Name="used_count" ColumnName="used_count" />

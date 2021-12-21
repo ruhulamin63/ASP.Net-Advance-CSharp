@@ -29,15 +29,14 @@
                     <ul class="navbar-nav navbar-nav-right">
                         <li class="nav-item nav-profile dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-                                <img src="~/AdminTemplate/images/faces/face28.jpg" alt="profile" />
+                                <img src="~/icons/user.png" alt="profile" />
                             </a>
-
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                                <a class="dropdown-item">
+                                <a class="dropdown-item" href="/Admin/Profile">
                                     <i class="ti-settings text-primary"></i>
-                                    Settings
+                                    Profile
                                 </a>
-                                <a class="dropdown-item" href="Login/Logout">
+                                <a class="dropdown-item" href="/Login/Logout">
                                     <i class="ti-power-off text-primary"></i>
                                     Logout
                                 </a>
@@ -100,6 +99,12 @@
                             <a class="nav-link" href="/Admin/ViewSalaries">
                                 <i class="ti-write menu-icon"></i>
                                 <span class="menu-title">View Salaries</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Admin/BarChart">
+                                <i class="ti-write menu-icon"></i>
+                                <span class="menu-title">Booking Statistics</span>
                             </a>
                         </li>
                     </ul>

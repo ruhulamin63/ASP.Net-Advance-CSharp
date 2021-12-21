@@ -21,7 +21,7 @@ namespace FrontEnd.Controllers
         public ActionResult Index()
         {
             string token = Session["token"].ToString();
-            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization= new AuthenticationHeaderValue(token);
+            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
 
             //***************************** revenue and bookings starts ************************************************//
             var bookings = new List<BookingModel>();
@@ -36,11 +36,11 @@ namespace FrontEnd.Controllers
             var revenue_montly = 0;
             foreach (var v in bookings)
             {
-                if(v.payment_status=="Paid")
+                if (v.payment_status == "Paid")
                 {
                     revenue_total += v.total_cost;
                 }
-              
+
                 DateTime dt = v.order_date;
                 var x = (DateTime.Now.Date - dt.Date).TotalDays;
                 if (x <= 30)
@@ -94,6 +94,7 @@ namespace FrontEnd.Controllers
             TempData["cs_percentage"] = cs_percentage;
             TempData["customers"] = customers.Count();
             //***************************** customer count ends ************************************************//
+
 
             //***************************** order count starts ************************************************//
 
@@ -172,10 +173,36 @@ namespace FrontEnd.Controllers
             return View(tp_list);
         }
 
+        public ActionResult Profile()
+        {
+            var u = new UserModel();
+            string token = Session["token"].ToString();
+            int id = Int32.Parse(Session["u_id"].ToString());
+            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/Admin/Profile/" + id.ToString()).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var AdminResponse = response.Content.ReadAsStringAsync().Result;
+                u = JsonConvert.DeserializeObject<UserModel>(AdminResponse);
+            }
+            return View(u);
+        }
+
+        [HttpPost]
+        public ActionResult Profile(UserModel u)
+        {
+            string token = Session["token"].ToString();
+            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/Admin/Profile", u).Result;
+            return View();
+        }
+
         public ActionResult ViewCustomers()
         {
             var customers = new List<UserModel>();
             string token = Session["token"].ToString();
+
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/Admin/AllCustomer").Result;
             if (response.IsSuccessStatusCode)
@@ -197,7 +224,7 @@ namespace FrontEnd.Controllers
             if (ModelState.IsValid)
             {
                 u.usertype = "Customer";
-                u.verification_status = "0";
+                u.verification_status = "1";
                 u.created_at = DateTime.Now;
                 u.updated_at = DateTime.Now;
 
@@ -216,11 +243,12 @@ namespace FrontEnd.Controllers
                     }
                     else
                     {
-                        //TempData["SuccessMessage"] = "User with Same email exists!";
+                        TempData["FailedMessage"] = "User with Same email exists!";
                         return View(u);
                     }
                 }
             }
+            TempData["FailedMessage"] = "Creation Failed!";
             return View(u);
         }
 
@@ -245,14 +273,21 @@ namespace FrontEnd.Controllers
         {
             if (ModelState.IsValid)
             {
-                TempData["AlertMessage"] = "Sucessfully Updated";
-
                 string token = Session["token"].ToString();
                 GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
 
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/Admin/EditCustomer", u).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["SuccessMessage"] = "Successfully Updated";
+                }
+                else
+                {
+                    TempData["FailedMessage"] = "Updation Failed!";
+                }
                 return RedirectToAction("ViewCustomers", "Admin");
             }
+            TempData["FailedMessage"] = "Updation Failed!";
             return View(u);
         }
 
@@ -268,12 +303,12 @@ namespace FrontEnd.Controllers
                 var success = JsonConvert.DeserializeObject<int>(SuccessResponse);
                 if (success == 1)
                 {
-                    TempData["SuccessMessage"] = "Successfully Created";
+                    TempData["SuccessMessage"] = "Successfully Deleted";
 
                 }
                 else
                 {
-                    TempData["SuccessMessage"] = "Deletion Failed";
+                    TempData["FailedMessage"] = "Deletion Failed";
 
                 }
             }
@@ -310,7 +345,7 @@ namespace FrontEnd.Controllers
             if (ModelState.IsValid)
             {
                 u.usertype = "ServiceProvider";
-                u.verification_status = "0";
+                u.verification_status = "1";
                 u.created_at = DateTime.Now;
                 u.updated_at = DateTime.Now;
 
@@ -324,16 +359,17 @@ namespace FrontEnd.Controllers
                     var success = JsonConvert.DeserializeObject<int>(SuccessResponse);
                     if (success == 1)
                     {
-                        TempData["AlertMessage"] = "Successfully Created";
+                        TempData["SuccessMessage"] = "Successfully Created";
                         return RedirectToAction("ViewServiceProviders", "Admin");
                     }
                     else
                     {
-                        TempData["AlertMessage"] = "User with Same email exists!";
+                        TempData["FailedMessage"] = "User with Same email exists!";
                         return View(u);
                     }
                 }
             }
+            TempData["FailedMessage"] = "Creation Failed";
             return View(u);
         }
 
@@ -358,14 +394,21 @@ namespace FrontEnd.Controllers
         {
             if (ModelState.IsValid)
             {
-                TempData["AlertMessage"] = "Sucessfully Updated";
-
                 string token = Session["token"].ToString();
                 GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
 
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/Admin/EditServiceProvider", u).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["SuccessMessage"] = "Sucessfully Updated";
+                }
+                else
+                {
+                    TempData["FailedMessage"] = "Updation Failed";
+                }
                 return RedirectToAction("ViewServiceProviders", "Admin");
             }
+            TempData["FailedMessage"] = "Updation Failed";
             return View(u);
         }
 
@@ -386,7 +429,7 @@ namespace FrontEnd.Controllers
                 }
                 else
                 {
-                    TempData["SuccessMessage"] = "Deletion Failed";
+                    TempData["FailedMessage"] = "Deletion Failed";
                 }
             }
             return RedirectToAction("ViewServiceProviders", "Admin");
@@ -436,16 +479,17 @@ namespace FrontEnd.Controllers
                     var success = JsonConvert.DeserializeObject<int>(SuccessResponse);
                     if (success == 1)
                     {
-                        TempData["AlertMessage"] = "Successfully Created";
+                        TempData["SuccessMessage"] = "Successfully Created";
                         return RedirectToAction("ViewManagers", "Admin");
                     }
                     else
                     {
-                        TempData["AlertMessage"] = "User with Same email exists!";
+                        TempData["FailedMessage"] = "User with Same email exists!";
                         return View(u);
                     }
                 }
             }
+            TempData["FailedMessage"] = "Creation Failed";
             return View(u);
         }
 
@@ -476,11 +520,15 @@ namespace FrontEnd.Controllers
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/Admin/EditManager", u).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    TempData["AlertMessage"] = "Sucessfully Updated";
+                    TempData["SuccessMessage"] = "Sucessfully Updated";
                     return RedirectToAction("ViewManagers", "Admin");
                 }
+                else
+                {
+                    TempData["FailedMessage"] = "Updation Failed";
+                }
             }
-            TempData["AlertMessage"] = "Updation Failed";
+            TempData["FailedMessage"] = "Updation Failed";
             return View(u);
         }
 
@@ -501,7 +549,7 @@ namespace FrontEnd.Controllers
                 }
                 else
                 {
-                    TempData["SuccessMessage"] = "Deletion Failed";
+                    TempData["FailedMessage"] = "Deletion Failed";
                 }
             }
             return RedirectToAction("ViewManagers", "Admin");
@@ -546,7 +594,7 @@ namespace FrontEnd.Controllers
                     return RedirectToAction("Index", "Admin");
                 }
             }
-            TempData["SuccessMessage"] = "Failed Operation!";
+            TempData["FailedMessage"] = "Failed Operation!";
             return View();
         }
 
@@ -580,8 +628,8 @@ namespace FrontEnd.Controllers
                     return RedirectToAction("ViewServices", "Admin");
                 }
             }
-            TempData["SuccessMessage"] = "Updation Failed!";
-            return RedirectToAction("ViewServices", "Admin");
+            TempData["FailedMessage"] = "Updation Failed!";
+            return RedirectToAction("ViewServices/" + s.id.ToString(), "Admin");
         }
 
         public ActionResult DeleteServices(int id)
@@ -601,7 +649,7 @@ namespace FrontEnd.Controllers
                 }
                 else
                 {
-                    TempData["SuccessMessage"] = "Deletion Failed";
+                    TempData["FailedMessage"] = "Deletion Failed";
                 }
             }
             return RedirectToAction("Index", "Admin");
@@ -638,7 +686,6 @@ namespace FrontEnd.Controllers
                 var AdminResponse = response.Content.ReadAsStringAsync().Result;
                 s = JsonConvert.DeserializeObject<BookingModel>(AdminResponse);
             }
-            //TempData["SuccessMessage"] = "Successfully Deleted";
             return View(s);
         }
 
@@ -657,7 +704,7 @@ namespace FrontEnd.Controllers
                     return RedirectToAction("ViewBookings", "Admin");
                 }
             }
-            TempData["SuccessMessage"] = "Updation Failed!";
+            TempData["FailedMessage"] = "Updation Failed!";
             return View(b);
         }
 
@@ -715,8 +762,8 @@ namespace FrontEnd.Controllers
                     return RedirectToAction("ViewCoupons", "Admin");
                 }
             }
-            TempData["SuccessMessage"] = "Operation Failed!";
-            return View();
+            TempData["FailedMessage"] = "Operation Failed!";
+            return View(s);
         }
 
         public ActionResult EditCoupon(int id)
@@ -731,7 +778,6 @@ namespace FrontEnd.Controllers
                 var AdminResponse = response.Content.ReadAsStringAsync().Result;
                 s = JsonConvert.DeserializeObject<CouponModel>(AdminResponse);
             }
-            //TempData["SuccessMessage"] = "Successfully Deleted";
             return View(s);
         }
 
@@ -750,7 +796,7 @@ namespace FrontEnd.Controllers
                     return RedirectToAction("ViewCoupons", "Admin");
                 }
             }
-            TempData["SuccessMessage"] = "Updation Failed!";
+            TempData["FailedMessage"] = "Updation Failed!";
             return View(b);
         }
 
@@ -771,7 +817,7 @@ namespace FrontEnd.Controllers
                 }
                 else
                 {
-                    TempData["SuccessMessage"] = "Deletion Failed";
+                    TempData["FailedMessage"] = "Deletion Failed";
                 }
             }
             return RedirectToAction("ViewCoupons", "Admin");
@@ -810,9 +856,11 @@ namespace FrontEnd.Controllers
             if (response.IsSuccessStatusCode)
             {
                 TempData["SuccessMessage"] = "Booking Confirmed";
-                return RedirectToAction("ViewBookings", "Admin");
             }
-            TempData["SuccessMessage"] = "Operation Failed";
+            else
+            {
+                TempData["FailedMessage"] = "Operation Failed";
+            }
             return RedirectToAction("ViewBookings", "Admin");
         }
 
@@ -822,7 +870,7 @@ namespace FrontEnd.Controllers
 
         public ActionResult GetPrintCustomers(string token)
         {
-           
+
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
 
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/Admin/AllCustomer").Result;
@@ -892,7 +940,7 @@ namespace FrontEnd.Controllers
         {
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
 
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/Admin/GetBookingDetails/"+id.ToString()).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/Admin/GetBookingDetails/" + id.ToString()).Result;
             var c = new List<AdminBookingDetailModel>();
 
             if (response.IsSuccessStatusCode)
@@ -903,7 +951,7 @@ namespace FrontEnd.Controllers
 
             var t_cost = 0;
             var b_id = id;
-            foreach(var x in c)
+            foreach (var x in c)
             {
                 t_cost += ((x.unit_price * x.quantity) - x.discount);
             }
@@ -915,7 +963,7 @@ namespace FrontEnd.Controllers
         public ActionResult PrintBDetail(int id)
         {
             string token = Session["token"].ToString();
-            var q = new ActionAsPdf("GetPrintBDetail", new { token = token ,id=id});
+            var q = new ActionAsPdf("GetPrintBDetail", new { token = token, id = id });
             return q;
         }
 
@@ -943,12 +991,135 @@ namespace FrontEnd.Controllers
             string token = Session["token"].ToString();
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
 
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/Admin/PaySalary/"+id.ToString()).Result;
-
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/Admin/PaySalary/" + id.ToString()).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["SuccessMessage"] = "Payment Successfull";
+            }
+            else
+            {
+                TempData["FailedMessage"] = "Payment Failed!";
+            }
             return RedirectToAction("ViewSalaries", "Admin");
         }
 
 
         //************************************************ Salary Ends *********************************//
+
+        /*public ActionResult BarChart()
+        {
+            string token = Session["token"].ToString();
+            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/Admin/GetBookings").Result;
+            var b = new List<BookingModel>();
+            List<DataPoint> dataPoints = new List<DataPoint>();
+            if (response.IsSuccessStatusCode)
+            {
+                var AdminResponse = response.Content.ReadAsStringAsync().Result;
+                b = JsonConvert.DeserializeObject<List<BookingModel>>(AdminResponse);
+                Dictionary<int, int> cnt =  new Dictionary<int, int>();
+                int m = 0;
+                foreach (var x in b)
+                {
+                    
+                    if(x.order_date.ToString("MMM")== "Jan")
+                    {
+                        m = 1;
+                    }
+                    else if(x.order_date.ToString("MMM") == "Feb")
+                    {
+                        m = 2;
+                    }
+                    else if (x.order_date.ToString("MMM") == "Mar")
+                    {
+                        m = 3;
+                    }
+                    else if (x.order_date.ToString("MMM") == "Apr")
+                    {
+                        m = 4;
+                    }
+                    else if (x.order_date.ToString("MMM") == "May")
+                    {
+                        m = 5;
+                    }
+                    else if (x.order_date.ToString("MMM") == "Jun")
+                    {
+                        m = 6;
+                    }
+                    else if (x.order_date.ToString("MMM") == "Jul")
+                    {
+                        m = 7;
+                    }
+                    else if (x.order_date.ToString("MMM") == "Aug")
+                    {
+                        m = 8;
+                    }
+                    else if (x.order_date.ToString("MMM") == "Sep")
+                    {
+                        m = 9;
+                    }
+                    else if (x.order_date.ToString("MMM") == "Oct")
+                    {
+                        m = 10;
+                    }
+                    else if (x.order_date.ToString("MMM") == "Nov")
+                    {
+                        m = 11;
+                    }
+                    else if (x.order_date.ToString("MMM") == "Dec")
+                    {
+                        m = 12;
+                    }
+
+                    if (cnt.ContainsKey(m)==false)
+                    {
+                        cnt[m] = 1;
+                    }
+                    else
+                    {
+                        cnt[m]++;
+                    }
+                    //Pair<string, int> y = {x.order_date.ToString("MMM"), };
+                }
+
+                int j = 1;
+                for(int i= 10; i <= 100; i+=10,j++)
+                {
+                    if(cnt.ContainsKey(j)==false)
+                    {
+                        var y = new DataPoint(i, 0);
+                        dataPoints.Add(y);
+                    }
+                    else
+                    {
+                        var y = new DataPoint(i, cnt[j]);
+                        dataPoints.Add(y);
+                    }
+
+                }
+            }
+            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+            return View();
+
+            List<DataPoint> dataPoints = new List<DataPoint>{
+                new DataPoint(1, 0),
+                new DataPoint(2, 0),
+                new DataPoint(3, 0),
+                new DataPoint(4, 0),
+                new DataPoint(5, 0),
+                new DataPoint(6, 0),
+                new DataPoint(7, 0),
+                new DataPoint(8, 11),
+                new DataPoint(9, 0),
+                new DataPoint(10, 0),
+                new DataPoint(11, 0),
+                new DataPoint(12, 11)
+            };
+
+            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+
+            return View();
+        }*/
     }
 }

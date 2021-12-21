@@ -10,3 +10,9 @@ C:\Users\aminr\OneDrive\Desktop\zip\GhorSheba\BEL\obj\Debug\BEL.csproj.AssemblyR
 C:\Users\aminr\OneDrive\Desktop\zip\GhorSheba\BEL\obj\Debug\BEL.csproj.CoreCompileInputs.cache
 C:\Users\aminr\OneDrive\Desktop\zip\GhorSheba\BEL\obj\Debug\BEL.dll
 C:\Users\aminr\OneDrive\Desktop\zip\GhorSheba\BEL\obj\Debug\BEL.pdb
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\BEL\bin\Debug\BEL.dll
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\BEL\bin\Debug\BEL.pdb
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\BEL\obj\Debug\BEL.csproj.AssemblyReference.cache
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\BEL\obj\Debug\BEL.csproj.CoreCompileInputs.cache
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\BEL\obj\Debug\BEL.dll
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\BEL\obj\Debug\BEL.pdb

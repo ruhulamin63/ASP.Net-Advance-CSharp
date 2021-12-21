@@ -165,9 +165,12 @@
     <script>
         $(function () {
             var successMessage = '@TempData["SuccessMessage"]'
-
+            var failedMessage = '@TempData["FailedMessage"]'
             if (successMessage != '')
                 alertify.success(successMessage);
+            else if (failedMessage != '')
+                alertify.error(failedMessage);
+
         });
 
     function Delete(id) {

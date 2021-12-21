@@ -99,11 +99,11 @@
     <Compile Include="Controllers\ManagerController\BookingDetailsController.cs" />
     <Compile Include="Controllers\ManagerController\BookingServiceController.cs" />
     <Compile Include="Controllers\ManagerController\CouponController.cs" />
-    <Compile Include="Controllers\ManagerController\CustomerController.cs" />
+    <Compile Include="Controllers\ManagerController\CustomerManagerController.cs" />
     <Compile Include="Controllers\ManagerController\ReviewController.cs" />
     <Compile Include="Controllers\ManagerController\SalariesController.cs" />
     <Compile Include="Controllers\ManagerController\ServiceController.cs" />
-    <Compile Include="Controllers\ManagerController\ServiceProviderController.cs" />
+    <Compile Include="Controllers\ManagerController\ServiceProviderManagerController.cs" />
     <Compile Include="Controllers\ManagerController\UserController.cs" />
     <Compile Include="Controllers\ServiceProviderController.cs" />
     <Compile Include="Global.asax.cs">

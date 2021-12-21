@@ -20,3 +20,39 @@ C:\Users\aminr\OneDrive\Desktop\zip\GhorSheba\DAL\bin\Debug\EntityFramework.xml
 C:\Users\aminr\OneDrive\Desktop\zip\GhorSheba\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\aminr\OneDrive\Desktop\zip\GhorSheba\DAL\bin\Debug\BEL.dll
 C:\Users\aminr\OneDrive\Desktop\zip\GhorSheba\DAL\bin\Debug\BEL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\GhorSheba\DAL\bin\Debug\DAL.dll.config
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\GhorSheba\DAL\bin\Debug\DAL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\GhorSheba\DAL\bin\Debug\DAL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\GhorSheba\DAL\bin\Debug\BEL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\GhorSheba\DAL\bin\Debug\EntityFramework.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\GhorSheba\DAL\bin\Debug\BEL.pdb
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\GhorSheba\DAL\bin\Debug\EntityFramework.xml
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\GhorSheba\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\GhorSheba\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\GhorSheba\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\GhorSheba\DAL\obj\Debug\DAL.dll
+D:\10th Semester\Asp.Net\ASP.Net-Advance-CSharp\Final Term\GhorSheba\DAL\obj\Debug\DAL.pdb
+D:\AIUB\9th semester\.NET\FINAL\Merged Project\GhorSheba\GhorSheba\DAL\bin\Debug\DAL.dll.config
+D:\AIUB\9th semester\.NET\FINAL\Merged Project\GhorSheba\GhorSheba\DAL\bin\Debug\DAL.dll
+D:\AIUB\9th semester\.NET\FINAL\Merged Project\GhorSheba\GhorSheba\DAL\bin\Debug\DAL.pdb
+D:\AIUB\9th semester\.NET\FINAL\Merged Project\GhorSheba\GhorSheba\DAL\bin\Debug\BEL.dll
+D:\AIUB\9th semester\.NET\FINAL\Merged Project\GhorSheba\GhorSheba\DAL\bin\Debug\EntityFramework.dll
+D:\AIUB\9th semester\.NET\FINAL\Merged Project\GhorSheba\GhorSheba\DAL\bin\Debug\BEL.pdb
+D:\AIUB\9th semester\.NET\FINAL\Merged Project\GhorSheba\GhorSheba\DAL\bin\Debug\EntityFramework.xml
+D:\AIUB\9th semester\.NET\FINAL\Merged Project\GhorSheba\GhorSheba\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\AIUB\9th semester\.NET\FINAL\Merged Project\GhorSheba\GhorSheba\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\AIUB\9th semester\.NET\FINAL\Merged Project\GhorSheba\GhorSheba\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\AIUB\9th semester\.NET\FINAL\Merged Project\GhorSheba\GhorSheba\DAL\obj\Debug\DAL.dll
+D:\AIUB\9th semester\.NET\FINAL\Merged Project\GhorSheba\GhorSheba\DAL\obj\Debug\DAL.pdb
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\DAL\bin\Debug\DAL.dll.config
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\DAL\bin\Debug\DAL.dll
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\DAL\bin\Debug\DAL.pdb
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\DAL\bin\Debug\BEL.dll
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\DAL\bin\Debug\EntityFramework.dll
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\DAL\bin\Debug\BEL.pdb
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\DAL\bin\Debug\EntityFramework.xml
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\DAL\obj\Debug\DAL.dll
+C:\Users\aminr\Downloads\GhorSheba\GhorSheba\DAL\obj\Debug\DAL.pdb

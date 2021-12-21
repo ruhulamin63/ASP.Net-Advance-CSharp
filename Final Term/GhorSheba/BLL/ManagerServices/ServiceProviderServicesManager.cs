@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BLL.ManagerServices
 {
-    public class ServiceProviderServices
+    public class ServiceProviderServicesManager
     {
         public static List<ServiceProviderModel> GetAll()
         {
@@ -18,7 +18,7 @@ namespace BLL.ManagerServices
                 c.CreateMap<ServiceProvider, ServiceProviderModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<ServiceProviderModel>>(ManagerDataAccessFactory.ServiceProviderDataAccess().Get());
+            var data = mapper.Map<List<ServiceProviderModel>>(ManagerDataAccessFactory.ServiceProviderDataAccess().GetSP());
             return data;
         }
 
@@ -29,7 +29,7 @@ namespace BLL.ManagerServices
                 c.CreateMap<ServiceProvider, ServiceProviderModel>();
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<ServiceProviderModel>(ManagerDataAccessFactory.ServiceProviderDataAccess().Get(id));
+            var data = mapper.Map<ServiceProviderModel>(ManagerDataAccessFactory.ServiceProviderDataAccess().GetSP(id));
             return data;
         }
 
@@ -41,7 +41,7 @@ namespace BLL.ManagerServices
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<ServiceProvider>(n);
-            ManagerDataAccessFactory.ServiceProviderDataAccess().Add(data);
+            ManagerDataAccessFactory.ServiceProviderDataAccess().AddSP(data);
         }
 
         public static void Edit(ServiceProviderModel n)
@@ -52,11 +52,11 @@ namespace BLL.ManagerServices
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<ServiceProvider>(n);
-            ManagerDataAccessFactory.ServiceProviderDataAccess().Edit(data);
+            ManagerDataAccessFactory.ServiceProviderDataAccess().EditSP(data);
         }
         public static void Delete(int id)
         {
-            ManagerDataAccessFactory.ServiceProviderDataAccess().Delete(id);
+            ManagerDataAccessFactory.ServiceProviderDataAccess().DeleteSP(id);
         }
         public static List<ServiceProviderModel> ConfirmBookedService(int id)
         {
@@ -69,15 +69,35 @@ namespace BLL.ManagerServices
             return data;
         }
 
-        public static List<BookingServiceModel> AssignServices(int id)
+        /* public static List<BookingServiceModel> AssignServices(int id)
+         {
+             var config = new MapperConfiguration(c =>
+             {
+                 c.CreateMap<BookingService, BookingServiceModel>().ReverseMap();
+             });
+             var mapper = new Mapper(config);
+             var data = mapper.Map<List<BookingServiceModel>>(ManagerDataAccessFactory.BookingServiceDataAccess().AssignServices(id));
+             return data;
+         }*/
+
+        public static void AssignServices(BookingServiceModel s)
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<BookingService, BookingServiceModel>().ReverseMap();
-            });
-            var mapper = new Mapper(config);
-            var data = mapper.Map<List<BookingServiceModel>>(ManagerDataAccessFactory.BookingServiceDataAccess().AssignServices(id));
-            return data;
+
+            var booking = DataAccessFactory.BookingDataAccess().Get(s.booking_id);
+
+            booking.status = "confirmed";
+            booking.payment_status = "pending";
+            booking.updated_at = DateTime.Now;
+            DataAccessFactory.BookingDataAccess().Edit(booking);
+
+            var sp = DataAccessFactory.ServiceProviderDataAccess().Get(s.serviceprovider_id);
+            sp.work_status = "busy";
+            DataAccessFactory.ServiceProviderDataAccess().Edit(sp);
+
+            var bs = new Booking_Service();
+            bs.serviceprovider_id = s.serviceprovider_id;
+            bs.booking_id = s.booking_id;
+            DataAccessFactory.BookingServiceDataAccess().Add(bs);
         }
     }
 }

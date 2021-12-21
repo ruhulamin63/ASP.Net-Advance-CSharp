@@ -50,7 +50,7 @@ namespace DAL
             return new ReviewRepository(db);
         }
 
-        public static ManagerInterface<Customer, int> CustomerDataAccess()
+        public static ManagerCustomerServiceInterface<Customer, int> CustomerDataAccess()
         {
             return new CustomerRepository(db);
         }

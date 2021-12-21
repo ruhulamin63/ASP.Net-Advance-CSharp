@@ -15,32 +15,32 @@ namespace DAL.Repository
             this.db = db;
         }
 
-        public void Add(ServiceProvider e)
+        public void AddSP(ServiceProvider e)
         {
             db.ServiceProviders.Add(e);
             db.SaveChanges();
         }
 
-        public void Edit(ServiceProvider e)
+        public void EditSP(ServiceProvider e)
         {
             var p = db.ServiceProviders.FirstOrDefault(en => en.id == e.id);
             db.Entry(p).CurrentValues.SetValues(e);
             db.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void DeleteSP(int id)
         {
             var e = db.ServiceProviders.FirstOrDefault(en => en.id == id);
             db.ServiceProviders.Remove(e);
             db.SaveChanges();
         }
 
-        public List<ServiceProvider> Get()
+        public List<ServiceProvider> GetSP()
         {
             return db.ServiceProviders.ToList();
         }
 
-        public ServiceProvider Get(int id)
+        public ServiceProvider GetSP(int id)
         {
             return db.ServiceProviders.FirstOrDefault(e => e.id == id);
         }
@@ -65,18 +65,18 @@ namespace DAL.Repository
             //return db.ServiceProviders.ToList();
         }
 
-      /*  public ServiceProvider AssignServices(int id)
-        {
-            //return db.ServiceProviders.FirstOrDefault(e => e.id == id);
+        /*  public ServiceProvider AssignServices(int id)
+          {
+              //return db.ServiceProviders.FirstOrDefault(e => e.id == id);
 
-            var cs = new ServiceProvider()
-            {
-                booking_id = bId,
-                service = sp_id
-            };
-            db.ServiceProviders.Add(cs);
-            db.SaveChanges();
-        }*/
+              var cs = new ServiceProvider()
+              {
+                  booking_id = bId,
+                  service = sp_id
+              };
+              db.ServiceProviders.Add(cs);
+              db.SaveChanges();
+          }*/
 
     }
 }

@@ -54,7 +54,7 @@ namespace FrontEnd.Controllers
             string token = Session["token"].ToString();
             int id = Int32.Parse(Session["u_id"].ToString());
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/ServiceProvider/ViewBooking/"+id.ToString()).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/ServiceProvider/ViewBooking/" + id.ToString()).Result;
             var b = new List<BookingModel>();
 
             if (response.IsSuccessStatusCode)
@@ -157,7 +157,7 @@ namespace FrontEnd.Controllers
 
             string token = Session["token"].ToString();
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/ServiceProvider/ServiceDetail/"+u_id.ToString()).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/ServiceProvider/ServiceDetail/" + u_id.ToString()).Result;
             if (response.IsSuccessStatusCode)
             {
                 var ServiceProviderResponse = response.Content.ReadAsStringAsync().Result;
@@ -173,13 +173,13 @@ namespace FrontEnd.Controllers
             var sp = new ServUserModel();
             string token = Session["token"].ToString();
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/ServiceProvider/Profile/"+u_id.ToString()).Result;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/ServiceProvider/Profile/" + u_id.ToString()).Result;
 
             if (response.IsSuccessStatusCode)
             {
                 var ServiceProviderResponse = response.Content.ReadAsStringAsync().Result;
                 sp = JsonConvert.DeserializeObject<ServUserModel>(ServiceProviderResponse);
-                
+
             }
 
             return View(sp);

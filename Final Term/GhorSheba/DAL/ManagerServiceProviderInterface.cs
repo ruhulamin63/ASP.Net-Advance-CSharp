@@ -8,15 +8,15 @@ namespace DAL
 {
     public interface ManagerServiceProviderInterface<T, ID>
     {
-        void Add(T e);
+        void AddSP(T e);
 
-        List<T> Get();
+        List<T> GetSP();
 
-        T Get(ID id);
+        T GetSP(ID id);
 
-        void Edit(T e);
+        void EditSP(T e);
 
-        void Delete(ID id);
+        void DeleteSP(ID id);
 
        List<T> ConfirmBookedService(ID id);
 
