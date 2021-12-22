@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BEL.BookingDetailModel>
+﻿@model IEnumerable<BEL.AdminBookingDetailModel>
 
 @{
     ViewBag.Title = "Booking_Confirm_List";
@@ -72,11 +72,14 @@
                                     <thead>
                                         <tr style="background-color: #E74C3C; color:white !important">
                                             <th style="text-align: center; width:8%;">Booking Id</th>
-                                            <th style="text-align: center;" class="min-w-100px">Service Id</th>
+                                             <th style="text-align: center;" class="min-w-100px">Service Id</th>
+
+                                            @*<th style="text-align: center; width:8%;">Name</th>
+                                            <th style="text-align: center;" class="min-w-100px">Category</th>*@
                                             <th style="text-align: center;" class="min-w-100px">Unit Price</th>
                                             <th style="text-align: center;" class="min-w-100px">Quantity</th>
                                             <th style="text-align: center;" class="min-w-100px">Discount</th>
-                                           @* <th style="text-align: center;" class="min-w-100px">Action</th>*@
+                                            <th style="text-align: center;" class="min-w-100px">Action</th>
                                         </tr>
                                     </thead>
 
@@ -92,7 +95,7 @@
                                                     @Html.DisplayFor(modelItem => item.service_id)
                                                 </td>
                                                 <td style="text-align: center;" class="min-w-100px">
-                                                    @Html.DisplayFor(modelItem => item.unit_price)
+                                                    @Html.DisplayFor(modelItem => item.unit_price) taka
                                                 </td>
                                                 <td style="text-align: center;" class="min-w-100px">
                                                     @Html.DisplayFor(modelItem => item.quantity)
@@ -100,10 +103,28 @@
                                                 <td style="text-align: center;" class="min-w-100px">
                                                     @Html.DisplayFor(modelItem => item.discount) %
                                                 </td>
+
                                                 @*<td style="text-align: center;" class="min-w-100px">
-                                                    <a href="@Url.Action("Booking_Confirm_Edit", "Manager", new {id = item.id})"><i class="fa fa-edit btn btn-info btn-sm">Update</i></a>
-                                                    <a onclick="Delete(@item.id)"> <i class="btn btn-danger btn-sm">Delete</i></a>
+                                                    @Html.DisplayFor(modelItem => item.name)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.category)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.unit_price)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.quantity)
+                                                </td>
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @Html.DisplayFor(modelItem => item.discount)
                                                 </td>*@
+                                       
+                                                <td style="text-align: center;" class="min-w-100px">
+                                                    @*<a href="@Url.Action("Booking_Confirm_Edit", "Manager", new {id = item.id})"><i class="fa fa-edit btn btn-info btn-sm">Update</i></a>
+                                                      <a onclick="Delete(@item.id)"> <i class="btn btn-danger btn-sm">Delete</i></a>*@
+                                                    <a href="/Manager/PrintBDetail/@item.id" class="btn btn-primary">Print</a>
+                                                </td>
                                             </tr>
                                         }
 

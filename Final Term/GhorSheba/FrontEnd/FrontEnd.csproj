@@ -4661,6 +4661,7 @@
     <Content Include="Views\Manager\Create_Image.cshtml" />
     <Content Include="Views\Manager\Coupon_Create.cshtml" />
     <Content Include="Views\Manager\Coupon_Edit.cshtml" />
+    <Content Include="Views\Manager\GetPrintBDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

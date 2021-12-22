@@ -54,9 +54,12 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <!--begin::Table head-->
+                                <h3> #@DateTime.Now *@DateTime.Now.DayOfWeek #@DateTime.Now.Year</h3>
+
                                 <p>
                                     <a href="@Url.Action("UserAdd", "Manager")" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>Create New</a>
                                 </p>
+
                                 <hr />
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -100,7 +103,7 @@
                                                 @if (check == "Customer")
                                                 {
                                                     <td style="text-align: center;" class="min-w-100px">
-                                                       @* <a href="@Url.Action("UserEdit", "Manager", new {id = item.id})"><i class="fa fa-edit btn btn-info btn-sm">Update</i></a>*@
+                                                        @* <a href="@Url.Action("UserEdit", "Manager", new {id = item.id})"><i class="fa fa-edit btn btn-info btn-sm">Update</i></a>*@
                                                         @* <a onclick="Delete(@item.id)"><i class="btn btn-danger btn-sm">Delete</i></a>*@
                                                     </td>
                                                 }
@@ -108,7 +111,7 @@
                                                 {
                                                     <td style="text-align: center;" class="min-w-100px">
                                                         <a href="@Url.Action("Salary_Create", "Manager", new {id = item.id})"><i class="fa fa-rupee-sign btn btn-success btn-sm">Salaries to Assign</i></a>
-                                                       @* <a href="@Url.Action("UserEdit", "Manager", new {id = item.id})"><i class="fa fa-edit btn btn-info btn-sm">Update</i></a>*@
+                                                        @* <a href="@Url.Action("UserEdit", "Manager", new {id = item.id})"><i class="fa fa-edit btn btn-info btn-sm">Update</i></a>*@
                                                         @* <a onclick="Delete(@item.id)"><i class="btn btn-danger btn-sm">Delete</i></a>*@
                                                     </td>
                                                 }

@@ -3,6 +3,7 @@ using BEL.ManagerModel;
 using DAL;
 using FrontEnd.Auth;
 using Newtonsoft.Json;
+using Rotativa;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -159,13 +160,13 @@ namespace FrontEnd.Controllers
             string token = Session["token"].ToString();
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
 
-            var booked = new List<BookingDetailModel>();
+            var booked = new List<AdminBookingDetailModel>();
 
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/booking/confirm/all").Result;
             if (response.IsSuccessStatusCode)
             {
                 var bookingData = response.Content.ReadAsStringAsync().Result;
-                booked = JsonConvert.DeserializeObject<List<BookingDetailModel>>(bookingData);
+                booked = JsonConvert.DeserializeObject<List<AdminBookingDetailModel>>(bookingData);
             }
             return View(booked);
         }
@@ -736,6 +737,42 @@ namespace FrontEnd.Controllers
             ModelState.Clear();
 
             return RedirectToAction("Setting_Overview");
+        }
+
+
+        //==================================Print Function======================================
+        public ActionResult GetPrintBDetail(string token, int id)
+        {
+            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("api/booking/confirm/" + id.ToString()).Result;
+            var c = new List<AdminBookingDetailModel>();
+
+            if (response.IsSuccessStatusCode)
+            {
+                var ManagerResponse = response.Content.ReadAsStringAsync().Result;
+                c = JsonConvert.DeserializeObject<List<AdminBookingDetailModel>>(ManagerResponse);
+            }
+
+            var t_cost = 0;
+            var b_id = id;
+
+            foreach (var x in c)
+            {
+                t_cost += ((x.unit_price * x.quantity) - x.discount);
+            }
+
+            ViewData["t_cost"] = t_cost;
+            ViewData["b_id"] = b_id;
+
+            return View(c);
+        }
+        public ActionResult PrintBDetail(int id)
+        {
+            string token = Session["token"].ToString();
+            var q = new ActionAsPdf("GetPrintBDetail", new { token = token, id = id });
+
+            return q;
         }
     }
 }
