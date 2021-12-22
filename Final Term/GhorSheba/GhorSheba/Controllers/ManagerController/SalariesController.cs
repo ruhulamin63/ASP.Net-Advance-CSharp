@@ -41,7 +41,7 @@ namespace ShebaApp.Controllers.ManagerController
             return Request.CreateResponse(HttpStatusCode.OK, "Updated Succesfully");
         }
         [Route("api/salary/delete/{id}")]
-        [HttpGet]
+        [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
             SalaryService.Delete(id);

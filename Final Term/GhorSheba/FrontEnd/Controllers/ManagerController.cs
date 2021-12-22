@@ -142,7 +142,12 @@ namespace FrontEnd.Controllers
             GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
 
             HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("api/customer/delete/" + id.ToString()).Result;
-            TempData["SuccessMessage"] = "Delete Successfully";
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["SuccessMessage"] = "Delete Successfully";
+                return RedirectToAction("Customer_List", "Manager");
+            }
+            TempData["SuccessMessage"] = "Some data missing...?";
 
             return RedirectToAction("Customer_List", "Manager");
         }
@@ -408,6 +413,23 @@ namespace FrontEnd.Controllers
             return View(service);
         }
 
+        public ActionResult Service_Provider_Delete(int id)
+        {
+            string token = Session["token"].ToString();
+            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("api/service/provider/delete/" + id.ToString()).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["SuccessMessage"] = "Delete Successfully";
+                return RedirectToAction("Service_Provider_List", "Manager");
+            }
+            TempData["SuccessMessage"] = "Some data missing...?";
+
+            return RedirectToAction("Service_Provider_List", "Manager");
+            //return View();
+        }
+
         public ActionResult Service_Provider_Get_Id(int id)
         {
             string token = Session["token"].ToString();
@@ -442,6 +464,87 @@ namespace FrontEnd.Controllers
                 copon = JsonConvert.DeserializeObject<List<CouponModel>>(coponData);
             }
             return View(copon);
+        }
+
+        public ActionResult Coupon_Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Coupon_Create(CouponModel coupon)
+        {
+            if (ModelState.IsValid)
+            {
+                string token = Session["token"].ToString();
+                GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/coupon/create", coupon).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["SuccessMessage"] = "Create Successfully";
+                    return RedirectToAction("Coupon_List", "Manager");
+                }
+            }
+            TempData["SuccessMessage"] = "Some data missing !";
+            return View();
+        }
+
+        public ActionResult Coupon_Edit(int id)
+        {
+            string token = Session["token"].ToString();
+            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+
+            var user = new CouponModel();
+            string path = "api/coupon/" + id;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync(path).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                var Response = response.Content.ReadAsStringAsync().Result;
+                user = JsonConvert.DeserializeObject<CouponModel>(Response);
+
+                //TempData["SuccessMessage"] = "Create Successfully";
+                //return RedirectToAction("Coupon_List", "Manager");
+            }
+            //TempData["SuccessMessage"] = "Some Data Missing...?";
+            return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult Coupon_Edit(CouponModel coupon)
+        {
+            string token = Session["token"].ToString();
+            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+
+            if (ModelState.IsValid)
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/coupon/edit", coupon).Result;
+
+                TempData["SuccessMessage"] = "Update Successfully";
+                return RedirectToAction("Coupon_List", "Manager");
+            }
+            TempData["SuccessMessage"] = "Some Data Missing...?";
+
+            //return RedirectToAction("Coupon_Edit", "Manager");
+            return View();
+        }
+
+        public ActionResult Coupon_Delete(int id)
+        {
+            string token = Session["token"].ToString();
+            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("api/coupon/delete/" + id.ToString()).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["SuccessMessage"] = "Delete Successfully";
+                return RedirectToAction("Coupon_List", "Manager");
+            }
+            TempData["SuccessMessage"] = "Some data missing...?";
+
+            return RedirectToAction("Coupon_List", "Manager");
+            //return View();
         }
 
 
@@ -481,6 +584,63 @@ namespace FrontEnd.Controllers
             TempData["SuccessMessage"] = "Create Successfully";
 
             return RedirectToAction("Salary_List", "Manager");
+        }
+
+        public ActionResult Salary_Edit(int id)
+        {
+            string token = Session["token"].ToString();
+            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+
+            var user = new SalariesModel();
+            string path = "api/salary/" + id;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync(path).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                var Response = response.Content.ReadAsStringAsync().Result;
+                user = JsonConvert.DeserializeObject <SalariesModel>(Response);
+
+                //TempData["SuccessMessage"] = "Create Successfully";
+                //return RedirectToAction("Coupon_List", "Manager");
+            }
+            //TempData["SuccessMessage"] = "Some Data Missing...?";
+            return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult Salary_Edit(SalariesModel salary)
+        {
+            string token = Session["token"].ToString();
+            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+
+            if (ModelState.IsValid)
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("api/salary/edit", salary).Result;
+
+                TempData["SuccessMessage"] = "Update Successfully";
+                return RedirectToAction("Salary_List", "Manager");
+            }
+            TempData["SuccessMessage"] = "Some Data Missing...?";
+
+            //return RedirectToAction("Coupon_Edit", "Manager");
+            return View();
+        }
+
+        public ActionResult Salary_Delete(int id)
+        {
+            string token = Session["token"].ToString();
+            GlobalVariables.WebApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("api/salary/delete/" + id.ToString()).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["SuccessMessage"] = "Delete Successfully";
+                return RedirectToAction("Salary_List", "Manager");
+            }
+            TempData["SuccessMessage"] = "Some data missing...?";
+
+            return RedirectToAction("Salary_List", "Manager");
+            //return View();
         }
 
         //===================================================================================

@@ -97,9 +97,9 @@
 
                                     </tbody>
                                 </table>
-                                <a href="@Url.Action("Booking_List", "Manager")" class="btn btn-success btn-sm">Back to list</a>
+                                <a href="@Url.Action("UserAllData_List", "Manager")" class="btn btn-success btn-sm">Back to list</a>
 
-                                @section scripts {
+                                @* @section scripts {
                                     <script>
                                         $(function () {
                                             var successMessage = '@TempData["SuccessMessage"]'
@@ -110,11 +110,36 @@
 
                                         function Delete(id) {
                                             alertify.confirm('Booking Data Information', 'Are you sure to delete this record ?', function () {
-                                                window.location.href = "https://localhost:44326/Manager/Booking_Delete/" + id;
+                                                window.location.href = "https://localhost:44326/Manager/Coupon_Delete/" + id;
                                             }, null);
                                         }
                                     </script>
-                                }
+                                }*@
+
+                                <script>
+                                    $(function () {
+                                        var successMessage = '@TempData["SuccessMessage"]'
+                                        var failedMessage = '@TempData["FailedMessage"]'
+                                        if (successMessage != '')
+                                            alertify.success(successMessage);
+                                        else if (failedMessage != '')
+                                            alertify.error(failedMessage);
+
+                                    });
+
+                                    function Delete(id) {
+
+                                        alertify.confirm("Are you sure?", function (e) {
+                                            if (e) {
+                                                window.location.href = "https://localhost:44308/Manager/Coupon_Delete/" + id;
+                                            } else {
+                                                alertify.success("No");
+                                            }
+                                        });
+
+                                        }
+
+                                </script>
 
                             </div>
                         </div>

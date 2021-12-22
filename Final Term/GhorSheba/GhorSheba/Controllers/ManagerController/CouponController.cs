@@ -44,7 +44,7 @@ namespace ShebaApp.Controllers.ManagerController
         }
 
         [Route("api/coupon/delete/{id}")]
-        [HttpGet]
+        [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
             CouponService.DeleteCoupon(id);

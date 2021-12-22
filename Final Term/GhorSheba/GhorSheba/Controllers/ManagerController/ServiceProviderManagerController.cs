@@ -40,7 +40,7 @@ namespace ShebaApp.Controllers.ManagerController
             return Request.CreateResponse(HttpStatusCode.OK, "Updated Succesfully");
         }
         [Route("api/service/provider/delete/{id}")]
-        [HttpGet]
+        [HttpDelete]
         public HttpResponseMessage DeleteSP(int id)
         {
             ServiceProviderServicesManager.Delete(id);

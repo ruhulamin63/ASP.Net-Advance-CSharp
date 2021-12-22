@@ -4659,6 +4659,8 @@
     <Content Include="Views\ServiceProvider\ViewBooking.cshtml" />
     <Content Include="Views\ServiceProvider\WorkDetail.cshtml" />
     <Content Include="Views\Manager\Create_Image.cshtml" />
+    <Content Include="Views\Manager\Coupon_Create.cshtml" />
+    <Content Include="Views\Manager\Coupon_Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
